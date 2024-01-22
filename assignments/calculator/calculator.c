@@ -193,6 +193,12 @@ int main(){
                     while(getchar() != '\n');
                     continue;
                 }
+                if (num2 == 0){
+                    system("clear");
+                    printf("Cannot divide by zero. Let's try this again...\n\tPress enter.\n");
+                    while(getchar() != '\n');
+                    continue;
+                }
                 float result = division(num1, num2);
                 printf("\n\nResult: %f / %f = %f", num1, num2, result);
                 printf("\n\nPress enter to do another calculation");
