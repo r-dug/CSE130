@@ -1,141 +1,114 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSE130: Lecture 4 - Loops</title>
-    <style>
-        body {font-family: Arial, sans-serif; line-height: 1.6;}
-        h1, h2 {color: #333;}
-        code {background-color: #f4f4f4; padding: 2px 4px;}
-        a {text-decoration: none; color: #0645AD;}
-        a:hover {text-decoration: underline;}
-    </style>
+    <title>Lecture4Loops - Computer Science C/C++ Programming</title>
 </head>
-
 <body>
-    <h1>Lecture 4: Loops</h1>
-    <h2>Overview of Looping Constructs in C/C++</h2>
-    <ul>
-        <li><strong>while Loops</strong>: Execute a block of code as long as a specified condition is true.</li>
-        <li><strong>for Loops</strong>: Execute a block of code a certain number of times, typically with a counter.</li>
-        <li><strong>do-while Loops</strong>: Similar to the while loop, but the block of code is executed at least once before checking the condition.</li>
-        <li><strong>Break Statement</strong>: Exits the closest loop prematurely.</li>
-        <li><strong>Continue Statement</strong>: Skips the current iteration and continues with the next iteration of the loop.</li>
-        <li><strong>Nested Loops</strong>: Loops inside loops, which can be used for multi-dimensional data structures or complex algorithms.</li>
-        <li><strong>Converting for Loop to while Loop</strong></li>
-        <li><strong>Infinite Loops</strong>: Loops that do not have a terminating condition, or whose terminating condition is never met.</li>
-    </ul>
+    <h1>Lecture4Loops - Computer Science C/C++ Programming</h1>
+    <h2>Looping Constructs in C and C++</h2>
+    
+    <p>Loops are fundamental constructs in programming that allow for repetitive execution of a block of code. They are especially useful when paired with certain operators.</p>
 
-    <h2>while Loop</h2>
-    <p>A while loop will continue to execute a code block as long as the condition remains true. The condition is evaluated before the execution of the loop’s code block.</p>
-    <code>
-        while(condition) {<br>
-            //code block to be executed<br>
-        }<br>
-    </code>
-    <p><strong>Example: Factorial Program</strong></p>
-    <code>
-        int factorial = 1, n = 5;<br>
-        while(n > 1) {<br>
-            factorial *= n;<br>
-            n--;<br>
-        }<br>
-        printf("%d", factorial); // Outputs: 120<br>
-    </code>
-    <p><a href="https://www.cplusplus.com/reference/cstdio/printf/" target="_blank">Further reading on printf</a></p>
+    <section>
+        <h3>The while Loop</h3>
+        <p>The <code>while</code> loop continues to execute a block of code as long as the condition remains true.</p>
+        <p>
+            <strong>Example:</strong><br>
+            <code>
+            int i = 1;<br>
+            while (i &lt;= 10) {<br>
+                printf("%d ", i);<br>
+                i++;<br>
+            }
+            </code>
+        </p>
+        <p>Further Reading: <a href="https://www.w3schools.com/c/c_while_loop.php">while Loop in C</a></p>
+    </section>
 
-    <h2>for Loop</h2>
-    <p>The for loop is commonly used when the number of iterations is known before entering the loop. The for loop is generally structured as follows: initiation of loop counter, condition for continuation, and incrementation of loop counter.</p>
-    <code>
-        for(initialization; condition; increment) {<br>
-            // code block to be executed<br>
-        }<br>
-    </code>
-    <p><strong>Example: Fibonacci Sequence</strong></p>
-    <code>
-        int f0 = 0, f1 = 1, fnext, n = 10;<br>
-        for(int i = 0; i < n; i++) {<br>
-            printf("%d ", f0);<br>
-            fnext = f0 + f1;<br>
-            f0 = f1;<br>
-            f1 = fnext;<br>
-        }<br>
-        // Outputs: 0 1 1 2 3 5 8 13 21 34<br>
-    </code>
+    <section>
+        <h3>The for Loop</h3>
+        <p>The <code>for</code> loop allows for initialization, condition checking, and incrementation in one line, making it compact for iterations.</p>
+        <p>
+            <strong>Example:</strong><br>
+            <code>
+            for (int i = 0; i &lt; 10; i++) {<br>
+                printf("%d ", i);<br>
+            }
+            </code>
+        </p>
+        <p>Further Reading: <a href="https://www.w3schools.com/c/c_for_loop.php">for Loop in C</a></p>
+    </section>
 
-    <h2>do-while Loop</h2>
-    <p>The do-while loop is a variation of the while loop, where the code block is executed once before the condition is tested. If the condition is true, the loop will continue to execute.</p>
-    <code>
-        do {<br>
-            // code block to be executed<br>
-        } while(condition);<br>
-    </code>
-    <p><strong>Example: Factorial Program using do-while</strong></p>
-    <code>
-        int factorial = 1, n = 5;<br>
-        do {<br>
-            factorial *= n;<br>
-            n--;<br>
-        } while(n > 1);<br>
-        printf("%d", factorial); // Outputs: 120<br>
-    </code>
+    <section>
+        <h3>The do-while Loop</h3>
+        <p>The <code>do-while</code> loop guarantees that the code block will be executed at least once before the condition is checked.</p>
+        <p>
+            <strong>Example:</strong><br>
+            <code>
+            int i = 1;<br>
+            do {<br>
+                printf("%d ", i);<br>
+                i++;<br>
+            } while (i &lt;= 10);
+            </code>
+        </p>
+        <p>Further Reading: <a href="https://www.tutorialspoint.com/cprogramming/c_do_while_loop.htm">do-while Loop in C</a></p>
+    </section>
 
-    <h2>Using break and continue</h2>
-    <ul>
-        <li><strong>break</strong>: Immediately exits the loop.</li>
-        <li><strong>continue</strong>: Skips the rest of the current loop iteration and begins the next iteration.</li>
-    </ul>
+    <section>
+        <h3>Break and Continue Statements</h3>
+        <p><code>break</code> exits the loop immediately, while <code>continue</code> skips the rest of the loop and starts the next iteration.</p>
+    </section>
 
-    <h2>Nested Loops</h2>
-    <p>Nested loops are loops inside another loop. These are particularly useful for iterating over multi-dimensional data.</p>
-    <p><strong>Example: Math Game (Pseudo-code)</strong></p>
-    <code>
-        for(int i = 0; i < 10; i++) {<br>
-            for(int j = 0; j < 10; j++) {<br>
-                // Math game logic<br>
+    <section>
+        <h3>Nested Loops</h3>
+        <p>Nested loops are loops inside another loop. They are often used for multi-dimensional data structures.</p>
+
+    </section>
+
+    <section>
+        <h3>Converting for loop to while loop</h3>
+        <p>You can often convert a <code>for</code> loop into a <code>while</code> loop, although the <code>for</code> loop syntax is generally preferred for clarity when iterating a known number of times.</p>
+    </section>
+
+    <section>
+        <h3>Infinite Loops</h3>
+        <p>Infinite loops run indefinitely because their condition is always true and they lack an exit mechanism. Use with caution.</p>
+        <p>
+            <strong>Example:</strong><br>
+            <code>while (1) { /* code */ }</code>
+        </p>
+    </section>
+
+    <section>
+        <h3>Running Sum</h3>
+        <p>Keeping a running sum involves incrementally adding numbers to a total.</p>
+        <p>
+            <strong>Example:</strong><br>
+            <code>
+            int sum = 0;<br>
+            for (int i = 1; i &lt;= 10; i++) {<br>
+                sum += i;<br>
             }<br>
-        }<br>
-    </code>
+            printf("Sum = %d", sum);
+            </code>
+        </p>
+    </section>
 
-    <h2>Infinite Loops</h2>
-    <p>An infinite loop may occur inadvertently if the terminating condition is never met or intentionally for an unending process until an external interruption.</p>
-    <code>
-        while(true) {<br>
-            // An infinite loop<br>
-        }<br>
-    </code>
-    <p><strong>Example: Running Sum</strong></p>
-    <code>
-        int sum = 0, value;<br>
-        while(true) {<br>
-            scanf("%d", &value); // Assuming user input<br>
-            if(value < 0) break;<br>
-            sum += value;<br>
-        }<br>
-        printf("Sum: %d", sum);<br>
-    </code>
-    <p><a href="https://www.cplusplus.com/reference/cstdio/scanf/" target="_blank">Further reading on scanf</a></p>
+    <section>
+        <h3>System Calls</h3>
+        <p>System calls such as <code>printf()</code> can be used within loops for output.</p>
+    </section>
 
-    <h2>Assignments and Important Dates</h2>
-    <p><strong>ASSIGNMENT: C Exam | DUE: Wednesday, 2/21</strong></p>
-    <p><strong>ASSIGNMENT: C++ Exam | DUE: Monday, 4/8</strong></p>
-    <p><strong>ASSIGNMENT: Student ppt | DUE: Monday, 4/15</strong></p>
-    <p><strong>ASSIGNMENT: Student ppt | DUE: Wednesday, 4/17</strong></p>
-    <p><strong>ASSIGNMENT: Student ppt | DUE: Monday, 4/22</strong></p>
-
-    <h2>Exam Highlights</h2>
-    <p><strong>THIS WILL BE ON THE EXAM: Understand the syntax and use-cases of different loops</strong></p>
-    <p><strong>THIS WILL BE ON THE EXAM: Be able to convert a for loop to a while loop and vice versa</strong></p>
-    <p><strong>THIS WILL BE ON THE EXAM: Recognize situations where it's more appropriate to use break or continue statements</strong></p>
-    <p><strong>THIS WILL BE ON THE EXAM: Know how to handle nested loops and potential pitfalls such as infinite loops</strong></p>
+    <footer>
+        <p>ASSIGNMENT: C Exam | DUE: Wednesday, 2/21</p>
+        <p>ASSIGNMENT: C++ Exam | DUE: Monday, 4/8</p>
+        <p>ASSIGNMENT: Student ppt | DUE: Monday, 4/15</p>
+        <p>ASSIGNMENT: Student ppt | DUE: Wednesday, 4/17</p>
+        <p>ASSIGNMENT: Student ppt | DUE: Monday, 4/22</p>
+        <p>THIS WILL BE ON THE EXAM: Be sure to understand the various types of loops (while, for, do-while), their syntax, and use cases, including nested loops and conversion between loop types.</p>
+    </footer>
 
 </body>
-
 </html>
-```
-
-This HTML-formatted note captures all the key points discussed in the CSE130 Lecture 4 on Loops, providing structured information on different types of loops in C and C++, examples of their usage, along with important dates for assignments and exam highlights that students need to focus on. Each topic includes hyperlinks for additional reading and resources to deepen the understanding of the concepts discussed.
