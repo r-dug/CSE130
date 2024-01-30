@@ -1,0 +1,397 @@
+Lecture3DecisionMakingCSE130
+Okay, so that was useful information.
+ Rich center.
+ You get free tutoring if you need any help.
+ A lot of tutors at Ridge Center are my former students who took this class so they know exactly what needs to be done, how it needs to be done.
+ So if you feel like you're stuck, you need extra help beyond what the teacher is able to offer, beyond what the class is able to offer, they have a lot of hours available to assist you.
+ Any questions before we get started with today's lecture? Excellent.
+ Again, if I may ask you guys to close the doors.
+ Uh, I think it gets rowdy at the end of a lecture, so this will help us to keep it.
+ Easy to hear and easy to record.
+ Today's topic is conditionals.
+ How do we teach software to make decisions both in terms of selection from multiple options and also randomizing decisions, which is sometimes useful.
+ So a common problem, professor, like we might find themselves in is assigning grades.
+ I have a percentage score for each student.
+ And at the end of a semester, I have to convert it to a letter grade.
+ Doing it manually is not fun, and you have hundreds and hundreds of students.
+ So you want to write a piece of software which will automatically do that for you.
+ It looks at ranges for grades and it says, okay, if you got 90 or above, it's in and so on.
+ So that's the motivational example.
+ Here is how we can do that.
+ There are, uh, operators, relational operators you are familiar with greater than less than greater than or equal to and so on.
+ The main difference is that the symbols used to represent those are somewhat different than what you used to seeing in your standard mathematics course.
+ I have this constant paranoia that I forgot to hit record in my Panopto Let me verify that it's in fact recorded.
+ Excellent.
+ Doing it again would not be fun.
+ Some of those are represented by multiple symbols.
+ So greater than and equal, for example, is combined.
+ There are also interesting, uh, apparatus for equality comparison.
+ You remember, it's not the same as the assignment operator.
+ It's two equal signs which represent this, uh, equality separation.
+ There is also not equal still, which is exclamation point with the equality symbol.
+ Once we evaluate those expressions, we get a result, which is a boolean.
+ Either one or zero zero represents false.
+ Anything else will represent true.
+ There's also physiological operators.
+ One is the operation for negation, so not operation of something.
+ If you take not true statement, it becomes a false statement.
+ So on.
+ There is also an operation which takes two inputs represented with two ampersand symbols, two end symbols.
+ Uh, sometimes known as conjunction.
+ And we have or operator is represented by two vertical bars, two pipes, whatever you want to call those things.
+ And that's the standard logical or operator.
+ So you can use those to combine complex comparison operations.
+ You're probably seen through tables before in your career.
+ Those tell you what happens for a set of inputs.
+ What type of output can you expect for a logical operator? So here we have logical and operation.
+ I have two inputs, one and two and together.
+ And you can see that the only way to get through as the result of this operator is to have both inputs which are true.
+ Any questions about that? You should be able to either logically derive this result or memorize this very simple short proof table.
+ Sure you've seen those before.
+ Let's do a simple example.
+ We'll cover if statements in a few slides, but I think it reads easy enough to where you can understand what's going on.
+ I have an IF statement which looks at two expressions.
+ I'm comparing h to a numerical constant.
+ I'm comparing gender to a character constant.
+ And for both of them to be true, I need the age and gender variables to set the appropriate values.
+ And then we can make a conclusion about that baby.
+ Another operator we looked at is your operator and it's going to complementary to the end operation here.
+ The only way to get a false output is to have both inputs as false.
+ Everything else will give you a true every other permutation.
+ Again, same deal.
+ Either logically understand how it works or at least memorize the table.
+ Questions about that.
+ Here is an example for this one.
+ So I'm comparing two possible great outcomes.
+ If your grade is a G or an F, there is a good chance I'll see you next semester.
+ I'm sure it will not have.
+ Logical, not operator.
+ If I have two variables, let's say X and Y with the same value of seven, I can compare if I have a same value using comparison.
+ Operator.
+ They do have the same values.
+ The result is true.
+ But if I proceeded with exclamation point, which is a not operator, the value of the whole expression would be false.
+ Here is an example.
+ I have some variable x.
+ And those are just snippets of code.
+ I don't have the full program Declaration of variables just assumed they have been legitimately created.
+ I'm comparing value of x to integer to.
+ It's essentially the same as asking if X does not equal to if I have exclamation point preceding that expression.
+ So for values which are not.
+ In range.
+ We have let's say we'll start with while you have three.
+ Is three equal to two? No.
+ So it's false.
+ When you get it, it's true.
+ If statement prints out the body of the statement.
+ So three is not equal to two is printed.
+ If the value of x is two.
+ And it's true when you get it to false, we skip printing the body of the statement.
+ Again, probably will make more sense after we look at the if statement structure, but that gives you an idea.
+ Now we have a few things to add to our president's stable.
+ Told you.
+ You'll see it again.
+ Now we have added this urinary operation negation at level tools, and we have logical and and logical or not, they are not at the same level logical and.
+ As.
+ Higher precedence than logical.
+ So you need to know that to properly evaluate expressions.
+ Let's do a bit of practice here.
+ So I have three variables A, B, C with values.
+ One, two, three.
+ And I have some expressions where I can substitute those values and see what the outcome is.
+ It's not that is challenging.
+ So I'm asking, is one less than three? That's the comparison.
+ It is.
+ So the output is true.
+ Is stool less than or equal to three.
+ Again.
+ So I think you can complete those.
+ Does anyone not see what's going on here? We can have a more complex expression to look at slightly different values for variables and a more complex expression which also includes and.
+ And or operators.
+ So we have the expression we can go through using rules of precedence, figure out how to evaluate it, and finally substitute numerical values to be able to evaluate sub expressions.
+ So let's look at the expression is A is greater than B or B is greater than C, and A is compared to B.
+ I can put parentheses around statements to avoid any confusion about what I'm trying to evaluate.
+ What is the order of evaluation? You remember that and has higher precedence than war.
+ At the third line of evaluation.
+ I substitute variables for actual numbers to be able to do the evaluations.
+ I start with an evaluation.
+ Negative two is greater than zero.
+ That's false.
+ At this point I already know and will result in force.
+ I don't even care what the second part of that expression says.
+ That is nothing which would help.
+ Once you get one false and true, if table tells you you're not getting through outcome.
+ Four is greater than negative two.
+ That's true.
+ And then I have.
+ Or.
+ Operator.
+ Between true or false.
+ One truth is enough to generate true response, and it's the same as logical.
+ Boolean evaluation to draw value of one non-zero.
+ Any questions about that? So as I said, depending on implementation of your compiler, but usually zero is false.
+ And any non-zero value positive values, not just one, are treated as true for various reasons.
+ Okay.
+ So I promised.
+ We'll see formal introduction of the statement.
+ The syntax is if in parentheses we have some sort of a boolean condition we can evaluate.
+ And that is followed by a statement which is executed if condition is true.
+ If condition is false, we skip the statement and go on with the rest of the program.
+ We're not limited to a single statement.
+ We can have a whole body of an if statement in curly brackets where we can place multiple statements which all get executed if expression is true.
+ In fact, that is the preferred way of doing it.
+ You have a body of it function and this way you won't forget to.
+ Add the right statements in the right places.
+ They all are treated as a package.
+ So let's see this example here.
+ If you are at least 18, then you can vote.
+ So simple expression of valuation, depending on the value of variable age, will decide whether or not you are eligible to vote.
+ If.
+ Second example if value equals to zero.
+ We can print this block.
+ This blog contains two.
+ Output statements.
+ Questions about that.
+ Just so you.
+ Yeah.
+ Like on the second example, you have a value is equal to zero.
+ We always joke to the second line if the statement is false.
+ If statement is false, we skip the whole body, the whole curly brackets thing is gone and we go on to whatever happens afterwards.
+ Okay, So why is the police try to get inside the brackets? Won't that also be? Skip the finished files.
+ It will be skipped if it is false.
+ But if it's false, it's not zero.
+ Right.
+ Okay, so this time it was true both of the the value to a zero.
+ And please try again.
+ Yeah.
+ Like they're looking for something non zero.
+ Ha ha ha.
+ This is not meant to be a challenging puzzle.
+ I give the simplest example I could have.
+ I guess I'll simplify it more so we can make things a little more complex.
+ We can have other situations other than just.
+ If this do that, we can also have.
+ Else.
+ Else.
+ Analysis and all complexity of life.
+ So the way that works is very similar syntax we have if condition statement one gets executed.
+ Else something else gets executed.
+ So continuing with the voting example.
+ If you're old enough to vote, you get to vote.
+ Else you have to wait longer.
+ And again, we can have full curly brackets, block of code for the condition.
+ Questions about that.
+ Another example.
+ If volume is zero, else we can output what the volume was.
+ Yeah, we're just trying to understand the syntax for those things.
+ That's all we're doing here.
+ The point is that I can test a number of those alternative conditions.
+ And that's the syntax for doing it.
+ I have initial if in addition, which is evaluated statements which I executed, if it's true I have ls condition with another check.
+ So notice the first else elseif itself has.
+ If something else happens, who does a secondary check? You can have a bunch of those.
+ The last one, the last Owls is the default catch all where I'm not checking for anything else.
+ I'm just saying, if none of those things matched, I'm going to do this as the option.
+ So, like you have a menu.
+ If I press a do this, if I press B do this.
+ If they pressed some weird keyboard character, you just tell them, don't do that.
+ That's your default condition.
+ So here I'm looking at first I'm checking it for value zero.
+ Else is the situation where a value is less than zero, a negative number, and finally have a default else clause, which is all the other cases.
+ If it's not equals, then it's not less.
+ It must be greater then I have a positive value.
+ So as I said, it's a good idea to have curly brackets, a block of code created every time.
+ Even if you're dealing with just a single statement, it makes it more readable.
+ You will not make a mistake later on adding additional statements, and a compiler will allow you to not do that.
+ But again, good programing practice.
+ Questions about if statements.
+ Yes, sir.
+ Just to be.
+ Curly brace brackets.
+ You have to always separate them between when you start to like this, then you have to have a different set of curly brackets.
+ And that's when you say, oh, and then you can go on and go on from there.
+ You put them like they can be nested inside.
+ Yeah.
+ As long as there is a matching one appropriately placed, there is no confusion as to where one ends and one begins.
+ If the question was if they can be nested now just sequentially but within each body as well.
+ Excellent question.
+ In case those things get kind of complex and hard to figure out, there is an alternative way of accomplishing the same thing known as the switch statement.
+ So I don't think you're getting a lot more capability out of it, but it's a little cleaner, easier to debug and a standard way to do a manual.
+ Here is the syntax for that.
+ So we have is there a keyword switch based on some expression? That's the expression we'll evaluate to see.
+ What? What we are dealing with, essentially.
+ And then you have a number of cases.
+ But is there a killer case? Each case is some sort of constant.
+ There is a default option which doesn't match any of the cases like we saw with the last statement.
+ And at the end of each case, there is a brake statement which says you need to stop at this point.
+ If we remove a brake statement, it will continue executing all the following cases until it finds a break statement.
+ The expression we're looking at must be of deep integer character.
+ So those are the types of constants we're supporting here.
+ And I think it will be easiest to see What an example.
+ So let's say I have this somewhat complex if else if ALS situation.
+ I'm trying to figure it out.
+ Ranks for students.
+ You don't have to understand anything about it.
+ Lower and lower division.
+ Undergraduate students.
+ Higher rank, upper division, graduate students.
+ If it doesn't match anything, you can say.
+ I don't know what rank that is.
+ So here I'm checking if rank variable is equal to one or two.
+ It's the same case.
+ Lower division.
+ If Frank is three or four upper division.
+ If it's five.
+ In this case, we assume it's a graduate student.
+ And otherwise, we don't know what that is.
+ So this works makes sense within the context of a problem.
+ How would it look if we converted it to a switch statement? So I'm switching based on the ring.
+ That's the variable of interest.
+ I combined certain cases case one meaning rank is equal to one, in case two rank is equal to two, essentially the same case.
+ So I don't have a break after case one.
+ You just continue to execute case to the actual.
+ Output here is computing.
+ Law.
+ Division.
+ And then I break so I don't go to cases three and four.
+ Same thing happens with three and four and merge the cases.
+ If I wanted them separate, I would add breaks between them.
+ Case five a graduate student.
+ And the default is you get involved drunk.
+ Something like this would be great for a menu in your program.
+ Easy to implement, but you could again get it done with just if statements.
+ Questions about the switch state.
+ Oh, yes.
+ Is there anything you do? Are there any cases where you have to use a switch statement over just just in the health and.
+ I can't think of anything.
+ I think you can always get it done with a bunch of impulses.
+ But if you come up with something, let me know.
+ So the question was, if there is a situation where you are forced to use which statement instead of else ifs, it doesn't seem like it's the case.
+ Another optional thing you should know about but don't have to use is this conditional operator, which allows you to gain a greater shorthand notation for this scenario.
+ Where are you doing comparison? And if you have outcome A, you go to first expression, and if you have outcome B, you go to the other expression.
+ And so the syntax for that is you have conditional expression, question mark, expression, one column expression, two semicolons.
+ My only hope is if you ever see it.
+ You know what it is.
+ So if I have something like this.
+ Code segment on the left.
+ The reduction using this notation would be something like if A is greater than be question mark 25 colon 45 semicolon.
+ So if eight is greater than B it.
+ So that's the value of the 25.
+ Otherwise, it will set it to 45.
+ So just.
+ Shorthand.
+ Like I mentioned before, a very common error, especially if you are new to this language, is confusion between assignment and equality operators.
+ It's very natural for us to want to write if a equality symbol, some value.
+ But that's not what you mean.
+ You're not trying to make an assignment there.
+ You want comparison, which is elseif A equals equals some value.
+ What makes it a little challenging is that compiler doesn't care.
+ In most cases it might give you a warning or not, but it's a legitimate statement.
+ In terms of syntax.
+ It's a problem in terms of semantics, logic of your program.
+ What happens there is that it treats the assignment.
+ As a valid expression, performs an assignment and takes the value assigned as the value of that expression.
+ In this case, it's one.
+ One is a positive number, so it will see it as true and print out a is one.
+ Now, if we're doing a comparison, then it looks at the value and depending on the value, it will decide properly what needs to happen.
+ So if you're getting kind of bizarre behaviors out of your program, double check to see that you are in fact using comparison operator, not assignment operator.
+ Very common error.
+ We see a lot in first labs.
+ So different types of errors, logical error, syntax errors, semantic errors, so on.
+ Questions about that.
+ Now that you have those tools for doing some comparisons, you can make your programs a little more user friendly.
+ You can allow users to supply different inputs for your menus and be tolerant of them supplying, let's say, uppercase or lowercase character of a same menu item.
+ So you can do something like checking if there is a response matches a certain range of possibilities.
+ Capital A or lowercase A, for example.
+ You can also look to see if the response is within a certain numerical range.
+ They're peeking from a menu with ten items or something like that.
+ You want to see is that outside of that range, a smaller input, a larger input.
+ It's a good idea to do some basic checks on that.
+ You don't have to kill yourself considering every stupid thing a user can type in, it will take you a while.
+ But something trivial is usually a good idea to have.
+ So here I'm checking enter number between one and ten.
+ I get a response and a show of responses less than one or greater than ten.
+ And then I can tell the user if response is not in range.
+ Questions about that.
+ Later on, we're going to look at functions and we'll study libraries, providing lots of useful functions to you.
+ And you can use those functions to check for certain properties of your inputs.
+ Here we have a function is digit being used to check if a character provided by the user is of that type.
+ So not all characters are digits.
+ Some are.
+ And this essentially returns an equivalent of true or false for this check.
+ So if I get input from a user number between one and nine, I scanned this character response.
+ I can run the if it's digit function on that input and decide if I want to ask for a different input or.
+ Proceed with this one.
+ Again, not required for most of your labs.
+ Just something you should be aware of as a possibility.
+ And that is dozens and dozens of similar type check functions available to us.
+ Any questions about that? All right.
+ Last major topic for today.
+ Random numbers.
+ Very useful, very fun.
+ You want to write games if you want to do cryptography research.
+ All sorts of things.
+ You want to make unpredictable actions in your program.
+ You need randomness without hardware input.
+ You're not getting through randomness.
+ You're getting simulated randomness simulated in software.
+ So the randomness and there is a built in function for accomplishing that function is called Rand.
+ It takes some sort of a starting point, a seed, and works from that to give you what looks like to a naked a sequence of random numbers.
+ It will generate a random number within a certain range.
+ If you made it with a variable, you can control the range.
+ So let's say I want to generate a random number between zero and x minus one volume.
+ I can write what the function returns.
+ I made it with the variable X, and I'm getting those residues from this function in this range sometimes that I want to start at zero.
+ I want to start at one.
+ I can just shift the whole distribution by one by adding one to the result.
+ So let's say I want random numbers from 1 to 10.
+ I call my rant function modded with ten.
+ I'll get residues as high as nine, and then I shifted by one to get within the range I want.
+ If you run this multiple times, you're going to get the same random sequence.
+ It looks random, but it will repeat, which is awesome for debugging.
+ It's really good because you're getting some consistent results.
+ It's not awesome if you are writing a casino and players figured out what the sequence is as the same sequence every time.
+ So there is a way to re randomize the run function with us rent function and exceeding it to something you.
+ The strand function works by taking a seed.
+ It could be something like a large prime number, or it could be current time on the system.
+ Time keeps changing.
+ So it creates this additional illusion of randomness and unpredictability.
+ None of it is actually random or secure or safe to use for anything other than labs in this class.
+ But here is the syntax if you need to.
+ You can include a time that age header file giving you access to a system clock and then we can do as strand with input of time function, let's say with a null as an argument of a function itself.
+ And you don't have to understand any other.
+ Just copy it for your purposes.
+ And that should generate a fresh pseudo random sequence for you.
+ Okay, So that's a lot of theory.
+ Let's look at the practical application of everything we just talked about.
+ So I have this assignment where I need to generate.
+ Let's say, fortune cookie messages.
+ And then I want to provide lucky tickets for the next lottery draw.
+ I'll provide lucky random numbers.
+ So what what is different about this one here? And I think it may even differ from the example in the book, the parts in bold, at least I'm including the time library.
+ I create a variable for holding my random number and then I call the strand function every time the program starts to get a fresh sequence of lucky numbers.
+ Notice the normal argument to the time function again.
+ I want to generate a random number between one and four to generate fortune cookie messages.
+ I have a switch statement with four cases for different statements.
+ So here I need a number between one and four to pick one.
+ That's the.
+ I ran the which is used for the switch to decide what option to pick.
+ So to do that, I made.
+ My output from the run function with four that gives me numbers.
+ Starting at zero I shifted by one so I get 134, not zero through three.
+ The switch function takes this.
+ Let's say it was store.
+ So store with printing you will enjoy a long and happy life.
+ Now you selling your cookie? After that we go to like a lot of numbers.
+ We need to pick six random lucky numbers between one and 49 inclusive.
+ So we can have six of those calls to run function.
+ Modded with 49 shifted by one.
+ Any questions about anything on this slide? It's fun to play with those, fun to see how they change, how they produce different numbers.
+ You'll have an assignment where you're creating a story with random components based on this functionality.
+ But if you don't have any questions about it.
+ Well, and at this point, so now you have capability to make decisions, evaluate comparisons, create complex expressions with and or and not operators.
+ And if none of that works, randomizing choices of your program.
+ Thank you.
+ And if you have any individual questions, let me know.
+ I will stick around and help you out with those.
+ 

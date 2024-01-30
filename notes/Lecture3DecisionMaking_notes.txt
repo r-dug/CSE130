@@ -1,0 +1,82 @@
+# Lecture Notes: Lecture3DecisionMakingCSE130
+
+## Academic and Practical Support
+- **Tutoring Available:** Ridge Center offers free tutoring which can be especially helpful.
+- **Reminder:** Close doors during the lecture for minimal disruptions.
+
+## Conditional Statements
+- **Purpose:** Teach software to make decisions through selection and randomization.
+
+### Motivational Example
+- Assigning letter grades based on percentage scores automatically using a program.
+
+### Relational Operators in C/C++
+- Operators in programming are different from standard math symbols.
+- Symbols for greater than (`>`), less than (`<`), greater than or equal to (`>=`), etc.
+- For equality, two equal signs (`==`) are used, which is different from the assignment operator (`=`).
+- For inequality, an exclamation point is combined with an equal sign (`!=`).
+
+### Logical (Boolean) Values
+- **Boolean Result:** The outcome of evaluating expressions is a Boolean value `1` or `0` (`true` or `false`).
+  
+### Logical Operators
+- **Negation (`!`):** Converts a true statement to false, and vice versa.
+- **AND (`&&`):** Both inputs must be true to return true.
+- **OR (`||`):** Only one input needs to be true to return true.
+
+### Truth Tables
+- **Understanding:** You should be capable of logically deriving or memorizing the outcomes of logical operators.
+
+### Coding Examples
+- Using if statements with logical operators to compare conditions and make decisions.
+
+### Operator Precedence
+- **Important to Know:** Logical AND (`&&`) has higher precedence than OR (`||`).
+
+### Switch Statement
+- An alternative to multiple if-else statements, cleaner and easier for managing multiple cases.
+
+### Conditional Operator
+- Shorthand for if-else statement: `<condition> ? <expression if true> : <expression if false>;`
+
+### Common Error: Assignment vs. Equality
+- Confusing `=` with `==` can lead to logic errors; the compiler may not flag this as a syntax error.
+
+### User-Friendly Programs
+- Checking user input for validity (e.g., range checks, type checks).
+
+### Working with Random Numbers
+- **Function:** `rand()` is used to generate pseudo-random numbers.
+- **Control Range:** Utilize the modulo operator to control the range of random numbers.
+- **Initialization:** Use `srand()` with a value like `time(NULL)` to initialize the random number generator for more unpredictability.
+- **Security Note:** Random numbers generated in this way are not secure for critical applications.
+
+### Practical Application Example
+- Generating fortune cookie messages and lucky lottery numbers using `switch` and `rand()` functions.
+
+## Important Tips and Best Practices
+- **If Statements:** Always use curly braces `{}` even for single statements to avoid mistakes.
+- **Switch Statement:** Always use a break statement after each case to prevent fall-through unless intentional.
+
+## Key Takeaways from Today's Lecture
+- **Decision Making:** Now equipped with the tools to make complex decisions and random choices in programs.
+- **Interactive Software:** Capable of creating more interactive software by responding to user inputs.
+- **Randomness:** Ability to incorporate randomness into programs.
+
+## Assignments and Exams
+
+- **ASSIGNMENT:** C Exam | DUE: Wednesday, 2/21
+- **ASSIGNMENT:** C++ Exam | DUE: Monday, 4/8
+- **ASSIGNMENT:** Student ppt | DUE: Monday, 4/15
+- **ASSIGNMENT:** Student ppt | DUE: Wednesday, 4/17
+- **ASSIGNMENT:** Student ppt | DUE: Monday, 4/22
+
+## Exam Pointers
+
+- **THIS WILL BE ON THE EXAM:** Ensure understanding of relational and logical operators in C and C++.
+- **THIS WILL BE ON THE EXAM:** Ability to use if statements and switch statements correctly.
+- **THIS WILL BE ON THE EXAM:** Recognition of the difference between assignment (`=`) and equality (`==`) operators.
+
+## Conclusion
+- **Questions:** Students are encouraged to ask questions if they need clarification on the material.
+- **Help Available:** The professor is available for additional help after the lecture.

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lecture 6: Arrays in C and C++</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+h2 {
+    color: #333;
+}
+pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+}
+</style>
+</head>
+<body>
+
+<h1>Lecture 6: Arrays in CSE 130 - Arrays in C and C++</h1>
+
+<h2>Introduction to Arrays</h2>
+<p>Arrays allow us to manipulate large groups of data of the same type. An array is a collection of elements where each element has a type and can be accessed using an index, which starts at zero.</p>
+<ul>
+<li><strong>Declaration:</strong> <code><typename> <arrayName>[<size>];</code></li>
+<li><strong>Access:</strong> Elements are accessed using an index: <code><arrayName>[<index>]</code>.</li>
+<li><strong>Initialization:</strong> Arrays can be initialized with comma-separated values inside curly braces: <code>{value1, value2, ...}</code>.</li>
+<li><strong>Out of Bounds:</strong> Accessing beyond the size of the array can lead to undefined behavior and can crash the program.</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+<pre>
+int scores[10]; // Declaration of an array of size 10
+scores[0] = 90; // Access and assignment to the first element
+</pre>
+
+<h2>Initializing Arrays</h2>
+<p>You can initialize arrays in several ways:</p>
+<ul>
+<li>Provide a list of values explicitly.</li>
+<li>Use a default value for all elements.</li>
+<li>Omit the size of the array and let the compiler infer it from the initialization list.</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+<pre>
+int numbers[5] = {1, 2, 3, 4, 5}; // Explicit values
+int zeros[5] = {0}; // All elements set to 0
+int inferSize[] = {1, 2, 3}; // Size inferred as 3
+</pre>
+
+<h2>String in C</h2>
+<p>In C, strings are NOT a datatype; they are represented as arrays of characters with a null terminating character at the end. This termination character is <code>\0</code> and indicates the end of the string. When declaring a string, one extra element is required to accommodate this null terminator.</p>
+<pre>
+char name[5] = "John";  // John\0 - 'name' is 5 characters including the null terminator
+</pre>
+
+<h2>Loop Initialization of Arrays</h2>
+<p>Loops can be used for initializing or processing arrays:</p>
+<ul>
+<li>Using for loop to initialize values in the array.</li>
+<li>Using for loop to print values in the array.</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+<pre>
+// This section of C code initialises an array, and an initial integer value of 10.
+// Then the loop iterates over every index of the array, 
+//     assigns the current value of the "value" variable and decrements its value,
+//     then finally increments the index value until it is 10.
+int value_array[10];
+int value = 10;
+for(int i = 0; i < 10; i++) {
+    value_array[i] = value; // Initialize with values 10 to 1
+    value --;
+}
+// In the lecture, Prof Yamp had another loop which iterated each index of the array,
+//     and printed it. Give that a try, why don't ya?
+</pre>
+
+<h2>Array Search Using Loops</h2>
+<p>Searching an array for a specific element can be done using loops.</p>
+<ul>
+<li>Use a loop to traverse the array.</li>
+<li>Exit the loop when the required element is found, or keep tracking the count if needed.</li>
+<li>This kind of linear search is extremely inefficient. Can you think of a better way??</li>
+</ul>
+<p>What do you need have in order to search an array?</p>
+<ul>
+<li>index - var to hold index of array cell. also can act as loop control variable.</li>
+<li>Max # of cells in array.</li>
+<li>search value - what are you looking for?</li>
+<li>location- assign the value of saught array to a variable when found</li>
+<li>loop - you need to iterate over the array in order to search... I mean you could also search recursively but whatever.</li>
+</ul>
+
+<h2>Other Loops</h2>
+<p>There are many, many things you can do by simply iterating over an array. Prof Yamp gives examples of the following:</p>
+<ul>
+<li>averaging the values of an arrayy.</li>
+<li>finding the minimum and maximum values of an array.</li>
+</ul>
+<p>Can you think of some other things you might do? Try to implement that, or one of the professor's examples in code!</p>
+<p>Asside: if you need to swap two values, do NOT do that directly. it will override the value of one with the other. instead, assign to a temp variable, then swap.</p>
+<h2>Multi-Dimensional Arrays</h2>
+<p>Arrays can have more than one dimension, like a 2D array (matrix), which uses two indices. Consider what you might use a matrix for in a C program.</p>
+<ul>
+<li><strong>Declaration:</strong> <code><typename> <arrayName>[<size1>][<size2>];</code></li>
+<li><strong>Access:</strong> Access elements using two indices: <code><arrayName>[<rowIndex>][<columnIndex>]</code>.</li>
+<li><strong>Initializing 2D Arrays:</strong> Values can be assigned using nested curly braces. You don't HAVE TO declare the size of the first dimension, but You probably should...</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+<pre>
+int matrix[2][3] = {1, 2, 3, 4, 5, 6}; // A 2x3 matrix
+int matrix_2[2][3] =    {1, 2, 3, 
+                        4, 5, 6}; // same matrix, but formatted for "human consumption"
+int matrix_3[][3] =    {1, 2, 3, 4, 5, 6}; // the same matrix, but compiler will determine the first dimension
+</pre>
+<h2>Processing Multi-Dimensional Arrays</h2>
+<p>Multi-dimensional arrays can be processed in a few ways... </p>
+<ul>
+    <li>process entire array</li>
+    <li>process a particular row</li>
+    <li>process a particular column</li>
+    <li>When processing a single row or column, we use algorithms similar to that of a one dimensional array</li>
+    <li>When processing a multi-dimensional array entirely, we likely use nested looping.</li>
+    <li>Arrays can come in more dimensions than two. It starts to become difficult to conceptualize. Think of them as collections of collections... This is often used in machine learning, graphics, etc.</li>
+</ul>
+
+<h2>Passing Arrays to Functions</h2>
+<p>Arrays can be passed to functions. The size of the array need not be specified when passing but must be known in the function to avoid out-of-bounds access.</p>
+<p><strong>Example:</strong></p>
+<pre>
+// How would you initialize a "string" in a function? Try to do that...
+void printArray(int array[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", array[i]);
+    }
+    printf("\n");
+}
+</pre>
+<h2>Handling Multi-Dimensional Arrays</h2>
+<p>When passing multi-dimensional arrays to functions, all dimensions except the first must be specified.</p>
+<li>Passed by reference only</li>
+<li>No check if array indices are in bounds. Be careful.</li>
+
+
+<h2>Important Notes</h2>
+<p>
+    <em>ASSIGNMENT: C Exam | DUE: Wednesday, 2/21</em><br>
+    <em>ASSIGNMENT: C++ Exam | DUE: Monday, 4/8</em><br>
+    <em>ASSIGNMENT: Student ppt | DUE: Monday, 4/15</em><br>
+    <em>ASSIGNMENT: Student ppt | DUE: Wednesday, 4/17</em><br>
+    <em>ASSIGNMENT: Student ppt | DUE: Monday, 4/22</em><br>
+    <strong>THIS WILL BE ON THE EXAM:</strong> Understanding of arrays, how to declare, initialize, and access them is essential.<br>
+    <strong>THIS WILL BE ON THE EXAM:</strong> Memory management and avoiding out-of-bounds errors.<br>
+</p>
+
+<p>For further reading and documentation, please refer to the <a href="https://en.cppreference.com/w/c/language/array" target="_blank">C Array Reference</a>.</p>
+
+</body>
+</html>

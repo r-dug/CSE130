@@ -1,0 +1,127 @@
+# Lecture 2: Data Types in C and C++ (Lecture2DataTypesCSE130)
+
+## Variables and Memory
+- Computers have long-term (hard drive) and short-term memory (RAM).
+- Memory is an array of cells with unique addresses.
+- Variable attributes include:
+  - **Name**: Identifier for the memory cell.
+  - **Type**: Data type stored (integer, floating point, character, etc.).
+  - **Value**: Content of the memory cell.
+  - **Address**: Location where the variable's data is stored.
+
+### Examples of Variables
+- `int myNumber = 99; // Integer variable`
+- `float result = 756.21; // Floating-point variable`
+- `char initial = 'M'; // Character variable`
+
+## Naming Variables
+- Rules:
+  - Use letters, numbers, and underscores (UNDERSCORES not at the beginning).
+  - Variable names are case-sensitive. 
+  	int MYNUMBER = 5;
+  	int mynumber = 5;
+  	//^those are two different variables
+- Naming convention for clarity:
+  - Use meaningful names instead of vague identifiers like `x`.
+  - This will help you coming back to your code, or others coming back to it
+
+### THIS WILL BE ON THE EXAM:
+- Understand naming conventions for variables and why meaningful names are important.
+
+## Data Types
+- **char**: For single characters, uses 1 byte.
+	when you want something that is more than one character, that is called a string.
+	Strings are a list of chars
+- **int**: For whole numbers without a decimal, uses 4 bytes typically.
+- **float** and **double**: For numbers with a decimal point, `double` offers double the precision of `float`.
+	you can shorten floating point numbers in print statements. for example: 
+	printf("%.2f", somefloat) 
+	// will display the referenced float shortened to two numbers after the decimal.
+- Modifiers such as `short` and `long` adjust the amount of allocated memory 
+	(you might want to be more mem effecient, or need to represent really large numbers).
+
+### Integer Division and Modulus
+- **Integer Division**: Divides and gives a whole number as a result.
+- **Modulus Operator (`%`)**: Captures the remainder in division.
+- **Example**:
+  - `5 / 2 = 2` (Integer Division)
+  - `5 % 2 = 1` (Modulus)
+
+### Constants
+- `const` keyword is used for values that should not change (e.g., `const double PI = 3.14159`).
+	in this way you can kind of "protect" certain variables from being inadvertently changed later in your code.
+	say you are writing a big piece of code, and accidentally assign a new value to some
+	important variable later. that could cause serious problems.
+
+### Enumerations (enum)
+- Assigns sequential integers to a list of words.
+- **Example**:
+  - `enum Weekdays { Monday, Tuesday, Wednesday };`
+  - Monday would be associated with 0, Tuesday with 1, etc.
+
+## Initialization and Assignment
+- **Initialization**: Giving a variable an initial value.
+- **Assignment Operator (`=`)**: Assigns the value on the right to the variable on the left.
+- **Shortcuts**:
+  - `i += 1; // Equivalent to i = i + 1;`
+  - `i -= 1; // Equivalent to i = i - 1;`
+
+### THIS WILL BE ON THE EXAM:
+- The distinction between initialization and assignment.
+- The difference between the assignment operator (`=`) and the equality operator (`==`).
+
+## Functions printf and scanf
+- `#include <stdio.h>`: Includes Standard Input/Output Library for `printf` and `scanf`.
+- `printf`: Outputs text and variables to the screen.
+- `scanf`: Reads input into variables.
+- **Placeholders**:
+  - `%d`: Integer
+  - `%f`: Float
+  - `%c`: Character
+  - `\n`: New line
+- **Example**:
+  - `printf("Age: %d", myAge);`
+  - `scanf("%f", &centimeters);`
+
+## Precedence and Evaluation
+- Precedence rules dictate the order in which parts of an expression are evaluated.
+- **Parentheses** have the highest precedence.
+
+### Arithmetic Operators
+- `+` Addition
+- `-` Subtraction
+- `*` Multiplication
+- `/` Division
+- `%` Modulus (remainder of division)
+
+## Practice Program Examples
+- **Conversion Program** (Centimeters to Inches):
+```c
+#include <stdio.h>
+int main() {
+    double centimeters, inches;
+    scanf("%lf", &centimeters);
+    inches = centimeters / 2.54;
+    printf("%lf cm is equal to %lf inches\n", centimeters, inches);
+    return 0;
+}
+```
+- **Profit Calculation Program**:
+```c
+#include <stdio.h>
+int main() {
+    double revenue = 0, costs = 0, profit;
+    printf("Enter total revenue: ");
+    scanf("%lf", &revenue);
+    printf("Enter total costs: ");
+    scanf("%lf", &costs);
+    profit = revenue - costs;
+    printf("Your profit is: %.2f\n", profit);
+    return 0;
+}
+```
+
+### ASSIGNMENTS & DUE DATES:
+- **C Exam** | DUE: Wednesday, 2/21
+- **C++ Exam** | DUE: Monday, 4/8
+- **Student PowerPoint Presentations** | DUE: Monday, 4/15, Wednesday, 4/17, and Monday, 4/22
