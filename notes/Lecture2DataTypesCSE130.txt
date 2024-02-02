@@ -1,0 +1,491 @@
+Lecture2DataTypesCSE130
+All right, let's get started.
+ If you guys can do me a favor and close the doors, I think it will help us with some noise later on.
+ Before we get into today's lecture, are there any questions about anything? Excellent.
+ So today we're going to learn about variables, how to store information in a computer.
+ So just like humans, computers have long term and short term memory.
+ Long term memory is essentially the hard drive of files are stored.
+ We'll learn later on to write files and store things permanently between runs of your program.
+ Well, a short term memory is ram random access memory, and it's either an actual hardware memory or a simulated virtual memory representing that storage capacity.
+ And one way memory works, it's an array of cells.
+ And each cell has an address, a number, a personal identifier, a Social Security number, if you will, by which you can refer to that specific memory cell.
+ It's not always convenient to address others by their Social Security number.
+ That's why we give you names.
+ Hey, Bob, it makes it a little easier to interface.
+ So essentially what we're going to learn today is how to go from this very formal set of addresses to a more convenient notation.
+ So variables typically have the following attributes.
+ There is a name, a meaningful identifier that is a type of a variable which tells you what type of data is stored.
+ Is it a number? Is it a letter? Then that is the value, which is the content of that memory, what is actually being stored there, and then the associated address where that variable is stored.
+ Here is a few examples of different variables.
+ I have variable name, for example, my number.
+ It has a value, say 99, it's of type integer A number, and then you have the actual address, which technically is probably in binary.
+ But to make it more readable, we present it in base 16 hexadecimal notation.
+ You don't have to worry about it for now.
+ Another example variable called result.
+ A floating point type number meaning it has a decimal point.
+ And a specific value in this case.
+ 756 Not.
+ 21.
+21.
+ We can also have a character type variable, we'll call it in this show.
+ And that character could be Capital M, for example.
+ Any questions about that? What are the rules for giving names to variables? Well, it's pretty much the opposite of advice you get for creating a password, and you have to create a password.
+ It's a lot of weird symbols and hard to remember.
+ Here we want the opposite effect.
+ We want a standard symbols, letters and numbers.
+ We don't want too many special symbols.
+ Underscore is allowed, but that's about it.
+ There is not many others can be uppercase or lowercase.
+ The language is case sensitive, so it makes a difference.
+ You may not begin with.
+ Underscore.
+ And same four digits.
+ Any questions about naming convention? Different languages have different rules.
+ So what is allowed in one language may not always be allowed in and others cannot remember what the rules are.
+ While.
+ Any legal variable name can be used.
+ Some of them are less descriptive.
+ If I tell you have a variable called x, you don't really know what it's all about.
+ What's in it? What information is there? So it's a good idea to give variables, meaningful names, where just by knowing the name, you know, the type of information stored in that variable.
+ You have to comment less.
+ It's easier to read.
+ So if you have a formula equals EMC squared, it would be a lot easier.
+ It was explicitly written as energy mass.
+ Speed of light.
+ You don't have to be a physicist to figure it out.
+ The language also has a number of reserved keywords.
+ Eventually we'll study most of them.
+ For now, just kind of read through that list and make sure not to make variables which are identical to those keyboards.
+ If you do, you'll get weird bugs and have a hard time figuring out why.
+ It's also not a good idea to slightly change one of those.
+ For example, capitalizing it.
+ It would be a different keyword, but it's not very good idea.
+ You'll get confused.
+ Any questions about that? Okay, let's look at the data types.
+ Different languages have different built in data types natively supported for CE.
+ We're looking at the character for symbols, integer for whole numbers, one, two, three.
+ And then we have different precision numbers, floats and doubles, and we'll see examples of each type.
+ We can also modify how much memory is allocated to store a variable by including additional qualifiers such as short or long type of variable, meaning you need less storage space or more storage space.
+ Well, first, let's look at integer.
+ Those are your numbers.
+ Five, negative ten.
+ There's is no decimal point.
+ You just have the numeric by itself, depending on whatever there is a negative sign or not.
+ You may be able to indicate to the system that the number is unsigned and then store a lot more in the same for bytes for most compilers.
+ An integer would be four bytes.
+ A byte is eight bits.
+ If you don't remember.
+ So that's the standard storage capacity of an integer type variable.
+ If we do anticipate getting both negative and positive integers, this is the range.
+ If we know for a fact we'll only deal with positive numbers, then we have to.
+ We have an option to ignore the negative part and the storage goes from zero to this limit.
+ So what does that mean? It means you cannot store a bigger number and that amount of memory.
+ You have so many cells.
+ Whatever fits into that amount of storage is fine.
+ Anything above that will overflow.
+ And you need to find a bigger variable to deal with it.
+ Any questions about integers? Okay.
+ Next we'll kind of combine together floating point and double precision.
+ This is numbers where there is a decimal point.
+ So -6.
+2 would be an example.
+ And double precision gives you about twice as much memory to store the number so you can have more in that location.
+ It is also exponential notation, but we typically will not be relying on that too much.
+ Finally, the fourth type is what is known as zero character data type, and that's for storing symbols.
+ So any type of symbol, standard keyboard symbols, letters, numbers, underscore or anything like that can be encoded.
+ And it only takes one byte eight bits to store a character.
+ So here you have an example of five characters stored in there, a binary representation.
+ And for each symbol, there is a standard code for representing that symbol.
+ To indicate we're dealing with a character with put single quotes around it.
+ Apostrophes.
+ Those of you who had your lab yesterday got to produce some ASCII art.
+ In case you are wondering, what is ASCII? This is the standard.
+ Encoding for all the symbols.
+ You will have to memorize this table.
+ No, I'm joking.
+ You don't have to memorize the table.
+ But you should understand how the symbols are grouped.
+ And if there are certain patterns, capital letters, lowercase letters are grouped together.
+ And because there is numeric representation for those, you can essentially do mathematical operations on symbols.
+ So you see here we have decimal representation, binary equivalent, and then the character itself.
+ Any questions about that? So the actual values we store are numerical constants.
+ If you have a number decimal number stored in an integer 123, that's a numerical constant.
+ We have same equivalent for floating point numbers.
+ If we are dealing with a long number, we can add a post fix to it to tell the compiler.
+ That's the type of data we're dealing with.
+ So if you put lowercase uppercase L following a number, it will treat it as a long whatever long float or whatever other data type you're looking at.
+ Again, giving it opportunity to have more memory for storage and modification.
+ And because of that, internally, there is a difference in how the numbers are represented.
+ So they may look exactly the same to you, but there is more happening under the hood.
+ If you need to specify what type of system you are working in.
+ There are different prefixes you can add.
+ So if you are working with the decimal system, right, which was standard system we used to, you don't have to say anything with default to that.
+ So if you see 11, no special prefixes was fixed.
+ That's that's what it is.
+ Decimal 11.
+ If you are looking at base 16 hexadecimal system, the prefix would be zero x, and then hexadecimal system has both numbers and characters are somewhat less frequently used as octal base eight that is preceded with a zero.
+ And we mentioned floating point exponential notation.
+ Our suffixes are briefly mentioned unsigned.
+ Allows you to save some memory if you know of a type of a number.
+ Long.
+ If you want more precision for your floating point numbers and f if you want a number to be forced to be treated as a float instead of an integer.
+ So if I have ten in decimal notation, it's an integer.
+ But if I add a post fix above, I can store it as 10.
+0.
+ Which makes a huge difference to the compiler but looks the same to you.
+ A somewhat less frequently used type of.
+ Assigning numerical values to words variables is this idea of enumeration or enum.
+ And what it does, it creates an array of sequentially numbered integers, maybe useful if you want to.
+ For example, create a calendar.
+ You want to be able to do a mathematical operation some days of the week.
+ What happens if I had to do Monday? I get Wednesday.
+ So the syntax for it is enum curly brackets list of words you would like to associate with numbers.
+ And it starts at zero.
+ Most things in C C++ start counting at zero, not at one.
+ That will confuse you for a while.
+ And then every following number word is associated with the number one higher.
+ So if we start, which sounded zero Mondays one Tuesday, it still makes sense.
+ I can also explicitly override this and say, okay, I have a second variable and that enum will be set to 39 and then it follows from that.
+ The next one will be 40 and so on.
+ It just makes things convenient.
+ If you can do this for some programs, that would be a useful feature to have.
+ You are not required to use that by any means.
+ Any questions about that? Yeah.
+ So.
+ So look at the syntax for it.
+ We have in almost a reserved key word to indicate that's what we're doing.
+ I give it the name, I'll call it, I don't know, a week something.
+ And then I have the list of those words to which I want to assign numbers.
+ So now those words become something I can actually work with.
+ They are declared as having a meaning, and that meaning is a numerical value ever starting at zero and going sequentially or starting at whatever you choose.
+ But just convenience of being able to assign numbers to words.
+ You notice that because of conversion through the ASCII table, all characters have numerical value and essentially C treats them as integers.
+ So you can take advantage of that.
+ You can assign character type to integer type variables, and that would be meaningful.
+ It will just grab the numerical value of that character from the ask you table, essentially.
+ To make things a little more confusing.
+ There are special characters which have two symbols in them, but are still stored as a single.
+ Bite.
+ Single character data type examples would be backslash n Again, those in the lab already got to play with it.
+ There is a few others which are likewise special symbols.
+ So if you are signing a variable to a character data type, it will be stored just as what it is.
+ If you print it out, you get the character.
+ If you store it in an integer, you'll get a numerical representation.
+ So a lot of it was kind of abstract and high level.
+ Let's look at actually practically declaring variables and starting to maybe work on some symbol programs.
+ What is declaration statement? That is an introduction.
+ Compiler doesn't know anything about your plants, so you need to tell the compiler.
+ I plan on using a variable of that type with the following name after the declaration compiler knows what you're talking about.
+ It's like saying, okay, this is my friend.
+ His name is Bob.
+ He's an engineer.
+ You introduce someone now, they can interact with Bob.
+ If you told them something about Bob before, they would have no idea who you're talking about.
+ So the syntax is data type, followed by a meaningful identifier where the identifier is supposed to tell me what what is in there.
+ Maybe it's my income, maybe it's my age.
+ So on.
+ Questions about that.
+ Once you declare a variable, you want to give it a value, you want to initialize it to some value.
+ So you have a variable, it's declared.
+ Now you can talk about it, you can set it equal to some specific value.
+ Let's say my age is 29.
+ Okay.
+ You can also combine the two statements in a definition statement where at the same time you both introducing the variable, declaring it to the compiler and initializing it this way.
+ That is no time where the variable is initialized and has unknown data in it.
+ So, for example, I have a variable called my first initial.
+ It's a four type character and I'm storing capital R in that variable.
+ Questions about that.
+ Style option.
+ If you want, you can include the type of variable in the name.
+ Having a preceding character indicating what is the data type.
+ So just by looking at the variable name, someone reading your code would know what the data type is.
+ You don't have to do it just to convenience, but if you ever see it, you will know what it is.
+ The way memory is managed and see.
+ Nobody goes around cleaning up unused memory cells.
+ So data from previous rounds from other programs is in there.
+ Then you create a new variable.
+ You give a name to some chunk of memory.
+ It already has data in it.
+ If you start using it, essentially you have garbage data.
+ Garbage in, garbage out is going to be a problem for you.
+ You want to control what's in the memory.
+ The best way to do it is to immediately give it some default value.
+ Zero is a better choice.
+ So assigning initializing your variables to zero is a very good programing technique.
+ There are other zero looking things, such as no character, which may be better for assigning default addresses to pointers.
+ And we'll look at that later.
+ But you have that option as well.
+ So the first thing you do, then you create a new variable.
+ You can erase whatever is in it.
+ Make sure that garbage doesn't make it into your code.
+ Any questions about that? There is another key word called constant or constant, where you can indicate that some variable once assigned the value should not be changed.
+ Why would that be useful? So let's say you have some value.
+ You would just never change the value of pi.
+ It's very unlikely value of pi will change while your program is running, so you can set it fixed and then no one will make an error of modifying it.
+ Another important aspect of it is that if you have a variable used throughout the program, you want to have a centralized location for controlling that value.
+ If you have, let's say, minimum wage throughout your program in many places, and minimum wage may change at some point, you don't want to go through every part of your program changing it.
+ You want to have one place where it's set and modify it there.
+ My age is definitely not a constant in any sense that keeps changing.
+ So maybe it's some wishful thinking.
+ Questions about Constance.
+ Okay, so we got variables down.
+ Now we know how to create.
+ Named addresses.
+ How do we work with it? How do we actually do operations on it? Mathematical operations on it.
+ And that's where arithmetic operations command.
+ The good thing is you probably finished high school and studied some of them before.
+ So you know what addition is.
+ You may know what subtraction is.
+ So what do they just have to concentrate on? What's different about about this? I don't want your parents to think you go to college to learn addition, and they're paying for it.
+ So we'll give you a little more.
+ The main difference is that the division is done differently.
+ There is integer division as well, and there is something called modulus operator, which allows you to capture a remainder of that division process.
+ In terms of data type.
+ We have those binary operations which take two inputs.
+ And the rules are, if they're both integers, you'll get an integer.
+ If any one of them is afloat.
+ Oh, double.
+ That's what you're going to get as a result.
+ So what is integer division? You talking about not having decimal component to the results? You looking at how many times the number will go into another number? Whole times.
+ And then what's left over is the remainder.
+ And the division part captures result of whole times into the number remainder modulus operator captures thus.
+ So if I am dividing five by two.
+ Typically, I expect to get 2.
+5 by the standard division integer division I'm getting to goes two times to is four.
+ It's the more stools I can squeeze into a five and then I would get a remainder of that which is one.
+ So remainder plus multiplication of the division product should get me back to the original number.
+ So if we are dealing with at least one floating point or double precision number, the result of that division is standard division with floating point numbers.
+ If both numbers are integers, we expect a result of integer division and we can also optionally capture the remainder if we need that.
+ The symbol for capturing the remainder of module or separator is the percentage sign.
+ So five more.
+ Two.
+ What's the remainder? One.
+ Seven mod four.
+ What is the remainder? Four goes into seven.
+ Once the remainder is three.
+ Any questions about that? Yes.
+ So is that when you put decimal in the zero behind the number that.
+ Right.
+ So if there is a decimal point that's a float or if you want to force it to be treated as a float F as opposed to fixed will also do that.
+ Right.
+ And that's in terms of numerical constants.
+ Then you can also look at data types.
+ If you're working with a float, you know, the data type of it versus integer.
+ Yeah, yeah.
+ Let's say five, five, five.
+ 3.
+0 at the end.
+ If you're.
+ So you're doing normal division floating porn because you have floating point and then you are skiing 1.
+6, six, seven at the end.
+ What would you say? 1.
+6? I think it would keep storing up to the size of a variable you're storing your result in.
+ So if there is enough room, it will store exact precision.
+ There are functions you can apply to it later to round it up and control how much.
+ How about what digit you round up? But by default it just does standard division.
+ But again, a lot of those things are best understood by playing with them.
+ I encourage you to have your laptop out, compiler out quickly, type in and see what difference small changes make.
+ Think that's really the best you can do to get a feel for those things.
+ All right.
+ Exponential.
+ There is not a built in symbol for it.
+ And see, some of the languages have that capacity will have to even rely on a function to do that, which we haven't studied yet but will.
+ Or you can just multiply something by itself as many times as needed to take it to that power.
+ So if you want to square something multiplied by itself.
+ There is also a special symbol, kind of like the name of a language, C++ plus, plus or minus minus, which allows you to increase the value of the variable by one.
+ It's a very common thing to do, especially when you have loops, repetitive structures and can be used both as prefix or post fixed notation.
+ And if you do a minus minus, it decreases the value of a variable by one.
+ We'll see some examples of that.
+ So whoever designed this language made.
+ What is typically seen as a quality sign into an assignment operator.
+ This is not an equality sign.
+ What does that mean? It means a left side and right side don't have to be the same.
+ It means we are assigning right side to the left side.
+ So if I'm writing an expression and I have a variable, let's say I have a variable called sum and I initialize sum to 11, I can make a statement such as Sam gets assigned the value of sum from previous.
+ Line of code plus 13.
+ So we're getting 24 here.
+ If you treat it as a quality sign, it makes no sense.
+ Those same is equal plus itself and another constant.
+ But as an assignment operator, it makes perfect sense.
+ So that's what it is.
+ And there is a different symbol for equality comparisons.
+ So because of that, we can have perfectly valid statements such as variable equals variable plus a constant.
+ And you can see a bunch of examples for addition, subtraction for all of them, small expressions, and also a shorthand notation for doing those.
+ If you really need to save a few symbols in terms of typing, you can do that.
+ You are not required, but you should be able to understand them.
+ So for example, if I have an expression such as I equals I minus one, I can replace it with my prefix minus minus operator and get the same result decreasing the value of that variable by one.
+ Or if I have the equals V plus II, I can do V plus equals II and that will be an equivalent expression.
+ Again.
+ You don't have to do it.
+ But you do have to understand how assignment works in SI.
+ Are there any questions about assignment operator? So just remember, it's not the equality operator.
+ It's the most common error students make initially treating one like the other.
+ They are not the same.
+ So we now have enough tools, we have variables, we have symbols operations such as addition, subtraction, to write some expressions.
+ We want to make sure there is no ambiguity in our expressions.
+ So binary operators expect to get two inputs.
+ If something is ambiguous, put parentheses around it to remove ambiguity.
+ Unlike in standard algebra notation, you cannot default multiplication.
+ You have to be explicit Just because you have two sets of parentheses next to each other doesn't mean it's understood as multiplication.
+ You have to place multiplication sign between them and for evaluating expressions, there are precedence rules which will study, and that's a pretty important concept.
+ You need to understand how they work.
+ In general, we evaluate expressions from left to right.
+ Some operations have higher precedence than others.
+ You probably remember that from high school.
+ So multiplication has higher precedence than addition.
+ And for all possible operators, I'll tell you what their precedence is.
+ If you have a unity apparatus such as negative, not subtraction, but negative of some volume that gets priority and is evaluated right to left.
+ And if you have parentheses, you just follow parentheses.
+ Rules giving priority to more deeper nested parentheses.
+ So here is an example expression.
+ Notice some of the terms.
+ Well, actually all the terms are integers, so we expect the answer to be an integer on the left.
+ And some of the terms in the right expression are floating point.
+ So we expect the answer to be a float even before we do any actual computation.
+ Let's start evaluating expression on the left.
+ Multiplication has priority all over.
+ Addition, we're going left to right.
+ So we start with that.
+ Our symbols have equal or less or priority.
+ Five times seven we get 35 modulus higher priority applying modulus 35 My two gives us one.
+ One time spoilers for Final Edition and we get 12 as an integer as a result.
+ Anyone is lost and not sure how we got there.
+ It's encouraging.
+ Let's look at the other expression here.
+ The first multiplication is the first oppression we're going to apply.
+ So 3.
+0 times for 12.
+0.
+ Dividing this by 62.
+0.
+ Finally, addition, one of them is a float.
+ The result is a float.
+ Questions about that.
+ Yes.
+ Yeah.
+ Easy.
+ Oh.
+ Okay, so here's the table of precedence for all things C.
+ You will have to memorize this table.
+ Really.
+ But once we study those concepts, so so far we only studied a few of them.
+ We know parentheses have very high priority.
+ We know multiply, divide and modulus operator is higher priority than addition and subtraction.
+ The rest of it is not your problem for now.
+ But as we learn those concepts, they become part of your knowledge.
+ I guess you re operator as well.
+ You see something? Get it? You know it has high priority, but you haven't seen most of the operators yet.
+ Questions about that.
+ All right, So now we've got a bunch of tools.
+ Let's get a few more so we can do our.
+ First programing assignment properly.
+ And again, those of you who already took the lab know what's happening here.
+ So there are functions, we haven't studied functions, but we'll use them.
+ And those are functions for either printing something to the monitor or reading some data from the keyboard.
+ The functions are print F, and scan f, f stands for function.
+ I guess it can take text or variables and output them to the screen.
+ To get access to those, we have to include standard input output header file.
+ That's the library which contains definitions of those functions.
+ Scanner allows you to take data from the user and store it locally in some variable, depending on the type.
+ Let's see an example.
+ Your sprint function.
+ I'm giving it a string of text strings.
+ Go in quotation marks.
+ It will print that text as this minus special characters such as backslash n, which means go to the new line.
+ And there is also a special thing with percent G, which is a placeholder for outputting a variable.
+ In this case variable my age, which is an integer, if you remember, and variables are separated from a string.
+ Part of the argument of a function with commas.
+ So all inputs to a function different inputs.
+ Parameter list is separated by commas.
+ And so this footprint I am, whatever value of my age is as a number.
+ Scan F does the inverse separation here.
+ It reads into a variable, in this case C centimeters, whatever is provided by the user.
+ We're expecting a float type data here.
+ If you need to read multiple inputs from the user, you just give them multiple variables to write to.
+ Some of you probably noticed that weird thing you there ampersand sign.
+ It tells us that we would like to take address to that variable.
+ We haven't studied anything related to that.
+ So for now, just going to accept it as the magical keyboard you have to have.
+ Later on.
+ It will make sense as to why we're doing that.
+ So percent you sold percent present less.
+ Here is what they represent.
+ Depending on the data type you're trying to read, you put appropriate placeholder.
+ You may want to be able to read a character, an integer, and say the integer, so on.
+ If you need to print percentage symbol.
+ Some of those are special formatting instructions so you double them.
+ Backslash n has a backslash backslash a special.
+ If you need to print a backslash, you put two of them.
+ So that's useful for creating your ASCII art.
+ All right.
+ We learned a lot.
+ Let's put it all together in the program and then we can see if we have any questions about that.
+ So this is a complete program in C.
+ It's a converter.
+ We can convert centimeters to inches.
+ We start by including necessary library.
+ So that's the header file.
+ LB Include standard input output library.
+ Then we have our main function.
+ That's where everything is happening.
+ We start by declaring two variables.
+ One for storing centimeters, one for storing inches.
+ It makes sense for measurements to be a non integer.
+ So here I'm using a double.
+ Because I'm not really doing much else.
+ I don't immediately initialize my variables.
+ I wait for the input from the user.
+ Seems safe in this case, but it's a good habit to always initialize them at the time you declare them.
+ I start by printing to the screen using print as a function of the following text in quotes.
+ Please enter length in centimeters to the user.
+ User, of course, follows directions perfectly and will do so.
+ So they provide some sort of length in centimeters which will store in that variable.
+ Then we have our expression where I'm computing.
+ How many inches is that? So we dividing given centimeters by 2.
+5, which is the conversion rate.
+ And finally I output to the screen with a print function and a placeholder for a floating point number.
+ This is equal to that many inches.
+ You can ignore the return zero part and end in front of the main part.
+ We haven't studied that.
+ Just either have it or don't have it.
+ Any questions about this program.
+ Yes.
+ But it's good practice to visualize.
+ Very.
+ How do you think that? How would you.
+ Shorthand notation may be ambiguous and get confused, especially as we add other data types pointers to integers.
+ So you want to be explicit.
+ Probably it's a good way to do it.
+ So I would write it out.
+ Double centimeter equals zero, double inches equals zero.
+ That would be a better way to do it.
+ Now.
+ Yes.
+ We should have it.
+ If there is missing one in one of the slides, I probably should fix it.
+ So whatever you have that or not depends on the data type and you writing to a point or a location, it will be different.
+ But for now, again, just include it and it will work.
+ Anything else? Let's see another trivial example and we'll call it a day.
+ So here we have a.
+ Program to compute profits for the organization.
+ We have same set up as before.
+ I'm going to stop repeating that when you the main function and include standard library, it's pretty standard.
+ So I start by creating variables for storing revenue and costs.
+ I initialize them to zero explicitly.
+ Then I asked the user to enter total revenue.
+ I read that n enter total cost.
+ Get that data and then I'm computing profit.
+ This should make sense to accept the point two.
+ That's me controlling for how many digits after the decimal I want printed.
+ Since we're dealing with dollars and cents, that's two digits of cents.
+ And notice I can insert the actual formula as part of printing out the value.
+ I can compute it before and just press on the answer or I can insert it.
+ And the compiler will just evaluate this expression at printing time.
+ So your profit is essentially your revenue minus the costs, and that's what's going to get printed.
+ Any questions about how to make profit.
+ Okay.
+ That's wonderful.
+ We have a few minutes.
+ I'm going to end my recording.
+ If you have any individual questions, please come and see me, and I'll help you with that.
+ 

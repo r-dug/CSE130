@@ -1,0 +1,184 @@
+
+# Lecture Notes - Lecture2DataTypes (CSE130)
+
+## Variables and Memory
+- **Long-term memory:** Hard drive where files are stored permanently.
+- **Short-term memory:** RAM (Random Access Memory), where data is temporarily stored.
+- **Memory Cells:** Each has an address and stores data.
+
+## Variable Attributes
+1. **Name:** Identifier for the variable.
+2. **Type:** Data type (e.g., int, float, char).
+3. **Value:** Data stored in the memory cell.
+4. **Address:** Memory location of the variable.
+
+## Examples of Variables
+- **myNumber:** int type, value 99, stored at a specific address.
+- **result:** float type, value 756.21, stored at a different address.
+- **initial:** char type, value 'M', stored at yet another address.
+
+## Naming Conventions for Variables
+- Use letters, numbers, and underscore.
+- Case-sensitive (e.g., `myVar` is different from `MyVar`).
+- Cannot begin with a digit or underscore.
+
+## THIS WILL BE ON THE EXAM: Understand variable naming rules and conventions.
+
+## Data Types
+- **Character:** For symbols (e.g., 'A').
+- **Integer:** For whole numbers (e.g., -4, 0, 99).
+- **Float/Doubles:** For precision numbers (e.g., -6.2).
+- **Qualifiers:** `short`, `long` modify how much memory is stored.
+
+### Integer Division
+- **Operator `/`:** Division without decimal (e.g., 5 / 2 = 2).
+- **Modulus Operator `%`:** Remainder of division (e.g., 5 % 2 = 1).
+
+## THIS WILL BE ON THE EXAM: Knowledge of data types and integer division.
+
+## Constants
+- **Keyword `const`:** Used to define values that should not change within a program.
+
+### Enumerations (enum)
+- Assigns sequential integers to a list of identifications (e.g., days of the week).
+
+## Numeric Constants and Prefixes
+- **Decimal:** Default (e.g., 123).
+- **Hexadecimal:** Prefix `0x` (e.g., `0xA3`).
+- **Octal:** Prefix `0` (e.g., `011`).
+- **Float Long:** Suffix `l` or `L` (e.g., `123L`).
+
+## Arithmetic Operations
+- Operators: `+`, `-`, `*`, `/`, `%`.
+- Increment/Decrement: `++`, `--`.
+- Assignment: `=`, shorthand `+=`, `-=`, `*=`, `/=`, `%=`.
+
+## THIS WILL BE ON THE EXAM: Arithmetic operations, especially the distinction between division `/` and modulus `%`.
+
+## Expressions
+- Parentheses override the precedence.
+- Precedence rules (e.g., multiply/divide before add/subtract).
+
+### Precedence Table
+- Priority of operations from highest to lowest. Parentheses, then multiplication/division, etc.
+
+## Variables and Memory
+- **Long-Term Memory**: Hard drive where files are stored permanently.
+- **Short-Term Memory**: RAM, either actual hardware memory or simulated virtual memory.
+
+### Memory as Array of Cells
+- Each cell has an address, a unique identifier equated to a "Social Security number".
+
+### Variables Attributes
+- **Name**: Meaningful identifier.
+- **Type**: Describes data stored (number, letter).
+- **Value**: The content of the memory.
+- **Address**: Memory location in hexadecimal notation.
+
+### Examples of Variables
+1. `myNumber`: `int`, value `99`, stored at some address.
+2. `result`: `float`, value `756.21`, stored at a different address.
+3. `initial`: `char`, value `'M'`, also stored at a unique address.
+
+### Variable Naming Rules
+- Standard symbols, letters, and numbers.
+- Case sensitive, `_` allowed, cannot start with a number.
+- Avoid using reserved keywords or slight modifications of them.
+
+### Example of Naming Convention
+- Good Practice: Use meaningful names (`energy`, `mass`, `speedOfLight` instead of `e`, `m`, `c`).
+
+### Reserved Keywords
+- Understand and avoid using reserved keywords (e.g., `int`, `return`).
+
+## ASSIGNMENT: C Exam | DUE: Wednesday, 2/21
+
+## Data Types in C
+- **Character**: Symbols.
+- **Integer**: Whole numbers.
+- **Float**: Numbers with decimals.
+- **Double**: Like float but with roughly twice the precision.
+- **Short/Long Modifiers**: Less or more storage space.
+
+### Integer
+- Unsigned integers use all bits for positive range, thus extending the range.
+
+### Floating Point and Double Precision
+- Includes floating-point number and double precision, both can have decimal points.
+
+### Character Data Type
+- Stores symbols using ASCII coding.
+
+### Enumeration (`enum`)
+- Sequentially numbered integers (e.g., days of the week).
+
+## Constants in C
+- The `const` keyword ensures the value remains unchanged.
+- Example: `pi` or `minimumWage`.
+
+## Arithmetic Operations in C
+- Addition (`+`), Subtraction (`-`), Multiplication (`*`), Division (`/`).
+- Integer Division: Divides and provides the quotient without a fractional part.
+- Modulus Operator (`%`): Provides the remainder of division.
+
+### Precedence and Associativity
+- Precedence rules for evaluating expressions.
+- Parentheses override default precedence.
+
+## Examples of Arithmetic Operations
+- Integer division: `5 / 2 = 2` with a remainder `5 % 2 = 1`.
+- Floating-point division: `5.0 / 2 = 2.5`.
+
+## Special Characters and Strings
+- Backslash (`\`) combined with a character provides special functionality.
+- Special characters like `\n` (newline), `\t` (tab), `\\` (backslash).
+
+## Input/Output Functions
+- `printf`: Prints a formatted string with placeholders.
+- `scanf`: Reads input and stores it into variables.
+- Placeholders (format strings): `%d` (integer), `%f` (float), `%c` (char).
+
+## Programming Techniques
+- Variable initialization (especially initializing to zero).
+- The `const` keyword.
+- Increment (`++`) and Decrement (`--`) operators.
+- Assignment operator (`=`) not to be confused with the comparison operator (`==`).
+
+## THIS WILL BE ON THE EXAM:
+- Understanding of memory array concept.
+- Ability to use and differentiate data types.
+- Remember the rules for variable naming.
+- Understanding integer and floating-point operations and their differences.
+- Use of special characters and ASCII table knowledge.
+- How to properly use `printf` and `scanf` functions.
+- Understanding of the `const` keyword and its purpose.
+- Differentiating between the assignment and comparison operators.
+
+## Sample Programs
+1. Centimeters to Inches Conversion:
+```c
+#include <stdio.h>
+
+int main() {
+    double cm, inches;
+    printf("Please enter length in centimeters: ");
+    scanf("%lf", &cm);
+    inches = cm / 2.54;
+    printf("This is equal to %.2lf inches.\n", inches);
+    return 0;
+}
+```
+
+2. Calculating Profit:
+```c
+#include <stdio.h>
+
+int main() {
+    double revenue = 0, costs = 0;
+    printf("Enter total revenue: ");
+    scanf("%lf", &revenue);
+    printf("Enter total costs: ");
+    scanf("%lf", &costs);
+    printf("Your profit is: %.2f\n", revenue - costs);
+    return 0;
+}
