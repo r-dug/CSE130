@@ -52,18 +52,19 @@ int modulo(int num1, int num2){
 // Primarity function. 
 // This is a pretty rudimentary, iterative implementation of primt number checking.
 // Fine for this application at least. Not like it's cryptography...
-bool primarity(int num1){
+int primarity(int num1){
     // 0 and 1 are not prime numbers
     if (num1 == 0 || num1 == 1)
         return 0;
 
-    for (int i = 2; i <= num1 / 2; ++i) {
+    for (int i = 2; i <= (num1 / 2); ++i) {
         // if n is divisible by i, then n is not prime
         if (num1 % i == 0) {
-        return 0;
+            // printf("%d",i);
+            return i;
         }
     }
-    return 1;
+    return 0;
 }
 
 // power function
@@ -236,7 +237,12 @@ int main(){
                     continue;
                 }
                 int result = primarity(num1);
-                printf("\n\nResult of %d == prime: %s", num1, result ? "True":"False");
+                if(result == 0){
+                    printf("%d is prime", num1);
+                }else{
+                    // printf("%d\n", result);
+                    printf("%d is not prime. %d * %d = %d", num1, num1/result, result, num1);
+                }
                 printf("\n\nPress enter to do another calculation");
                 while (getchar() != '\n');
             }
