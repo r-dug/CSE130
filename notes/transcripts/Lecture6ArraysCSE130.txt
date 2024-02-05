@@ -1,0 +1,390 @@
+Lecture6ArraysCSE130
+Testing.
+ All right, let's get started.
+ Any questions before we begin today's lecture? So today's topic is race.
+ So far, we learned how to store a specific value in a specific location, some sort of a variable for a numeral or a character.
+ But it may be useful to be able to manipulate large groups of such content.
+ A list of numbers, for example.
+ There is a way to do it with something known as a raise.
+ That's the way it works.
+ Instead of having a single variable which stores a single value, we have a name for a group of values where the name points to the beginning of that list.
+ And then you have multiple cells all containing.
+ Same values in terms of type.
+ Later on, we're going to learn about situations where the types are different so when possible, to have a grouping of different data items.
+ But for now, we're just looking at a situation where the types match and just values are different.
+ You have a name for VRA, but how do you get access to individual components? Individual results.
+ There is a subindex in the battery, an index which tells you what element you are interested in starting at zero.
+ Start counting at zero and we go element zero.
+ Element one all the way to element minus one for array of size that.
+ So if you need to store any elements, you'll have an array ranging from index zero to index and minus one.
+ You are responsible for making sure that you are operating within the bounds of array.
+ The language permits you to kind of go out of that bound, but it will probably crush your program.
+ You will be accessing someone else's memory.
+ And so you have to keep track of where your allocated memory ends.
+ Any questions about this so far? Yeah.
+ If you tried to.
+ Five integers and you try to access like the temp, it won't just automatically give you an error.
+ No, because memory management in C is very permissive.
+ You can access any memory or location you want.
+ Chances are, if it's not your memory, it contains garbage values, somebody else's data.
+ So if you start making changes to it, you can crash not just your program, but operating system, someone else's program.
+ But it doesn't do explicit bounds check.
+ Now, certain compilers may be smarter and realize you doing something like that to give you a warning, but it's up to you to make sure you are operating within allocated memory.
+ Was there a secondary question? Same on.
+ So what are the situations where we need this type of storage? Maybe test scores for a class.
+ You all got some sort of exam grade.
+ I need to store them.
+ I can create an array type would be.
+ Let's say we're talking about score.
+ So maybe percentages.
+ That would be something like a float.
+ Then the name for it can be test scores for 130, and the size would be How many students do I have? So I have sufficient memory to allocate all the.
+ Storage for everyone is great.
+ If I need to access someone's record.
+ The syntax is name of that array.
+ So array with test scores for 130.
+ And then what is the subindex? Let's say I want to get access to the third student in the list.
+ I would go in the zero index one index too.
+ So that's where it is stored.
+ You can think of it by analogy as the difference between living in a house.
+ That's your variable.
+ The address of your house is the name of a variable 22 Main Street.
+ So you need to get someone to send you mail.
+ If you live in an apartment building, it's not enough to know the street address.
+ You also need to know of a subindex in the building.
+ What apartment number.
+ That is.
+ Any questions about that? Just.
+ Just like with variables before we start using our array and to make sure it has no garbage values in it, we would like to initialize array to specific value server specific to the application or at least default value we control.
+ We have some options for doing that.
+ We can never explicitly initialize every location in the array.
+ Or we can place that array a list of elements in a loop and go through all the elements, updating values in a much quicker way.
+ Well, let's see some examples of explicitly providing values for initializing arrays.
+ One simple approach is to give a list of values.
+ So in curly brackets, separated by commas, I can have.
+ Uh, specific values.
+ If I have an array which is of size five, I can give it five integers.
+ And those are the values of the array assembly and the zero one, two, three and four.
+ I can also provide a single default value, which would be taken up by all the cells in the array.
+ I can provide a list of values without specifying the size of the array.
+ And the compiler will kind of calculate how much storage it needs for that many elements and allocate an array of size.
+ Three, four, six, seven, eight.
+ Example.
+ If some values are provided, but not all the emitted values can be defaulted to zero.
+ In general, it's a good idea to be very explicit and not rely on compiler to guess what you have in mind.
+ So if you just give it explicit list of values, that's what you're going to get.
+ There is a special case of a race which store characters and treat them as a group.
+ Our languages have something known as strings.
+ She does not.
+ And C++ will create classes for strings.
+ But for now, if you have an array of characters by convention, it is possible to treat it as a grouping, as a word.
+ And the only difference is there is a special no terminating character.
+ Edit at the end, which tells the compiler where your array terminates so it doesn't go outside of that bound.
+ And why it matters to us is that we need an extra location to store that special characters of a size is increased by one to store six characters in an array of characters.
+ I would need a seventh location for a null terminating character.
+ We'll have a whole lecture on strings, so if it doesn't make too much sense right now, it will.
+ Hopefully, eventually.
+ The questions.
+ So let's see how we can initialize my array by placing it inside of a loop.
+ I create an array for holding ten integers.
+ And then what I do is I create a loop and I use the loop control variable as an index into my array.
+ So you have a follow up for index from zero to less than ten and steps of one.
+ And I specify that I would like to assign a new value to the sum possibly indexed by that index control variable of value.
+ So it will start at zero.
+ I'll get whatever is stored in the values.
+ In this case, value, say, initialized to ten and decreased by one and every iteration of the loop.
+ So it will start.
+ Location zero gets done, location one gets nine and so on.
+ I have another loop.
+ Same set up.
+ This time I'm using the loop to go through the array and print out the contents of that array.
+ And you can see the output from running this program.
+ Essentially, I have all the indices from 0 to 9 with volumes counting down from 10 to 1.
+ Questions about that.
+ So the very type we are studying right now is a one dimensional array or list.
+ We start with the lower address in terms of storage.
+ That subindex location is also pointed at by the name of the array itself.
+ And then you know that if you move one location away in memory, you index lost one and so on.
+ Depending on the size of the data type, it could be a bite away or full bytes away.
+ But are sequentially stored in memory.
+ And later on then we talk about pointers.
+ We do some pointer arithmetic.
+ We'll be able to just do math on the addresses themselves.
+ So in terms of storage and memory, after we run this loop from a previous example, that's what you have.
+ You have sequentially stored integers.
+ Here's an example where we get the user to supply values.
+ So again, replacing are inside of a loop, but we're not giving some default count.
+ We are asking the user to supply specific values.
+ So I have an array of ten integers, same type of loop as the loop control variable.
+ Every time I go through the loop and every iteration I ask enter a value from the user and I scan skin off the value into very.
+ After that loop terminates, we went through all the values from 0 to 9.
+ I can output contents of that array and hopefully it contains all the data provided by the user.
+ By placing.
+ Our arrays inside of a loop, which can do some useful operations on data and small data sets.
+ We can search for specific values.
+ We can calculate statistical properties, trivial things like averages, and sometimes more complex things.
+ We can.
+ Look for specific patterns.
+ How do we search an array using loops? We need to have a few variables available to us and some information set up.
+ We need to know the bounds within the search space.
+ So it could be the whole array.
+ It could be some sort of a subset of that array.
+ We need to know what we are searching for.
+ That's the.
+ Important part.
+ If we are not sure what we're searching for, it's hard to make sure we matched the element.
+ And we need to be able to keep track of things such as what is the location of the item we found? So if we have, for example, like in a previous code segment, an array of integers size, then.
+ We may be looking for a specific element with the value of an LOL and we just want the first time it occurs.
+ If it occurs more than once, we don't care.
+ We want to find the first time it shows up.
+ For that.
+ We need to keep track of the following.
+ We need to have an index, which we'll use as an index in the array we searching, but also as the loop control variable.
+ We need to know the max.
+ Array value index value of the array we want to search.
+ We want to have specific value.
+ We're searching for variable to store location if if found.
+ And the loop itself, the type of a loop and how we are controlling.
+ So let's look at an example.
+ I want to find the first occurrence of a value stored in variable and while in this.
+ Right.
+ At the top.
+ What I do is I initialized our two different values, just giving it some specific data.
+ I would like to ask the user for the value to search for.
+ So I ask them, enter the value you are searching for.
+ They are providing this value.
+ We get it.
+ Now we have AI, which is our loop control variable initialized, and we have an allocation which has a variable for storing index of our search results.
+ In this case, I'm using a wild loop.
+ The wild condition being that I have not exceeded the bounds of my search.
+ And and while is not equal to the current element being examined.
+ Within the wild loop.
+ What I do is I increment the loop control variable.
+ Then if at some point we get to exceed.
+ The range which is greater than nine.
+ Meaning ten or greater, we exit the while loop.
+ Another condition for exiting is we've found the element we're searching for.
+ So if we exited because I was equal or greater than we can say that a location.
+ Index.
+ Has not been updated with a meaningful search result.
+ We can give it some impossible value to just keep track of that fact.
+ We have not found the element.
+ So we'll say location is negative one.
+ Otherwise we said location to the current element being examined because that's what terminated this loop.
+ We found the value we're searching for at that location.
+ All I have to do now is just look at, well, what's the value of any location if it's that impossible, exact condition.
+ I can report that the value user was curious about is not in the array otherwise.
+ Whatever allocation holds is the answer to the location of that element.
+ The questions about that.
+ Yeah.
+ So if you don't declare a type and you just pose like an array of integers.
+ That of the number of the bracket that just corresponds to itself.
+ That's going to.
+ The number in a bracket is the index of the location to which I'm storing values.
+ You don't declare like right off topic and prevents, you know, size ten.
+ Well, I declare a type.
+ I'm saying it's an array of integers.
+ I'm saying if you don't declare a type and then you recall three events.
+ That number just corresponds to the cell.
+ Well, you have to declare a type of device that's not going to let you talk about it afterwards.
+ The type.
+ Second line.
+ So going alone.
+ Okay, so we start assigning specific values to location zero.
+ Location one.
+ What's the question there? I'm just saying.
+ No, never mind.
+ I got it.
+ Excellent.
+ I don't know what I did, but it worked.
+ Beautiful.
+ Yeah, no problem.
+ Any other questions? So if you understand the process we just went through, I think always our modifications trivial.
+ Instead of looking for the first element, we can look for how many times the element shows up.
+ For example, we can count elements in that, right? The slightly different ah, terminating condition is different.
+ We don't stop immediately.
+ The first time we see a match.
+ We need to keep track of how many times we see a matching element, but everything else is the same.
+ Conceptually, the same idea.
+ We set up a loop, we have an index.
+ We know of a search space.
+ So we're just adding the match counter, really.
+ Similar setup as before.
+ I create an array, give it specific values.
+ We ask the user to provide value, which we would like to get count for read.
+ Then I have my count variable set to zero.
+ Initially, I haven't seen any instances of it in the array.
+ I have a follow up which basically goes through the whole array.
+ We are not limiting search space to a smaller subset.
+ And within the follow up, I say that if current element is the same as the element of value we're searching for, then count gets incremented by one.
+ Countless plus plus.
+ After the loop terminates, it went through all the elements of the array, everything we wanted to search for.
+ We can now print out the value of count variable that holds the answer to the question.
+ So let's say you are searching for six.
+ Let's see, is there a six in that? Set of assignments.
+ Doesn't look like it, does it? So it should come back with zero six was found zero times in that array.
+ On the other hand, if there is something like 21, it shows up twice.
+ So that would be the count.
+ Questions about that.
+ We can do some additional complications.
+ We can compute average addresses before I can figure out.
+ The values I want to go through.
+ So at the top, in this case, assigning a whole list of values to the array, the size of the array is computed from that list.
+ I go through the loop from 0 to 9, adding up all the values in the array.
+ So essentially just summing up each location, starting with Sum of Zero, adding all ten elements to it.
+ Once they finish that process out of my sum, I can compute average by dividing sum by number of elements.
+ Questions about average.
+ Yes.
+ When you divide by ten.
+ Let's say you didn't pass the ten and in use.
+ Let's say you didn't know how long the array is.
+ Is there a way to figure out how many numbers are in it? It's a good question.
+ So can we figure out size of the array or another variable or data structure? There is a function called size of we haven't studied it.
+ We will.
+ Then we hit pointers.
+ It will tell you exactly that information.
+ Any other questions? More of the same.
+ Now we're trying to find meaning and max value in an array.
+ The trick here is to realize that until you start examining elements of theory, you can assume that the first element you see is the smallest you ever seen and the largest you've ever seen.
+ By default, you only seen one at that point.
+ So we start with that assignment.
+ We say that meanwhile will be location zero and Maxwell will likewise be location zero.
+ From that point on, we go through the array.
+ Same as before.
+ And well, with the difference that we're starting examining at one, not a zero in the loop because we already assigned value of zero as a potential answer.
+ And we check to see if the current value we're examining.
+ Is smaller than the men or greater than the max.
+ If that's true, we update the men on Max appropriately.
+ If it's not true, we don't have to do anything.
+ We continue going through the loop.
+ So if I discover there is okay, I go to location one.
+ It's 18.
+ It's not smaller than ten, but it is greater than ten.
+ So Max would get updated to 18.
+ Men would remain at ten.
+ So we're keeping track of that until we finish processing the loop at the end of this.
+ We know what location holds, what what values mean and maximum at right.
+ Questions about that.
+ Okay.
+ Not super important.
+ Just a hint.
+ When you need to swap values between different cells of the array.
+ You cannot just assign them to each other.
+ It will overwrite one of them.
+ You need some sort of a triangulation where you have a temporary variable.
+ You copy data from one of the.
+ Values you want to exchange intimate and variable.
+ Reassign one.
+ Reassign the second one.
+ This way There is no data loss.
+ We studied functions before can be used as arguments to functions.
+ Yes.
+ The difference is, instead of specifying that you passing a specific.
+ Data type with a name indicating that it is an array type for one dimensional arrays.
+ You don't have to provide the size, you can omit the size.
+ So all you're saying is I have this array of size five, for example, created in my program.
+ If I'm sending it as an argument to a function of a function, should expect to get an array of integers.
+ Arrays are addresses.
+ So this is similar to a pass by reference, not a pass by value.
+ You sharing an actual location of data and access to that location will allow the function to modify those values.
+ So again, from this slide, what the function does is not so important.
+ All we care about is how the data is passed to a function.
+ We're passing an array.
+ We can admit the size.
+ So if that's what happens, then you have a list of numbers.
+ Sometimes you don't have a list.
+ You have a table or matrix.
+ That brings up the idea of two dimensional arrays.
+ Same as a one dimensional array.
+ But now you have two indices into the array.
+ Rows and columns.
+ Everything else.
+ Conceptual is the same.
+ If I want to access specific value, I just have to specify where it is in the table.
+ First of all, you second value gets me a precise location for a cell.
+ I can assign specific values to specific locations and to the space.
+ I can provide a table looking thing like I did a list before.
+ I can now, with multiple curly brackets, provide a list to assign values to.
+ So the syntax, again, very similar to what we've seen before.
+ The type name of your array.
+ In square brackets.
+ Index one, index two.
+ If we need to initialize.
+ To JIRA, we can even provide explicit values.
+ Or we can again place that array inside of a looping structure, since we have two indices will probably need a nested or nested loop where each loop control variable controls one of the indices.
+ And we can create the same type of assignment as before.
+ Initialization options.
+ Similar example I can never have an explicit list or an explicit list which I format for human consumption, making it look more like a table.
+ Same idea.
+ I can omit some of a sizes compiler will figure out what the size should be to fit the data, not the best option.
+ Again, I always prefer explicit declaration of sizes.
+ Information is stored in raw order row zero one, row two, and that's how you initialize it.
+ In terms of processing the stables, similar to what we did with one dimensional arrays.
+ You may do some statistical analysis.
+ You can look at just one dimension of a two dimensional array.
+ That would be exactly like what we did with one series in context of loops.
+ You can also look at the whole table again, relying on nested looping structures.
+ If you need to pass a table to a function similar to how we did it before, you indicate this is an array.
+ Square brackets indicate all the dimensions of it.
+ You have to specify dimensions with the exception of the leftmost.
+ So in this example, I have an array which is a two dimensional array being passed to a function for printing, and I indicate to the function you're going to get an array by saying, okay, name of my array, two sets of square brackets.
+ The leftmost can have no size.
+ The rightmost must specify of a size.
+ So you know how to pass the data into a row, one or two and so on.
+ Again, this is a past reference for dealing with an address.
+ Name of the array is essentially a pointer to the first bite.
+ We'll hear more about it in Strange Lecture and obviously in point this lecture.
+ In terms of scope.
+ If you remember, we have local variables and global variables.
+ You can create a local array to a function which will stop being allocated to you.
+ Then the function terminates.
+ Or you can have a global array which is visible by the function, can be used by it, and remains in memory and active until the program terminates.
+ So the scope, a website, the scope of that declaration.
+ Okay.
+ What's next? Can you guess? Yes, we get more dimensions.
+ Wasn't confusing enough, but do we can have a three dimensional array or more? Three dimensions are cool because we can still visualize them.
+ It's a cube.
+ It's a collection of tables.
+ So all we're saying now, just like with two grays, we have one more indexing.
+ What table are you referring to? So you have a row.
+ You have a column, and now you have a table number.
+ Everything else is the same.
+ Same syntax, same way to initialize or access.
+ Now, you are not limited to three dimensions.
+ You can have an dimensional arrays.
+ Why would you do that? Mathematically, it makes a lot of sense.
+ You have some sort of a feature vector describing a model.
+ You can have hundreds of features, hundreds of dimensions.
+ You can't really make sure to all visualize it well, but it makes a lot of sense.
+ Has many applications in computer vision and computer graphics and many other interesting sub areas of research.
+ So definitely a very useful thing to do.
+ Yes.
+ So it's kind of like the.
+ But.
+ Yeah, yeah, yeah.
+ Or something like that.
+ Or we can talk about the the example I gave with the apartment building and a building.
+ Now you have a street, you can have a village, you can have a city plan and whatever.
+ Like you just specifying words that.
+ Yeah.
+ So the syntax in general is you have a data type.
+ We still restricting it to one data type.
+ You have a name for your hyper space thingy, and then we have in square brackets all the dimensions for how many, what's the size of each sub dimension.
+ If you need to access a specific element, again, you just specify precisely where you want to be.
+ Table two.
+ Role five.
+ Column two.
+ You can have.
+ Three nested follow ups, for example, to process such a three dimensional cube.
+ Initialize it or search through it.
+ Analyze the data in.
+ Questions about that.
+ As before passing to a function.
+ Best by reference address, not by volume.
+ You can omit leftmost dimension.
+ And as I said before, it's up to you to keep track of what is the size of your allocated dimensional array.
+ The language itself will allow you to go outside of those bounds, which is going to cause you problems.
+ I think we'll stop here with this.
+ Multi-dimensional situations.
+ Any.
+ Any questions about this lecture or anything else? 

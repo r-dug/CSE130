@@ -1,0 +1,3 @@
+[submodule "notes_GPT"]
+	path = notes_GPT
+	url = https://github.com/r-dug/notes_GPT.git
