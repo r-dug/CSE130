@@ -1,0 +1,12 @@
+/bin/sh: 1: /home/richard/Desktop/uofl/SPRING 2024/CSE130/git pull: not found
+/bin/sh: 1: /home/richard/Desktop/uofl/SPRING 2024/CSE130/git pull: not found
+2024-02-05 16:50:22
+From https://github.com/r-dug/CSE130
+   53b1509..2501927  main       -> origin/main
+Updating 53b1509..2501927
+Fast-forward
+ notes/{ => html}/Lecture7PointersCSE130_notes.html | 0
+ notes/{ => transcripts}/Lecture7PointersCSE130.txt | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ rename notes/{ => html}/Lecture7PointersCSE130_notes.html (100%)
+ rename notes/{ => transcripts}/Lecture7PointersCSE130.txt (100%)
