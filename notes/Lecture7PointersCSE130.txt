@@ -1,0 +1,393 @@
+Lecture7PointersCSE130
+All right, let's get started.
+ Any questions before we begin today's lecture? So today's topic is pointers.
+ For some reason, students think it's a very complex topic.
+ I'm not sure that's right.
+ It's not really more complex than any other data types were looked at.
+ So hopefully we'll do a good job explaining how pointers work.
+ So far, we saw that for many other variables, there are character constants.
+ For example, for character type variables, you have the value of a variable.
+ You have location where it is stored.
+ And for that location there is actual physical address in the memory.
+ So the character type variable has a name, has location, has value in it, value being one of the character constants.
+ Similarly, there are integer constants.
+ Again, we have name of a integer variable.
+ We have specific value stored in it, and then we have address of that variable.
+ So Poynter is just another data type, like character, like Integer, where the value of data corresponds to an address.
+ So it's a variable for storing memory addresses instead of characters or integers, for example.
+ So here is a similar graphic for a pointer type variable.
+ Logically speaking, I have a variable which stores address which itself stores some sort of a value.
+ In terms of physical representation.
+ There is an address somewhere in the memory.
+ That address is given a name.
+ That's the name of my pointer variable.
+ And at that address, I'm storing data of certain type, which corresponds to the type of the pointer variable.
+ You can have pointers to integers, pointers to characters and so on.
+ So this is the corresponding graphic for pointers.
+ I can have all the possible physical addresses in the memory as the value of my pointer variable.
+ And then depending on the type of pointer, it points to a specific maybe character constant.
+ So we don't have much control over physical addresses.
+ Those are just given to us by whatever's available on your system.
+ Our job is to learn to access those locations, manipulate their contents.
+ How do you declare a pointer? This is similar to how we declared any other type of variable.
+ We have a data type, then we have something new which is a star symbol.
+ Or Asterix.
+ And that is followed by the meaningful identifier for the pointer name for the pointer type variable.
+ So for example, I have a pointer to an integer called P count.
+ The pic on pointer contains an address which stores an integer.
+ So logically speaking, we have this account which points to a variable integer type variable possibly called count, which itself stores a value, let's say five integer five.
+ If you remember, then we first started talking about declaring variables.
+ I gave.
+ An example, an analogy where I said, Well, it's kind of like introducing someone to a compiler or like I say.
+ This is Bob.
+ Bob is an engineer.
+ This is like saying this variable is an integer.
+ It's going to explode.
+ So that was initial variable declaration.
+ A pointer is more like you go to the party, some party somewhere and you're looking for Bob and you ask, Where is Bob? And Alice says, Bob is upstairs.
+ Alice is a pointer to Bob.
+ That's the logical equivalent.
+ Any questions about that? You've been to parties before.
+ You know how it is.
+ Just like what? The rebels.
+ When you first declare a variable, it is not initialized to any specific value or simply contains garbage values.
+ We can have a pointer which is not pointing to any specific address pointer to an unknown location.
+ Obviously problematic.
+ We don't want to be using it or using a pointer with garbage value in it, so we should probably initialize our pointer.
+ We're going to give it a specific default value similar to what we did with integers, maybe set it equal to zero.
+ In the context of addresses.
+ There is also the novel concept similar to zero, but a novel point or something you can check for.
+ Make sure you do not try to work with a pointer which doesn't have a valid address.
+ The process of trying to access information the pointer is pointing to is the process of referencing a pointer.
+ And for that, we want to make sure we have a valid address so we can check to see is the pointer in fact equal to normal or not? And if it is not, perform the operation.
+ Well, we covered passing by reference and then we used scanner function.
+ You remember we had the ampersand sign show up.
+ It is kind of the inverse operation of the referencing a pointer.
+ The Asterix symbol says get the value of that thing.
+ The ampersand sign says, Get the address of it.
+ So we can use one or the other, depending on what we are trying to do, get an address or manipulate the volume.
+ Here is a more complete example.
+ We are going to declare and initialize a pointer variable.
+ So let's say I have integer x.
+ I can create a pointer to an integer, I'll call it B, and I set it equal to the address of X.
+ I can have it as two separate statements, declaration and initialization, or I can combine them into one.
+ Questions.
+ Yes.
+ Say it again, please.
+ So there is one pointer in this that's pointer P and it points to address of variable x.
+ There is x stored somewhere in a physical memory.
+ P discovers that address and stores it as its own value.
+ So again, I think all you have to understand is that just like any other variable we had before, character integer float pointer is just another type instead of storing symbols.
+ So numbers and stores addresses.
+ Some people do that.
+ That's the thing.
+ Everything else kind of remains the same.
+ Yeah, absolutely.
+ So.
+ To work with a pointer.
+ We need to know what type of data we're expecting to see there.
+ That's why pointers have specific type they point to.
+ There is something called undifferentiated pointer we'll see later.
+ But for now, every time you have a pointer, it should point to a specific data type address containing a variable of that type.
+ So if I have a character I want to point to.
+ I will have a pointer to a character, pointer to an integer, a pointer to a float.
+ You cannot mix those.
+ You cannot use a pointer to a character for pointer to a float, for example.
+ Again, makes sense.
+ We have variable types because we need to know what type of data is stored in the variable.
+ Definitely, you could just have universal variables which hold whatever and then you discover what's in them.
+ But that's not how we do it.
+ We need to know the type.
+ And if you're going to access that data through indirect pointer, you still need to know the type of data.
+ So how do we actually manipulate the value located at that address? That's the process of referencing a pointer.
+ And the symbol is that he used it still in Asterix preceding the variable.
+ And that says if ampersand said get an address of a variable, this says get a value at that address.
+ So let's say I have.
+ A variable called count, and I want to increment the value in that variable by one.
+ I can even directly use the variable name and plus plus the value, or I can use a pointer discount which points to variable count.
+ Let's pretend I did it in the previous example, which I did.
+ And then I can reference that address and say, go to that address and whatever value you find there, increase that value by one.
+ So direct or indirect reference.
+ Questions about that.
+ I told you we have to properly match types of pointers to variables.
+ Here is just an example to emphasize this Once again, if I have an integer type variable, I can create a pointer to a type integer.
+ And that would work well if I get address of area into that location.
+ On the other hand, if I have a different type pointer pointer to a double, that would not be acceptable to store a pointer.
+ An integer address in a pointer to double.
+ The ampersand sign.
+ Now we understand what it means.
+ It means to take address of a variable.
+ Then you used ampersand sign in skin function.
+ That's what you were doing.
+ You were saying, please store whatever data users providing in this address.
+ If you're curious, you can actually see what the addresses are.
+ You can look up an address.
+ You can print out an address.
+ If you do that, that's a cute little experiment you can do right now.
+ You'll get different results because of a different system running different programs, different amount of memory.
+ So if I have, for example, a character type variable storing value, I can print out address of that variable percent P can be used to do that.
+ And essentially you're getting this physical address in memory.
+ You can see where it is and you can directly manipulate it.
+ Then I see a dress of a variable.
+ Variables could be of different sizes.
+ Character is a single bite.
+ Indigenous four bites float could be six.
+ Address specifically refers to where the first bite of a variable is store.
+ This includes arrays, as we see in a few slides.
+ So that's what addresses first byte, location and physical memory.
+ Questions about that.
+ Just to be careful when you use shorthand annotations, if you're creating multiple variables separated by a comma, that will work for you.
+ You cannot mix and match types, pointers and regular integers.
+ It's not obvious how to explicitly parse it, so it may result in not what you expected.
+ So I would suggest explicitly declaring pointers, not trying to save a few keystrokes by combining them.
+ We have covered the concept of constants where by fixing variable type with the word const, we can make sure the value of that variable does not change.
+ Later in the program, you can do the same thing with either.
+ The address in a pointer type variable or with the value pointed at by the pointer.
+ So you can have it.
+ Either your data is constant and cannot be changed.
+ All the point or contents are the same.
+ Now.
+ So we have those pointer type variables.
+ What can we do with them? We can have, for example, a situation where a multiple pointers point to the same location.
+ So of a variable of a pointer which has a dress of a, and I can have multiple such pointers all containing the same address.
+ That's essentially one pointer example where one pointer can alternate between multiple variables.
+ Kind of like a bookmark in a book.
+ Let's see a few examples of trying to modify value of variables using pointer notation and not pointer notation.
+ So on the left I have the set up.
+ I have value of variable X pointers B and Q pointing to it.
+ In the middle I have a statement I am going to execute and to the right.
+ I have consequences of executing that statement.
+ So I start by setting x the value of four that updates the contents of variable x.
+ I can again increase that value by 3 to 7.
+ I can use pointer notation the reference point there P and set that equal to 8.
+30 points to variable x.
+ So now variable x contains value.
+ Eight.
+ I can have a more complex expression where I the reference address of variable x which you remember.
+ Those are inverse operations we cancel out.
+ So it's the same as saying x equals the reference SKU plus the reference B if you can point to variable x, which at this time contains value of eight, eight plus eight is 16.
+ Now if it wasn't confusing, the Asterix is also multiplication, right? So the same symbol is used for multiple operations.
+ So here I have X is equal to the reference B multiplied by the reference skills of a 16 times 16.
+ Probably good idea to put some parentheses around it.
+ So it's not this confusing.
+ Questions about any of those.
+ We have previously already covered the concept of exchanging volumes by volume, so we have a function.
+ I can pass data into it, but the value makes copies of the data.
+ Internal changes do not impact variables outside of a function, so original values remain unchanged after the function executes.
+ This is what we already know.
+ Should know at least.
+ The other approach we saw before was Busby reference, where I said, I'm going to get addresses of X and Y.
+ So I had the ampersand sign there.
+ Then I do my little triangulation, exchanging the two variables by first going to the term application.
+ The original values are changed because I'm dealing with actual addresses of those global variables.
+ So that's another thing we already know before.
+ Now the new method is to use pointers for the same.
+ And it's not really different points or addresses, references, addresses.
+ So logically, same situation.
+ I'm saying that the function exchange takes two pointers B, x and y pointers to any resource I send in address of A and B as the actual arguments they are mapped and the formal arguments be X and Y as addresses.
+ And so the little triangulation thing results in actual swap of original values.
+ So same as asking by reference in terms of results.
+ Yes.
+ Oh, there you are.
+ When you take.
+ In the formal argument.
+ Taking the address of act.
+ Address of why? How come in the function you don't have to be reference.
+ So you do reference the pointer, but here you are dealing with addresses to begin with.
+ So just slightly different notation.
+ They are identical logically, but different format is used for pointers with asterisks, addresses, references with ampersand.
+ So when you say like the ten people X or Y, you should, isn't that then saying that ten equals the address of X or is that the value? We are referring to the addresses here.
+ Yeah.
+ You swapping addresses.
+ It's probably a good idea to just type it up and see the difference in terms of variables.
+ I have a similar example here for four pointers.
+ So we have a function for swapping two numbers and it looks like it's expecting to get two pointers to integers in the main function.
+ I have two variables and B with values of ten and 20.
+ Then I do the swap.
+ I send in address of an address of B.
+ That's what we are expecting for pointers.
+ And the function itself does an exchange where the temporary variable gets the referenced value.
+ Then at all stages with the reference value of those addresses.
+ And as a result we swap the two.
+ So A is now 20 and B is now ten.
+ Again, if you're getting confused between the reference or just type it up and see what happens when you omit the star.
+ Bring the star and then it becomes a little more naturally understandable.
+ You can return addresses from functions as the return value.
+ But you have to be careful not to return a local variable.
+ A local pointer.
+ So here I have a function for finding a smaller value.
+ Thanks to addresses again.
+ Why not A simple comparison.
+ If the smaller return speaks, if you wise smaller returns, be one.
+ The return value is one of the.
+ One of the addresses, which is external to the function, and we expect the function smaller to return a pointer to an integer.
+ So here everything is logit where the turning address of a global variable from a function which takes two global variables as the input.
+ But if I return something which is declared within that function, then the function terminates.
+ I no longer have rights to that memory location, so trying to access it would cause problems probably crashing my problem.
+ So it is a serious problem to do that, to provide access to memory which you are no longer controlling.
+ Okay.
+ So I think it's fair to say so far things were not so bad.
+ Ghana understandable, especially if you understood everything before.
+ I'll admit the next slide could be slightly confusing.
+ So if things were not bad enough before now, you can have pointers to pointers.
+ We probably won't be using a lot of it in our labs.
+ So this is more of a theoretical exercise for you at this point.
+ But if you understand that pointer is just a variable which holds an address.
+ It's a variable which has a type of data and address to that location.
+ Then you can see a situation where are you storing an address of an I have a pointer.
+ Why would you do that? It's a great question, and we're going to probably see a lot of it in future lectures for now.
+ Using my analogy, you can go back to the party and you're saying you're looking for Bob, the engineer, and somebody tells you, Well, I don't know where he is, but Alice knows where Bob is, that our person is a pointer to a pointer.
+ It's the best I can do right now.
+ That.
+ It will grow on you.
+ So let's look at this example.
+ We have a variable, which is an integer A.
+ We have a pointer to an integer D, and then we just keep adding star symbols, asterisk symbols to indicate multiple levels of interaction.
+ We have a pointer to a pointer of type integer Q.
+ So my variable A is stored at this address 234560 and contains value of 58.
+ Be is a pointer to that variable, which, as its value contains address of a and itself is stored at that address.
+ 287650.
+ And then I can have one more level of the same thing.
+ Now I'm storing that address in a different address.
+ We have to make sure that we still match the types and we match the levels of interaction.
+ So I can have a pointer.
+ To a veritable pointer of the type of the variable type, or if I have multiple levels of indirection, the pointer type has to match with the other pointer indirection level.
+ So let's look at this set of initialization statements.
+ We have a character C with a value of Z, We have a pointer to a character PC.
+ We have an integer A with value of 58.
+ We have a pointer to an integer and a pointer to a pointer to an integer PPA.
+ It's fine to say those things.
+ Try it.
+ We have a character pointer B.
+C.
+, which was setting to the address of C.
+ C is a variable of type character, so it makes sense that PC will be able to contain a pointer to a character.
+ B can have an address of a pointer to an integer can contain an address of an integer.
+ PPA can get an address of a it's a pointer to a pointer to an integer and it can contain an address of an integer.
+ On the other hand, you should not mix and match either levels or types.
+ Okay.
+ You can be confused at this point.
+ Any questions? Yeah, This is not a priority to the levels of cortisol.
+ It's a pretty high limit.
+ Like anything else, that is like the size of a variable.
+ So that is maximum size for integers, maximum size for everything.
+ So just language limits.
+ Logically, you can have a lot of pointers.
+ So you're not challenged enough, but just do three levels of indirection.
+ Fine.
+ So here is essentially what happens.
+ And if we want to get to the value and change the value, the reference, our pointer same notation.
+ If it's a variable, we just use the variable directly in name of a variable.
+ If it's a single level pointer, we can reference that point or so asterisks and set that equal to a specific value.
+ Or if it's b overworking it, we would have to asterisks symbols preceding it to the reference pointer twice, essentially go to value of that value.
+ Okay, So that was the confusing part.
+ Now back to easy fun part.
+ Arrays and pointers have a very deep, common logical representation.
+ In fact, if you didn't know this before, our eyes are pointers.
+ Name.
+ A VRA is just a pointer to the first bite of an array.
+ We can use either notation, either a pointer notation or innovation to access elements of an array or list of elements.
+ So let's say I have a list of six integers with the following values.
+ I can use the list notation where I see the reference location list plus one.
+ Or I can have a pointer notation where I'm referring to, uh.
+ Star list plus one.
+ Those are different.
+ If you look at what are the parentheses are placed.
+ I can never do reference first and then update the value.
+ Or if it's put in parentheses.
+ The plus one means go to the next cell in that data structure.
+ So let's look at this example.
+ I have list plus one being the reference, which is different from the reference list and add one to it that the reference operator has precedence over addition.
+ So if with the reference lists plus one, it will add one to the value of a first element in the array.
+ So 11.
+ 12.
+ We can manipulate those using this notation.
+ So this is list.
+ This is list plus one list plus two.
+ Assuming this is an array of elements, one unit away.
+ While the reference list was one.
+ The reference is the element at address list plus one in the right.
+ So we were talking about the level of elements in the list, or we're talking about values for the element.
+ Let's see a few examples to make it crystal clear.
+ So here I have an array called A, and it's a pointer to the first element.
+ So a itself is just a pointer to location zero.
+ So those are the two notations here.
+ If I have this array with the following elements, I can use either array annotation.
+ In this program I'm setting the reference value of a to value of location A zero.
+ Both are essentially equivalent.
+ In both cases, the value is to.
+ I can have multiple are still the same.
+ And as you remember.
+ So here I have pointer P pointing to location A.
+ I can use every annotation, even a pointer.
+ So if I have my array of integers, I create a pointer p with the value of a now A is an address.
+ I don't have to have the ampersand sign there.
+ Right.
+ It's not a variable I'm taking an address off.
+ Is an address A is just address to the first bite of that.
+ Right.
+ So I can say a subindex I in this case, a zero is equal to the referenced value of B.
+ So again, the same we're just saying first element using this notation is the same as the first element using the AB annotation.
+ Questions about that.
+ So to access an array, a pointer to the first element can be used instead of notation.
+ We can also have a situation where we have a pointer which is not pointing to the first element in our way, but to some other element in this case, location one, index one.
+ So it starts at a zero and P starts at a one.
+ They are off by one essentially in terms of what location we point to.
+ So be zero.
+ Using that notation is actually a one using array annotation with array.
+ And you can see the mapping.
+ So a zero is the same as the location, negative one.
+ Those are addresses we can go plus or minus in both directions, or a one is the same as P zero.
+ So you just have this constant offset.
+ So if we have a pointer p, P, plus or minus N is the pointer to the.
+ Element located that many volumes away.
+ So what is this? Pointer arithmetic.
+ In this example where I would set be equal to index one of a we now have a plus one plus two using array notation, or we have P minus 1pp plus one using P annotation because of that offset.
+ Does that make sense? Questions about it.
+ So depending on the type of data stored in our array, the actual physical memory required is different.
+ For arrays, we just need one byte for integers, we need four bytes and for floats we need six.
+ So then I say go to the next element in that array.
+ Depending on the data type in physical memory, I'm jumping that many bytes.
+ So the next float is stored six bytes away.
+ Not one, by the way.
+ Again.
+ So here is the correspondence and equivalence between the two types.
+ If I'm talking about location and in a way it's the same as the referencing a plus n.
+ Let's look at a small example where we are trying to use pointers to work on a list of numbers.
+ I have an array with five elements.
+ And I'm looking for the smallest element of that.
+ All right.
+ I create pointers, which is a pointer to the current smallest defaulting to the first element.
+ I have a pointer out called Walker, which is the pointer which will traverse all the elements of the array.
+ And I have a pointer to the last element.
+ So I have first and last the starting and ending search conditions.
+ And then I have this p walker, uh, pointer which will look at all the values and we can compare and see if a new value is actually smaller than the current smallest.
+ We have a code segment on the bottom showing what's going on there.
+ So my loop is for smallest element and in steps of one p walker will walk through the array until we hit the last element.
+ If the reference value of my Walker pointer is smaller than the referenced value of smallest.
+ At the moment, I update that current value.
+ So I start with small as being 32 and p walker is looking at eight.
+ Eight is not smaller than 32.
+ So we go to the next location.
+ 1408 is smaller than 32, so we update the value of a smallest and go to the next allocations.
+ The report that we'll look at 14 as the next.
+ It is not smaller than eight.
+ We go to the next location once again.
+ 22.
+ Still not smaller.
+ Finally 20.
+ At this point, we have not found another update.
+ For the smallest, we are hearing the last element in the search space.
+ So we know to terminate our full loop.
+ And now we found this smallest element and the.
+ Pointer, pointing to the smallest element is pointing to the index.
+ One of that, right.
+ So here are we using pointers as a ways to manipulate this array.
+ You were keeping track of locations within array or walking through the array.
+ There are other, more exciting ways to use pointers.
+ Then we'll talk about dynamic memory allocation and polymorphic behaviors and such.
+ It will start making even more sense than it does with this example here.
+ Any questions? All right.
+ And if you don't have any questions, I will stop at this point and answer any individual questions you might have.
+ Thank you.
+ 

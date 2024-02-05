@@ -50,7 +50,7 @@ int modulo(int num1, int num2){
 }
 
 // Primarity function. 
-// This is a pretty rudimentary, iterative implementation of primt number checking.
+// This is a pretty rudimentary, iterative implementation of prime number checking.
 // Fine for this application at least. Not like it's cryptography...
 bool primarity(int num1){
     // 0 and 1 are not prime numbers

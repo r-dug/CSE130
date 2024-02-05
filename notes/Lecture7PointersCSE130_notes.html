@@ -1,0 +1,106 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 7: Pointers (CSE130)</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1, h2 { color: #333; }
+        p, ul, ol { font-size: 18px; line-height: 1.6; }
+        code { background-color: #f4f4f4; padding: 2px 4px; }
+        .example { background-color: #eee; border-left: 3px solid #f0ad4e; padding: 10px; margin: 20px 0;}
+    </style>
+</head>
+<body>
+
+<h1>Lecture 7: Pointers (CSE130)</h1>
+
+<h2>Introduction to Pointers</h2>
+<p>A pointer is a data type used to store memory addresses instead of storing characters or integers. It points to a location where some value is stored. Here's a breakdown of pointer-related topics covered in the lecture:</p>
+
+<ul>
+    <li>A pointer has a name, an address it points to, and a value stored at that address.</li>
+    <li>To declare a pointer, use the syntax: <code>type *pointer_name;</code></li>
+    <li>Initializing pointers to null or zero is considered good practice to avoid pointing to unknown locations.</li>
+    <li>De-referencing a pointer: Use the <code>*</code> symbol to access or modify the value at the memory address.</li>
+    <li>To obtain the address of a variable, use the <code>&amp;</code> symbol (known as the address operator).</li>
+</ul>
+
+<div class="example">
+    <h3>Example:</h3>
+    <p>Declaring and initializing a pointer:</p>
+    <code>
+        int x = 10;<br>
+        int *p = &amp;x;  // p now contains the address of x
+    </code>
+</div>
+
+<h2>Pointer Types and Type Safety</h2>
+<p>Pointers have types they point to, such as pointers to integers, characters, or floats. Type safety is crucial when working with pointers:</p>
+
+<ul>
+    <li>Pointers must point to the correct type (e.g., an integer pointer for integer addresses).</li>
+    <li>Pointer types help ensure that the dereferencing operation yields the correct type of data.</li>
+</ul>
+
+<p><a href="https://www.tutorialspoint.com/cprogramming/c_pointers.htm" target="_blank">Further Reading on Pointers</a></p>
+
+<h2>Manipulating Values Through Pointers</h2>
+<p>Pointers can be used to indirectly manipulate variables:</p>
+
+<div class="example">
+    <h3>Example:</h3>
+    <p>Incrementing a variable 'count' by one, using a pointer:</p>
+    <code>
+        int count = 5;<br>
+        int *pcount = &amp;count;<br>
+        (*pcount)++;  // Using pointer dereferencing to increment 'count'
+    </code>
+</div>
+
+<h2>Pointers to Pointers</h2>
+<p>It's possible to have pointers to pointers, which adds levels of indirection. This concept is more theoretical, but important for understanding pointer complexity and memory management.</p>
+
+<div class="example">
+    <h3>Example:</h3>
+    <code>
+        int x = 58;<br>
+        int *px = &amp;x;<br>
+        int **ppx = &amp;px;  // ppx is a pointer to a pointer to an integer
+    </code>
+</div>
+
+<h2>Arrays and Pointers</h2>
+<p>Array names are pointers to the first element of the array. Pointer arithmetic allows access to elements with respect to the pointer position:</p>
+
+<ul>
+    <li>Use <code>*(array + i)</code> to access the ith element in the array.</li>
+    <li>Creating a pointer <code>int *p = &amp;array[1];</code> points to the second element of <code>array</code>.</li>
+</ul>
+
+<h2>Dynamic Memory Allocation</h2>
+<p>Pointers are key to dynamic memory management, allowing for allocation and deallocation of memory at runtime.</p>
+
+<p><a href="https://www.cprogramming.com/tutorial/c/lesson6.html" target="_blank">Further Reading on Dynamic Memory Allocation</a></p>
+
+<h2>Assignments and Exam Notes</h2>
+<p><strong>ASSIGNMENT: C++ Exam | DUE: Monday, 4/8</strong></p>
+<p><strong>ASSIGNMENT: Student ppt | DUE: Monday, 4/15</strong></p>
+<p><strong>ASSIGNMENT: Student ppt | DUE: Wednesday, 4/17</strong></p>
+<p><strong>ASSIGNMENT: Student ppt | DUE: Monday, 4/22</strong></p>
+
+<aside>
+    <h2>Important Notes for the Exam</h2>
+    <ul>
+        <li>THIS WILL BE ON THE EXAM: De-referencing a pointer to access or modify the value at the memory address.</li>
+        <li>THIS WILL BE ON THE EXAM: The difference between the address operator (<code>&amp;</code>) and the dereference operator (<code>*</code>).</li>
+        <li>THIS WILL BE ON THE EXAM: Pointer arithmetic and its application to arrays.</li>
+    </ul>
+</aside>
+
+</body>
+</html>
+```
