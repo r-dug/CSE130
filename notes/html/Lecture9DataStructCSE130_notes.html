@@ -1,0 +1,132 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 9: Data Structures in C/C++</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h2 {
+            color: #2F4F4F;
+        }
+        code {
+            background-color: #F5F5F5;
+            padding: 2px 4px;
+            color: #FF4500;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lecture 9: Data Structures in C/C++</h1>
+    <h2>Introduction to Structures in C</h2>
+    <p>
+        C allows the creation of compound data types using structures. This is particularly useful for combining multiple data types under a single name. A structure in C can be defined using the <code>struct</code> keyword.
+    </p>
+    <p><strong>Syntax:</strong></p>
+    <pre><code>struct StructName {
+    DataType1 member1;
+    DataType2 member2;
+    // ... more members
+} instanceName;</code></pre>
+
+    <h3>Defining a Structure</h3>
+    <p>To define a structure without allocating memory:</p>
+    <pre><code>struct MyExample {
+    int number;
+    char symbol;
+    char str[100];
+};</code></pre>
+
+    <h3>Creating a Structure Instance</h3>
+    <p>Allocating memory for an instance:</p>
+    <pre><code>struct MyStructure {
+    // members...
+} myStructInstance;</code></pre>
+
+    <h3>Example: Defining a Student Structure</h3>
+    <p>The following structure represents a student with various fields:</p>
+    <pre><code>struct Student {
+    char firstName[50];
+    char lastName[50];
+    int courseGrades[10];
+    float gpas[10];
+    // ...
+};</code></pre>
+    <ul>
+        <li>THIS WILL BE ON THE EXAM: Understand how to define and use structures in C.</li>
+    </ul>
+
+    <h3>Accessing Structure Members</h3>
+    <p>Members can be accessed using the <code>.</code> (dot) operator:</p>
+    <pre><code>Student newStudent;
+newStudent.gpa = 3.85; // Set the GPA
+</code></pre>
+
+    <h3>Structure Assignment and Comparison</h3>
+    <ul>
+        <li>Structures support the assignment operator.</li>
+        <li>Structures do not have a built-in comparison operator; it must be defined based on specific member comparison.</li>
+        <li>Custom functions are needed for printing and input operations of structures.</li>
+    </ul>
+
+    <h2>Typedef Alias and Pointers</h2>
+    <p>Creating an alias for a type:</p>
+    <pre><code>typedef int Length;
+Length l = 20;</code></pre>
+
+    <p>Using typedef with Structures:</p>
+    <pre><code>typedef struct Student StudentAlias;
+StudentAlias myStudent;</code></pre>
+
+    <p>Accessing members using pointers:</p>
+    <pre><code>Student *ptr = &newStudent;
+ptr->gpa = 3.85; // Same as newStudent.gpa = 3.85;</code></pre>
+
+    <h2>Comparison of Arrays and Structures</h2>
+    <ul>
+        <li>Structures can be passed by value or by reference, whereas arrays are passed by reference only.</li>
+        <li>Differences in assignment and size handling.</li>
+    </ul>
+
+    <h2>Unions</h2>
+    <p>
+        A union allows different members to occupy the same memory space; only one member is active at a time. Useful for saving memory when the union members are mutually exclusive. 
+    </p>
+
+    <h3>Example of a Union:</h3>
+    <pre><code>union Value {
+    float fNumber;
+    int iNumber;
+    char cCharacter;
+};</code></pre>
+
+    <h2>Type Casting</h2>
+    <p>
+        Type casting in C allows conversion between compatible types. Syntax for type casting: <code>(Type)variable</code>.
+    </p>
+
+    <h3>Example with Integers and Floats:</h3>
+    <pre><code>int x = 10, y = 20;
+float result = (float)x / (float)y;</code></pre>
+
+    <h2>Class Announcements</h2>
+    <p><strong>ASSIGNMENT: C Exam | DUE: Wednesday, 2/21</strong></p>
+    <p><strong>ASSIGNMENT: C++ Exam | DUE: Monday, 4/8</strong></p>
+    <p><strong>ASSIGNMENT: Student PowerPoint Presentations | DUE: Monday, 4/15</strong></p>
+    <p><strong>ASSIGNMENT: Student PowerPoint Presentations | DUE: Wednesday, 4/17</strong></p>
+    <p><strong>ASSIGNMENT: Student PowerPoint Presentations | DUE: Monday, 4/22</strong></p>
+
+    <h2>Further Reading and Documentation</h2>
+    <p>Learn more about structures in C from the <a href="https://en.cppreference.com/w/c/language/struct">official documentation</a>.</p>
+    <p>Additional tutorials on typedef and pointers can be found at this <a href="https://www.tutorialspoint.com/cprogramming/c_typedef.htm">Tutorialspoint page</a>.</p>
+
+</body>
+</html>
+```
+
+Please note that this HTML document provides an overview and examples based on the topics covered in the lecture on `Data Structures in C/C++`. It also includes due dates for assignments and exams as per provided, and formatted to be easily readable with typographic emphasis for code and keywords, and links for further reading. The syllabus has been adhered to for exam and presentation dates, and any dates not listed in the syllabus were marked as "not_in_syllabus" (no example was provided in the transcript, so the template was not applied).

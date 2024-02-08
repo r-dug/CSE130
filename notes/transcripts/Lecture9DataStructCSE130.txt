@@ -1,0 +1,268 @@
+Lecture9DataStructCSE130
+All right, let's get started.
+ Any questions before we begin? So today we're looking at how to create data structures.
+ Simple structs in C.
+ So far, we relied on arrays as our main data structure and arrays were useful, but they supported only a single type of data.
+ So you had an array of integer sort of characters.
+ A lot of times it's useful to have a data structure which allows you to support multiple data types as its components.
+ Maybe you have some sort of a.
+ Recipe or materials list.
+ And so in those cases, it would be good if we can combine multiple ingredients under the same name.
+ C allows us to do that.
+ There is something called structure with a reserved keyboard struct which allows you to explain to the compiler what components make up this new data type which you are creating and essentially allows you to customize the data type to the needs of your software.
+ The syntax for creating a structure is as follows You have reserved keywords struck.
+ You give it a meaningful name and then within curly brackets, you have a list of members of a structure which are of possibly different data types.
+ Could be of the same data type could also be other structures within a structure, could be arrays, really whatever you would like to include followed by semicolon.
+ Here's a few examples.
+ Now I can first explain to the compiler what I have in mind, what data structure I would like to have without allocating any memory.
+ So I'm just saying I'm going to create the structure.
+ I'll call it my example.
+ It will have an integer, a character, an array of characters.
+ No memory will be allocated for it.
+ But now I have this abstract structure I can later on use to instantiate variables from.
+ On the right side, I have a structure which actually allocates memory for an instance of that structure, because I'm giving it a name.
+ My structure, you see it at the end there.
+ After the closing curly bracket, but before the semicolon.
+ Here is a more complete example.
+ Maybe I'm working with some sort of student data.
+ I'd like to create a structure for a student type.
+ Now I'm doing some mixing of different languages here and order some treating strings as if they can exist.
+ Just to simplify this example.
+ Makes no difference.
+ Forward with trying to do basically any data type support.
+ It can be included.
+ In this example, I have information about students.
+ First name, last name, cause, grade test scores, programing scores and GPA.
+ Different data types, but all of them kind of make up what a student is.
+ Once I create this idea for what a student type is, I can start creating individual student variables from student type like I would any other type of variable.
+ Any questions about that? So at the same time, this is what happens in memory.
+ We allocate continuous block blocks of memory to store of those sub members of a structure, and for once we explicitly allocate computer reserves necessary in memory to store that information just to kind of visualize what happens under the.
+ If you need to get access to members of a structure, we can use what is known as the DOT operator.
+ And it's kind of like subdomains with web addresses.
+ You have a name of a structure than that subdomain of a member member name.
+ So we can still write directly to the members of a structure.
+ In the case of my student structure, maybe I would like to initialize their GPA.
+ So I would say.
+ Name of a student variable, new student date axis operator GPA.
+ And I said that equal as any of a float.
+ I can them names first and last for the string variables of the new student.
+ But again, all I'm doing here is demoing this dot access operator.
+ So now, for example, if I need to assign grades to a student.
+ I can figure out how a percentage converts to the letter grade and rely on the dot access operator to get access to course grade of the new student.
+ Questions.
+ Structures support.
+ Assignment Operator.
+ So I can just set one structure equal to another of the same type.
+ So I can maybe re initialize all my students based on some other default student.
+ Here.
+ I'm setting student structure equal to the information in the new student.
+ But we just copy all the information from right to left.
+ In addition to being able to directly assign the whole structure, I also can copy over individual members of a structure.
+ Sometimes they are the same, and so you can copy the whole structure as a block.
+ Sometimes that is something you want to modify.
+ Maybe you have default properties for initial grade initial GPA, but maybe you want to give unique names to each student.
+ So that's where you can do a member level assignment as well.
+ But in terms of what happens when we do assignment at the level of a structure, it's as if I copied all the individual members from right to left.
+ Questions.
+ Comparison.
+ Operator So there is not a built in comparison.
+ Operator Obviously for custom structures you create.
+ We don't know how to compare two students.
+ Are we talking about GPA? Are we talking about alphabetically by last name? It's not obvious what we have in mind.
+ So you have to write out your own.
+ Member by member comparison, we can check if they are identical.
+ But if we want to do some sort of a comparison in terms of greater them, then we have to look at those individual sub members.
+ Likewise, there is not a built in support for printing out a custom data structure.
+ I don't know how you want a student to be printed.
+ Maybe you want it to be like a student record.
+ Maybe you want something like a list of attributes not obvious.
+ So we have to explain and write a custom function for either outputting structure or reading structure.
+ And if you have.
+ New student structure.
+ Waiting for information from the user.
+ You cannot just skin off into the new structure.
+ You have to do it member by member and assign this information to appropriate sub members using that access.
+ Operator.
+ Here is a simple example.
+ I create a structure.
+ X has some member CBC all integers within mean.
+ I can use X to create an instance of x type and call z.
+ And now I can start assigning information to member of Z, increasing that information, printing it out again at the level of an individual member.
+ Questions.
+ There is also capability for create aliases for existing data types.
+ Makes your code easier to read.
+ Allows you to customize it a little more.
+ Maybe you don't like using integer as a data type.
+ You want to create something called length.
+ Instead, there is reserved keyword typedef, which allows you to define alias types.
+ So syntax would be type def, the data type you're trying to clone and then the new alias for.
+ Once you do that, you can start creating variables of type length.
+ Same idea If you have student maybe you want to create some sort of a speed student alias and so on.
+ Which structures? If I want to create an alias, some name for my structure, I can do it using again typedef as a prefix for the structure.
+ This is different than actually allocating memory for structure type.
+ Notice I'm not saying structure name for the type and then name of an instance.
+ I'm saying typedef structure.
+ Some defining a new type.
+ Once they have defined that type.
+ Now it can create variables of that type.
+ As easily as any other native variable type.
+ And of course, things would be boring without pointers.
+ I'm sure you missed them.
+ So that is also a way to access members of a structure using pointer notation, a pointer operator, which kind of looks like a little arrow.
+ So if I create a pointer to my structure, same as before pointer off type matching structure type so that equal to the address of my structure, I can now refer to members of my structure, for example, letter using that pointer operator annotation, which is kind of like referencing that pointer using dot access operator for the member ladder.
+ So if you have declared in the initialize the pointer now you can use that pointer annotation as an alternative to the date access operator, particularly in cases where we've passed that structure to a function.
+ So here is a small program showing use of structures in a program.
+ I start by creating a structure which holds information about idea, and I create another structure which itself contains the previously defined structure and also name array of 30 characters.
+ I would in my main functions, start declaring.
+ Specific variables of that type structure, identity.
+ I give it a default.
+ Value.
+ Lets sell name ID draws minute.
+ I create a pointer.
+ PCR of the type identity, which points to the address of Dreyer's and using data access operator.
+ I start initializing ID and GPA members, which are members of a substructure person within the structure.
+ J.
+S.
+ I can also printout this individual members using either dot operator or pointer operator notation.
+ Same result.
+ They are essentially equivalent in both cases.
+ I'm getting access to the value stored in the member variable, either variable at the level of a structure or the level of substructure, and it's sub members.
+ I can mix those as well.
+ I can use the pointer notation to get to the person structure within a structure and then using that axis operator to get to the I.
+D variable and GP variables within that structure.
+ Any questions about that? So let's compare.
+ Arrays and structures in terms of some of their properties.
+ They are very similar in many ways.
+ There is some differences.
+ So we can do assignment operator on structures that would copy over information within the structure.
+ Assignment Direct assignment is not supported for us because those are just addresses.
+ You would be cloning an address, not copying over information.
+ Input and output is not supported.
+ Exception being character arrays which we learned allow us to print them, relying on no terminating character to indicate where they end.
+ Arrays can only be passed by reference.
+ Arrays.
+ Addresses.
+ Structures can be both parsed by value and passed by reference.
+ So because they can be passed by value, we can also return value from a function representing the structure.
+ We can combine the two data structures we now know about to create more complex and more traditional data structures.
+ A list is a very common data structure, has a list of elements and also stores some meta level information about the size of a list, how many elements we have in the list.
+ So here I am creating a list type structure which contains an array of a thousand elements and a variable for telling me how many elements are active at this time.
+ At some point in your career, if you continue with computer science, you'll probably take a whole course on data structures.
+ This is not that course.
+ We're just trying to get basic, basic ideas for how to store information.
+ So here is a visual representation for our list.
+ I have an array storing all the elements of my list and I have one extra variable for storing the size of that list.
+ Here is me working with that list.
+ I can start by initializing the length of a list to zero.
+ Start writing out two locations.
+ Specific values.
+ Location zero Gets value of 12.
+ Immediately I increase the size of my list by one.
+ Now contains one element which is 12.
+ We add another element 37.
+ Same thing we repeat, we increase the size.
+ Now I have a list with two elements in it stored in that array.
+ Any questions about that? We can also create an array of structures.
+ That would be very useful.
+ Let's say I have an employee type.
+ An employee type.
+ It's kind of like a student type, but they get paid.
+ So maybe I have a factory full of workers.
+ I can create an array of employees and I'll process everyone at that factory using techniques we've learned about processing arrays, placing them with their loops and so on.
+ And you can see the representation in memory.
+ Again, I have an array of employees and each cell in that array is itself a whole employee type structure.
+ As you saw in some examples, you can place structures within structures.
+ It's probably a good idea to make smaller and usable structures rather than placing everything in a world in one.
+ So my employee type can contain all the information about the employee, but I can also create smaller structures for just the name, just address all the other relevant properties, and then create an employee type by including those substructures within.
+ That structure this way later on, most likely somebody will need a name type structure for storing first name, last name, middle name, so that can be used.
+ Whatever it is for student data type, employee type or anything else like that.
+ Any questions about that? So that's the visual representation of the situation with structures within structures.
+ I created little.
+ Saab records and place them within a bigger record.
+ To build up that structure.
+ Structures function arguments.
+ We already said we can pass structures either by reference or by value.
+ Because structures could be big, complex copying over all the information could be computationally expensive.
+ So a lot of times it makes more sense to just pass by reference and an address in.
+ If you are worried about modifications being made to your original data, you can make it a constant and just provide access for read only operations.
+ So in terms of passing.
+ Information to functions.
+ We can pass individual members of a structure kind of like we did with built in variable types integer float.
+ So all I do is say okay, structure, dot exasperate or sub member and that gets mapped onto.
+ Formal arguments within the function.
+ I can also pass the whole structure to a function if it expects that data type.
+ Or I can pass an address of a structure, pass by reference and copy over address of the structure and of a function, which then can use a pointer operator to get access to the sub members of that structure, which is equivalent to referencing that pointer and using date access.
+ Operator.
+ Any questions about that? Okay, so we covered structures.
+ That was important.
+ Now, a few other topics which may be less important.
+ Unions is one of them.
+ A union is kind of like a structure, but instead of having all the sub members of that structure operate together.
+ At the same time here, the idea is to save memory.
+ Only one of the members is active at any given time.
+ So let's say we have a union called value and it may have a float, an integer or a character as its members.
+ And I need to keep track of which one is active at a given moment.
+ But that means the other two don't need to have memory allocated for them, making it more efficient.
+ If they're large members of that structure, you actually get some substantial savings if you have a whole array of those unions.
+ So if we want to create a new data type based on this idea, maybe we can create a variable enumeration of some kind, which keeps track of what is currently active in our union.
+ And that's up to you to keep track of this information.
+ So maybe I'll create this new struct variable which contains this enumeration as one of the members and the union for the value.
+ The size of a union will be the size of a largest member.
+ That's why it's probably a good idea to have members which are similar in size.
+ If you have a giant sub member and a bunch of tiny ones, you're not saving much in terms of memory.
+ And you initializing unions to a value appropriate for the type of the first member.
+ We can, of course, combine structures and unions, make them work together and.
+ Rely on this capability to keep track of what staff member is active in our union.
+ There is a program to demo this.
+ I think we see an example like that when we talked about our sewage statement with the levels of undergraduate or graduate students.
+ So I'm trying to keep rank of my students.
+ I have a union which either holds the rank or a degree level.
+ For student degrees, being liberal graduate, masters of graduate degree and ranks being kind of standard.
+ One, two, three, four, five years of undergrad.
+ I have a structure for storing this personal information with a D and GPA added to the union as well.
+ So let's look at what happens within the main program.
+ Again, I create a structure identity.
+ Give it a name.
+ We have student ID and then we ask student status, undergraduate or graduate.
+ We read it in.
+ If the status is undergraduate, we ask for the rank and store that information in.
+ JB, that student, that level, that rank.
+ Quite a few levels of structures and unions.
+ And we can output that information.
+ Otherwise, we know we are dealing with a graduate student.
+ So we really did information about the degree, whatever it is, a mass OPG, we're reading a string in and then we can print out all the information we collected about a deal, about GPA, about.
+ Our student attributes.
+ So as I said, probably not as important as the general idea of structures.
+ But if you are really trying to optimize memory, perhaps, and some built in embedded hardware or device, something like that could be used to save up a few bytes.
+ Any questions about unions? Okay.
+ And then another topic which is interesting and somewhat important, this idea of typecasting.
+ It is possible to force a data type to be treated as another data type.
+ They have to be compatible in a certain way.
+ It has to be a meaningful mapping between them.
+ But once you do that, essentially you will get results as if you were operating with that our data.
+ Let's see an example with integers and floats.
+ Let's say I have two integers, X and Y, and I have a float for a result.
+ I can force x and Y to be treated as floats by preceding the variable name with the data type in parentheses, the one I want to typecast to.
+ And so it will treat this set of variables as if they were floats integers.
+ Let's say 12 and five can be seen as 12.
+0 and 5.
+0 if you see them as floats.
+ And so I can perform this division Operation X divided by Y and get a result.
+ 2.
+4.
+ If I'm not relying on that.
+ So I'm switching from integer division to floating point division by forcing.
+ This typecasting operation.
+ Similarly, you can do it between character data type and integer data type.
+ If I have an integer number, which is set to 86 and a character letter which is a capital M, I can force the number to be typecast to a character and print it as such.
+ And I can force letter to be treated as an integer and print it as an integer so the output would be 86.
+ Typecast to a character is an uppercase B, and uppercase M typecast or an integer would be 77.
+ So maybe you can think about our custom data types you create.
+ Maybe you can typecast an employee to a student with a salary of zero or something like that.
+ Any questions about typecasting? Okay, So we had very few questions.
+ That's wonderful.
+ And I'm doing a great job explaining things.
+ If you have any individual questions, please stop by.
+ I'll be happy to help you with those.
+ A wonderful day.
+ 

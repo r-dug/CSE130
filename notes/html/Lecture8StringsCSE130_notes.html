@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,9 +37,9 @@ a:hover {
 <h3>Decoding Strings</h3>
 <p>Strings in C/C++ are sequences of characters enclosed in double quotes ("<code>""</code>"), terminating with a null character ("<code>\0</code>").</p>
 
-<pre><code>char name[] = "Alice"; // 'Alice\0'
+<pre><code>char name[] = "A"; // this is the same as 'A\0'
 </code></pre>
-<p><strong>THIS WILL BE ON THE EXAM:</strong> Understand the difference between a character and a string.</p>
+<p><strong>NOTE:</strong> Understand the difference between a character and a string.</p>
 <ul>
   <li>A character: <code>'A'</code></li>
   <li>A string: <code>"A"</code> (which is <code>'A\0'</code>)</li>
@@ -51,10 +50,18 @@ a:hover {
 <h3>String Declaration and Manipulation</h3>
 <p>Arrays of characters function as strings. Use the array or pointer notation for accessing and manipulating strings.</p>
 
-<pre><code>char city[7] = {'C', 'h', 'i', 'c', 'a', 'g', 'o'}; // 'Chicago\0'
+<pre>
+<strong>Declaration</strong>
+<code>char city[7] = {'C', 'h', 'i', 'c', 'a', 'g', 'o'}; // 'Chicago\0'
+char city[7] = "Chicago"; // 'Chicago\0'
 char *pCity = "Chicago"; // Also points to the string 'Chicago\0'
-</code></pre>
-
+</code>
+<strong>Indexing</strong>
+<code>char letter_i = city[2] // access letter 'i' by array syntax
+char letter_c = city[3] // access letter 'c' by pointer syntax
+// either way, you are accessing the byte at that index
+</code>
+</pre>
 <p><strong>NOTE:</strong> Arrays can store strings shorter than the size declared, with unused elements following the null-terminating character.</p>
 
 <h3>Input and Output</h3>
@@ -67,16 +74,23 @@ scanf("%s", color);
 
 <p><strong>NOTE:</strong> Strings can also be read entirely, including white spaces, using <code>gets()</code> function.</p>
 
+<h2>Functions of String Handling</h2>
+
+<p>Many functions exist in C to handle strings, from the string.h library. You aren't expected to memorize all of them, but should know some.</p>
+
 <h3>Key String Functions</h3>
 <p>Understanding the string handling functions <code>strlen()</code> (string length), <code>strcmp()</code> (string compare), and <code>strcpy()</code> (string copy) is crucial. These will be used frequently.</p>
+<p><strong>NOTE:</strong> Understand how these string functions work.</p>
 
-<pre><code>size_t len = strlen(name); // Returns length of 'name' excluding '\0'
-int cmp = strcmp(name1, name2); // Compares name1 with name2
-strcpy(dest, src); // Copies src into dest
-</code></pre>
+<pre><code>char str1[8] = "string1"; // create a string
+char str2[8]; // initialize another string variable
+strcpy(str2, str1); // Copies src into dest
 
-<p><strong>THIS WILL BE ON THE EXAM:</strong> Understand how these string functions work.</p>
+int len = strlen(str1); // Returns length of 'str1' excluding '\0'
 
+<strong>// you need this additional function because the built in comparison operators don't work on strings. they are not a C datatype...</strong>
+int cmp = strcmp(str1, str2); // Compares name1 with name2</code>
+</pre>
 <h3>String Comparison</h3>
 <p>Use <code>strcmp()</code> for comparing strings, which is necessary since strings cannot be compared with standard comparison operators like integers.</p>
 <pre><code>int compare = strcmp("A", "B"); // Compares 'A' with 'B'
@@ -102,11 +116,12 @@ strcpy(dest, src); // Copies src into dest
 <h2>External Resources</h2>
 <p>To dive into more details on the C programming language, you can refer to the following:</p>
 <ul>
-  <li><a href="https://en.cppreference.com/w/c/string/byte">C String Manipulation</a></li>
-  <li><a href="https://en.cppreference.com/w/cpp/string/byte">C++ String Manipulation</a></li>
+  <li><a href="https://www.tutorialspoint.com/c_standard_library/ctype_h.htm">ctype library</a></li>
+  <li><a href="https://www.tutorialspoint.com/c_standard_library/stdlib_h.htm">stdlib library</a></li>
+  <li><a href="https://www.tutorialspoint.com/c_standard_library/stdio_h.htm">stdio library</a></li>
+  <li><a href="https://www.tutorialspoint.com/c_standard_library/string_h.htm">string library</a></li>
   <li><a href="https://www.ascii-code.com/">ASCII Table</a></li>
 </ul>
 
 </body>
 </html>
-```
