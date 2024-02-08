@@ -1,0 +1,112 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lecture 8: Strings in CSE 130</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+}
+h1, h2 {
+  color: #333;
+}
+pre {
+  background-color: #f7f7f7;
+  border: 1px solid #e1e1e8;
+  padding: 10px;
+  border-radius: 5px;
+}
+a {
+  color: #0645ad;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+
+<h1>Lecture 8: Strings in C/C++</h1>
+
+<h2>Introduction</h2>
+<p>Understanding strings in C/C++ is essential as they are commonly used for manipulating large chunks of text in numerous applications such as word processors and web browsers. Strings are not a built-in data type in C as integers or floats. They must be managed explicitly.</p>
+
+<h2>Essential Concepts</h2>
+<h3>Decoding Strings</h3>
+<p>Strings in C/C++ are sequences of characters enclosed in double quotes ("<code>""</code>"), terminating with a null character ("<code>\0</code>").</p>
+
+<pre><code>char name[] = "Alice"; // 'Alice\0'
+</code></pre>
+<p><strong>THIS WILL BE ON THE EXAM:</strong> Understand the difference between a character and a string.</p>
+<ul>
+  <li>A character: <code>'A'</code></li>
+  <li>A string: <code>"A"</code> (which is <code>'A\0'</code>)</li>
+</ul>
+
+<p>Characters can be represented by their ASCII values and can include letters, digits, and special characters.</p>
+
+<h3>String Declaration and Manipulation</h3>
+<p>Arrays of characters function as strings. Use the array or pointer notation for accessing and manipulating strings.</p>
+
+<pre><code>char city[7] = {'C', 'h', 'i', 'c', 'a', 'g', 'o'}; // 'Chicago\0'
+char *pCity = "Chicago"; // Also points to the string 'Chicago\0'
+</code></pre>
+
+<p><strong>NOTE:</strong> Arrays can store strings shorter than the size declared, with unused elements following the null-terminating character.</p>
+
+<h3>Input and Output</h3>
+<p>To read strings, <code>scanf()</code> can be used for string literals but stops at whitespace.</p>
+
+<pre><code>char color[12];
+printf("Enter your favorite color: ");
+scanf("%s", color);
+</code></pre>
+
+<p><strong>NOTE:</strong> Strings can also be read entirely, including white spaces, using <code>gets()</code> function.</p>
+
+<h3>Key String Functions</h3>
+<p>Understanding the string handling functions <code>strlen()</code> (string length), <code>strcmp()</code> (string compare), and <code>strcpy()</code> (string copy) is crucial. These will be used frequently.</p>
+
+<pre><code>size_t len = strlen(name); // Returns length of 'name' excluding '\0'
+int cmp = strcmp(name1, name2); // Compares name1 with name2
+strcpy(dest, src); // Copies src into dest
+</code></pre>
+
+<p><strong>THIS WILL BE ON THE EXAM:</strong> Understand how these string functions work.</p>
+
+<h3>String Comparison</h3>
+<p>Use <code>strcmp()</code> for comparing strings, which is necessary since strings cannot be compared with standard comparison operators like integers.</p>
+<pre><code>int compare = strcmp("A", "B"); // Compares 'A' with 'B'
+</code></pre>
+
+<h3>Complex String Manipulation</h3>
+<p>Plentiful library functions exist for string manipulation, such as <code>strcat()</code>, <code>strstr()</code>, and <code>strtok()</code>. These can handle tasks such as:</p>
+<ul>
+  <li>Converting strings to numerical types for calculations</li>
+  <li>Finding and copying substrings</li>
+  <li>Tokenizing strings</li>
+</ul>
+
+<h2>Upcoming Assignments</h2>
+<p><strong>ASSIGNMENT: C Exam | DUE: Wednesday, 2/21</strong></p>
+<p><strong>ASSIGNMENT: C++ Exam | DUE: Monday, 4/8</strong></p>
+<p><strong>ASSIGNMENT: Student ppt | DUE: Monday, 4/15</strong></p>
+<p><strong>ASSIGNMENT: Student ppt | DUE: Wednesday, 4/17</strong></p>
+<p><strong>ASSIGNMENT: Student ppt | DUE: Monday, 4/22</strong></p>
+
+<p><strong>ASSIGNMENT: Homework on advanced arrays | DUE: N/A [not_in_sylabus]</strong></p>
+
+<h2>External Resources</h2>
+<p>To dive into more details on the C programming language, you can refer to the following:</p>
+<ul>
+  <li><a href="https://en.cppreference.com/w/c/string/byte">C String Manipulation</a></li>
+  <li><a href="https://en.cppreference.com/w/cpp/string/byte">C++ String Manipulation</a></li>
+  <li><a href="https://www.ascii-code.com/">ASCII Table</a></li>
+</ul>
+
+</body>
+</html>
+```

@@ -1,0 +1,396 @@
+Lecture8StringsCSE130
+So it.
+ Okay.
+ And get started.
+ Any questions before we begin? Okay, so today's topic is strings.
+ We mentioned them before as part of our lecture on arrays and later pointers.
+ There's definitely a lot of similarities between those concepts.
+ So let's dive in first.
+ Why do we need strings? It's frequently useful to manipulate large chunks of text.
+ Lots of different software.
+ Does that your word processor or your web browser, which is a common operation depending on the language you work with? Strengths may be a built in data type similar to integers or floats and C, but there is not a similar built in functionality here.
+ We'll have to kind of emulate this capabilities and manage those string types ourselves.
+ So when we talk about strings, we are talking about a sequence of characters.
+ In double quotes.
+ And by default, we are providing a terminating character.
+ They're no terminating characters, so we know where the string ends.
+ We can create an array of characters which essentially would hold all the symbols in our string.
+ We'll just have to explicitly take care of that.
+ No terminating character.
+ And then our standard character array becomes like a string for the purposes of manipulating text.
+ However, managing this knowledge, terminating character and overall size over strengths is up to you.
+ It's not done automatically, just like managing access stories in general here.
+ So there is a fundamental difference between characters and strings.
+ Strings are collections of characters, and they have that no terminating character component.
+ So a capital letter, a single quotes is a character.
+ A capital letter, A in double quotes is actually a string and has a very different under-the-hood representation in the language.
+ It has two characters there, the capital character and the null terminating character.
+ Similarly, for whatever other strings you are trying to work with, you need to count the number of active characters you're trying to preserve and add one more of the null terminating character.
+ Any questions about that? If you remember from our earliest lectures, there is a fundamental representation of mapping from integers to characters.
+ If you remember your ASCII table.
+ So we can use integer values to assign values to specific characters.
+ With strings.
+ We can store all sorts of different characters in an array of sort of symbols, not just letters, also digits, special characters.
+ Since it is an array or by another way of seeing it, it's a pointer.
+ The name of a string points to the first byte, first character in a sequence of characters.
+ So it's address of a first character.
+ A lot of what we're going to look at today, now that we have this data structure we can work with, is how to manipulate strengths.
+ So you have text.
+ You may be looking for specific characters in a string.
+ Maybe you want to change the capitalization.
+ Maybe you trying to find matching strings.
+ So what we're going to do today is look at lots of functions for manipulating characters, some strings.
+ We'll start with.
+ Library for obtaining properties of characters will go into some more complex functions for dealing with strings.
+ One thing is you don't have to.
+ You don't have to memorize all those functions.
+ I'm going to talk about.
+ You just need to know that they exist.
+ If you need to use one, you should be able to look it up and understand how it works.
+ But definitely don't have to memorize dozens of those functions.
+ There is probably three functions which are somewhat more useful than others.
+ I'll mention which ones.
+ Those you have to at least remember how they are used, how to call them, and so on.
+ So first we're looking at this character handling library.
+ And here we have a bunch of functions which will take a character as input and return a boolean.
+ True or false as a result of testing.
+ For a certain property of that character so we can check if a character we provide.
+ It is a digit, is alphanumeric is it's a decimal and so on.
+ So just your risk of some sort of assembly input from user.
+ You want to know what type of character you're working with.
+ You can integrate those functions into your program.
+ Here is the code for testing different symbols with those functions.
+ A lot of what I have here is just set up for printing results of this set of tests.
+ I'll show you the output so it's a little easier to process.
+ But basically I sit up and I go, okay, if I have a symbol eight, is it a digit? Okay.
+ If I have a symbol, hashtag, is that character a digit? And so on.
+ It is the result of running this program.
+ So we we can see that eight is in fact a digit, but hashtag is not.
+ We can check if something is alpha character.
+ We see that ampersand sign is not a letter.
+ Digit four is not a letter.
+ And so on.
+ Any questions about any of that? You, of course, can play with it on your device, see what results you'll get.
+ Okay.
+ So just to refresh your memory, how do we declare a character array to represent a string? Same as before, same notation as we used for arrays.
+ We have a data type, we have the name, and the only difference is that we include one extra cell in terms of size for storing the null terminating character.
+ Once they have it set up, I can use an array or pointer notation to manipulate my strings to access them so I can have an array called City of Size seven to store string.
+ I can also use pointer notation.
+ Since it's a string in double quotes, it comes with an alternate ending character assigned to that pointer and the name of a pointer itself.
+ PC will point to the address of character Capital G and you can access this string using every annotation, using subindex, using the referencing.
+ All of that will work with strings.
+ Here is a bit more of the same example.
+ So once they set up those two options.
+ Let's say I want to get access to the character at index.
+ One character a first day there, I can use a renovation with Subindex one.
+ I can do the reference address of a first bite of said by one bite.
+ I can use pcdi but azari annotation so point or treat it as an array with subindex of one.
+ Or I can do reference point or name Pcdi again with the same offset of one bite of zero.
+ Any questions about that? Again, this is what we already studied before responders.
+ So not completely novel information.
+ You should have pretty good idea of what's happening here.
+ Then we explicitly say how many characters will be stored in our array, what the size of air is necessary Memory gets allocated for that array.
+ But it doesn't mean you have to use all the elements.
+ You can have a shorter string stored in a larger array.
+ That's fine.
+ We'll just have some unused components after the null terminating character.
+ But you need more memory than the size of a string, obviously, to store it.
+ Otherwise, you'll go out of bounds and have problems.
+ Here is an example where I create a character array of size.
+ 16 should be able to store up to 15 symbols.
+ I can also have.
+ A blink for size in my array and kind of work backwards from the given string size for string.
+ John With four characters, I would create an array of characters of size five for four letters of the name and one for an all terminating character.
+ If you need to read a string into your program, we can use scan F for doing that with the percent s as a placeholder for our string.
+ Later on I'll show you another function for reading strings which does not stop than it encounters space, but reads the whole sentence with multiple tokens.
+ Be useful for your programs.
+ So here I have created a character array of size 12.
+ I initialize it with the default value of No.
+ I asked the user for their favorite color scan that n and likewise I can output that using the same placeholder.
+ Any questions about that? So safety gives her and her something more than.
+ That's 30 characters long.
+ You'll get into trouble with that.
+ I would, absolutely.
+ So that's an important part of designing it where there is no buffer overflows and that's how buffer overflows that that happened.
+ You have expectation of certain input.
+ They go over, they start writing into someone else's memory and they get in trouble.
+ Exactly.
+ Okay, so we got our strengths.
+ What are the different ways we can print them out? Here.
+ I have a string.
+ You can ignore all this extra set up there with constants and success codes.
+ We have a character array called My name, which is the size of my name.
+ 16 characters plus one extra.
+ I use a string copying function, which we will study in a few slides to write out string constant my name in my name, character array, and then for printing.
+ That's the line we're interested in here.
+ I can print out the whole string.
+ So print function is smart enough to deal with an array, a string, literal a pointer doesn't matter.
+ It supports all this types.
+ It will successfully print out whatever argument you give to that function.
+ Was there a question? Yes, you probably already mentioned it.
+ But is this based concerning character? Yes.
+ So for storage purposes, space, a character will need memory for it.
+ But for reading purposes, when was scanning data and it's a terminating character so it will stop reading scan a function will stop reading at space.
+ And so you need to take into account that fact if you need a whole sentence to be processed.
+ And we'll see how to do it later.
+ Okay.
+ Absolutely.
+ So this is a way to print out the whole string up to that no terminating character.
+ So we're saying just print whatever is legit part of that string.
+ We also can go in and process it at the level of single characters.
+ If you remember, we took a race, placed them inside of a loop and iterated through every cell using loop control variable as their index into the array.
+ We can do the same thing with.
+ Characteristics.
+ So same setup as in previous example.
+ Now I'm setting up a wire loop.
+ I initialize the index control variable to zero.
+ I start saying, okay, let's look at what the character in the array is at index.
+ If it's not null, meaning we haven't hit the end of that string.
+ We print out individual character at that index.
+ So it's an array.
+ I have an index starting at zero one, two, three.
+ I keep going.
+ I increase index every time I iterate through my wild loop.
+ And this whale print character zero character one all the way up to the size of a string.
+ At which point.
+ I no longer satisfy the wild condition.
+ The index will become equal to no terminating character at that location.
+ And so I exit my loop and I'm done.
+ So we can print strings as a whole data structure or print parts of it or whole string at the level of individual components.
+ Any questions about that? Okay.
+ I told you some functions will be more useful than others.
+ This is probably three functions which you should like really well understand.
+ They are good to know by heart functions for getting length of a string.
+ So you know how much memory you need to store it.
+ Function for comparing to strings and we'll see why it's not as easy as comparison operations and function for copying one string into another.
+ And we'll see each one with some examples.
+ So string copying function takes two arguments, two strings as one and as two and copies, whatever second argument is into the first one.
+ So it will copy over string two and the string one.
+ Obviously the sizes have to match.
+ At least the one you cupping into has to be bigger.
+ Here's an example of using the string copying function.
+ I set up two character arrays.
+ My name and my name too, and I'm using string copying function to copy first from string literal into the first my name array, and then use again, this time copying from the array my name into my name too.
+ So I'm just passing around the string literal between different representations.
+ If I print it out, I get the same results.
+ It's the same string.
+ But again, string copying function to argument's second one gets copied to the first argument.
+ Questions about that.
+ Yes.
+ You had copy.
+ The key to finding a service like right here, it might be trying to reason earlier you did that rather than just saying my name.
+ No, there is no reason sometimes to have extra stuff on my slides which can be admitted.
+ Yeah.
+ But I think the function itself is not complicated.
+ It's easy to understand how it works and utilize it.
+ The next one is even easier.
+ This is a string playing function, takes a single argument and tells you what the size of that is in terms of number of characters.
+ Not including the string terminating characters, the actual count of characters you would see if you print it out.
+ So let's figure it out.
+ I think in a previous example I said that the length of a name was 16 characters.
+ Let's see how we can compute it automatically.
+ We make a call to the string length function, provide string itself as input, and then that's what we're going to get if we run.
+ This counts the number of characters, returns it as an integer.
+ So if I wanted to store this in an array, I would take this number and add one to it to know the size of the array I need to.
+ Have in order to store that data.
+ Questions about it.
+ You just got to come back briefly, if you remember, passing arguments to functions.
+ You saw how we passed.
+ I raised two functions.
+ First reference.
+ So my function expects, in this case, print a string function.
+ Expects to get this.
+ Pointer array as an argument and it gets the name of a string as an actual argument from the main function and uses that address.
+ So nothing really different about strings in this context.
+ Finally, we get to the string comparisons.
+ Because drinks are not a built in data type.
+ The standard comparison operations are not supported like you can compare integers using those operators.
+ You cannot compare strings using them.
+ So we need a function which allows us to do this.
+ What does that mean to compare strings? So we're basically talking about alphabetical ordering.
+ Right.
+ Do you have a dictionary? If I ask you where in a dictionary some word resides, you know that a R will probably show up before Bill and so on.
+ Just.
+ Alphabetical ordering.
+ We start with the first character comparison.
+ If the first two characters are the same, we go to the second character and so on until we find the difference and sorted alphabetically.
+ The language is case sensitive.
+ So capital letters are not the same as lowercase letters.
+ And they precede uppercase letters.
+ Precede lowercase letters.
+ Look at your ASCII table.
+ They are grouped there together.
+ In a collection of uppercase symbols first.
+ So same.
+ We start with the first letter.
+ We compare them If there is a difference, we know the ordering.
+ If not, we go to the second letter.
+ So whatever is different in actual symbol or different based on case.
+ Same exact idea.
+ So let's set up a few comparisons to see how this string comparison works.
+ I initially used the string copying function to copy over my full name, my first name and my last name just so we have enough different strings to compare.
+ And if you saw the definition of string comparison function, there are two I'm sorry, there are three possible results.
+ Then you provide two strings to compare.
+ The results are if it returns zero, the two strings identical, they're equal in the ordering.
+ If you get a negative value, the first string is less is smaller, meaning it precedes alphabetically.
+ If you get a positive number, the first string is greater.
+ So the example they set up in the previous slide, we're comparing full name to full name, identical.
+ We compare uppercase to lowercase, we get a negative number.
+ So the first string precedes alphabetically.
+ And finally, we compare our last name to the first name Y capital versus our capital.
+ The first string is greater, meaning second three alphabetically.
+ Any questions about that? So you can use this function to sort.
+ Alphabetically.
+ A list of terms.
+ A list of words.
+ Here's a few more examples, but essentially of the same things we just looked at.
+ If I have set up a few character arrays, you don't name my name, your name.
+ I can start executing those functions, copying data into those variables from string constants, figuring out size of those names.
+ I can store a return to result into a variable.
+ Use that variable later for allocate proper size arrays.
+ Copy different combinations of strengths and finally compare different strengths and see if I'm getting negative, positive or zero results from it.
+ You should intuitively understand what the result is likely to be for debugging purposes.
+ If I'm trying to see between two names Bill and Lissa, which one would be first in the listing, Bill should proceed alphabetically.
+ So it's a smaller value.
+ We'll get a negative result.
+ Okay.
+ So that was the three somewhat more important functions.
+ Now we get back to a whole bunch of different library functions for manipulating strings, which we will look at but will not force ourselves to memorize.
+ There are functions for conversions between different.
+ Strings and a specific data type for processing it.
+ So strengths as just characters, right? It's not a number, it's not a specific type of number.
+ So it's not something we can do mathematical operations on.
+ We can make conversions where we take a string, which we know represents a number and make it accessible as a number to the compiler so we can convert from a string to double integer long and so on.
+ Let's see an example of that.
+ So here I have a variable called Z, which is a double, and I have a string a string constant 99.
+0.
+ In double quotes, I can use a function A to F which converts a string to a float, takes an argument, and just converts it to a numerical like that.
+ And the result is that now I can perform mathematical operations on that string.
+ Again to a human.
+ It's pretty obvious you read the same thing, 99.
+0.
+ You know how to work with it.
+ Mathematically, the compiler has no numerical value until it is converted to one.
+ So I can divided by to get the result of that operation.
+ So if a user is typing in a sentence interacting with your program, you may know that they are providing.
+ Numerical input and you're still reading the whole string as characters, but then you can tokenize it as we'll see in a few slides and treat some of the tokens as numerical values.
+ Any questions about that? So I told you, we're going to see another function to work with strings instead of scan F.
+ That is that gets function.
+ Which takes.
+ Takes input, for example, from keyboard and will read all the way to either end of the file or at least a new line character, meaning it will read the whole input, string the whole sentence, not just a single word up to the space.
+ So if you need to read.
+ And the answer, which contains maybe three or four words.
+ This is the way to do it.
+ If you ask a user what is your full name? They give you a first last meal.
+ You want to capture the whole thing, not just the very first word.
+ Skin F would get you the first word up to the space gets will allow you to capture the whole thing.
+ There is other functions related to that where you can get a single character.
+ There is a pwds function which allows you to print a whole string.
+ Again, multiple tokens.
+ And there are different variants for different streams in ports if you're not using a keyboard but reading from a.
+ Different string or array and so on.
+ So here is a demo of gets function.
+ We're also doing some additional work here to demonstrate food character function in.
+ This a reverse function, but it's not as important.
+ So the main idea here is I have a sentence character array 80 units long.
+ I'm asking user to enter a line of text.
+ They type something out which is very likely to be more than a single word.
+ And I can just get that sentence and capture it in my program for the purposes.
+ So if they supply a line of text.
+ I can do manipulations on the whole on a whole string, in this case, reversing the order of characters that we don't have to worry about that will get too self-referential.
+ Functions at the very end of the class.
+ There are other functions for manipulating strings.
+ Adding them together concatenating copying copying segments of one string into another counting characters.
+ A lot of it can be useful for applications such as DNA manipulation, where you're trying to find similarities between different genomes.
+ We'll look at some others briefly.
+ Some examples.
+ So one.
+ One function is for concatenating strings.
+ Takes two arguments.
+ Adds the second string to the first returns.
+ The result.
+ Of pointer to that first string now concatenated with the second string.
+ So in this example, we're going to get the name of the user and add an honorific the great to that name that we can print it out as a single string.
+ So title contains the result of strings and coordination between name and the honorific.
+ Any questions about that? But.
+ So here is different variants of you are concatenating functions, strengths, or concatenating only a certain number of characters.
+ If you see this function as str n cat where we take just the M characters specified as the third argument.
+ From from the second string and concatenate that.
+ So I start with creating three character arrays.
+ Happy New Year and an empty string.
+ I initially can get an eight string to two, String one.
+ It gives us Happy New Year as a strength.
+ Next we have.
+ Instagram cat function, which takes six characters from string to.
+ Concatenating a two empty string, which is string three gives us happy again.
+ No terminating character there.
+ And finally, I add the strings one and three together to get repeated.
+ Happy, happy.
+ Substring.
+ Lots of different functions for searching within strings, finding specific pattern, specific symbols.
+ Most of them will return a pointer to the location of what it is you are looking for if it is found.
+ So we can look for one word within an hour.
+ We can look for a span of characters from a secondary source.
+ There is also an interesting function for tokenizing sentences.
+ We'll look at that.
+ Again, you don't have to memorize details, but read through the definitions.
+ So if you ever need this functionality, you remember it exists and you can look up how to do it precisely.
+ So here we have a function which takes two strings and reports how many characters from the second string in any order show up in the first string before some other character shows up.
+ So my first string is the value is pi, and then the second string is random characters.
+ But you can see that they kind of show up as initial characters in the first string.
+ So we have Capital C there, H, e space, so the same symbols and we doing this string span.
+ We're trying to figure out what is the maximum span of characters from string to in string one.
+ Turns out we have 30.
+ So I told you, we'll look at the string tokenize there.
+ The idea is if I interact with a program.
+ I get a whole sentence from a user to process it properly, I need to break down the sentence into individual words and then decide for each word if I need to convert it to a numerical, process it in some other way.
+ How do I do this process? So this is interesting.
+ This function works in a somewhat unusual way.
+ We haven't seen this before.
+ Let's look at this example.
+ So I have my string.
+ This is a sentence with seven tokens.
+ I have a pointer set up, which is what I'm going to send to my function to process this process for sentence for breakdown.
+ So we have a string, the tokens are and we start first with a call to the string to recognize their function with the string array itself.
+ And the second argument is what separates tokens in this sentence? In this case, it is space.
+ It doesn't have to be space.
+ It could be commas, semicolons, whatever data you're working with, maybe producing an Excel spreadsheet and you're looking at commas between tokens, you specify what the use as a separate or for tokens.
+ Whatever string tokenized returns I will store in the token pointer and it gives me a pointer to the next.
+ Talking.
+ So I break off one.
+ I point to the rest of a sentence.
+ I continue this process.
+ You see the while loop there? I'll continue doing it until it doesn't return.
+ No.
+ Meaning we are out of tokens.
+ We hit the end of it.
+ There is nothing else to process.
+ Within the wire loop.
+ Our printout Current token.
+ And I'll make a second call to the string to organize their function and additional calls every time I iterate through this loop.
+ But this time, instead of resending a new string to it, I send null as the first argument, saying Continue breaking up the same same string.
+ Same sentence.
+ At some point it will process all the tokens we'll get know as the return value, and that will terminate the loop.
+ So in this case, what happens? I have a string to tokenize and then the tokens are each one of those.
+ Separately and you see, okay, there is a seven there.
+ I can check as a single character, I can see is it a digit, I can convert it to integer and so on.
+ Questions about.
+ Last example, string search function.
+ Here I'm trying to find an occurrence of string two wood and string one as before.
+ This function returns the pointer to the location if found.
+ If it doesn't find it common filter mode returns.
+ No.
+ So here we have a string or a dwarf Secondary string dwarf.
+ I'm going to look for that using function string string and returns a result which I'll store in the pointer variable for later processing.
+ So lots of demos.
+ Some may be confusing.
+ Play with them.
+ They are not bad.
+ Just follow instructions in the function description.
+ There is lots and lots of library functions available.
+ Have a pretty good understanding for how string comparison works.
+ String length.
+ Copying strings.
+ That's all I have for today.
+ Any questions? If you have individual questions, I'll be happy to help you with those.
+ 

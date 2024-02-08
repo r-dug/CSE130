@@ -9,9 +9,12 @@
     <style>
         body { font-family: Arial, sans-serif; }
         h1, h2 { color: #333; }
-        p, ul, ol { font-size: 18px; line-height: 1.6; }
+        p { font-size: 18px; line-height: 1.6; }
+        ul, ol { padding-left: 10 px; font-size: 18px; line-height: 1.6; }
         code { background-color: #f4f4f4; padding: 2px 4px; }
         .example { background-color: #eee; border-left: 3px solid #f0ad4e; padding: 10px; margin: 20px 0;}
+        .tab { display: inline-block; margin-left: 4em;}
+
     </style>
 </head>
 <body>
@@ -23,6 +26,11 @@
 
 <ul>
     <li>A pointer has a name, an address it points to, and a value stored at that address.</li>
+    <li>We don't have much control... Pointer constants are drawn from the set of addresses for a computer and exist by themselves.</li>
+        <ul>
+            <li>we cannot change them</li>
+            <li>we can only USE them</li>
+        </ul>
     <li>To declare a pointer, use the syntax: <code>type *pointer_name;</code></li>
     <li>Initializing pointers to null or zero is considered good practice to avoid pointing to unknown locations.</li>
     <li>De-referencing a pointer: Use the <code>*</code> symbol to access or modify the value at the memory address.</li>
@@ -35,6 +43,15 @@
     <code>
         int x = 10;<br>
         int *p = &amp;x;  // p now contains the address of x
+    </code>
+</div>
+
+<div class="example">
+    <h3>Example:</h3>
+    <p>Const with pointers:</p>
+    <code>
+        double radius = 5;<br>
+        double const *pval = &amp;radius;  // p now contains the address of radius and will not change        
     </code>
 </div>
 
@@ -61,13 +78,42 @@
     </code>
 </div>
 
+
+<div class="example">
+    <h3>Example:</h3>
+    <p>exchange values by Reference VS with Pointers:</p>
+    <code>
+        void exchange(int& x, int& y) // function takes in address values <br>
+        {<br>
+            <span class="tab"></span>int temp = x;   // temp takes x address <br>
+            <span class="tab"></span>x = y;          // x becomes y address <br>
+            <span class="tab"></span>y = temp;       // y becomes the original address of x, held in temp<br>
+            <span class="tab"></span>return;<br>
+        }<br>
+        int a = 7;<br>
+        int b = 5;<br>
+        exchange(a, b); // call function to exchange values<br>
+        <br>
+        VS<br>
+        <br>
+        void exchange(int* px, int* py) // function takes in dereferenced pointers <br>
+        {<br>
+            <span class="tab"></span>int temp = *px;   // temp takes px address <br>
+            <span class="tab"></span>*px = *py;          // x becomes py address   <br>
+            <span class="tab"></span>*py = temp;       // y becomes the address  of px, held in temp<br>
+            <span class="tab"></span>return;<br>
+        }<br>
+        int a = 7;<br>
+        int b = 5;<br>
+        exchange(a, b); // call function to exchange values<br>
+    </code>
+</div>
 <h2>Pointers to Pointers</h2>
 <p>It's possible to have pointers to pointers, which adds levels of indirection. This concept is more theoretical, but important for understanding pointer complexity and memory management.</p>
 
 <div class="example">
     <h3>Example:</h3>
-    <code>
-        int x = 58;<br>
+    <code>int x = 5;<br>
         int *px = &amp;x;<br>
         int **ppx = &amp;px;  // ppx is a pointer to a pointer to an integer
     </code>
@@ -83,7 +129,30 @@
 
 <h2>Dynamic Memory Allocation</h2>
 <p>Pointers are key to dynamic memory management, allowing for allocation and deallocation of memory at runtime.</p>
-
+<ul>
+    <li>This kind of memory referencing can be used to create various data structures - a term you may have heard</li>
+    <ul>
+        <li>Arrays are simply this, and the example given by prof yamp...</li>
+        <li>maybe you have the following list you've declared: <code>int list[6] = {1, 2, 3, 4, 5, 6}</code></li>
+        <ul>
+            <li><code>*(list + 1)</code>is not the same as <code>*list + 1</code></li>
+            <li>the first item is the second address in list, the second is an integer with a value 1 integer higher than the address for the first item in the list.</li>
+        </ul>
+    </ul>
+</ul>
+<div class="example">
+    <h3>Example:</h3>
+    <p>Find Smallest:</p>
+    <code>
+        int ary[5] = { 32, 8, 14, 22, 20 } <span class="tab"></span>// establish list <br>
+        pLast = ary + arySize - 1 <span class="tab"></span>// establish mem location of last element<br>
+        for (in pSm = ary, pWalk = ary + 1; <span class="tab"></span>// pSM is first element pWalk is next<br>
+        <span class="tab"></span><span class="tab"></span>pWalk &lt= pLast; <span class="tab"></span>//condition for end of for loop<br>
+        <span class="tab"></span><span class="tab"></span>pWalk++ ) /span><span class="tab"></span>// incrementer <br>
+        <span class="tab"></span><span class="tab"></span>if (pWalk &lt pSm) <span class="tab"></span>// conditional logic to change pSm if current value smaller <br>
+        <span class="tab"></span>pSm = pWalk; <span class="tab"></span>//changing the value of pSM<br>
+    </code>
+</div>
 <p><a href="https://www.cprogramming.com/tutorial/c/lesson6.html" target="_blank">Further Reading on Dynamic Memory Allocation</a></p>
 
 <h2>Assignments and Exam Notes</h2>
