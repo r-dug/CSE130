@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +57,7 @@
     // ...
 };</code></pre>
     <ul>
-        <li>THIS WILL BE ON THE EXAM: Understand how to define and use structures in C.</li>
+        <li>You should understand how to define and use structures in C.</li>
     </ul>
 
     <h3>Accessing Structure Members</h3>
@@ -91,7 +90,28 @@ ptr->gpa = 3.85; // Same as newStudent.gpa = 3.85;</code></pre>
     <ul>
         <li>Structures can be passed by value or by reference, whereas arrays are passed by reference only.</li>
         <li>Differences in assignment and size handling.</li>
+        <li>Aggregate operations:</li>
+        <ul>
+            <li>Arrithmetic - Array: no | Struct: no</li>
+            <li>Assignment - Array: no | Struct: Yes</li>
+            <li>I/O - Array - Strings only | Struct: no</li>
+            <li>Comparison - Array: no | Struct: no (but elements can be compared)</li>
+            <li>Parameter passing - Array: by reference | Struct: by value OR reference</li>
+            <li>Function refurning a value - Array: no | Struct: Yes</li>
+        </ul>
     </ul>
+    <h2>list struct</h2>
+    <p>
+        A union allows different members to occupy the same memory space; only one member is active at a time. Useful for saving memory when the union members are mutually exclusive. 
+    </p>
+
+    <h3>Example of a Union:</h3>
+    <pre><code>int array_size = 100;
+struct list 
+{
+    int elements [array_size];
+    int length;
+};</code></pre>
 
     <h2>Unions</h2>
     <p>
@@ -127,6 +147,3 @@ float result = (float)x / (float)y;</code></pre>
 
 </body>
 </html>
-```
-
-Please note that this HTML document provides an overview and examples based on the topics covered in the lecture on `Data Structures in C/C++`. It also includes due dates for assignments and exams as per provided, and formatted to be easily readable with typographic emphasis for code and keywords, and links for further reading. The syllabus has been adhered to for exam and presentation dates, and any dates not listed in the syllabus were marked as "not_in_syllabus" (no example was provided in the transcript, so the template was not applied).
