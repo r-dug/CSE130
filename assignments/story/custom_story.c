@@ -28,16 +28,8 @@ NOTES: This program should tell you a story. I hope it's okay I took the liberty
 #include <unistd.h>
 #include <time.h>
 
-struct Reader{
-    char name[21];
-    int age;
-    void *color;
-    char *origin;
-    char *sign;
-    char sidekick[8];
-    int keys;
-    int tokens;
-};
+
+
 char red[] ="\033[1;31m";
 
 char blue[] ="\033[1;34m";
@@ -158,6 +150,34 @@ char fire_sign[] =
 
 char *origins[] = {"earth", "wind", "water", "fire"};
 
+
+struct Character{
+    char name[21];
+    int age;
+    void *color;
+    char *origin;
+    char *sign;
+    void *sidekick;
+    int keys;
+    int tokens;
+};
+
+struct Sidekick{
+    char name[21];
+    int age;
+    void *color;
+    char origin[6];
+    char *sign;
+};
+
+
+struct Sidekick Rosa = {"Rosa", 14, green, "earth"};
+struct Sidekick Blake = {"Blake", 15, red, "fire"};
+struct Sidekick Oliver = {"Oliver", 16, blue, "water"};
+struct Sidekick Abigail = {"Abigail", 12, white, "air"};
+
+struct Sidekick *sidekicks[4] = {&Rosa, &Blake, &Oliver, &Abigail};
+
 void printEllipsis(int numPeriods) {
     int i;
     for (i = 0; i < numPeriods; i++) {
@@ -179,11 +199,10 @@ int main()
 {   
     srand(time(NULL));
     system("clear");
-    struct Reader you;
+    struct Character you;
     you.tokens = 20;
     you.keys = 0;
     char current_message[1000];
-
     sprintf(current_message, "\033[1;35m Your conciousness awakes in a void. \n You hear a voice, solemn and desparate...\033[0m \n\n\tA mysterious force has poisoned our world... Little time remains");
     typeMessage(current_message, 2);
     printEllipsis(3);
@@ -194,24 +213,27 @@ int main()
     int name_num = rand()%4;
     you.color = colors[ name_num ];
     you.origin = origins[ name_num ];
-    sprintf(current_message, "Welcome, %s - hero of %s", you.name, you.origin);
+    sprintf(current_message, "\tWelcome, %s - hero of %s", you.name, you.origin);
     typeMessage(current_message, 2);
     printEllipsis(3);
     switch(name_num){
         case 0:
             you.sign = earth_sign;
+            you.sidekick = sidekicks[3];
             break;
         case 1:
             you.sign = wind_sign;
+            you.sidekick = sidekicks[0];
             break;
         case 2:
             you.sign = water_sign;
+            you.sidekick = sidekicks[1];
             break;
         case 3:
             you.sign = fire_sign;
+            you.sidekick = sidekicks[2];
             break;
     }
-    
     printEllipsis(5);
     // show an animation based on origin
     system("clear");
@@ -236,9 +258,10 @@ int main()
             break;
     }
     color_reset();
+    printEllipsis(5);
     system("clear");
-
-    sprintf(current_message, "Wowee Zowee! You look strong....\nLet's see if your brains are as able as your muscles.\n");
+    
+    sprintf(current_message, "\tWowee Zowee! You look strong....\n\tLet's see if your brains are as able as your muscles.\n");
     typeMessage(current_message, 2);
 
     sleep(10);
