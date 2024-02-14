@@ -356,7 +356,7 @@ int main()
     typeMessage(current_message, 2);
     printEllipsis(1);
     sprintf(current_message, "\tWowee Zowee! You look strong....\n\tLet's see if your brains are as able as your muscles.\n");
-    while (you.keys>4 && you.tokens<0){
+    while (you.keys<4 && you.tokens<0){
         // level select based on keys you have. 
         switch(you.keys){
             case(0):
@@ -368,7 +368,6 @@ int main()
             case(3):
             
             system("clear");
-            typeMessage(you.sign, 30);
         }
     }
 }
