@@ -46,7 +46,12 @@ char purple[] = "\033[1;35m";
 
 char reset[] = "\033[0m";
 
-void *colors[] = {&green, &white, &blue, &red, &yellow, &cyan, &purple};
+void *colors[7] = {&green, &white, &blue, &red, &yellow, &cyan, &purple};
+
+void *fire_colors[4] = {&red, &yellow, &white, &purple};
+void *water_colors[4] = {&cyan, &blue, &white, &purple};
+void *earth_colors[4] = {&green, &green, &white, &yellow};
+void *wind_colors[4] = {&white, &yellow, &cyan, &blue};
 
 void color_reset(){
     printf("\033[0m");
@@ -70,6 +75,8 @@ char fire_poem[] =      "Energy is light\n"
                         "Destiny calls on a flame\n"
                         "A hero is born"
 ;
+void *poems[4] = {&earth_poem, &wind_poem, &water_poem, &fire_poem};
+
 char earth_sign[] =
     "             .:----==---.               \n"   
     "           :-====-:-==+=--=:.           \n"    
@@ -183,6 +190,7 @@ struct Character{
     void *sidekick;
     int keys;
     int tokens;
+    void *poem;
 };
 
 struct Sidekick{
@@ -228,24 +236,63 @@ void crazyType(char *str) {
         str++;           
     }
 }
+void firePrint(char *str) {
+    while (*str != '\0') {
+        switch_color(fire_colors[rand()%4]);
+        putchar(*str);   
+        fflush(stdout);  
+        str++;           
+    }
+}
+void waterPrint(char *str) {
+    while (*str != '\0') {
+        switch_color(water_colors[rand()%4]);
+        putchar(*str);   
+        fflush(stdout);  
+        str++;           
+    }
+}
+void earthPrint(char *str) {
+    while (*str != '\0') {
+        switch_color(earth_colors[rand()%4]);
+        putchar(*str);   
+        fflush(stdout);  
+        str++;           
+    }
+}
+void windPrint(char *str) {
+    while (*str != '\0') {
+        switch_color(wind_colors[rand()%4]);
+        putchar(*str);   
+        fflush(stdout);  
+        str++;           
+    }
+}
 int main()
 {   
+    char current_message[1000];
+    struct Character you;
+    int i = 0;
     srand(time(NULL));
     system("clear");
-    struct Character you;
-    you.tokens = 20;
-    you.keys = 0;
-    char current_message[1000];
+    
+    
+
     sprintf(current_message, "%s Your conciousness awakes in a void. \n You hear a voice, solemn and desparate...\033[0m \n\n\tA mysterious force has poisoned our world... Little time remains", purple);
     typeMessage(current_message, 2);
     printEllipsis(3);
     sprintf(current_message, "\tWhat is your name, brave soul?\n");
     typeMessage(current_message, 2);
-    scanf("%s", you.name);
-    sleep(1);
+    
+    
+    scanf("%s", you.name);    
+    you.tokens = 20;
+    you.keys = 0;
     int name_num = rand()%4;
     you.color = colors[ name_num ];
     you.origin = origins[ name_num ];
+    you.poem = poems[ name_num ];
+
     sprintf(current_message, "\tAwaken, %s - hero of the element %s %s", you.name, you.origin, reset);
     typeMessage(current_message, 2);
     switch(name_num){
@@ -269,30 +316,45 @@ int main()
     printEllipsis(5);
     // show an animation based on origin
     system("clear");
-    switch_color(you.color);
-    typeMessage(you.sign, 20);
-    switch(name_num){
-        case 0:
-            switch_color(you.color);
-            typeMessage(earth_poem, 1);
-            break;
-        case 1:
-            switch_color(you.color);
-            typeMessage(wind_poem, 1);
-            break;
-        case 2:
-            switch_color(you.color);
-            typeMessage(water_poem, 1);
-            break;
-        case 3:
-            switch_color(you.color);
-            typeMessage(fire_poem, 1);
-            break;
+    if (name_num == 0){
+        while(i<1000) {
+            earthPrint(you.sign);
+            usleep(1000);
+            system("clear");
+            i++;
+        }
+        earthPrint(you.poem);
+    }else if (name_num == 1){
+        while(i<1000) {
+            windPrint(you.sign);
+            usleep(1000);
+            system("clear");
+            i++;
+        }
+        windPrint(you.poem);
+    }else if (name_num == 2){
+        while(i<1000) {
+                waterPrint(you.sign);
+                usleep(1000);
+                system("clear");
+                i++;
+            }
+            waterPrint(you.poem);
+    }else {
+        while(i<1000) {
+                firePrint(you.sign);
+                usleep(1000);
+                system("clear");
+                i++;
+            }
+            firePrint(you.poem);
     }
+
     color_reset();
     printEllipsis(5);
     system("clear");
     typeMessage(current_message, 2);
+    printEllipsis(1);
     sprintf(current_message, "\tWowee Zowee! You look strong....\n\tLet's see if your brains are as able as your muscles.\n");
     while (you.keys>4 && you.tokens<0){
         // level select based on keys you have. 
