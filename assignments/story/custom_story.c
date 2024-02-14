@@ -30,21 +30,23 @@ NOTES: This program should tell you a story. I hope it's okay I took the liberty
 
 
 
-char red[] ="\033[1;31m";
+char red[] = "\033[1;31m";
 
-char blue[] ="\033[1;34m";
+char blue[] = "\033[1;34m";
 
-char green[] ="\033[1;32m";
+char green[] = "\033[1;32m";
 
-char yellow[] ="\033[1;33m";
+char yellow[] = "\033[1;33m";
 
-char white[] ="\033[1;37m";
+char white[] = "\033[1;37m";
 
-char cyan[] ="\033[1;36m";
+char cyan[] = "\033[1;36m";
 
-char purple[] ="\033[1;35m";
+char purple[] = "\033[1;35m";
 
-void *colors[] = {&red, &blue, &green, &yellow, &white, &cyan, &purple};
+char reset[] = "\033[0m";
+
+void *colors[] = {&green, &white, &blue, &red, &yellow, &cyan, &purple};
 
 void color_reset(){
     printf("\033[0m");
@@ -148,8 +150,29 @@ char fire_sign[] =
 "}(?_~>i!i>______+~~+-?[1l^'.`l[-+i+'      .`i[1(  (1{{)){-<lli-1/nXcvvzUX{~}(?_~>i!i>______+~~+-\n"
 ;
 
-char *origins[] = {"earth", "wind", "water", "fire"};
+char *origins[] = {"\033[1;32m earth", "\033[1;37m wind", "\033[1;34m water", "\033[1;31m fire"};
 
+char earth_riddle[] =   "There are things that you will leave more of, the more you take of them..."
+                        "You place all of these on me"
+                        "What am I?"
+;
+
+char wind_riddle[] =    "I move beneath the sun without leaving a shaddow"
+                        "What am I?"
+;
+
+char water_riddle[] =   "I'm always running but never move"
+                        "I have a mouth but never speak"
+                        "I have a bed but never sleep"
+                        "What am I?"
+;
+
+char fire_riddle[] =    "Feed me and I will grow"
+                        "Give me water and I will shrink"
+                        "What am I?"
+;
+void *riddle_answers[4] = {"earth", "wind", "water", "fire"};
+void *riddles[4] = {&earth_riddle, &wind_riddle, &water_riddle, &fire_riddle};
 
 struct Character{
     char name[21];
@@ -189,9 +212,19 @@ void printEllipsis(int numPeriods) {
 }
 void typeMessage(char *str, int speed) {
     while (*str != '\0') {
+        // switch_color(colors[rand()%7]);
         putchar(*str);   
         fflush(stdout);  
         usleep((80000*(rand()%5))/speed);  
+        str++;           
+    }
+}
+void crazyType(char *str) {
+    while (*str != '\0') {
+        switch_color(colors[rand()%7]);
+        putchar(*str);   
+        fflush(stdout);  
+        usleep((1000*(rand()%20)));  
         str++;           
     }
 }
@@ -203,7 +236,7 @@ int main()
     you.tokens = 20;
     you.keys = 0;
     char current_message[1000];
-    sprintf(current_message, "\033[1;35m Your conciousness awakes in a void. \n You hear a voice, solemn and desparate...\033[0m \n\n\tA mysterious force has poisoned our world... Little time remains");
+    sprintf(current_message, "%s Your conciousness awakes in a void. \n You hear a voice, solemn and desparate...\033[0m \n\n\tA mysterious force has poisoned our world... Little time remains", purple);
     typeMessage(current_message, 2);
     printEllipsis(3);
     sprintf(current_message, "\tWhat is your name, brave soul?\n");
@@ -213,9 +246,8 @@ int main()
     int name_num = rand()%4;
     you.color = colors[ name_num ];
     you.origin = origins[ name_num ];
-    sprintf(current_message, "\tWelcome, %s - hero of %s", you.name, you.origin);
+    sprintf(current_message, "\tAwaken, %s - hero of the element %s %s", you.name, you.origin, reset);
     typeMessage(current_message, 2);
-    printEllipsis(3);
     switch(name_num){
         case 0:
             you.sign = earth_sign;
@@ -260,9 +292,21 @@ int main()
     color_reset();
     printEllipsis(5);
     system("clear");
-    
-    sprintf(current_message, "\tWowee Zowee! You look strong....\n\tLet's see if your brains are as able as your muscles.\n");
     typeMessage(current_message, 2);
+    sprintf(current_message, "\tWowee Zowee! You look strong....\n\tLet's see if your brains are as able as your muscles.\n");
+    while (you.keys>4 && you.tokens<0){
+        // level select based on keys you have. 
+        switch(you.keys){
+            case(0):
 
-    sleep(10);
+            case(1):
+
+            case(2):
+
+            case(3):
+            
+            system("clear");
+            typeMessage(you.sign, 30);
+        }
+    }
 }
