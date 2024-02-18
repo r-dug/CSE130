@@ -27,6 +27,7 @@ NOTES: This program should tell you a story. I hope it's okay I took the liberty
 #include <string.h>
 #include <unistd.h>
 #include <time.h>
+#include <ctype.h>
 
 
 
@@ -159,26 +160,25 @@ char fire_sign[] =
 
 char *origins[] = {"\033[1;32m earth", "\033[1;37m wind", "\033[1;34m water", "\033[1;31m fire"};
 
-char earth_riddle[] =   "There are things that you will leave more of, the more you take of them..."
-                        "You place all of these on me"
-                        "What am I?"
+char earth_riddle[] =   "There are things that you will leave more of, the more you take of them...\n"
+                        "You place all of these on me\n"
+                        "I am the "
 ;
 
-char wind_riddle[] =    "I move beneath the sun without leaving a shaddow"
-                        "What am I?"
+char wind_riddle[] =    "I move beneath the sun without leaving a shaddow\n"
+                        "I am the "
 ;
 
-char water_riddle[] =   "I'm always running but never move"
-                        "I have a mouth but never speak"
-                        "I have a bed but never sleep"
-                        "What am I?"
+char water_riddle[] =   "I'm always running but never move\n"
+                        "I have a mouth but never speak\n"
+                        "I have a bed but never sleep\n"
+                        "I am a "
 ;
 
-char fire_riddle[] =    "Feed me and I will grow"
-                        "Give me water and I will shrink"
-                        "What am I?"
+char fire_riddle[] =    "Feed me and I will grow\n"
+                        "Give me water and I will shrink\n"
+                        "I am "
 ;
-void *riddle_answers[4] = {"earth", "wind", "water", "fire"};
 void *riddles[4] = {&earth_riddle, &wind_riddle, &water_riddle, &fire_riddle};
 
 struct Character{
@@ -220,7 +220,6 @@ void printEllipsis(int numPeriods) {
 }
 void typeMessage(char *str, int speed) {
     while (*str != '\0') {
-        // switch_color(colors[rand()%7]);
         putchar(*str);   
         fflush(stdout);  
         usleep((80000*(rand()%5))/speed);  
@@ -283,9 +282,11 @@ int main()
     printEllipsis(3);
     sprintf(current_message, "\tWhat is your name, brave soul?\n");
     typeMessage(current_message, 2);
-    
-    
-    scanf("%s", you.name);    
+    scanf("%s", you.name);  
+    sprintf(current_message, "\tAnd how old are you, %s?\n", you.name);
+    typeMessage(current_message, 2);  
+    scanf("%d", &you.age);  
+
     you.tokens = 20;
     you.keys = 0;
     int name_num = rand()%4;
@@ -293,7 +294,7 @@ int main()
     you.origin = origins[ name_num ];
     you.poem = poems[ name_num ];
 
-    sprintf(current_message, "\tAwaken, %s - hero of the element %s %s", you.name, you.origin, reset);
+    sprintf(current_message, "\tFor %d years, the world has felt the power of positive change growing... \nNow, %s - hero of the element %s %s- steps forth to conquer evil.", you.age, you.name, you.origin, reset);
     typeMessage(current_message, 2);
     switch(name_num){
         case 0:
@@ -353,21 +354,93 @@ int main()
     color_reset();
     printEllipsis(5);
     system("clear");
-    typeMessage(current_message, 2);
-    printEllipsis(1);
-    sprintf(current_message, "\tWowee Zowee! You look strong....\n\tLet's see if your brains are as able as your muscles.\n");
-    while (you.keys<4 && you.tokens<0){
+
+    sprintf(current_message, "\tOh geee! You look strong....\n\tLet's see if your brains are as able as your muscles.\n");
+    crazyType(current_message);
+    printEllipsis(5);
+
+    char response[10];
+    while (you.keys<4 && you.tokens>0){
+        sprintf(current_message, "Status:\n\tkeys: %d\n\ttokens: %d\nSolve this riddle!\n\n\n", you.keys, you.tokens);
+        typeMessage(current_message, 2);
         // level select based on keys you have. 
+        // was going to make this more interesting but got lazy and busy with other things
+        // "earth", "wind", "water", "fire"
         switch(you.keys){
             case(0):
+                earthPrint(riddles[you.keys]);
+                color_reset();
+                scanf("%s", response);
+                for(int i = 0; response[i]; i++){
+                    response[i] = tolower(response[i]);
+                }
 
+                if (strcmp(response, "earth") == 0){
+                    you.keys++;
+                    earthPrint("That's Right!\n");
+                }else{
+                    earthPrint("not quite!\n");
+                    printEllipsis(3);
+                    you.tokens -= rand()%5;
+                }
+                break;
             case(1):
-
+                windPrint(riddles[you.keys]);
+                color_reset();
+                scanf("%s", response);
+                for(int i = 0; response[i]; i++){
+                    response[i] = tolower(response[i]);
+                }
+                if (strcmp(response, "wind") == 0){
+                    you.keys++;
+                    earthPrint("That's Right!\n");
+                }else{
+                    earthPrint("not quite!\n");
+                    printEllipsis(3);
+                    you.tokens -= 2;
+                }
+                break;
             case(2):
-
+                waterPrint(riddles[you.keys]);
+                color_reset();
+                scanf("%s", response);
+                for(int i = 0; response[i]; i++){
+                    response[i] = tolower(response[i]);
+                }
+                if (strcmp(response, "river") == 0){
+                    you.keys++;
+                    earthPrint("That's Right!\n");
+                }else{
+                    earthPrint("not quite!\n");
+                    printEllipsis(3);
+                    you.tokens -= 2;
+                }
+                break;
             case(3):
-            
-            system("clear");
+                earthPrint(riddles[you.keys]);
+                color_reset();
+                scanf("%s", response);
+                for(int i = 0; response[i]; i++){
+                    response[i] = tolower(response[i]);
+                }
+                if (strcmp(response, "fire") == 0){
+                    you.keys++;
+                    earthPrint("That's right!\n");
+                }else{
+                    earthPrint("not quite!\n");
+                    printEllipsis(3);
+                    you.tokens -= 2;
+                }
+                break;
         }
+        system("clear");
     }
+    if(you.keys > 3){
+        printf("Congratulations! You win!");
+        printEllipsis(5);
+    }else{
+        printf("Oh no. You didn't solve enough riddles.");
+        printEllipsis(5);
+    }
+
 }
