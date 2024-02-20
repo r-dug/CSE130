@@ -1,0 +1,185 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lecture 11: CSE 130 Files</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h2 {
+            color: #2C3E50;
+        }
+        pre {
+            background-color: #F8F9F9;
+            border: 1px solid #E1E1E8;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        a {
+            color: #2980B9;
+            text-decoration: none;
+        }
+        .important {
+            background-color: #FDEBD0;
+            padding: 5px;
+            border-left: 3px solid #F39C12;
+            margin: 10px 0;
+        }
+        .note {
+            background-color: #D6EAF8;
+            padding: 5px;
+            border-left: 3px solid #5DADE2;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lecture 11: CSE 130 Files</h1>
+    <h2>Working with Files in C/C++</h2>
+    
+    <p>Files are crucial for storing data outside the volatile memory. In C and C++, manipulating files involves working with the file system provided by the operating system.</p>
+    
+    <h3>File Basics</h3>
+    <ul>
+        <li>Files are containers for storing data persistently.</li>
+        <li>They can be text (human readable) or binary (machine readable).</li>
+        <li>Paths and file names in different operating systems:</li>
+        <ul>
+            <li>Traditional Windows constraints were 8.3 (8 character name, 3 character extension).</li>
+            <li>Modern systems support longer names, spaces in names, and longer extensions.</li>
+        </ul>
+        <li>The basic steps of working with files:</li>
+        <ul>
+            <li>Open the file</li>
+            <li>Confirm we opened it.</li>
+            <li>Use it (read or write)</li>
+            <li>Close it</li>
+        </ul>
+        <li>STREAMS</li>
+        <ul>
+            <li>includes not only traditional files but also monitors, printers, whatever you might read or write data to/from</li>
+        </ul>
+        <li>Pointers are used in c - FILE pointers</li>
+        <ul>
+            <li>EX: <code>FILE *pwrite</code></li>
+        </ul>
+    </ul>
+    
+    <h3>Opening Files</h3>
+    <p>File operations typically include opening a file, performing read/write actions, and closing it. In C, this is handled with file pointers (of type <code>FILE*</code>).</p>
+    <ul>
+        <li>A computer needs to know a few things about the file before working with it:</li>
+        <ul>
+            <li>size of file</li>
+            <li>Line width</li>
+            <li>location of the file</li>
+            <li>format of its contents</li>
+            <li><strong>determining these things are abstracted away from us typically</strong></li>
+        </ul>
+        <li>The <code>fopen()</code> function is used to open files and returns a file pointer.</li>
+        <ul>
+            <li> this pointer is used to work with the file elsewhere in the program</li>
+        </ul>
+        <li>It takes two arguments: the file path and the mode ('r' for read, 'w' for write, and 'a' for append).</li>
+        <li>Returns <code>NULL</code> on failure.</li>
+        <li>Example:</li>
+        <pre><code>
+#include &lt;stdio.h&gt; 
+main() 
+{ 
+    FILE *pRead; 
+    pRead = fopen("sample.txt", "r"); 
+    if (pRead == NULL){
+        printf("Oh no! Cannot write to file!")
+    }
+} 
+        </code></pre>
+
+    </ul>
+
+    <h3>Writing to Files</h3>
+    <ul>
+        <li>Use <code>fprintf()</code> to write formatted text to a file stream.</li>
+        <li>Similar to <code>printf()</code>, but includes a file pointer as the first argument.</li>
+        <li>Returns the number of characters written, or a negative number if an error occurs.</li>
+        <li>Example:</li>
+        <pre><code>
+#include &lt;stdio.h&gt; 
+main() 
+{ 
+    char name[8] = "Richard";
+    FILE *pWrite; 
+    pWrite = fopen("sample.txt", "w"); 
+    if (pWrite == NULL){
+        printf("Oh no! Cannot write to file!")
+    }
+    else{
+        fprintf(pWrite, "Hello, my name is %s", name);
+    }
+} 
+        </code></pre>
+    </ul>
+    
+    <h3>Reading from Files</h3>
+    <ul>
+        <li>Reading is performed using the <code>fscanf()</code> and <code>fgets()</code> functions.</li>
+        <li>These functions similarly require a file pointer and work like their console counterparts <code>scanf()</code> and <code>gets()</code>.</li>
+        <li>Example:</li>
+        <pre><code>
+#include &lt;stdio.h&gt; 
+main() 
+{ 
+    FILE *pRead; 
+    pRead = fopen("sample.txt", "r"); 
+    if (pRead == NULL){
+        printf("Oh no! Cannot write to file!")
+    }
+    else{
+        
+    }
+
+} 
+            </code></pre>
+    </ul>
+
+    
+    <h3>Closing Files</h3>
+    <ul>
+        <li>The <code>fclose()</code> function is used to close an open file.</li>
+        <li>Takes a file pointer as an argument.</li>
+        <li>It's vital to close files to not lock resources and also to ensure all data is written properly.</li>
+        <li>Example:</li>
+        <pre><code>
+#include &lt;stdio.h&gt; 
+main() 
+{ 
+    FILE *pRead; 
+    pRead = fopen("sample.txt", "r"); 
+
+} 
+            </code></pre>
+    </ul>
+    
+    <h3>Goto Statement (General Knowledge, not for C/C++)</h3>
+    <ul>
+        <li><code>goto</code> allows for unconditional jumps in the code, to labels defined in the current function.</li>
+        <li>Considered harmful for creating unmanageable and complex code.</li>
+    </ul>
+    <h3>Error Handling (Preview for C++)</h3>
+    <ul>
+        <li><code>exit()</code> function sends a success or failure code to the operating system.</li>
+        <li>Advanced error handling, such as exception handling, will be covered in C++ lectures.</li>
+    </ul>
+    <p>For further reading on file I/O in C, check the official <a href="https://en.cppreference.com/w/c/io" target="_blank">C documentation on I/O operations</a>.</p>
+    <div class="important">
+        <p><strong>ASSIGNMENT: C Exam | DUE: Wednesday, 2/21</strong></p>
+        <p><strong>ASSIGNMENT: C++ Exam | DUE: Monday, 4/8</strong></p>
+        <p><strong>ASSIGNMENT: Student ppt | DUE: Monday, 4/15</strong></p>
+        <p><strong>ASSIGNMENT: Student ppt | DUE: Wednesday, 4/17</strong></p>
+        <p><strong>ASSIGNMENT: Student ppt | DUE: Monday, 4/22</strong></p>
+    </div>
+</body>
+</html>
+```
