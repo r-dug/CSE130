@@ -186,7 +186,7 @@ int main(){
                         system("clear");
                         break;
                     case 3:
-                        // system("clear");
+                        system("clear");
                         printPhonebook(&phonebook, &size);
                         
                         printf("Enter 'X' to exit\n");
