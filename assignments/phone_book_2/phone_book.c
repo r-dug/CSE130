@@ -41,7 +41,7 @@ struct PhonebookEntry{
     char first_name[15];
     char last_name[15];
     char phone_number[11]; 
-};
+} PhonebookEntry;
 struct PhonebookEntry *phonebook = NULL;
 void resizePhonebook(struct PhonebookEntry **phonebook, int *capacity, int newcapacity){
     *capacity = newcapacity;
@@ -77,7 +77,11 @@ void resetEntryByIndex(struct PhonebookEntry **phonebook, int *index, int *size)
         printf("\nCannot delete. Index is out of bounds.\n\n");
     }
 }
-void sortPhonebook(struct PhonebookEntry **phonebook, int *size){
+int sortByFirstName(const void *a, const void *b){
+    return strcmp(((struct PhonebookEntry *)a)->first_name, ((struct PhonebookEntry *)b)->first_name);
+}
+int sortByLastName(const void *a, const void *b){
+    return strcmp(((struct PhonebookEntry *)a)->last_name, ((struct PhonebookEntry *)b)->last_name);
 }
 void searchPhonebook(struct PhonebookEntry **phonebook, int *size, char search_term[]){
     int i = 0;
@@ -174,6 +178,7 @@ int main(){
     char proceed;
     int count;
     char search_term[15];
+    char first_or_last;
 
     // initialize list of phonebook entryies (i.e. the phonebook)
     struct PhonebookEntry *phonebook = (struct PhonebookEntry *)malloc(capacity * sizeof(struct PhonebookEntry));
@@ -224,20 +229,38 @@ int main(){
                 // check if positive 10 digit integer
                 int isDigits = countDigits(add_phone_number);
                 if (strlen(add_phone_number) != 10 || isDigits == 0){
-                    printf("Invalid phone number. \nSimply enter a 10 digit number with no characters...\n\n");
+                    printf("\nInvalid phone number. \nSimply enter a 10 digit number with no characters...\n\n");
+                    printf("press ENTER to return to main menu\n");
+                    getchar();
+                    
+                    while(getchar() != '\n');
+                    system("clear");
                     break;
                 }
                 
                 addEntry(&phonebook, &size, &capacity, add_first_name, add_last_name, add_phone_number);
+                printf("press ENTER to return to main menu\n");
                 getchar();
+                while(getchar() != '\n');
                 system("clear");
                 break;
             case 2:
                 system("clear");
                 printPhonebook(&phonebook, &size);
+                if (size == 0){
+                    printf("press ENTER to return to main menu\n");
+                    getchar();
+                    while(getchar() != '\n');
+                    system("clear");
+                    break;
+                }
                 printf("\n\nSelect an entry to delete by index: ");
-                scanf("%d", &deletion_idx);
-                resetEntryByIndex(&phonebook, &deletion_idx, &size);
+                result = scanf("%d", &deletion_idx);
+                if (result != 1){
+                    printf("INVALID ENTRY!\n\n");
+                }else {
+                    resetEntryByIndex(&phonebook, &deletion_idx, &size);
+                }
                 printf("press ENTER to return to main menu\n");
                 getchar();
                 while(getchar() != '\n');
@@ -252,7 +275,25 @@ int main(){
                 system("clear");
                 break;
             case 4:
+                printf("\nEnter 'f' to sort by first name or 'l' to sort by last name: \n");
                 getchar();
+                result = scanf("%c",&first_or_last);
+                if (result != 1){
+                    printf("INVALID ENTRY!\n\n");
+                }else if (first_or_last == 'f'){
+                    qsort(phonebook, size, sizeof(PhonebookEntry), sortByFirstName);
+                }else if (first_or_last == 'l'){
+                    qsort(phonebook, size, sizeof(PhonebookEntry), sortByLastName);
+                }else{
+                    printf("INVALID ENTRY!\n\n");
+                }
+                // I didn't want to think to hard about how to readjust the indexes in the compare functions.... though I bet you could.
+                for (int i = 0; i < size; i++) {
+                    phonebook[i].id = i;
+                }
+                printf("press ENTER to return to main menu\n");
+                getchar();
+                while(getchar() != '\n');
                 system("clear");
                 break;
             case 5:
