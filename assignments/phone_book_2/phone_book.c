@@ -78,10 +78,40 @@ void resetEntryByIndex(struct PhonebookEntry **phonebook, int *index, int *size)
     }
 }
 int sortByFirstName(const void *a, const void *b){
-    return strcmp(((struct PhonebookEntry *)a)->first_name, ((struct PhonebookEntry *)b)->first_name);
+    const char *str1 = ((struct PhonebookEntry *)a)->first_name;
+    const char *str2 = ((struct PhonebookEntry *)b)->first_name;
+
+    char lower_str1[strlen(str1)];
+    char lower_str2[strlen(str2)];
+    for (int i = 0; str1[i]!= '\0'; i++) {
+        lower_str1[i] = tolower(str1[i]);
+    }
+    lower_str1[strlen(str1)] = '\0';
+
+    for (int i = 0; str2[i] != '\0'; i++) {
+        lower_str2[i] = tolower(str2[i]);
+    }
+    lower_str2[strlen(str2)] = '\0';
+
+    return strcmp(lower_str1, lower_str2);
 }
 int sortByLastName(const void *a, const void *b){
-    return strcmp(((struct PhonebookEntry *)a)->last_name, ((struct PhonebookEntry *)b)->last_name);
+    const char *str1 = ((struct PhonebookEntry *)a)->last_name;
+    const char *str2 = ((struct PhonebookEntry *)b)->last_name;
+
+    char lower_str1[strlen(str1)];
+    char lower_str2[strlen(str2)];
+    for (int i = 0; str1[i]!= '\0'; i++) {
+        lower_str1[i] = tolower(str1[i]);
+    }
+    lower_str1[strlen(str1)] = '\0';
+
+    for (int i = 0; str2[i] != '\0'; i++) {
+        lower_str2[i] = tolower(str2[i]);
+    }
+    lower_str2[strlen(str2)] = '\0';
+
+    return strcmp(lower_str1, lower_str2);
 }
 void searchPhonebook(struct PhonebookEntry **phonebook, int *size, char search_term[]){
     int i = 0;

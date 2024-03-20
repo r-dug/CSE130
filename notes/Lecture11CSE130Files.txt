@@ -1,0 +1,252 @@
+Lecture11CSE130Files
+All right, let's get started.
+ The any questions for me before we begin today's lecture? All right.
+ So today's topic is files working with text files, writing to text files.
+ Reading data from text files.
+ You probably by now had a chance to see a file in your life.
+ It's a big part of more complex software.
+ Obviously, you store your essays in word files, the text files, you store your source code and C files.
+ Soon, C++ files.
+ It is really a construct of the operating system.
+ It's not a part of our programing, but we need to be able to work with files of be able to request access to them and know how to how to open them for reading, for writing, editing, and so on.
+ Depending on the operating system you are actually using, There are different conventions for what a file name and extensions are.
+ For Windows.
+ Back in the day, there was a lot of restrictions.
+ The file name had to be eight characters.
+ No spaces, three characters for extension.
+ Since then, there is a lot more flexibility.
+ Names could be up to what a qualified pair of two 256 characters long.
+ You can have spaces.
+ You are free to have longer extensions.
+ The name of a file along with the path to the file.
+ So the subdirectory structure is the fully qualified name of that file.
+ You would have to specify that unless the file resides in the default directory where the program was running.
+ In terms of data abstraction, we can see files to scan a grouping of records.
+ Records are made out of fields.
+ Fields contain information in terms of whites and all the way down to bits.
+ Of course, there are different file formats.
+ Representations will only look at text files.
+ You can also have files with binary data so non-human, readable, but readable by computers.
+ You can directly store your data structures objects in the binary files on non text files.
+ So how do we use files? Actually, very similar to what we learned about dynamic memory allocation in terms of process.
+ Again, pointers are involved.
+ We have to go through four steps.
+ We open the file.
+ We make sure we got a file opened.
+ We utilize it in some way reading, writing.
+ And after we done, we closed the file so our can work with that file.
+ There is this idea of file streams and it doesn't have to be just a file in a traditional sense.
+ We can have other things which represent files, hardware devices, for example.
+ Basically anything you output or read data from could be seen as this file abstraction.
+ If we want to have a pointer to a file stream, the type of pointer is file pointer appropriately.
+ Works the same as pointers to our data types and we can specify whatever we're opening file for a specific purpose.
+ Reading.
+ Writing a pen.
+ Then you open a file.
+ It is a lot of work involved.
+ You have to figure out.
+ File properties.
+ Location.
+ What is the internal side and the representation? So we don't want to do it Every time we have to write one character to the file, we would like to open our file, perform some sort of work on it, and then we don close the file.
+ So essentially we are creating an attached file handle for doing those operations.
+ There is a function called of open file.
+ Open function, which returns a pointer to a file stream.
+ And thanks to arguments, both are strings arrays of characters.
+ The first one is fully qualified file name or just a file name if in default directory.
+ And second argument is the mode in which you will work with your file.
+ If for whatever reason the system fails to open a file, you don't have access file doesn't exist.
+ Something else like that happens.
+ NULL is returned to indicate failure.
+ Otherwise you get pointer set up on success.
+ You can use that file stream pointers and argument to functions which will write to the file, read from a file, close the file, and so on.
+ Mentioned different modes of working with text files.
+ You have R for just reading.
+ So read only option.
+ You probably seen it before.
+ A file can be read only meaning you cannot modify it, but you have access to read it.
+ There is a W for writing to the file opening file.
+ If there is not a file that creates one.
+ It will delete anything Previously in the file.
+ And then there is a for appending new text to an existing file.
+ So here is an example.
+ I create a pointer to a file.
+ And I said it equal to.
+ A file I'm trying to open, which in this case is my file doc text for reading purposes.
+ Again, notice that the second argument, even though it's a single character, is a string.
+ It's not a character data type.
+ It's no terminating string.
+ Any questions about.
+ Opening file.
+ Just like with memory.
+ After we used it, we had to clean up, leave a memory, the memory.
+ After you're done with the file, you would like to close your file.
+ The function is f close takes that.
+ Pointer to the file argument closes the file so others can have access to it.
+ If you open the file for writing, for example, it blocks solvers from accessing that same file, so there is not a simultaneous changes being made to it.
+ So until you release the file, others may get a message saying file is logged by another user being used and so you don't have access to it.
+ It will return zero on success and the end of file on failure.
+ And the file meaning there is no more data indicator will see it again show up.
+ And we're reading from files as the Terminator for the file.
+ So here I have an example of both opening a file and closing file.
+ In this case, I'm opening my file for writing.
+ The file doesn't exist.
+ One will be created for me, in this case, some file dot data.
+ Okay, so we know how to open one with auto closed one.
+ Something is still missing.
+ We need to figure out how to actually work with the file, how to write to it.
+ The good news is, you know, 95% of it already, you know, print F function and how it works.
+ There is a function called F print f meaning do the print thing for files.
+ Works us before you have your place holders and variables, you have an additional third argument, which is the pointer to the file you want to write to.
+ It returns an integer where the integer represents number of characters you manage to successfully write of a file or a negative number to indicate it failed to do so.
+ There is also alternative functions, just like we saw with printf.
+ That is the boots function which scan f that is gets function with f printf.
+ There is another function which is efforts which allows us to take an array of characters, a string and pointer to the file and the write out to that file.
+ You remember, Getz allowed us to capture the whole sentence with spaces where skin F was grabbing up to a space, whatever word was there.
+ Boots allows us to output a sentence to the files.
+ Let's see a complete example of working with a file.
+ So I start with creating a pointer to a file from the name.
+ You can guess that I'm going to write to the file.
+ I have a few characters for first name, last name and ID also have a GPA, which is a float.
+ I start by setting P right equal to opening a file, which is in this case students that data for writing.
+ I immediately checked to see if operation was successful.
+ If it's not, I can say I can't open the file.
+ Otherwise I can print out to the screen.
+ Enter first name, last name, I.
+D.
+ and GPA and enter data separated by spaces.
+ Then I scan in those for.
+ Uh.
+ Four bits of information, three strings and a float.
+ And I write them out to a file.
+ So if you notice first two writing out operations with standard print F I'm writing to standard output.
+ The third writing out is file printf, which is writing to P, Write the handle to my file and I have the same.
+ Same order of, uh, strings.
+ I have a string separated by Taps.
+ First name, last name idea.
+ And after I'm done doing that, after I wrote out what the user has supplied.
+ To the scanning function.
+ I closed my file.
+ Any questions about this? So how do you view it? And then.
+ So we are working with text files and you can treat it like any other text file.
+ You can just open it and see it with your own eyes.
+ It's a standard text file.
+ You can change extension to text if you want.
+ If you want to open it within the program, in your program and read data out of it, we're going to cover how to do that in a few slides.
+ But yeah, it's just a standard text file.
+ Nothing special in terms of how it's encoded or anything like that.
+ Any other questions? All right.
+ So the question was about how do we view it? We would like to be able to read data from text files, not just text files we created, but really any file you have an existing file with information in it, maybe a database of some information you would like to read information from it.
+ The idea is that you have this data permanence beyond your program.
+ Your program is terminated, but data remains in files.
+ So between program runs, you can store information in files.
+ Just like we saw of brain death function.
+ As a kind of file equivalent of printf function that is f a function which is a kind of equivalent of scan.
+ A function works very similarly.
+ But again, you have this extra argument of the file you would like to work with.
+ As before.
+ There is also ev gets which has.
+ Three arguments.
+ The middle argument is the number of characters you would like to read from.
+ From the file, but an alternative to F scan F function.
+ Let's see a complete example.
+ Let's pretend that I have a file already available to me which contains names and hobbies of some students.
+ I create a pointer for reading data from a file.
+ I have some strings for name and hobby so I can read information into them.
+ I start by opening the file.
+ Hobbies dot data in Reading mode.
+ So at that point, if you don't have that file, you'll fail to open it and that's where we'll get period equals null and it will tell us that it cannot open the file.
+ Otherwise I'm doing my first read, echoing information to the standard output.
+ So I'm saying print out name and hobby, and then I do F scan F from the file on the period handle.
+ I'm reading in two strings, name and hobby.
+ Notice I had this f skin f outside of my while loop.
+ That's the initial read.
+ Right now I set up a wire loop, which while we have not found the end of file, Terminator of the P read stream will continue doing this reading.
+ So this f e off function returns and the file if found here was saying not found when negating this within it and repeating the same the same f scan f as they had before.
+ Where.
+ I'm just stating the next two data points from the file.
+ So I'll continue doing this, continue reading this information and outputting it to standard output.
+ So I'm taking information from the file and printing it to the monitor.
+ At some point I will hit and the.
+ So the while condition becomes false, I terminate the loop and I close the text file.
+ Any questions about that? More than.
+ So this function looks for the end of a file.
+ There are terminating characters, for example.
+ End of the line.
+ There is one end of a file.
+ You cannot do additional edits from that point on.
+ So if you have not found it yet, there is more data to be read.
+ The while loop will continue iterating.
+ Okay.
+ Uh, you'll have to sometimes specify a specific directory.
+ Maybe you read something from the user where they would like to store information.
+ So you need to work with that string containing fully qualified path to a file.
+ The problem is, the backslash used in directory structure is also escape sequence, so it will mess up your formatting.
+ The way to work around it is to double up your backslash that treats it as a single backslash for purposes of string literals.
+ So if I need to set up a file open for a subdirectory, I just include those backslash es and if you need information from the user, if you ask user what directory you would like to type in, uh, that specific file, they will give you an answer, probably not including those extra backslash, so you would have to process their answer, append additional backslash as to it if you are later using it as such a string.
+ Questions about that.
+ Okay, So that's really all I wanted to say about the topic of files.
+ Opening and closing writing to them.
+ I have a few different topics which are kind of miscellaneous and less important.
+ You'll see them, you'll know about them.
+ You don't have to worry about them too much, but you do have to know about files.
+ So first such topic is a go to statement.
+ Go to statement.
+ Used to be a much bigger part of programing.
+ After a while, people realized it creates spaghetti like code with people jumping in and out of different parts of the program.
+ Which is exactly what Goto statement allows you to do.
+ It says, Jump to this random Point in my program.
+ If this condition is true, jump to that other location and you can have those jumps which are very hard to trace.
+ You might be much better off using techniques we've learned so far.
+ Loops.
+ Switch statements.
+ So on.
+ So how does it work? You have a label in front of some piece of code.
+ So let's look at an example.
+ Here.
+ I have a label.
+ Get data followed by colon.
+ Which is a location preceding this print.
+ Please enter a positive integer where I scan one in.
+ If what they provide is not a positive integer, I can say go back there, go to that label I created and give them another chance.
+ So essentially, I am creating this small local loop here.
+ Maybe in this context is not so bad.
+ Then you start randomly jumping to different locations within a program that becomes very hard to debug.
+ You'll probably get confused.
+ There was a great paper published called Go to Statement.
+ It's considered harmful.
+ So now that you know how to do it, don't.
+ It's kind of like the swear words of programing language.
+ Don't don't use them even if you know of them.
+ But if you see it, you'll know what's going on.
+ Any questions about go to statement.
+ That's the way you have to get day to day.
+ The way.
+ You take me ten years.
+ I just.
+ Visual is a visual thing.
+ Spacing and see is not taken into consideration, unlike in some languages.
+ Okay, Another kind of random topic here.
+ We'll have a whole lecture in C++ on error handling.
+ Exception handling.
+ You can provide success or failure codes from your program to the operating system if you include the exit function and an exit message to the system.
+ You can also use that to write to the not the standard output but the log for errors.
+ Essentially that would take a single argument, a string, and included as part of that beer message.
+ So this allows you to slightly customize error messages to the user.
+ We'll see how to do it in much greater complexity where we can not just report errors but handle them, prevent them.
+ And that's coming up in a few lectures.
+ Any questions or comments about anything? I posted some information about the exam coming up will be administered online.
+ We have an online section of this class.
+ I need to make sure everyone gets the same treatment.
+ So that's the approach we're going to take.
+ You'll have about 24 hours to complete the exam, which should take you 50 minutes.
+ So I think you should be okay on time.
+ Just make sure you start early.
+ Sometimes, you know, you have computers, go down, the Internet go down, things happen.
+ Make sure to allocate proper time to it.
+ We'll have a review for the exam Monday before the exam that week.
+ So we'll see examples for the type of questions we can expect.
+ Any questions? All right.
+ In this case, if you have individual questions, come see me.
+ Thank you.
+ All.
+ 

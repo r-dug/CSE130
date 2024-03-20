@@ -1,0 +1,128 @@
+<html>
+<head>
+<title>Lecture Notes: Programming in C and C++</title>
+<style>
+
+    body {
+        font-family: sans-serif;
+    }
+    h1 { 
+        background-color: blanchedalmond;
+    }
+    h2 { 
+        background-color: lightblue;
+    }
+    h3 { 
+        background-color: lightgreen;
+    }
+    code {
+        font-family: monospace;
+        font-weight: 600;
+        color: blue;
+        background-color: bisque;
+    }
+</style>
+</head>
+<body>
+<h1>Lecture: Introduction to C++ Programming</h1>
+<h2>Similarities Between C and C++</h2>
+<p>
+After completing the C language sequence, students are now moving on to study their second language, C++. Due to the close relationship between the two languages, transitioning to C++ should be easier as many concepts are the same. You've already covered a large portion of the language in C, so the focus will be on what's new in C++. C++ is an object-oriented programming language, which will be a key focus of this course.
+</p>
+
+<h2>History of C++</h2>
+<p>
+C++ has its roots in C, with its variants and the progression from the traditional C language and its predecessor, language B. 
+Invented in 1979 by Bjarne Stroustrup, C++ is now 44 years old. It is essential to understand this background to appreciate the evolution and design of the language.
+</p>
+
+<h2>Hello World Program in C++</h2>
+<p>
+A simple "Hello World" program in C++ includes familiar components such as library inclusions, main function, and an output statement using 'cout'. 
+The introduction of new features like namespaces distinguishes C++ from C, which you will learn more about. 
+Namespaces help in organizing code and avoiding naming conflicts.
+</p>
+<h3>Code:</h3>
+<pre>
+<code>
+#include &lt;iostream&gt;
+using namespace std; // declares the namespace used by default
+
+int main() {
+    // std::cout 
+    cout &lt;&lt; "Hello World" &lt;&lt; endl;
+    return 0;
+}
+</code>
+</pre>
+
+<h2>Input and Output in C++</h2>
+<p>
+In C++, input and output operations are done using streams, which are objects that handle data input and output. 
+The 'cin' object is used for reading data in, and the 'cout' object is used for writing data out. 
+These objects are part of the standard namespace and are included from the IO stream library.
+</p>
+
+<h3>Code:</h3>
+<pre><code>
+#include &lt;iostream&gt; // necessary for input streams
+using namespace std; // declares the namespace used by default
+
+int main() {
+    // std::cout would be used if namespace is not defined
+    cout &lt;&lt; "Welcome to C++" &lt;&lt; endl;
+    return 0;
+}
+</code>
+</pre>
+<h2>Reading Data Using Extraction Operators</h2>
+<p>
+Extraction operators ( &gt; &gt; and  &lt; &lt;) are used in C++ to read and write data streams. 
+The direction of the operator indicates the flow of data, with 'cin' for input and 'cout' for output. 
+Data types are crucial when using extraction operators to ensure correct data conversion.
+</p>
+
+<h2>Working with Strings</h2>
+<p>
+Strings in C++ are objects defined in the string library. You can easily output and input strings using 'cout' and 'cin' along with extraction and insertion operators. Remember to include the string library for string manipulation functions.
+</p>
+
+<h3>Outputting a String Example:</h3>
+<pre>
+<code>
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    string example = "Today is Monday";
+    cout  &lt; &lt; example  &lt; &lt; endl; // the " &lt; &lt;" is an extraction operator
+    return 0;
+}
+</code>
+</pre>
+
+<h3>Inputting and Outputting Strings Example:</h3>
+<pre>
+    <code>
+#include &lt;iostream&gt; 
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    string name;
+    cout &lt;&lt; "What is your name? ";
+    cin >> name; // we can save to a string object in c++, but needed to import the string header file.
+    cout &lt;&lt; "Hello, " &lt;&lt; name &lt;&lt; endl;
+    return 0;
+}
+</code>
+</pre>
+
+
+<p><strong>NOTE:</strong> Remember to practice coding examples and explore different functionalities of C++ to enhance your programming skills.</p>
+
+</body>
+</html>
+</html>
+</body>
+</html>
