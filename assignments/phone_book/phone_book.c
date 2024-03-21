@@ -32,14 +32,16 @@ Last edit: 02/18/2024
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
+#include <signal.h>
 // custom struct for phonebook entries
 struct PhonebookEntry{
     int id;
-    char *first_name;
-    char *last_name;
-    long phone_number; 
+    char first_name[15];
+    char last_name[15];
+    char phone_number[11]; 
 };
-
+struct PhonebookEntry *phonebook = NULL;
 void resizePhonebook(struct PhonebookEntry **phonebook, int *capacity, int newcapacity){
     *capacity = newcapacity;
     *phonebook = (struct PhonebookEntry *)realloc(*phonebook, *capacity * sizeof(struct PhonebookEntry));
@@ -49,15 +51,16 @@ void resizePhonebook(struct PhonebookEntry **phonebook, int *capacity, int newca
     }
 }
 
-void addEntry(struct PhonebookEntry **phonebook, int *size, int *capacity, char *first_name, char *last_name, long *phone_number){
+void addEntry(struct PhonebookEntry **phonebook, int *size, int *capacity, char first_name[], char last_name[], char phone_number[]){
     if (*size >= *capacity){
         resizePhonebook(phonebook, capacity, *capacity * 2);
     }
-    (*phonebook)[*size].id = (*size);
-    (*phonebook)[*size].first_name = first_name;
-    (*phonebook)[*size].last_name = last_name;
-    (*phonebook)[*size].phone_number = (*phone_number);
-    (*size)++;
+
+    (*phonebook)[*size].id = *size;
+    strcpy((*phonebook)[*size].first_name, first_name);
+    strcpy((*phonebook)[*size].last_name, last_name);
+    strcpy((*phonebook)[*size].phone_number, phone_number);
+    ++(*size);
 }
 
 void resetEntry(struct PhonebookEntry *entry, int *size){
@@ -79,53 +82,60 @@ void printPhonebook(struct PhonebookEntry **phonebook, int *size){
         printf("Entry %d\n\
         First name: %s\n\
         Last name: %s\n\
-        Phone number: %ld\n",
+        Phone number: %s\n",
         (*phonebook)[i].id,
         (*phonebook)[i].first_name,
         (*phonebook)[i].last_name,
         (*phonebook)[i].phone_number);
     }
 }
-int countDigits(int num) {
+int countDigits(char num[11]) {
+
     int count = 0;
-
-    // Handle negative numbers by converting them to positive
-    if (num < 0) {
-        num = -num;
+    for (int i = 0; num[i] != '\0'; ++i) {
+        if (isdigit(num[i]) == 0) {
+            return 0;
+        }
     }
 
-    // Count the digits by repeatedly dividing by 10
-    while (num != 0){
-        ++count;
-        num /= 10;
+    return 1;
+}
+void sigint_handler(int signal) {
+    printf("\n\nKeyboard interrupt received. Freeing memory...\n\n");
+    
+    if (phonebook != NULL) {
+        free(phonebook);
+        phonebook = NULL;
     }
-
-    return count;
+    
+    exit(signal);
 }
 int main(){
+    signal(SIGINT, sigint_handler);
     system("clear");
     // an integer value marking the current size of the phonebook and index to be assigned a value next
     int size = 0;
     // initial size allocated for phonebook
     int capacity = 10;
-    // value marking the program is currently running for conditionally infinite loop
-    int running = 1;
+
     // Menu selection integer for switch case
     int selection;
     // valiables for entry
     char add_first_name[15];
     char add_last_name[15];
-    long add_phone_number;
+    char add_phone_number[11];
+    // other variables
     int deletion_idx;
     int result;
     char proceed;
+    int count;
     // initialize list of phonebook entryies (i.e. the phonebook)
     struct PhonebookEntry *phonebook = (struct PhonebookEntry *)malloc(capacity * sizeof(struct PhonebookEntry));
     if (phonebook == NULL) {
         printf("Memory allocation failed\n");
         return 1;
     }
-    while(running == 1){
+    while(1){
         printf("Welcome to your phonebook!\n\
         proceed to menu(y/n)?\n");
         scanf("%s", &proceed);
@@ -202,11 +212,70 @@ int main(){
             }
         }else if (proceed == 'n'){
             exit(0);
+        enter any character to proceed...");
+        getchar();
+        while(getchar() != '\n');
+        system("clear");
+        printf("Choose a menu option by entering the corresponding integer value\n\
+        1) add an entry\n\
+        2) delete an entry\n\
+        3) show the phonebook\n\
+        4) EXIT \n\n");
+        
+        result = scanf("%d", &selection);
+        if(result != 1 || selection < 1 || selection > 4){
+            printf("\nOH NO!! Something went wrong!!\n\n");
+            getchar();
+            continue;
         }
-        else{
-            printf("\n");
+        result = 0;
+        switch(selection){
+            case 1:
+                system("clear");
+                printf("Ok! You've elected to add a phone book entry. Wonderful!\n");
+                printf("\tFirst name: ");
+                scanf("%s", add_first_name);
+
+                result = 0;
+                printf("\tLast name: ");
+                scanf("%s", add_last_name);
+
+                result = 0;
+                printf("\t10 digit Phone number: ");
+                result = scanf("%s", add_phone_number);
+                // check if positive 10 digit integer
+                int isDigits = countDigits(add_phone_number);
+                if (strlen(add_phone_number) != 10 || isDigits == 0){
+                    printf("Invalid phone number. \nSimply enter a 10 digit number with no characters...\n\n");
+                    break;
+                }
+                
+                addEntry(&phonebook, &size, &capacity, add_first_name, add_last_name, add_phone_number);
+                system("clear");
+                break;
+            case 2:
+                system("clear");
+                printPhonebook(&phonebook, &size);
+                printf("\n\nSelect an entry to delete by index: ");
+                scanf("%d", &deletion_idx);
+                resetEntryByIndex(&phonebook, &deletion_idx, &size);
+                system("clear");
+                break;
+            case 3:
+                getchar();
+                system("clear");
+                printPhonebook(&phonebook, &size);
+                printf("press ENTER to return to main menu\n");
+                while(getchar() != '\n');
+                system("clear");
+                break;
+            case 4:
+                free(phonebook);
+                printf("\n\nYou've chosen to exit the phonebook... You FOOL! Freeing memory...\n\n");
+                exit(0);
         }
     }
+    // idk... just in case...
     free(phonebook);
     return 0;
 }

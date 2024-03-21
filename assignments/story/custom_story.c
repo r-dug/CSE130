@@ -209,6 +209,10 @@ struct Sidekick Abigail = {"Abigail", 12, white, "air"};
 
 struct Sidekick *sidekicks[4] = {&Rosa, &Blake, &Oliver, &Abigail};
 
+char *names[4] = {"Rosa", "Blake", "Oliver", "Abigail"};
+char *fave_colors[4] = {"red", "blue", "green", "purple"};
+char *objects[4] = {"scythe", "banana", "octopus", "gun"};
+char *other_objects[4] = {"can of lacroix", "parking ticket", "cell phone", "purse"};
 void printEllipsis(int numPeriods) {
     int i;
     for (i = 0; i < numPeriods; i++) {
@@ -435,11 +439,30 @@ int main()
         }
         system("clear");
     }
+    
+    sprintf(current_message, "oh! right right right... here's a paragraph long story:\n\
+    Once upon a time, in a faraway kingdom,\n\
+    there lived a brave knight named %s.\n\
+    He embarked on a perilous journey to rescue his \n\
+    faithful assistant %s from the clutches of\n\
+    the %s dragon that terrorized the land.\n\
+    Armed with his %s and %s, %s\n\
+    faced %d challenges and overcame\n\
+    daunting obstacles along the way.\n\
+    After a fierce battle, he emerged victorious,\n\
+    saving %s and restoring peace\n\
+    to the kingdom. And they all lived happily\n\
+    ever after and had cake.", 
+    you.name, names[rand()%4], fave_colors[rand()%4], objects[rand()%4], other_objects[rand()%4], you.name, rand()%500, names[rand()%4]);
     if(you.keys > 3){
         printf("Congratulations! You win!");
+        printEllipsis(3);
+        typeMessage(current_message, 1);
         printEllipsis(5);
     }else{
         printf("Oh no. You didn't solve enough riddles.");
+        printEllipsis(3);
+        typeMessage(current_message, 1);
         printEllipsis(5);
     }
 
