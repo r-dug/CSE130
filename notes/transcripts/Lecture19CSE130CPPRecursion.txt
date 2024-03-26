@@ -1,0 +1,323 @@
+Lecture19CSE130CPPRecursion
+All right, let's get started.
+ Any questions for me before we begin? So today we're going to look at an idea of recursion, creative recursive algorithms, the recursive functions.
+ I'm not sure that is a good, dedicated chapter in one of our books, so it's kind of just like an important extra topic I felt you should be familiar with at least see it once.
+ The idea is that some problems are easier to solve if you reduce them to two possible solutions Either the problem is small and trivial or you can represent solution as a reference to a smaller instance of that problem.
+ So you have your base case and the general case.
+ If we look at something like factorial function.
+ We know that factorial of zero is a specific definition and immediate answer, but we can refer to a general case for solving factorial problem as factorial of n is equal dn times an instance of a smaller problem of factorial and minus one factorial.
+ So for cases where an is greater than zero, that's what it is you are essentially saying to solve factorial, I can make another call to the factorial function, just give it a smaller problem.
+ And if we continue shrinking that problem, eventually we should hit our base case, which is an equal zero.
+ And then we know what the answer is.
+ So that's the recursive definition of some problems are kind of natively recursive in nature.
+ Others, you can be creative and make fit that paradigm.
+ It's possible that we will have to have multiple base cases that happens.
+ But any of the base cases essentially stop the recursion and give us the solution.
+ So today we'll look at ways to create recursive algorithms for solving those problems and utilize recursive functions to accomplish that will create functions which are essentially called copies of themselves to solve a problem.
+ So there is this possibility once you create a function, you can have a function call to that exact function function with the same name, same argument list, and each one of those functions would have its own resources to accomplish what it's doing.
+ In fact, you can think of it as a collection of infinitely many instances of that function.
+ They have their own code, their own memory allocations for their parameters.
+ So first you keep making those recursive calls.
+ At some point you get to the base case and you start returning control from the most inner recursive call all the way up to the original function which started this process.
+ You have two options.
+ Then it comes to the placement of a recursive call within a function.
+ You can never have it as the first thing you are doing or at the end, if you place it at the end at the tail of a function, you have a tail recursive function.
+ Meaning you'll do some work before you make the call.
+ And then.
+ That recursive call generates another level of indirection there.
+ And all the way until you come back from the recursive call and start.
+ Transferring control to the higher level functions.
+ So here is a function called Act four Factorial takes a single argument.
+ And the integer for the number you want to compute factorial off.
+ And here I have an if condition for a base case.
+ So if I'm computing factorial of zero.
+ I know what the answer is right away.
+ I can return one.
+ Otherwise, I don't know what the answer is, but I know that I can have as general, a case where I'm returning.
+ Current value multiplied by a smaller instance of recursive, uh, parameter.
+ So num minus one.
+ And essentially what happens with that factorial now minus one is exactly the same.
+ Same code as we see here with this function.
+ Once again, we're going to check is that now minus one is now zero.
+ If it is, we return one.
+ One gets multiplied by now returned.
+ Otherwise, we make another call.
+ Now it's now minus two at that level.
+ Let's take a look at what actually happens with all those recursive calls.
+ Suppose I want to compute factorial of number four.
+ So we start doing our analysis here.
+ So four is not zero.
+ So we need to make a recursive call here at recursive call.
+ And the call is for the current num, which is four times smaller instance.
+ So that problem, four minus one, which is three.
+ Now we have factorial of three as the function call.
+ Same process.
+ It's not zero.
+ Let's go one level deeper factorial of to not zero factorial of one.
+ Still not at zero level factorial of zero.
+ What? Finally, we hit our base case, right? We start returning, propagating results up the chain.
+ So here we have a return, one that one gets a return from the function multiplied by one.
+ So we have one times one propagate that to propagate that three times to propagate that four times six, we get 24 as the result of computing factorial of four.
+ So we didn't have to write an explicit algorithm for computing factorial here.
+ We just broke down the problem into base case and general case.
+ And if we do it right, this just kind of works.
+ So it's actually an easy way to think about solving some of those problems.
+ Any questions about this? Working class if I recursion types enable direct or indirect versions if a function calls itself like we seen before, that would be direct recursive call.
+ You can also have an intermediate function where a function calls some other function, and then that function calls the original one.
+ So you have indirect recursion, but same idea.
+ The same function gets called with a smaller instance of a problem.
+ Theoretically, you can have an infinite sequence of those recursive calls if you don't get to the base case.
+ Obviously, we don't have infinite resources.
+ Memory is limited, so we'll end up either hitting our base case or crashing the program.
+ So how do we go about solving problems using this method? We need to understand what the problem is.
+ We need to understand what our base case is, one or more.
+ For each one of those base cases, you have to explicitly state what the solution is.
+ And then we have the general cases again, could be multiple ones.
+ And we have to explain how to solve a problem by referring to a smaller instance of it.
+ So here is an example of a problem which is not natively recursive, but we can convert it to such.
+ Let's say we are working with lists.
+ A list of elements and we would like to find, let's say, the largest element in the list.
+ How can we see it as a recursive problem? Well.
+ One of the two things is probably true.
+ Either of the first element is the largest or the rest of a list contains the largest element.
+ Having first element as the answer is the base case.
+ That's the largest.
+ We can return the element.
+ Same is true if we trivially have only one element in our list.
+ List of size one.
+ You know what the largest element is? That's your base case.
+ If not, then the rest of the list minus the first element, is the same problem of finding the largest element, which is smaller by one unit.
+ So that's one way of thinking about that problem.
+ So if I have.
+ I have viscera.
+ I have integers in locations zero through five.
+ How can I use this approach to to solve this problem? So I have the list itself as the set of elements I'm working on.
+ If list of link one is given, I have immediately figured out what the largest element is.
+ If it is greater than one, then I can go from like an eight plus one to location subindex on.
+ So the recursive call would be.
+ This element, plus a remainder of a list.
+ Here.
+ It is formalized.
+ My base case is that I hit.
+ A list with just one element.
+ My general case is that I'm sending the size of a list, uh, minus the first element, the remainder of elements in that array.
+ Then I return the largest element from the recursive call.
+ I compare it to the element.
+ I broke off the first element and I see which one is bigger.
+ Either the first element is the biggest or the rest of the list contains that biggest element.
+ There is one possible implementation for this largest function.
+ So what am I sending in? I have.
+ My array.
+ The list itself.
+ I have lower index where I'm starting.
+ And this is what allows me to shrink the list, to have a smaller instance of a problem.
+ And I have opera index just to tell me where to stop processing.
+ The.
+ Function returns an integer.
+ That's what we're looking for.
+ Largest element.
+ I checked to see if lower index is the same as upper index.
+ What does that tell me? The list has one element.
+ If that's the case, I can return that element, that location list, lower index.
+ Otherwise I can make a call to the largest again.
+ Same with the list, but I'm shifting lower index by one, so I'm shrinking the list.
+ Same call and I store.
+ Whatever is returned from that function into max.
+ If.
+ The first element is greater or equal to max than we can return that location.
+ Otherwise, we're returning Max.
+ So if I have a list with four elements, I can make a call on this.
+ Function largest.
+ Give it the name of the array.
+ Give it first location, give it final location zero and three.
+ And that should compute the largest element by following the sequence of steps you are looking at the base case or general case.
+ Again, let's look at how it works with specific values.
+ So as I said, we have the call to largest.
+ We give it the list, we give it lower index and opera index.
+ At this point, it's not a list with just one element.
+ Lower index and upper index are not the same.
+ So I don't have my base case.
+ I go to the next goal.
+ I reduce the size of the list for the recursive call.
+ Now it's the call to elements starting at one, not a zero.
+ Same terminating.
+ Index three check again.
+ One and three.
+ Not the same.
+ Another recursive call.
+ Two and three.
+ Not the same.
+ An aggressive call.
+ Three and three.
+ Yeah.
+ We got to the point where we are just looking at one element so we can return whatever is at that location.
+ We're returning at a returning value of eight from there.
+ Now we are comparing is it greater than the max is at element two, we comparing list.
+ Element one we propagate any time we find a greater element.
+ So 12 was greater than eight.
+ We propagate that to the next level.
+ Finally, returning all the way to the initial caller.
+ And so if you see here location two indexed to contain 12 and we were able to find it using this recursive method.
+ Any questions about that? All right.
+ Let's look at a more complex example, but a familiar one.
+ You already had to compute Fibonacci numbers, Fibonacci sequence.
+ There is a very intuitive way of representing it as a recursive function.
+ In fact, here we have two recursive calls for every additional level.
+ So what are we getting? We have to.
+ Base case elements and be.
+ Really we can start with anything.
+ But let's say here we'll use one and two for.
+ Uh, for those locations.
+ And then I have to recursive Fibonacci goes to a previous element and the one before that one.
+ So I'm calling it not just with value then, but then for the recursive call is and minus one and minus two.
+ That's what Fibonacci number is.
+ Sum of three two previous terms.
+ So I can supply any elements in B and then tell it what number and the sequence I want to compute.
+ Here's the code pseudocode for the.
+ For the function.
+ If I'm computing for a number in a sequence that A and B are two and five here, the general case is just to have two goals to the Fibonacci function to find element three and element two, three and two will give us value of element four.
+ Two computers, three.
+ Same idea.
+ Look at elements two and one.
+ For element one and two.
+ We know what the base case values are so we can return those, propagate them up the chain.
+ So here we're looking at two for location one and five for location two.
+ And finally, that gives us seven for element three.
+ And we can propagate that seven plus five gives us 12 for location four.
+ So that's the a high level pseudocode for it.
+ Here is the actual code for computing this Fibonacci number.
+ Does it feel like it's a little easier and more intuitive than what you had to do to compute it? I think in some ways it is all you have to do is literally follow the algorithm with the find the base case to base cases in this case, and we define the general code, and that's all of this.
+ And then it automatically figures out how to compute this, uh, this number.
+ So what do I have? I have my base case and equals one.
+ I'm just returning whatever parameter A is.
+ If I'm looking for an equals two returning B and then I have two recursive calls to a smaller instance of a problem.
+ Any questions about that? No, you really need to supply India or can you just do return to and three for the first 15 doses.
+ Well, it's a general definition, so it could be anything and be like we're used to kind of having zero and one as a starting point.
+ But you can start with other.
+ I gotcha.
+ Yeah, it's more general than the classic Fibonacci sequence on the actual.
+ Yeah, this is what I write as well.
+ So here is that visual representation again.
+ And now notice at every level we have two recursive calls, so it's going to grow exponentially on us.
+ I'm computing fifth element in a sequence with two and three as in B, so I'll have to cause Fibonacci call to, uh, compute element four and element three.
+ Element four is again split into three and two elements three is split into computing two and one.
+ That's where we get to our base case returning B and A there on the left side, we get to the same.
+ Situation just one level higher again, with return BNA propagating those results until we get all the way to the original calling function with a value of 13 in this case.
+ Okay, So that's the general idea.
+ Now we can look at examples of applying it to different real world problems or toy problems or games.
+ But you understand the approach to solving problems using recursion.
+ Tower of Hanoi is a popular toy.
+ I guess the kind of standard variant has very few discs, very few pegs, but you can generalize it too, and discs and pegs making it very computationally difficult.
+ The idea is you need to move discs from one person to another.
+ There are rules for how you can do it.
+ You can move one disk at a time.
+ You cannot place a larger disk on a smaller disk.
+ And basically you rely on intermediate back to shift disks around.
+ And here is one potential solution for accomplishing that.
+ So we start with all the disks on the leftmost peg.
+ We rely on intermediate back to shift one of the disks there and we slowly moving the spearmint all the way to the third needle.
+ Have you guys played this before it before? So if we want to write a recursive function for for doing this for moving disks, here's got our pseudocode version with some.
+ Some actual code for doing it.
+ I need to know how many.
+ This I'm working with.
+ I have a list of my needles or pegs in order.
+ So here I have one, two, three different needles.
+ And as long as the count is greater than zero, I continue moving those things around.
+ Again, the goal here is to scale it to essentially larger instances of this problem.
+ For now, what we're doing is we're doing the first move where we set the order to move up our most disk, and then we switch the order of needles indicating, okay, now we're moving from the middle one to the final destination.
+ The problem, of course, is that if it gets larger than the example, given the classic example, it becomes exponentially harder and harder to compute.
+ If you have 64 disks.
+ 64 doesn't sound like a big number.
+ But if you compute the number of manipulations you have to perform, you quickly realize you will run out of all resources, not just on your laptop, but resources in the universe to wait for this thing to compute computation, complete computation.
+ And this is kind of taking us to the next level of problem solving.
+ So far in this class, we only cared about getting it to work somehow it compiles.
+ Sometimes it works.
+ But really, computer science is all about efficiently solving difficult problems.
+ Problems.
+ You cannot just brute force.
+ And so in your future classes, you will learn how to design efficient algorithms in the AI will look a lot at heuristic methods and alternative methods to solving those problems.
+ And that's the other class I'm teaching this semester.
+ If you have interest in that topic, you might take it in the fall next year.
+ But the realization here is that we cannot just code it up because it's so easy.
+ Base case, general case, and then run it.
+ We need to come up with some more creative ways for solving real world problems.
+ If you're trying to decide what method is better, a looping or iteration.
+ So a lot of it depends on the nature of a problem.
+ Some problems are natively recursive, so it makes it very easy to write out definitions.
+ Like Factorial was a great example.
+ Obviously you have to be creative, figured out how to do it.
+ So depends also on amount of resources you have with recursion.
+ You need to create that many instances of a function with that much memory.
+ So there is always a tradeoff with those problems.
+ Memory in particular, depending on a number of arguments, depending on other requirements for each function call, it could be quite expensive.
+ Think about every single time you call it always three, four or five variables have to be allocated.
+ So what we study a lot of times is the trade off between number of steps taken and the memory requirements for solving a problem.
+ A problem may be efficiently solved if you have huge amounts of memory in terms of time and there is a trade off between those two.
+ In general, recursive calls are not the fastest.
+ So if you have some sort of embedded device, very limited resources, that may not be the best solution for most things we do here.
+ Your computer would be fast enough to handle handle all this, handle allocating necessary resources to your functions.
+ So.
+ Between hardware, the nature of the problem itself and how critical it is, you would have to make those big, important decisions about what actually represents a better approach for solving a problem.
+ In terms of understanding and debugging.
+ Recursion is not well-suited for how humans think about problems.
+ In fact, some people argue that you can never fully understand more than three levels of recursive calls.
+ It's not a scientific claim, but it seems to be correct.
+ So in terms of debugging, it's definitely a very challenging approach if there is a bug.
+ It's hard to figure out what what is causing it.
+ Let's see one more example and we'll call it a day.
+ So here we are trying to apply this recursive approach to doing conversions between different numerical systems, maybe converting from decimal to binary.
+ So if we have an integer.
+ Let's say we are given an integer and based on then we need to convert it and based.
+ Or we can do a sequence of integer divisions and computing remainders, and that will give us all the bits in the reverse printing order for computing.
+ What the problem answer is.
+ So if I'm given a number, I start by doing modular division.
+ So with the three, I'll get one because 33 mark two is one.
+ The rightmost bit of 28 is zero because 28 mod two is zero and so on.
+ We can see it with a specific example all the way through.
+ If we get to the base case, which is zero, the answer is zero itself.
+ Otherwise, we continue of a sequence of computing quotients and remainders.
+ So let's say I start with 35.
+ I have to wait to print the rightmost bits so I cannot start outputting results directly.
+ I have to wait for the recursive calls to complete to output the answer.
+ Rightmost bit of 17 also cannot be printed until I printed the right most bit of it and so on.
+ So we have this sequence.
+ The base case is zero.
+ The general case is that binary function is called binary with integer division of parameter number two, and I follow this by modular abstraction.
+ As long as the number is still greater than zero.
+ Here is the function itself.
+ I'm not returning a value I'm printing out.
+ Answers.
+ You see that the output statements out goes after the recursive call.
+ So this way it has to return from the deepest recursive call before it starts printing rightmost bits of this answer.
+ So here I am converting from decimal to binary.
+ I take number as the input base is again to make it a more general case.
+ If it's not binary, I can compute our basis.
+ But in this case, given the name of a function, I'll be working with binary.
+ So if number is greater than zero, we are looking at another call.
+ The call is still the number integer divided by the base.
+ And the second argument is still the same base.
+ I'm outputting a remainder of that computation as the bit rightmost bit.
+ In the case, it's a bit confusing.
+ Here's how it looks in terms of actual recursive calls and what is what is printed.
+ What is it? So let's say I want to convert to binary number 13, converting it to base still.
+ So I start by checking.
+ Yeah, we're not at zero yet.
+ Not the base case.
+ So we do 13 divided by two integer division.
+ We have six is the next argument at that level of the base is still two.
+ We continue divided by two again gets three.
+ We get one.
+ One by two gives us that zero we were looking for.
+ So we have base case and now we start outputting remainders.
+ One mod two gives me a remainder of one.
+ Three might do another one.
+ So I'm reading it from the bottom up.
+ 1101 as the conversion and you can do the same thing for other bases.
+ You just change the base, the general enough algorithm for doing that.
+ All right.
+ That was all I had on the topic of recursion.
+ If you have any questions, please let me know.
+ If you have any individual questions, please stop by.
+ We'll address those as well.
+ Thank you.
+ 

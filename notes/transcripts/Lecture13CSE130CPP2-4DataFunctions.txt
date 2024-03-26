@@ -1,0 +1,187 @@
+Lecture13CSE130CPP2-4DataFunctions
+Uh huh.
+ All right, let's get started.
+ Any questions for me before I begin today's lecture? But like.
+ No questions.
+ Okay.
+ Today, we're going to look at lots of things.
+ What's happening here? Let's see.
+ We're going to look at material, not guys.
+ Can you think of material not already covered in.
+ Chapters.
+ From our book, we're just looking at one topic in chapter two of our C++ book.
+ We have pretty much already finished chapter three through C, and then there is a few interesting kind of random topics in chapter four.
+ So the first thing we're looking at is a new data type Boolean data type.
+ So far we used Integer as a way to flag some condition which said, okay, I have an integer type variable I'll set of equal to zero if it's false.
+ So that equal to something else if it's true.
+ And this way you can check of some some condition in a program changes.
+ There is a built in data type for for doing that.
+ Called bool boolean holds true one or false zero as its value.
+ True and false also reserved keywords.
+ So here is an example of a small program where I create a Boolean type variable status.
+ I set it equal to false initially, and then I can insert that variable inside any statement.
+ Again, loops just like doing it with an integer, but we have a built in data that.
+ If status is through, the first statement would get executed.
+ If it's false, then else condition will get executed.
+ Here's another example of that.
+ I create a Boolean type variable be I said vehicles to false.
+ I printout B is value of B false is the same as zero.
+ That's what gets printed as the value of that variable.
+ I change the value of B to true, and now B is one.
+ I can do this.
+ Conditional checking of B.
+ B.
+ I will print out this as executed.
+ Then I said B to false.
+ If B this time is false.
+ So this is not executed is skipped.
+ And then I can just output expressions in terms of true or false booleans.
+ And you see, it's the same as outputting through condition.
+ Any questions about that? Yes.
+ Yes.
+ So if you just.
+ If you have something false and it's just use it as your only parameter for an understatement of last year.
+ Exactly.
+ Always been the case.
+ If statement takes an expression, if it's through, executes the body, otherwise does not goes on to the next statement after the.
+ Any other questions? You just.
+ As I said, Chopper three is all about control statements.
+ We've already covered those pretty much the same as in C, so we can take some time off to not study that.
+ Next concept we're going to look at is function overloading.
+ It is possible to have functions which have the same name.
+ But we should take a different number of arguments, different number of parameters or different types of parameters.
+ It's convenient because you're still calling the same function, same function name, but it finds an appropriate signature to match the number of arguments you have.
+ Here is an example of prototypes for overloaded functions, for swapping to values of different data types.
+ I can swap two integers to floats, two characters.
+ The code will be essentially the same, right? We don't care much about that other day.
+ It's the same code for doing it, but by providing a unique overloaded function for each type.
+ Our swap function now will support doing it based on the arguments supplied at a call time.
+ So those are the prototypes here of the definitions for the functions.
+ You see, the actual code looks the same.
+ We don't care much about what the data type is in terms of its triangular exchange.
+ And then I get to function call time.
+ Now I set up my example with two integers, two floats and two characters.
+ I call the function.
+ And then depending on what arguments they provide to that same swap function, it will match appropriate definition and exchange values seamlessly as if it's the same function.
+ So I overloaded it to support all those data types.
+ If you think about it, we kind of experienced the same type of overloading with mathematical operations.
+ So like addition works on two floats, two integers.
+ You can add a float in an integer and somehow additional operator knows how to do that.
+ We'll later on see how to overload those operators as well.
+ But that's the concept behind function overloading.
+ Any questions about that? Right.
+ Let's look at an example here.
+ I will vary the number of parameters.
+ So I have a function with the same name, returns the same type, but it takes two integers or takes one integer.
+ The function is an abstraction.
+ Doesn't matter what it does, it just returns the value.
+ It returns the summation of arguments.
+ We just want to see how it operates at the time of function.
+ Call in mean Iive or send one argument one integer to that function or to.
+ It.
+ Shucks the number of arguments and finds a function with a matching parameter count.
+ So based on that signature, there is no ambiguity.
+ We know exactly which function will be called.
+ If it's a single argument, it will return that argument.
+ If it still arguments, it will add them up and return those that summation.
+ Questions about that.
+ Here is an example with a difference in the type of parameters.
+ So I create two function prototypes, one for dealing with integer, and it also turns it into one for double returns.
+ A double again, same name being overloaded.
+ The definitions are just the basic return of the provided value.
+ If I provide an integer at a time of function, call it would match an integer data type of a provide a double match as a double.
+ I can force a specific one through typecasting, but you get the general idea.
+ If I were overloading the number of arguments or the types of those arguments.
+ Questions about that.
+ Another concept we're looking at is this idea of default arguments.
+ Sometimes a function has a very common parameter which it defaults to and then.
+ You can override it later or provide a specific.
+ Specific value for that particular function call.
+ So think of something like a function for creating a student or employee.
+ You may provide a default Social security number or zeros, and then once you have specific information, you can change it to a unique ID number.
+ Well, why do we do it? We'll set those parameters.
+ We want to have a default value equal to the default value.
+ We could set all the parameters to have a default value, but we don't have to.
+ The rightmost arguments of a wants which need to have it if you choose to do it leftmost don't have to have default values.
+ You can mix and match in that order.
+ So here is an example.
+ I'm creating a function for computing volume of the box.
+ Volume has three ingredients will multiply three dimensions together, and we don't know what the size of a box is.
+ We can get this information later on for a specific box, but we can default to a unit box, a box one by one by one.
+ So length, width and height of that box.
+ Each defaults to one.
+ You see it? I set it up as such with word assignment operators there.
+ And that's.
+ That's how I define this function.
+ All it does is return the product of those three dimensions.
+ And here you can see example of calls to the box volume function.
+ If I just call default box volume, nothing provided, no arguments.
+ It takes all three default values.
+ So that would be a box with volume one.
+ Alternatively, I can supply as many dimensions as I want, so I can have one which is ten in this example to ten and five.
+ All three of them explicitly.
+ And you remember, if I don't supply all of them, we're assuming those are rightmost arguments.
+ The rest of them will be taken from the default value.
+ So in this example, this is what I expect to compute.
+ Default volume is just one times one times one.
+ If I supply ten, that's going to get taken as one of the dimensions we have to advance five and ten again gives me 50 times one.
+ And finally, if I supply all three arguments in this case, I will get to 100.
+ Let's see a complete example of that.
+ So here I'm creating a function.
+ F it returns nothing and it takes three arguments.
+ It takes a string.
+ And now a string and then a length, which has a default value of zero.
+ Within my main function, I set up two characters.
+ First one holds this as it does the second one.
+ Takes, uh, just a number.
+ Sequence of digits.
+ And then I can provide two function goals.
+ One with all three arguments specified.
+ Second one with only strings with the length argument omitted.
+ The definition of a function is that it takes those three things and it outputs string one, followed by the space length, variable value, and another space followed by a string to.
+ The output from the two calls is either this is a test value of length.
+ I do number, or if I omit providing length value, it defaults to zero and that is what is printed instead of five.
+ In that output example.
+ Any questions about that? It's possible to create an ambiguous situation if you rely on default arguments.
+ Let's say I have two function prototypes.
+ I overload the same function name to ever deal with one integer parameter or two integer parameters where one of them has a default value.
+ If I create a function call with two arguments, there is no confusion.
+ You know exactly which function will be called.
+ Which function matches the signature with two two arguments.
+ But in this example, if I make a function call with one argument, which function are you calling The one with the default argument as well, although one which only has one argument.
+ It's ambiguous.
+ Both.
+ Both function signatures match this function call.
+ So you want to make sure you don't end up in a situation like that.
+ Compiler will yell at you.
+ Any questions about that? Another topic I think was so scope resolution operator before we will see it a lot more than we start talking about object oriented programing classes.
+ So I want to kind of refresh your memory on this one.
+ Allows us to specify what scope something belongs to a variable or an object.
+ Allows you to refer to external scope from local scope.
+ Here is an example.
+ Maybe I have a variable called count, which is an integer and a global variable.
+ Within my main function, I can create a local variable with the same name, which would hide the global variable.
+ But it still exists out there.
+ So using scope resolution operator, I can get access to that outside scope, set a value to that variable and then set a separate value to the local variable.
+ So accessing different scopes using scope resolution.
+ Operator.
+ Another thing we'll see again with our lecture on classes is a concept of static variables that will be used to have a shared member with the class.
+ For now, we can use it to create variables which contain kind of permanence of variables within them.
+ They are not that initialized every time you call on a function, but retain their value between function calls.
+ You remember we talked about different types of variables and how this applies to scope rules.
+ Automatic or current default type variables.
+ As soon as you exit scope, they lose their value.
+ Whereas static variables remain allocated and retain the data in.
+ So if I want to have that property, I prefix my variable declaration with the keyword static.
+ And then that variable will not be initialized.
+ Here's an example of a function function counter which contains a static variable integer x for counting.
+ How many times the function itself has been executed has been called a default x to zero.
+ And every time I call this function I increase the value of x by one and I return that value.
+ Essentially, counter now has memory for keeping track of how many times it has been executed, and if you make it a part of something else now you can count how many times that functionality has been called on maybe adding a friend to your address book or something like that.
+ And I think we saw this example previously.
+ Any questions about that? All right.
+ Yes.
+ This is a clear, very well understood topic said, and I don't have anything else to add to it for today.
+ If you have any individual questions, please stop by.
+ I'll help you out with those.
+ 

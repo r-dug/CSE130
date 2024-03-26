@@ -1,0 +1,219 @@
+LectureXICSE130Exam1Review
+Help me out.
+ All right, let's try this again.
+ I got it to work somehow.
+ Welcome to many of you.
+ That is more of you today.
+ That's.
+ That's nice to see.
+ Something happening? Oh, maybe.
+ So the plan for today is to go over all the material we studied so far, and I'll try to kind of give you hints as to what is more important and what is even more important.
+ And if you have any questions, we'll try to answer those before we begin.
+ Any questions about anything else? Labs.
+ You probably seen an announcement.
+ I pushed the deadline for lab six, so you have more time to work on that.
+ I made Lab seven do in a couple of weeks, and then we're going to have mid-term break, which cancels Tuesday lab.
+ So it's only fair to do the same to the Thursday lab.
+ Questions.
+ Yes.
+ So we have lap time where? Yeah, you can come and get help with it, but we're not assigning something where I doing this week, so it's less pressure.
+ Yeah.
+ All right.
+ So first midterm, it's about 25% of your final grade covers.
+ The first, I believe, nine chapters and labs we have completed so far.
+ So we came a long way from starting to learn what a program is, what is a compiler.
+ And now you're writing advanced programs.
+ So hopefully you have a good idea for what a C program looks like.
+ You can write a basic C program.
+ From there on, we looked at different ways of doing an input and output the different escape sequences, and that was essentially chapter one just introduction.
+ Chapter two had to do with variables creating variables, legal variable names.
+ Um.
+ Just making sure your.
+ The rebels are not infringing on any reserve keywords.
+ You keep in mind that that is case sensitivity, things of that nature.
+ We looked at the concept of constants making variables constant to make sure they cannot be arbitrarily modified.
+ And then we hit on something very important, which was the precedent stable.
+ And I told you you should probably memorize order of precedence for the operations we have studied.
+ Again with printing.
+ We looked at different placeholders for different data types, and that got us to chapter three on relational operators.
+ You should understand the mapping between Booleans and zero and one values, essentially understanding how evaluating those logical expressions allows you to create complex first conditions.
+ Combine them using not and or operators.
+ And I think we explicitly talked about being able to complete a proof table for those operations.
+ We started if statement both as.
+ Uh, just a single statement.
+ And as a blog, we can agree that it's probably a good idea to have a complete block of code there.
+ We've looked at alternatives to.
+ To the statement, which was the Swedish statement.
+ You should at least be able to know different components of a switch statement, be able to evaluate one if presented with it.
+ We have to.
+ Chapter four, which was on repeating parts of your code using loop structures.
+ We covered, I believe, three different loops, starting with the while loop.
+ So you should be able to create one figured out properties of a loop, how many times it will iterate.
+ If that's something you can deduce, what are the terminating conditions? We also looked the do while loop, so you probably should know what the differences between the two.
+ Why would I use the while instead of while? At support.
+ Yeah, that's that's right.
+ So if you have a situation where you expected to execute at least once you want to utilize do while as while loop may never execute because the condition is false to begin with.
+ Then we had the for loop for cases where you have some idea as to how many times you want something to run of event, some logical condition being true.
+ We got to chapter five, talked about functions, existing functions in different libraries.
+ I told you not to worry about memorizing all those libraries.
+ Still true, but you should have some idea how to use a function if you are given a prototype.
+ Arguments Return types for function.
+ We did study a process of making custom functions, so that's probably important.
+ You want to know the components of that process, starting with creative creating a function prototype.
+ What goes in that.
+ And then, of course, the function definition itself.
+ So if I ask you to write a simple function, you should be able to do that.
+ And you should be able to use your function or use somebody else's functions, creating a function call.
+ We also looked at another very important topic, which was passing arguments two functions either by value or by reference.
+ You should have some idea as to what the differences and when you would use one versus the other.
+ We covered the concept of scope, local scope, global scope going out of scope.
+ Why we have preference for not overusing global variables.
+ Chapter six was about a race.
+ We first got introduced to this data structure for storing.
+ Homogeneous type of data using Subindex to get access to specific sell within an array.
+ We then stop with just lists.
+ We looked at two dimensional arrays in the form of a matrix or a table.
+ So using multiple indices to get access to.
+ Locations within multi dimensional arrays.
+ We placed arrays within context of loops and iterated through them, searching for elements, trying to find either specific elements or doing some basic statistical analysis on it.
+ Probably less explicit topic in terms of.
+ What we concentrated on was how to swap values the right way.
+ That's.
+ Pretty much.
+ Uh, self-explanatory.
+ Should be easy at this point.
+ Then we looked at pointers.
+ Everyone's favorite topic.
+ We try to understand what they are.
+ Hopefully they were not too scary.
+ You understood the basic idea relationship between address and obtaining value at an address.
+ Being able to create a pointer.
+ The reference a pointer.
+ And then we started looking at how all this concept is going to tie in together.
+ Our arrays and pointers are these are pointers pointers as a race offsetting from the.
+ First element, realizing that name of my area is just the address of a first byte in my array, then using that name of the array as a pointer.
+ Trying to understand basic point or calculations there.
+ And similarly, we realize that we can utilize arrays of characters to simulate native string type.
+ And.
+ Essentially it was not that different.
+ We had to keep track of extra character for realizing where the rebounds are for printing and entering of data purposes.
+ But really it was again more of the same in terms of arrays and pointers just with a specific data type.
+ So we looked at the main differences in terms of size of array as the result of storing that extra character.
+ And I told you there are some useful functions which you should probably know of functions for copying strings, comparing strings, and figuring out size of a string.
+ Then we went beyond just arrays as a data structure to more complex data types.
+ We learned about structs which allow us to combine data of different modalities, different types into one structure.
+ We learned how to address members of a new structure we create or a structure given to us.
+ Probably less important this this idea of creating aliases for data types if you want to customize names.
+ Also not too important, this idea of unions and reusing memory allocation for storing different members of a structure one at a time to save some memory.
+ We did look at this idea of typecasting, which probably is somewhat important, and it will become more important in the future.
+ Well, we'll see it again.
+ So that's a quick overview of different topics we looked at.
+ We covered a lot, but hopefully you had a chance to practice most of those concepts in your labs.
+ So now let's look at the types of questions we can see on the exam.
+ So I'm hoping it's a very diverse exam in terms of types of questions you get.
+ So no matter what your preferred question style is, you'll get something you like, something you hate.
+ It's going to be awesome for everyone.
+ Some of those questions you probably.
+ Types of questions you've probably seen before.
+ So true or false? Everyone's favorite guessing game.
+ Problem with those.
+ Of course, you cannot get partial credit.
+ You ever guess it to get it wrong? It's kind of binary, but at least you know what to do with those questions.
+ What he was saying through a false.
+ Multiple choice.
+ Same idea.
+ No partial credit.
+ If you can cancel a few options, your probabilities go up again.
+ You've probably seen those before.
+ Your high school or college career.
+ So we're just making it on topic of the language, but nothing really different.
+ What's not a basic C data type? So now something slightly different.
+ Probably you have not seen it if you haven't taken a computer science class program in class.
+ Is trace your code? This is a game where you pretend to be a compiler and trying to figure out what this code is going to do.
+ So I give you a small program.
+ Probably not as easy as this one, but nothing too complex.
+ And you are supposed to figure out what the program produces, what the output would be.
+ So you have to be careful to make sure if it is a f condition, if it is a loop, you properly evaluate different parts of.
+ Of that code and report and what would be outputted usually, since that's the only thing we can explicitly observe in terms of results of the program.
+ Oh, yes.
+ Are you going to ignore the.
+ It should not give you too many problems.
+ You can have voids there, You can omit the time.
+ Depends on some compilers will give you a warning.
+ But really, as you know, functions don't have to return anything going to.
+ I wouldn't consider it a problem.
+ No.
+ It's possible that the greater ante disagree and then just let me know.
+ I'll fix that.
+ Yeah.
+ We're not trying to catch you on something trivial.
+ We just want to make sure you understand important concepts.
+ All right.
+ Another type of question you may not have seen before is the bugging question.
+ Finding errors.
+ And your question was kind of more addressed to this than to the other concept.
+ So if I give you a program or a snippet of code, can you see problems with it? Problems? In this case, we're looking at syntax, right? Logical errors are also a problem, but I would explicitly ask logical error.
+ So syntactic type errors and I may or may not tell you how many errors to find.
+ So it's fun to see you introduce new errors which are not there and go into negative points for doing that.
+ Always exciting.
+ You see any problems with this code? Yeah.
+ Yeah.
+ Right.
+ So you would just correct them.
+ You would say, okay, here there is a missing character here, you need to add one.
+ This is capitalized wrong and so on.
+ Yeah, so what? But we need to point that out.
+ It makes no difference.
+ I don't think you would.
+ I hope not.
+ In general, with functional deterrence, I am not too extreme with it.
+ I sense that maybe Tia really cares about it, so I'll mention to him not.
+ Yeah.
+ Okay, so we know that type.
+ And finally, the type of question for which you probably should practice is writing code.
+ I will most likely ask you to write a function that was a big deal.
+ We spend a lot of time on it and labs and so on.
+ So going to be a simple function.
+ Obviously we don't give you as much time as with your labs, so it shouldn't be anything very complex.
+ You wrote many functions, functions for computing sequences, storing them.
+ So if I give you a simple function, add two numbers, you should be able to create a prototype, define it, and then give an example of a call for that function.
+ The best thing you can do is practice doing it.
+ You can practice it individually.
+ You can get a body and give each other functions to write.
+ Either way, just hopefully it's not the first time you're doing it during the exam.
+ And that's the types of questions on the exam.
+ I'm happy to answer any questions or concerns you have about the format and questions, anything like that? Yes.
+ Can you go back to the slides with pass by referencing those by reference? Let's find it.
+ He started a lot of stuff that everybody.
+ Oh, that's it.
+ No, that was easy.
+ Okay.
+ All right.
+ All those opposed it.
+ You have a man? Yeah.
+ You don't have to copy them.
+ Cool.
+ All right, So I designed an exam to take less than an hour.
+ It is.
+ Oh, you're still copying.
+ Sorry, I.
+ I don't know why it should take you 30 minutes to an hour, typically, but because I don't see a better way of doing it than to make it an online exam with people in different time zones and internet going out of sync and all of this nonsense.
+ You have 24 hours to do it, so time should not be an issue.
+ I know some students requested a disability resource center to provide extra resources.
+ I don't think it's an issue here.
+ You're getting 25 times that.
+ I'm not 50% more.
+ So that should be addressed.
+ If you do encounter some technical difficulties, I don't know.
+ Your Internet goes down, your computer dies, let me know.
+ We'll see what we can do.
+ But hopefully with that much time, you can drive to some other location and address that issue.
+ Don't wait until the last moment.
+ Exams will show up at the post time.
+ Try to take it as soon as you can.
+ Subject to being in a meaningful time zone.
+ Any other questions? All right.
+ This is it for me.
+ And if you have individual questions, come.
+ I'll help you out with those.
+ 

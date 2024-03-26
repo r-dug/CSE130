@@ -1,0 +1,275 @@
+Lecture16CSE130CPP8Inheritance
+All right, let's get started.
+ Any questions for me before we begin? Okay.
+ Today's topic is Inheritance.
+ How to get a big Inheritance.
+ Very important.
+ We have so far learned how to create customized reusable code.
+ They are structures which are custom to your projects.
+ There seems to be even more reusability.
+ We can get access to and that is done by taking existing classes, either the ones you created or available through standard libraries and building on top of it.
+ The concept of inheritance is to have some sort of a base class, which is the source of information and create a draft class which has all of the above properties of a base class, but also has some extra special, customized features of its own.
+ There are two general types of inheritance.
+ You can have a single inheritance where you derive useful information from a single base class or multiple inheritance, where you take good, useful properties from multiple base classes.
+ So here is a simple visualization of an inheritance here.
+ Maybe I have a base class for geometric shapes called shape.
+ It provides some general information about what shapes are like from it.
+ I can derive more specific classes for circle, for rectangle if I want to be even more specific.
+ Maybe there is a particular type of rectangle such as a square which can inherit most capabilities of a rectangle class and then add some specifications.
+ So that's the general idea.
+ If you see a class with functionality you want, you can inherit from it and make it better without having to reprogram a lot of existing functionality.
+ Here is the general syntax for creating an inheritance and an inherited class.
+ Once again rely on a reserve key word class.
+ We give it a meaningful name.
+ We provide specification for what type of inheritance we are using and we'll talk more about it in terms of access levels, public, protected or private.
+ And then we say, What's the best class? What class are we inheriting from? After that.
+ Looks like any other class.
+ We have a body of a class members.
+ Followed by a semicolon.
+ We can create a whole chain of inheritance going from the most abstract to the most specific classes.
+ So maybe I have.
+ A basic class called mammal from a day can create a human, a more specific type.
+ Some humans are workers, even more specific.
+ Maybe they have properties other humans don't, such as salary.
+ And then you can have a programmer, which is a more specific specific type of a worker.
+ Can you see how this chain can be extended in either direction? Is there something more general than a mammal? Animals? Absolutely.
+ There are more specific thing than a programmer.
+ I see a programmer.
+ Exactly.
+ So you get the general idea.
+ Here is another visualization.
+ Let's say I have a Class A with capabilities in B, Those are the features members of A class from it.
+ I have class B and C which inherit from it.
+ Add features such as C and D, which still allow them to have access to A and B, then they're going to have class D with additional capability, F and so on.
+ You see how it builds from pre existing code.
+ So if I'm creating my class D, I'm getting all this functionality essentially for free.
+ All I have to do is that the specifications for that class.
+ In case of multiple inheritance worth taking desirable features from multiple parent classes.
+ So we can combine, for example, a class for a house and a class for a boat, and that will give us a houseboat.
+ Almost no extra work.
+ If we have classes for driver and a conductor.
+ Essentially get an Uber driver.
+ It collects money, drives you around.
+ So that's the general idea.
+ Let's let's look at one specific example again with the class figure as the more general based class and class circle as the derived class.
+ So here, maybe I have an existing class, figured has some public members X and Y.
+ Maybe it's a central location of a figure or something like that.
+ I can create an inheritance from figure to circle.
+ And here I'm adding a custom member called Radius.
+ Notice X and Y are public.
+ I'm using public inheritance so I can have direct access to.
+ X and Y members of A, So I create a little circle called A and I can set x, y and radius to specific values, creating a customized circle object.
+ Any questions about it so far? Yes.
+ You know, for.
+ Blessed with multiple inheritance boats that look like syntactically.
+ We'll get to it in the next slide.
+ I promise I'll make sure my mic still.
+ All right.
+ Excellent question.
+ What would it look like for multiple inheritances? Very similar.
+ You are specifying a list of base classes and you're getting capabilities from all over.
+ So if I have a Class X with a member A as my initial class, I can create Class Y, which through public inheritance from X gets A and adds its own member.
+ B, I can have Z, which does the same in a, C, and then class Y Z through public inheritance from Y and a public inheritance from Z gets all those capabilities and adds some of its own capabilities.
+ So the number of variables of a base class.
+ Are becoming member variables of the draft class, likewise for behaviors where essentially taking those.
+ But our access to them depends on a level of access we specify as the type of inheritance.
+ If we have private members.
+ They would be only accessible within the base class.
+ If it's public inheritance, we're talking about various class drive class, our class most permissible.
+ And finally, we can see something meaningful about protect.
+ It was so it introduced before it was an obvious one.
+ It's useful.
+ It would be accessible for base, class and drive class.
+ So a little more privilege for garner related derived classes.
+ Private members of Abbas class are private and the basic class, and so you cannot have direct access to them outside.
+ You have to go through a public interface to get direct access.
+ Private members cannot be accessed directly, but we can create protected members and then that would give necessary access to the derived class.
+ So slightly better than public in terms of security is slightly less work compared to private.
+ If we use private inheritance.
+ Private members of Class A are essentially inaccessible, very hidden by this level of inheritance.
+ Public and protected members become private to the draft class.
+ Now this is true.
+ The most secure private inheritance.
+ It could be easy to get confused in those definitions, so maybe a few code examples will help to clarify what's going on.
+ So I have here my class figure again, my basic class, and I have a protected X and y and it.
+ If I'm using public inheritance, I don't have direct access to those in the main function because protect it becomes private.
+ I would have to go through.
+ Public.
+ Interface of figure functions to get access to those variables.
+ So here I have constructors for the circle, which I rely.
+ On which provide accessibility to those capabilities.
+ So if it was the case that X and Y figure there are actually private, I wouldn't have that that right to go directly and access that.
+ I would have to utilize functions such as set X of set Y, which is part of a public interface of the figure two class.
+ And that's what I would utilize within constructors for a drive class circle.
+ To set X and Y variables.
+ So really not anything completely different from before.
+ You remember if you had private variables, you couldn't write directly to them.
+ You had to go through a public interface of a class.
+ Now, depending on the type of inheritance you utilize, you know how the base class members mapped out to the draft class.
+ And then once you know, if they're private or public or protected, you can use appropriate method to modify them.
+ So to remind you, with the more secure private inheritance, private will become hidden and public and protected would be accessible as private draw before.
+ A cool capability we have with inheritance is to override functions.
+ If we have a base clause, which let's say in this case example is human and it has behavior such as sleeping, drinking, eating, I can create a program or a class by adding additional capabilities of celery and writing apps and being nerdy.
+ What does it mean to override functions in this context? Well, maybe we know that programmers are unique in their dietary habits, and so they only eat specific foods so we can override.
+ Functions for eating and drinking with those specific properties unique to that more specific derived class.
+ It's easy to get confused between redefining a function and overloading one.
+ Remember, we learned how to overload functions.
+ Overloading a function is a way to provide more than one function with the same name, but with different signatures.
+ You remember they varied in terms of types of parameters, number of parameters, but they all accomplish kind of the same functionality.
+ Then we redefine the function, we give the signature exactly the same, but behavior changes and depending on whatever you call a more specific function redefined for the RIF class or more general function for the base class.
+ Behavior will be different.
+ So in this example, if you call eating an A human, they might eat some healthy foods, whereas eating and a programmer will only allow them to eat pizza.
+ So to redefine essentially overriding functionality in a derived.
+ Class from a basic class.
+ We have to provide a method with the same signature.
+ Everything stays the same.
+ If you.
+ Do this.
+ You can specify using scope resolution operator to which class the new function belongs to.
+ And you can still get access to the old behavior.
+ Old function.
+ Not only defined one, but using scope resolution operator to refer to the previous class name.
+ So I can see it function, but call it and human it function, but call it on programmer.
+ This also could be somewhat confusing.
+ Let's see an example.
+ Let's see.
+ I have a class called Rectangle type.
+ So sounds like a type of geometric figure has length and width as its member properties, private ones, and has a significant public interface for setting dimensions, getting the two private variables computing area perimeter, outputting that figure and constructors with arguments or a default constructor.
+ We saw examples of those function definitions for clock time before.
+ Nothing really different here.
+ Same same type of work for rectangle type.
+ So if I'm setting dimensions, I take arguments to arguments.
+ I set private variables to those values.
+ If I'm trying to get laying furniture laying.
+ Same thing with if I need to compute area, it is just a product of the two dimensions.
+ Computing perimeter addition of two dimensions multiplied by two, outputting printing out the figure as just two dimensions of the figure and then constructors.
+ The default one just sets the 200 the one with dimensions uses said dimensions to.
+ Efficiently assign initial.
+ Size to the rectangle.
+ Any questions on this so far? Nothing different here.
+ We've just created a class four rectangle.
+ So now I would like to throw inheritance, create a box and box type or what is a box but a three dimensional rectangle right away adding another dimension height.
+ A lot of our capabilities will remain the same.
+ So we want to inherit those abilities to set those two dimensions and output them.
+ But we adding additional capabilities, swearing capability to get height, set that additional dimension, and now we computing volume an area.
+ Which may be somehow different.
+ We're also printing a box.
+ Which means we'll have to print a third dimension.
+ So let's see how we can implement those.
+ And this inherited.
+ There are four class.
+ So we can.
+ Rely on a rectangle type print function.
+ Within our box type print function, which we are now redefining to be capable of doing this.
+ We call the original print function using scope resolution operator on the rectangle type.
+ And we just had another see out statement for the third dimension.
+ So we're used as much of it as we can from the basic class.
+ We modified the behavior and now if I call print, depending on whatever I call it and the box rectangle, appropriate behavior will be done and give a three or two dimensions will be printed.
+ Setting dimensions again, same idea.
+ I take three arguments for set dimensions.
+ They pass two of them into set dimensions for a rectangle.
+ I use the third one as before to.
+ To complete the setting process.
+ Area.
+ I'm just computing area that bugs getting height.
+ And finally, volume is just area times height from previous.
+ Again, I'm less concerned about geometric properties of boxes and more interested in the idea of redefining behaviors.
+ So are there any questions about this idea of overloading functions with the same signature in a base class? So if we look at our box type, it is a derived class using public inheritance.
+ Public members become public members.
+ We are redefining functions sprint and area.
+ We have now seen an extension of the scope resolution operator to not just help us connect specific member to a particular class it belongs to, but we can now use scope resolution operator to find an appropriate class on which we want to call the behavior.
+ It doesn't have to be the most recently defined one.
+ It could be one of the base classes up for change.
+ So we still have access to that behavior.
+ In terms of constructors.
+ If you think about it, the way you construct a new object, you need to have everything in place before you can complete your work.
+ So as part of a constructor for a drive class, you would call a constructor for the basic class first.
+ If you don't do it explicitly, you'll get an implicit call to the default constructor for a basic class which would look something like this.
+ I have a public circle uh, constructor.
+ And let's say there is a geometric object based class, which is the default constructor for that parent class, which would be called in that case.
+ Whatever your constructor is with argument of result, you still want to at least call the default constructor for the base class.
+ Ideally for the constructor with arguments that it's probably a meaningful matching constructor with arguments for a base class.
+ If you have a whole chain of inheritance, you will have this concept of constructor and destructor chaining where you call them in order constructors.
+ You call from the most kind of early, most abstract, most baseline class first and progressively become more specific.
+ The structures work in the opposite order.
+ You clean up after the most drive class first, then go up the chain.
+ So that's.
+ That's the name for it.
+ And structure.
+ And the structure.
+ Chain.
+ Questions about.
+ You're going to have a pointer to a base class.
+ And since the class of the derived class, the type of it is a subset of a base class, you can set this pointer to a drive class and it would work with a pointer to a base class.
+ It will treat it as the basic class.
+ But if you remember, we just learned to create customized, redefined behaviors for the drive classes.
+ It would be cool if compiler looked at the type of an object it's working on and provided object specific behaviors.
+ We can do it with virtual functions.
+ We'll create something called virtual functions, which will force compiler to do virtual binding, meaning it will at the time that it's making this decision, look up the type of the object and call an appropriate behavior for it.
+ So if in our base class we make a function virtual explicitly saying it says virtual function using keyboard virtual.
+ Then it becomes virtual in the drive classes.
+ You don't have to explicitly do anything for that.
+ And once you define it as such, we have this option of getting appropriate behavior.
+ Here's how it might look.
+ I have my base class and within it I have a virtual function F, and then the drive class is going to implement some specific behavior for that function.
+ So what does that mean? What? Static matching.
+ You just go with the base class for the pointer.
+ Oh, it's a little cheaper.
+ You don't have to do any additional computations to look up what's going on.
+ If you're doing dynamic binding, then we'll match appropriate function signature.
+ Find the more specific one to the object most recently defined one.
+ And that's the one we're going to call.
+ It's a little more expensive, but provides really useful functionality.
+ And you can, of course, implement it throughout the chain.
+ And there could be many possible options for what the behavior would be.
+ And we want appropriate one to be generated.
+ It's possible that we create something a little too abstract.
+ And it's so it's nice to make sure we're forcing this implementation need and the child objects.
+ So we definitely get the specific behavior definition provided later.
+ If you have no plans of leader redefining behavior, don't create it as a virtual.
+ It's a little more computationally expensive.
+ So what do I mean by this idea? A little to obstruct, to implement.
+ If we do a good job abstracting away concepts, at some point we get to an idea so abstract there is not a specific instantiation of it in this world.
+ It's just a collection of useful abstract concepts of geometric shape is one.
+ So we know properties of geometric shapes, but it's not specific enough to create visualize about objects from it.
+ You have to be more specific.
+ Circle Rectangle two to start creating instances of that class.
+ So we want to be able to abstract away, make it maximally reusable, certain concepts.
+ And that's the idea behind abstract classes.
+ So an abstract class is a class you cannot actually instantiate objects of is just an informational entity.
+ It's not actually something you would allocate memory for.
+ We indicate that a class is an abstract class by making sure it has at least one pure virtual function.
+ A pure virtual function is a virtual function, which has this additional parameter.
+ We set it equal to zero.
+ We'll see an example shortly, which means we do not define it.
+ We do not provide behavior in the abstract class, but we are forcing all the derived classes to implement that function.
+ So here is a potential abstract class called mammal.
+ It has a string for name and it has a make sound function.
+ What sound does a mammal make? I don't know.
+ But if I could eat specific animals from this base class.
+ Drive the animals make very specific noises.
+ Cats, Dogs.
+ Elephants.
+ Likewise, if I have an abstract class figure, I don't know how to calculate an area for that, but I know how to calculate areas for rectangles and circles.
+ So if I force calculate area to be a pure virtual function, I'll get exactly that behavior.
+ I'll have an abstract class from which I can inherit.
+ I cannot instantiate those poorly defined objects of class figure, and then I can have derived classes such as Circle, which do implement specific calculations for area, and I can create instances of that class little baby circles.
+ So here's how the code would look for creating a pure virtual function and making class sphere an abstract class.
+ We indicate calculate the area as virtual and we set it equal to zero.
+ Everything else remains the same.
+ We have some private variables.
+ We have public interface for constructors, even with arguments always up.
+ Let's say I am creating a derived class circle through public inheritance from figure.
+ I am implementing calculate area function here.
+ Notice I don't have to repeat the keyword virtual.
+ It's already virtual because it inherits from finger.
+ I can now create circle of objects using, for example, constructor with arguments.
+ I can call calculate area function on objects of type circle, but I cannot create.
+ New objects of type figure.
+ Because we explicitly made it an abstract class using pure virtual function.
+ Any questions about any of that? I know it was a lot.
+ I strongly suggest you actually play with those especially different types of inheritance, give them different settings, see how it changes behavior, how it modifies your capability to work with a derived class.
+ Any general questions? All right.
+ In that case, if you have specific personal questions unique to you, object.
+ Please come and see me.
+ 

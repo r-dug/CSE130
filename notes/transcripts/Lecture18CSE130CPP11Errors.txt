@@ -1,0 +1,301 @@
+Lecture18CSE130CPP11Errors
+I just.
+ All right, let's get started.
+ There are three questions before we begin.
+ Today's topic is all about handling errors.
+ Exceptions.
+ Bugs in your code.
+ The idea is that.
+ We know we're going to have problems.
+ Maybe it's something we did with the program, maybe it's the user supplied inputs, maybe the hardware failure.
+ But it would be awesome if our programs didn't going to crash and burned but gracefully handled those exceptional situations.
+ And there is a built in infrastructure in C++, a collection of classes for doing exactly that, for being an A look out for common types of problems, exceptions, and providing support code for such situations.
+ We'll start with some basic primitive types of making sure everything is as it's supposed to be and gradually see how it can make it more robust, more complex.
+ So there is a function for checking that a variable has specific value, asserting that, for example, we're not dividing by zero.
+ So we want to make sure devised divisor is not equal to zero.
+ If we just kind of create code where we ask the user for four numbers and then do division, it's possible that the divisor provided by the user would in fact be equal to zero.
+ And that would crash our program.
+ So here we have situation.
+ We are asking enter the data into the divisor and then we just do dividend by divisor.
+ And if they provide divisor such as five, everything works great.
+ But if they actually provide a divisor which is zero, we have a case of division by zero.
+ And that will create some sort of a crash message and crash of our program.
+ Now we can do a little bit better and add an explicit kind of manual check to see what the value of this divisor is.
+ We just have an EVE statement checking to see if it's not equal to zero.
+ So same setup as before.
+ If it's not equal to zero, I can do the division operation.
+ If it is equal to zero, I can say, well, you cannot divide by zero.
+ Another option and that's the one would assert we can include class, assert library and then we can have this assert statement and would in parentheses essentially do the same check is divisor, not equal to zero.
+ And in this case, if it fails, it will give us a specific message saying what was the problem? Okay, this assertion failed.
+ That's where it happened.
+ So at least the user gets some meaningful information about about the problem.
+ Any questions about it so far? So that's kind of the most basic way of doing it.
+ Here's a more complex way.
+ If you realize that a part of your program can give you problems, you can place it inside a tribe, block a part of a code where we're trying to see what happens and follow it by a catch block where we would try to catch any problems.
+ Catch any exceptions drone and handle them in a way which is best for a given situation.
+ So any statement which may generate an exception and that could be a lot of your code, if not most of your code would go inside of that try block.
+ There will be multiple statements inside that try block And the moment something fails, the rest of those statements would be ignored.
+ Now, depending on the type of exception thrown, you can have multiple handlers for that situation.
+ So multiple carriage blocks will follow a try.
+ BLOCK.
+ So the job of the carriage block is to be explicit about what type of exceptions it can handle, what argument it's looking for, and then the code for handling that type of exception.
+ In some cases, we cannot ahead of time predict all possible specifics.
+ So we can also have a general kind of wild card catch all catch block, which has general ability to handle problems.
+ And that's indicated with this kind of variant list of parameters.
+ Ellipsis triple dot list of possibilities.
+ So here is the syntax for setting up this structure.
+ We have reserved keyword try.
+ There is a body of it and within that body will place the statements we would like to monitor for exception problems.
+ We follow this with multiple cage blocks for handling each specific type of exception data, type one, type two identifiers.
+ And then finally, at the end, we have the default.
+ If we have not handled it so far, here's the catchall exception handler.
+ So if there is no problem, if exception is not wrong, then we can just ignore all the catch code, right? It's not necessary.
+ We ignore all the catch blocks and we'll continue executing from that point.
+ If there is an exception, we immediately stop executing the tribe, block the code within it, and we go to a matching catch block and execute that code.
+ The program will try to match catch statements in order.
+ So the first one to match the type of exception drone will be executed.
+ For that reason.
+ You want to start with more specific handlers and leave the more general ones for later.
+ So if you have a perfect way of dealing with this problem, that should be executed.
+ Otherwise, it can go to a more general problem handler.
+ If one of a catch blocks matches and is executing, we will ignore remaining catch blocks.
+ So here is a catch block example, which looks for an integer x drawn, uh, type of identifier for the problem.
+ In this case, we're looking for some sort of a integer data type exception.
+ Now you are limited to a specific type of exception per catch block.
+ And the one we talked about was that he dodge catches all types.
+ Which otherwise are not matched to a specific one.
+ I keep using this term throw exception.
+ What does that mean? So we're going to literally throwing a signal for help or we're saying if there is a problem detected, we can reserve board throw at some sort of expression.
+ The expression could be a constant, could be a class, a variable, an object, anonymous object.
+ Pretty much anything you can throw at this problem.
+ So it could be something specific and unique to that problem.
+ Maybe you created a custom class for handling this problem.
+ Could be an anonymous object.
+ You just create a string with a given value.
+ You don't have a name it.
+ You just throw the string with the message inside.
+ So we have reserve cuatro and some sort of a value where drawing here is a few examples so that I can have created an integer num with a specific value.
+ I can create a string with a message.
+ Now the syntax is the same through expression if I'm drawing a value.
+ This is what we are looking for.
+ Specific.
+ Specific number, I can be throwing a variable, a string, or an anonymous string object with a message.
+ So a catch block ever catches all exceptions of specific type or all types of exceptions.
+ As I said, the wild card, the ellipsis variant catches everything and should be the last one.
+ Well, it probably will make more sense if we see some examples.
+ So here is code for the same problem we seen initially with.
+ Potential division by zero.
+ And now I'm placing this whole questionable segment of code inside a try.
+ BLOCK You see, I start with a reserve, give or try.
+ I have my curly brackets and always getting data from the user division.
+ All of that happens there.
+ And notice if divisor is in fact zero, I draw an exception.
+ I draw the zero itself to indicate what the problem is.
+ Now, this is followed by a carriage block, which here is looking for an integer.
+ So if we run this code.
+ If devised, there are something like eight.
+ We'll just get, uh.
+ Result.
+ Exception is not thrown catch.
+ BLOCK has nothing to handle.
+ If Divisor is in fact, zero, we throw the value of zero.
+ The catch block looking for integer would catch it and indicate that it is division by zero error.
+ Here's same example.
+ But here I'm drawing the divisor itself.
+ So divisor, there is an integer.
+ I'm drawing that.
+ And then.
+ After the tribe block.
+ I have my kid's block, which is looking for some sort of integer, We'll call it X, and we can print out a message saying, Yeah, there was division, but zero problem.
+ And the value of that x is zero at the time.
+ Any questions about that? They do the variable divisor there.
+ Is it going to be zero or just the type of integer? So it can throw types, it can throw specific values, it can throw any any type of thing.
+ So can you do a catch For if it is an integer that equals zero, it can you? Is it? If it just if it is an integer? So can you look for a specific value? I think it's possible.
+ I think you can do that.
+ So here we have a situation where we have a string input string and we'll set it equal to the input stream is in the failed state.
+ So if you remember, then you're doing is user input output.
+ Sometimes the user supply storage data, it may crop the input stream.
+ Your buffer is populated with some extra data.
+ They may have to look out for that.
+ So here I have multiple possible things handled which could go wrong.
+ If divisor is equal to zero, I'm drawing divisor.
+ If divisor is less than zero, negative number, drawing a string, saying negative divisor.
+ And finally, if the input stream is not in a healthy state, we throw the input string we just set up.
+ So here I have to catch blocks following it.
+ I have integer x catcher and I have string sketch.
+ Essentially, we're looking for those two data types and depending on what goes wrong, we can handle different situations if there is no problem.
+ Again, we ignore the whole try cage situation.
+ If a negative number is provided, it's fine, but we can realize that situation is taking place.
+ And finally.
+ If, instead of a integer, the user supplies a character, something does not match and we can notify the user about this situation taking place.
+ So there is a lot of built in infrastructure for handling different types of common exceptions, exceptions which happen.
+ Then we try to allocate memory access ranges within arrays strings.
+ You don't have to memorize all the different existing classes.
+ So I'll show you some examples just now.
+ Know that they exist.
+ Be able to find them if needed.
+ But again, you don't have to memorize each type.
+ So from the general class of exception, there are two more specific variants logical error and runtime error.
+ There is also something called invalid argument, which deals with the legal arguments in the function call.
+ Out of range, as you can guess, deals with our attempts to access, let's say, a substring, which is out of range.
+ And you can also have a problem with maximum length.
+ Being accessed.
+ If we have a problem allocating dynamic memory, that is not enough memory for a new command to succeed, we can get a better allocation error.
+ There are also overflow and underfloor areas for arithmetic operations.
+ Let's see some examples for those so they make a little more sense.
+ So here I am looking for out of range and length errors.
+ I have a sentence testing strong exceptions and within the tribe block, I'm going to look at what is the length of that sentence.
+ So it's a class string I can call kind of standard methods and strings such as length.
+ Here I have a substring method called and I'm going from location eight to location 20 and another substring call from location 2210.
+ So let's look at the output here.
+ The initial string provided testing string exception.
+ We called length on it.
+ It only has 26 characters, 26 symbols.
+ But our substring method starts at 28, so we expect a problem with substring being out of range on that call.
+ Notice in the last block on the out of range sorry out of length are exception.
+ I'm calling a function called what? A class describing a particular type of exception would have a method called what, which is essentially a way to print out a message indicating what the problem is.
+ Then we start creating customer error messages.
+ That's where we would put specific.
+ Explanation for what happened.
+ Here's an example for bed memory allocation.
+ So how do I cause this on purpose? I can ask for large chunks of memory sequentially a lot of times.
+ So I create a loop.
+ And depending on how much hardware you have, you can make the loop go longer or you can ask for larger chunks of memory.
+ But at some point you will run out of available memory if you make it big enough.
+ And that's what happens here.
+ So I have a dry block which contains a follow up going from 0 to 99, asking for those sizable chunks of memory.
+ I follow this with a catch for better allocation error.
+ And again, notice I'm calling the what function and the be object of better allocation, which to tell me what is going on there.
+ Here's what one possible output could be from running this program, depending.
+ And again, hardware you have, it much might take much longer to crash the system.
+ But so I allocated a large list of integers again and again.
+ At some point I'm out of memory, so a better allocation error is strong.
+ So there's a built in exception places.
+ Any questions about this one here? Well, we'll learn how to create custom classes so we can also create custom exception handling for our classes.
+ Technically you can really throw anything whatsoever, but it's nicer if we can create a custom class designed specifically for this purpose which supports things like the what method? So if I just create some sort of a dummy exception class.
+ Doesn't matter.
+ It's empty.
+ I have a class division by zero within my roadblock.
+ I control this division by zero object.
+ And then look out for that within the cache block.
+ So it doesn't have any content.
+ I'm just throwing the subject.
+ It's, of course, a little better if I now implement necessary components for this exception class.
+ It has a private.
+ Value, which is a strong message which describes what what the problem is.
+ It has that method we seen before called what which returns the private value of that string telling us what the problem is.
+ And we got there two constructors either default constructor which defaults to division by zero, or a constructor with a string argument which takes whatever string you would like.
+ This object initialized with and sets the private message to that value.
+ Any questions about that? So here I have example where I'm including division by zero dot h file.
+ So I have access to this class which is created.
+ Within my tribe, like as before.
+ I ask the user for necessary values.
+ And then if divisor is equal to zero, I troll division by zero.
+ Exception.
+ The catch block is looking for division by zero object.
+ And calls the what method and that object.
+ So here again, if everything goes as expected, or if we have this problem with division by zero, we can output specific.
+ Specific message.
+ Any questions about that? Here is more example code.
+ Once again, we're including division by zero.
+ Header file.
+ We created.
+ We can have.
+ Function for doing division.
+ And perhaps will execute that function within our main.
+ So again, if divisor is equal to the value we are assuming will cause the crash from our program.
+ We control division by zero object.
+ Now look at the error message reporting in a function to the vision.
+ The vision by zero happened, so at least the user gets a complete explanation for what the problem is.
+ It's good to be able to inform the user.
+ It's even better if we can actually fix the problem, handle the exceptions, so we'll see a few things we can do for for addressing some types of exceptions.
+ So depending on how severe of a problem is, you have a few options.
+ Then exception occurs with stop executing the tribe like with switch to the cage block.
+ The first hedge block to match the value of an object can either partially or completely handle it.
+ If it cannot fully solve it.
+ But there is another catch block which may do better.
+ It can read through the exception meaning to pass it on to the next block.
+ And.
+ You can either.
+ They're all the same exact thing or they throw a new type of exception.
+ So in a cage block, if you just include the throw statement that's considered a re throwing of the same problem.
+ Or you can throw a new value, new object.
+ Perhaps you understood some unique aspect of initial exception.
+ And so you can redraw an object signifying that to an average block specifically designed for handling that problem.
+ So as before, then you are throwing another exception.
+ You can never create a specific object or anonymous object.
+ So if you're creating a function, you may specify that this function is likely to draw a particular type of exception.
+ So we are aware of this and are able to handle it if we're using your function as a part of some library.
+ So here I have an example function which may throw an integer, a string or division by zero object.
+ So similar to the example before.
+ Here I include the division by zero header file and in the prototype of my do division function, I show that it throws division by zero exception.
+ Potentially the do division function itself is placed within a try block and then the catch block looks for division by zero.
+ Again, if we match with the CAGE statement, we can go division by zero object.
+ Tell us what what the error message is.
+ So here I am drawing division by zero with a specific message providing as an argument for the constructor, we are creating an object with found division by zero exception.
+ Notice the cage block does not explicitly handle this problem, but it throws it.
+ So now there is another cage block, hopefully more suitable for addressing this problem.
+ So what are the options for actually handling those problems? It depends on the type of a problem, how severe it is, and how critical your application is.
+ One option you have is to terminate your program gracefully, report some sort of a message and just shut it down.
+ Ideal case is where you can recover from a problem.
+ You detected a problem, you solve it, you continue running the got.
+ In some cases you cannot solve it and it's too important to just terminate.
+ So you keep records and try to go on the best you can.
+ What does that mean? So let's say you are running a program which relies on some resource, maybe Internet access.
+ With no Internet access, there is no point in running your program.
+ So you notify the user, please connect to the Internet until you do.
+ We're shutting down.
+ Could be some of a more crucial resource missing file, not enough memory to run program, something like that.
+ Questions.
+ Does that make sense? Okay.
+ Another option is where things are not so bad.
+ You realize there was a problem.
+ Maybe user provided incorrect input.
+ Oh, we can fix that.
+ We can clean up our input stream and give users another chance to enter data.
+ So that's probably the best case scenario.
+ Finally, we have this case where it's something very important.
+ You have a nuclear power plant controller and you detect an error, but you can just shut down.
+ It would cause even more problems.
+ So you try to continue to execute, but you definitely want to log all the parameters of a problem.
+ So it could be recreated later investigated, forensically analyzed, and hopefully avoid it in the future.
+ So here we're looking at the situation where we can handle the problem.
+ The problem is caused by the user putting our input stream in a failed state.
+ So I have.
+ String for reporting this problem.
+ The industry was in the failed state.
+ I have a boolean for whatever we are done or not with resetting the situation.
+ And then within the try block, I ask the user to enter the integer.
+ I check to see if the input stream C and is in a failed state.
+ If.
+ We encounter a problem.
+ We throw a STR exception which is the industry is in a failed state and the catch block is looking for a string.
+ So it will match this SDR and within the cage block, we're not just reporting that there is in fact a problem.
+ We're trying to clean it up.
+ So we have this done variable set to true because we have now set this process in motion.
+ And within the cage block, we are saying, okay, we've got the message, this is there.
+ We're going to restore the input stream.
+ So we call clear method on the scene object.
+ We ignore a bunch of characters still sitting in a buffer.
+ Hopefully the user didn't type more than 100 of them and we can continue this process.
+ We put the whole try and cage block situation within the do while loop controlled by the are we done an odd situation.
+ So we continue this until the user manages to provide proper input.
+ Here's what we see.
+ We are asking enter an integer.
+ The user, for some reason fails to provide an integer types in a bunch of text.
+ We say, Oh, okay, you put the input stream in the failed state.
+ We're going to restore it for you.
+ So we clear input with clear buffer.
+ We ask them again to enter an integer.
+ They still mess it up.
+ The while loop will continue working with them, resetting it until at some point they actually provide an integer.
+ Now there is no exception.
+ The input string was not in failed state.
+ We successfully addressed this problem instead of our program crashing.
+ We handled this exception.
+ Any questions about that? Right.
+ That's what we have.
+ On the topic of bugs and exceptions.
+ If you have any individual questions, please stop by.
+ I'll do my best to help you.
+ 
