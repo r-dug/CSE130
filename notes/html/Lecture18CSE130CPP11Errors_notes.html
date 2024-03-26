@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Lecture Notes: Errors and Exceptions Handling in C++</title>
+   <style>
+
+      body {
+          font-family: sans-serif;
+      }
+      h1 { 
+          background-color: blanchedalmond;
+      }
+      h2 { 
+          background-color: lightblue;
+      }
+      h3 { 
+          background-color: lightgreen;
+      }
+      code {
+          font-family: monospace;
+          font-weight: 600;
+          color: blue;
+          background-color: bisque;
+      }
+  </style>
+</head>
+<body>
+
+<h1>Lecture Notes: Errors and Exceptions Handling in C++</h1>
+
+<h2>Introduction to Errors and Exceptions Handling</h2>
+<ul>
+  <li>Errors are inevitable in programming due to various factors like user input, program logic, or hardware failure.</li>
+  <li>Exception handling is the practice of gracefully dealing with errors to prevent program crashes.</li>
+  <li>C++ provides a built-in infrastructure to handle exceptions using a collection of classes.</li>
+  <li>The goal of exception handling is to identify common problems, handle exceptions, and provide support code for such scenarios.</li>
+</ul>
+
+<h3>Basic Error Handling Techniques</h3>
+<ol>
+  <li>
+    <strong>Checking for Specific Values</strong>:
+    <ul>
+      <li>Use functions like <code>assert</code> to check specific conditions before executing code.</li>
+      <li>Example: Ensure not dividing by zero before performing a division operation.</li>
+      <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+   int dividend, divisor;
+   cout &lt;&lt; "Enter dividend: ";
+   cin &gt;&gt; dividend;
+   cout &lt;&lt; "Enter divisor: ";
+   cin &gt;&gt; divisor;
+   assert(divisor != 0);
+   cout &lt;&lt; "Quotient = " &lt;&lt; dividend / divisor &lt;&lt; endl;
+}</code>
+      </pre>
+    </ul>
+  </li>
+  <li>
+    <strong>Using <code>try-catch</code> Blocks</strong>:
+    <ul>
+      <li>Place risky code inside a <code>try</code> block followed by a <code>catch</code> block to handle exceptions.</li>
+      <li>Different <code>catch</code> blocks can handle specific types of exceptions.</li>
+      <ul>
+         <li>The first <code>catch</code> block whose conditions are met will be executed, and the rest ignored</li>
+         <li>For this reason, it is advisable to start with more specific conditions.</li></ul>
+      <li>Include a wildcard <code>catch</code> block for general exception handling. It is denoted with an elipsis.</li>
+      <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+   try
+   {
+      int dividend, divisor;
+      cout &lt;&lt; "Enter dividend: ";
+      cin &gt;&gt; dividend;
+      cout &lt;&lt; "Enter divisor: ";
+      cin &gt;&gt; divisor;
+      if (divisor == 0)
+         throw 0;
+      cout &lt;&lt; "Quotient = " &lt;&lt; dividend / divisor &lt;&lt; endl;
+   }
+   catch (int)
+   {
+      cout &lt;&lt; "Divisor cannot be zero" &lt;&lt; endl;
+   }
+
+   return 0;
+}</code>
+</pre>
+    </ul>
+  </li>
+  <li>
+    <strong>Throwing Exceptions</strong>:
+    <ul>
+      <li>Use the <code>throw</code> keyword to signal an exception.</li>
+      <li>Exceptions can be specific values, custom classes, or anonymous objects.</li>
+      <li>Different catch blocks handle different types of exceptions thrown.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2>Built in Exception classes</h2>
+<ul>
+  <li>C++ contains base class of exception classes in the header file <code>&lt;exception&gt;</code></li>
+  <li>Examples of exception classes included in <code>exception</code> header file:</li>
+  <ul>
+      <li><code>logical_error</code> </li>
+      <li><code>runtime_error</code> </li>
+      <li><code>invalid_argument</code> - deals with illegal arguments in a function call</li>
+      <li><code>length_error</code> - deals witha length greater than maximum allowed for a string object</li>
+      <li><code>out_of_range</code> - trying to access a substring out of range</li>
+      <li><code>underflow_error</code> - <a href="https://docs.oracle.com/cd/E60778_01/html/E60763/z4000ac020351.html">arithmetic underflow </a></li>
+      <li><code>overflow_error</code> - <a href="https://www.pcmag.com/encyclopedia/term/arithmetic-overflow#:~:text=An%20arithmetic%20overflow%20is%20the,See%20arithmetic%20underflow.">arithmetic overflow </a></li>
+      <li><code>bad_alloc</code> - bad memory allocation</li>
+  </ul>
+  <li>These classes are derived FROM the <code>exception</code> class</li>
+  <li>Throwing custom exceptions allows for better error reporting and handling in the code.</li>
+  <pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+   string sentence, str1, str2, str3;
+   try
+   { 
+      sentence = &quot;Testing string exceptions &quot;;
+      cout &lt;&lt; "sentence =" &lt;&lt; sentence &lt;&lt; endl; 
+      cout &lt;&lt; "sentence length =" &lt;&lt; static_cast&lt;int&gt;(sentence.length()) &lt;&lt; endl; 
+
+      str1 = sentence.substr(0, 10);
+      cout &lt;&lt; "str1 =" &lt;&lt; str1 &lt;&lt; endl;
+
+      str2 = sentence.substr(30, 10);
+      cout &lt;&lt; "str2 =" &lt;&lt; str2 &lt;&lt; endl;
+
+      str3 = "Exception handling. " + sentence;
+      cout &lt;&lt; "str3 =" &lt;&lt; str3 &lt;&lt; endl;
+   }
+   catch (out_of_range re)
+   {
+      cout  &lt;&lt; "Out of range!"
+            &lt;&lt; "catch block: " &lt;&lt; e.what() &lt;&lt; endl;
+   }
+   catch (length_error le)
+   {
+      cout  &lt;&lt; "Length error!"
+            &lt;&lt; "catch block: " &lt;&lt; le.what() &lt;&lt; endl;
+   }
+
+   return 0;
+}
+</code></pre>
+</ul>
+
+<h2>Handling Custom Exceptions</h2>
+<ul>
+  <li>Create custom exception classes to handle specific types of errors effectively.</li>
+  <li>Implement the <code>what</code> method in custom exception classes to provide detailed error messages.</li>
+  <li>Throwing custom exceptions allows for better error reporting and handling in the code.</li>
+  <pre><code>// this would be the header file of a custom exception for division by zero
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+class divisionByZeroException
+{
+   public:
+      divisionByZeroException()
+      {
+         message = "Division by zero";
+      }
+      divisionByZeroException(string str)
+      {
+         message = str;
+      }
+      string what()
+      {
+         return message;
+      }
+   private:
+      string message;
+}
+
+// we can include this header file in other C++ files to handle zero division
+#include &lt;divisionByZeroException.h&gt;
+
+int main()
+{
+   try
+   {
+      int dividend, divisor;
+      cout &lt;&lt; "Enter dividend: ";
+      cin &gt;&gt; dividend;
+      cout &lt;&lt; "Enter divisor: ";
+      cin &gt;&gt; divisor;
+      if (divisor == 0)
+         throw divisionByZeroException();
+      cout &lt;&lt; "Quotient = " &lt;&lt; dividend / divisor &lt;&lt; endl;
+   }
+   catch (divisionByZeroException errorObject)
+   {
+      cout &lt;&lt; errorObject.what() &lt;&lt; endl;
+   }
+
+   return 0;
+}</code></pre>
+</ul>
+
+<h3>Error Recovery Strategies</h3>
+<ol>
+  <li>
+    <strong>Program Termination</strong>:
+    <ul>
+      <li>Gracefully terminate the program with an error message in critical situations.</li>
+      <li>EX: maybe the application needs an internet connection to function. Without a connection, program terminates and notifies user as to why.</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Error Resolution</strong>:
+    <ul>
+      <li>EX: Correct user errors or invalid inputs to continue program execution.</li>
+    </ul>
+  </li>
+  <li>
+    <strong>Logging and Continuation</strong>:
+    <ul>
+      <li>Log error details for later analysis and continue program execution in essential applications.</li>
+      <li>Critical systems. Professor gave example of nuclear reactor or satelite monotoring.</li>
+    </ul>
+  </li>
+</ol>
+
+
+<h2>Conclusion</h2>
+<ul>
+  <li>Understanding error handling mechanisms is crucial for writing robust and reliable C++ programs.</li>
+  <li>Being able to identify, handle, and recover from exceptions enhances the program's stability and user experience.</li>
+</ul>
+
+<p>For further reading on Exception Handling in C++, you can refer to the official <a href="https://en.cppreference.com/w/cpp/error/exception">C++ reference documentation on exception handling</a>.</p>
+
+</body>
+</html>

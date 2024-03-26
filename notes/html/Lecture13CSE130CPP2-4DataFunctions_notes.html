@@ -93,16 +93,18 @@ int boxVolume(int length = 1, int width = 1, int height = 1) {
 }
 boxVolume(); // Uses default values
 boxVolume(10, 5, 10); // Explicitly provided values
+boxVolume(10, 10); //  ambiguously provided values
 </code></pre>
 
     <h2>Scope Resolution Operator and Static Variables</h2>
-    <p>The <strong>scope resolution operator (::)</strong> allows specifying the scope of a variable or object. <strong>Static variables</strong> retain their value between function calls, providing continuity and persistence.</p>
+    <p>The <strong>scope resolution operator (::)</strong> allows specifying the scope of a variable or object. <strong>Static variables</strong> retain their value between function calls, providing continuity and persistence (described as functions with memory in the lecture).</p>
     <pre><code>
 // Scope resolution operator example
 int count = 0;
 int main() {
     int count = 0;
     ::count = 5; // Accessing global variable
+    count = 2; // Accessing local variable 
 }
 
 // Static variable example
@@ -118,7 +120,6 @@ int counter() {
 
     <h3>Assignments:</h3>
     <ul>
-        <li><strong>C Exam</strong> | <strong>DUE:</strong> Wednesday, 2/21</li>
         <li><strong>Student ppt</strong> | <strong>DUE:</strong> Monday, 4/15</li>
         <li><strong>Student ppt</strong> | <strong>DUE:</strong> Wednesday, 4/17</li>
         <li><strong>Student ppt</strong> | <strong>DUE:</strong> Tuesday, 4/22</li>
