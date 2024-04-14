@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture Notes: OOP</title>    
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        h1 { 
+            background-color: blanchedalmond;
+        }
+        h2 { 
+            background-color: lightblue;
+        }
+        h3 { 
+            background-color: lightgreen;
+        }
+        code {
+            font-family: monospace;
+            font-weight: 600;
+            color: blue;
+            background-color: bisque;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Object Oriented Programming in C and C++</h1>
+    <h2>Introduction to Object Oriented Programming (OOP)</h2>
+    <ul>
+        <li>OOP involves creating a simulation of the problem environment using objects representing different parts of the system.</li>
+        <li>Objects have states (data/properties) and behaviors (functions) that interact to efficiently solve problems.</li>
+        <li>Classes in OOP are similar to structures but allow integration of functions into the data structure to provide behaviors.</li>
+        <li>Objects are instances of classes with properties and behaviors specific to that instance of the class.</li>
+        <li>Access to class members can be specified as public, private, or protected, controlling visibility and modification abilities.</li>
+        <li>Encapsulation hides internal implementation details from users, allowing access only through public interfaces.</li>
+    </ul>
+
+    <h3>Example:</h3>
+    <pre><code class="cpp">
+class Circle {
+private:
+    float radius;
+public:
+    void print(); // Example behavior
+};
+    </code></pre>
+
+    <h2>Creating Classes and Objects</h2>
+    <ul>
+        <li>Syntax: <code>class ClassName { };</code></li>
+        <li>Classes encapsulate data (variables) and behaviors (functions).</li>
+        <li>Use public interfaces to allow access to class members.</li>
+        <li>Objects of classes are created by instantiating them where memory gets allocated for their properties and functions.</li>
+    </ul>
+
+    <h3>Example:</h3>
+    <pre><code class="cpp">
+class Fraction {
+private:
+    int numerator;
+    int denominator;
+public:
+    void print(); // Function to print fraction
+};
+
+Fraction f1, f2; // Creating objects of the class
+f1.print(); // Accessing behavior of the object f1
+    </code></pre>
+
+    <h2>Constructors and Destructors</h2>
+    <ul>
+        <li>Constructors initialize objects when created, matching the class name.</li>
+        <li>Default constructors have no arguments and can have default parameter values.</li>
+        <li>Destructors clean up resources when objects go out of scope.</li>
+        <li>Constructors and destructors don't have return types and can be overloaded with different signatures.</li>
+    </ul>
+    <h3>Example:</h3>
+    <pre><code class="cpp">
+class Fraction {
+private:
+    int numerator;
+    int denominator;
+public:
+    void print(); // Function to print fraction
+
+    //constructors
+    
+    Fraction() {
+        numerator = 1;
+        denominator = 1;
+    }
+    Fraction(int n, int d) {
+        numerator = n;
+        denominator = d;
+    }
+
+    // return the fraction 
+
+    double getFraction()
+    {
+        return numerator / denominator;
+    }
+};
+
+Fraction f1, f2; // Creating objects of the class
+f1.print(); // Accessing behavior of the object f1
+    </code></pre>
+
+
+    <h2>Access Modifiers and Encapsulation</h2>
+    <ul>
+        <li><strong>scope resolution</strong> operator (::) can be used so that functions of a class can be accessed from outside</li>
+        <pre>
+EX: <code>
+void clockType::incrementSeconds(){
+    seconds++;
+    if (seconds > 59)
+    {
+        seconds = 0;
+        incrementMinutes();
+    }
+}
+</code></pre>
+        <li>Access modifiers control the visibility and modification permissions of class members.</li>
+        <li>Structs are public by default, while classes are private.</li>
+        <li>Encapsulation hides internal details, allowing interactions only through specified public interfaces for better software design.</li>
+    </ul>
+
+    <h2>General guidelines for public interface:</h2>
+    <ul>
+        <li><strong>Public interface</strong> is a set of functions that can be called by other classes.</li>
+        <ul>
+            <li>Accessor functions and mutator functions</li>
+            <ul>
+                <li>Mutator functions can be used to change the state of the object.</li>
+                <li>Accessor functions cannot </li>
+                </ul>
+        </ul>
+        <li><strong>Private interface</strong> is a set of functions that cannot be called by other classes.</li>
+        <li><strong>Protected interface</strong> is a set of functions that can be called by other classes, but cannot be called by other classes.</li>
+        <li><strong>NOTE</strong>: the order in which you declare public, private, or protected interfaces does not matter but if it is not declared, private is implied by default.</li>
+    </ul>
+    <h2>Constructors</h2>
+    <ul>
+        <li><strong>Constructor</strong> is a function that is called when an object is created.</li>
+        <li>Two types:</li>
+        <ul>
+            <li>Default constructor - contains no parameters</li>
+            <li>Copy constructor - contains parameters</li>
+        </ul>
+        <li>properties of constructors:</li>
+        <ul>
+            <li>it is a function with no type</li>
+            <li>a class can have multiple constructors but they all have the same name</li>
+            <li>all constructors must have different parameter lists</li>
+            <li>constructors execute automatically when a class object enters scope</li>
+            <li>which constructors executes depends on the passed values </li>
+
+        </ul>
+
+    </ul>
+    <h2>Key Takeaways:</h2>
+    <ul>
+        <li>OOP involves modeling real-world scenarios using objects with data and behavior.</li>
+        <li>Most of C++ built in operations aren't supported on classes</li>
+        <ul><li>You may, however, access members with the dot operator for access and assign values with '='</li></ul>
+        <li>Classes define the blueprint for objects, and objects are instances of classes.</li>
+        <li>Access modifiers control the visibility and access levels of class members.</li>
+        <ul><li><strong>NOTE</strong>: if a class type object accesses another object of the same type, private members are accessible.</li></ul>
+        <li>Constructors initialize objects, and destructors clean up resources when objects are no longer needed.</li>
+        <ul>
+            <li>Destructors are calles automatically when an object goes out of scope. Only one need be made.</li>
+        </ul>
+        <li>Encapsulation hides internal implementations and enforces interactions through public interfaces.</li>
+        <li>Custom header files must be referenced with the .h extension</li>
+        <ul>
+            <li>However, you can also simply create objects and reference them within a single file.</li>
+        </ul>
+    </ul>
+
+    <p>Remember to practice writing code samples and implementing OOP concepts to solidify your understanding. For more in-depth information, check out <a href="https://www.geeksforgeeks.org/c-classes-and-objects/">C++ Classes and Objects</a> and <a href="https://www.programiz.com/cpp-programming/encapsulation-cpp">Encapsulation in C++</a>.</p>
+</body>
+</html>

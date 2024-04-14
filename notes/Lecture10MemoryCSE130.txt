@@ -1,0 +1,305 @@
+Lecture10MemoryCSE130
+But.
+ Oh, right.
+ Any questions before we get started? Today, we're going to look at dynamic memory allocation.
+ So, so far we.
+ Dealing with situations where we knew how much memory we need to store our variables or data structures.
+ But sometimes when you run a problem, you don't know ahead of time just how many users you're going to have, how many items you'll have to store.
+ It'd be nice if we could ask for extra memory as the program was running.
+ That's what we're going to cover today.
+ How to how to get that memory, how to manage it properly.
+ So previously I think we briefly addressed this whole idea of memory.
+ In computers you have long term storage on the hard drive.
+ You have a quick access memory ram, maybe a virtual emulation of that memory that is also registers in the CPO.
+ But what are they just talking about? The memory accessible to us.
+ While the program is running for memory needs of functions and variables.
+ There is something called the stack.
+ And every time we require some sort of storage for variables, the functions of the memory could be allocated to the stack processed.
+ And then the other.
+ It relies on a data structure which is known as a life or data structure.
+ Lost element in is the first element out.
+ Think of maybe like a set of dishes in the restaurant.
+ You put a clean dish on top and then you take a clean dish off the top as well.
+ There is also something called the heap, which contains an allocated memory and from which you can request additional memory to be given to the program.
+ You don't have to.
+ Figure out what memory is available yourself.
+ The operating system and the compiler work to make this accessible to you.
+ So dynamic memory allocation is really all about trying to get extra memory.
+ To and from the hip for users of your program.
+ Typically when we deal with static allocated memory at the time you executing a program, if a function is called memory is allocated for all the variables of that function.
+ After the function terminates, the variables go out of scope and the memory is freed up the allocated.
+ So if I have a situation with multiple functions, functions, calling and other functions, you can see how those functions call allocate memory, allocate memory for additional function call.
+ So on, until we process all the function calls and they start terminating and going out of scope and we are essentially freeing up that allocated memory there.
+ If you need to have a more persistent memory allocation, such as for global variables, for example, or if you want to allocate memory dynamically while the program is running, this is where we would get it from the heap and it's slightly more complex.
+ So it's not just declaring a variable.
+ You have to specify how much memory you need and at some point you have to free that memory, return it back to the heap.
+ So if we know the amount of memory needed for structural, we know how many users will store in an array.
+ We can rely on fixed size objects for storing them.
+ If we are not sure ahead of time, that's where we need to figure out our memory needs dynamically and then request just the right size for.
+ For that story.
+ So how do we figure out size of different structures, size of different variables? There is a convenient function called size of.
+ Which, given an argument of data type or structure, will give you size of it and bytes.
+ So let's say I have a integer variable.
+ My number, I can send it in and that will tell me how much storage an integer is given on my system.
+ So it should be something like four bytes in the case of an integer.
+ Here is a more complete example of using size or function.
+ Here I have an array of integers of size ten.
+ I can call the size of function on the name of that array.
+ I can also figure out size of individual elements and use the ratio to figure out how many elements my array has.
+ Any questions about the size of function? Yes.
+ Explain the arrangement and.
+ I can't remember.
+ Just do this for.
+ So it's a ray of integers.
+ Each integer is four bytes or.
+ Does that make sense? Oh.
+ Not that you have to remember them all, but here's pretty much what you can expect for sizes of different built in data types.
+ So we have one byte for characters.
+ We have integers set for doubles at eight.
+ Okay, So now that we know how to figure out our memory needs, how do we actually request a memory allocation appropriately? That is a memory allocation function we can call malloc, give it as input size.
+ We would like to allocate in bytes.
+ And it will return to us if successful.
+ A pointer to a new chunk of memory allocated for our needs.
+ That memory will not be initialized.
+ And what are you actually getting? Is a generic pointer as a return type undifferentiated pointer type meaning it's not a specific pointer to an integer pointer to a character.
+ You might have to do some type casting to make it the right type with so typecasting in a previous lecture.
+ But really that's all it is.
+ If this memory allocation request fails, for whatever reason, there is not enough memory.
+ Something else didn't go right.
+ It will not.
+ Return a meaningful memory address will return null, meaning it's not actually pointing to any memory block.
+ You can test for it and not get in trouble by trying to access memory which is not actually allocated to you.
+ So we want to do a few things before using that memory.
+ We want to double check that we had successful allocation.
+ If that was the case, we can inform the user.
+ And maybe try again after fixing the problem.
+ So here I have a request to a function I would like to store.
+ 80 bytes size of character is one byte.
+ I'm asking for 80 units of memory, 80 bytes, and I'm typecasting from this generic pointer type to pointer to a character data type.
+ Next.
+ I do my.
+ Name is the name of a pointer which would hold a return memory address.
+ I check to see if that's normal.
+ If it is, I can print out out of memory.
+ Else I know my memory was successfully allocated.
+ Any questions about Malick function? All right.
+ There is another function, a Gaelic function, which is very similar.
+ Small differences are.
+ It will initialize allocated memory to zeros.
+ So it takes care of garbage in your memory storage.
+ And it takes two arguments.
+ So the previous one had 80 times the size of white.
+ But those are essentially the two arguments, right, the size of the element and the number of elements.
+ We can multiply them through and get a single argument for malloc or we can keep them separate and have two arguments.
+ Our skeleton expects likewise returns that same generic pointer void star.
+ And again, if it fails, it will give you a null as the.
+ Value of that return pointer.
+ Stake.
+ A look at an example combining both Catholic and medical locations.
+ So here I have created.
+ A few pointers to offload data type from the name.
+ You can tell whatever you expect to call Calico Malik, and then I can make a call to click with the arguments.
+ Size of a float.
+ A number of units, three units.
+ I can do Gaelic and Mallard calls again if I separate the two arguments by a comma or I just multiply through.
+ And that's an argument to make.
+ Like, the only difference we expect here is that Gaelic allocated memory will contain zeros and what garbage is inside malloc allocated blocks is system dependent software previous software dependent.
+ I can check to see that all my allocations were successful.
+ So I checked to see that none of them are equal to now.
+ And then I can start placing those blocks of memory in the loops and.
+ Basically seeing what's in them, what the location was that was successful.
+ After that, we haven't looked at the free function, but you can guess it frees up the memory.
+ And so I go through and I did allocate all, all the memory allocations.
+ Now, it's possible that one of the locations somewhere did not succeed.
+ So I would get null as the value of that point, or in that case I can print out not enough memory.
+ And that's the situation where.
+ Any questions about those two functions are pretty straightforward, very similar.
+ Okay, So next situation is you already have a block of memory allocated, but you realize that's not enough.
+ You need to increase memory dynamically.
+ Maybe you have new users signing up for the system.
+ Maybe something else is changing.
+ It's also possible you need less memory.
+ You need to reallocate to a smaller amount of memory.
+ So for that, there is a function called the reallocation and it takes a pointer to the current memory block.
+ You own something you previously dynamically allocated.
+ And it takes the new size.
+ If new size is bigger, it will try to give you more memory.
+ If size is smaller, it will try to shrink that block, but also it will copy over data in the existing memory block.
+ So you're not losing that information.
+ It gets copied over you, just getting more memory.
+ Next to the used memory you already have.
+ Likewise returns a pointer to a new block of allocated memory, but fails to find enough memory.
+ It will return null.
+ It also will try to find memory.
+ Which is right next to the existing block to minimize amount of moving.
+ It has to do.
+ If it's not successful, well, move it elsewhere and you'll get a new pointer as opposed to the same pointer with a larger block of memory.
+ It's pointing at.
+ Same as before.
+ We are getting this void star point through which we can.
+ Typecast to the proper type.
+ So there is three possible outcomes.
+ We can be successful by just having more memory added to the current block.
+ So whatever location and physical memory contained your data, there was free memory next to it.
+ And we just increased your allocation.
+ So the same pointer would be returned to you.
+ Another alternative is that there was not enough memory right there, but elsewhere there was a larger block of memory and you'll get a pointer to that larger location.
+ And of course, again, the third possibility is that there is not enough memory.
+ And so it will tell you it failed to successfully allocate memory.
+ Take a look at an example.
+ So I have a pointer.
+ I allocated a pointer to an integer type and I use my click function to get five units worth of integers in memory allocated dynamically.
+ I check to make sure it's not novel, and if it's successful, I'll start writing using different annotations to the locations in that dynamically allocated memory.
+ If you remember pointers, arrays, strings, all of them have that commonality.
+ They start with the first bit of memory, have offsets, refer to those blocks so we can treat our memory allocation exactly the same way.
+ It's an array of memory cells and we can access them using our innovation pointer notation.
+ The referencing same idea.
+ So the first location, location of zero byte is set to one using this the referencing of my pointer.
+ Then the next one goes to 248 16.
+ That's the five locations I allocated from index zero to index four.
+ If I want to assign something else to that pointer at location five, I cannot because I don't have that memory allocated to me.
+ So if I want to keep adding more memory, more data to that location, I need to increase the size of my memory block so I can use my reallocation function.
+ It takes original pointer as the first argument and the new size as the second argument.
+ I want seven units instead of five, so I'm increasing the size by two units.
+ The function returns the new value of a pointer back into the pointer variable.
+ It could be the same value if it was successful in growing it, or it would be a different value but in a different location if it was not immediately successful at getting large a chunk in the same location.
+ I can check to see that the relocation was successful.
+ There was enough memory to give me that extra memory, and I can now write to locations five and six in that array index.
+ I can print out what is stored in those locations.
+ I can free that memory by saying, Let's change the size of that allocation to zero.
+ So if I request a smaller amount, that is shrinkage.
+ If you require zero, it completely deletes it.
+ Same as free.
+ Three pointer to that block of memory.
+ If we fail to successfully locate, we now know that either the first allocation or second allocation there was a problem.
+ And so we can output information.
+ Not enough memory was allocated.
+ And this is what we would get as output if we print out locations, uh, from subindex 0 to 6.
+ Any questions about that.
+ So now you know how to request initial allocation and how to dynamically grow a shrink it.
+ Yes, It's brilliant.
+ And do.
+ So if you keep just asking for more and more stuff, eventually you run out of stuff like there is limited supply of memory and if you keep requesting, give me more.
+ That's a drain on resources.
+ We'll talk about a memory leak problem later.
+ So if you're no longer using that memory, it'd be nice if you kind of recycled it and you turned it back to the system so others can use it.
+ So you can use it for our project.
+ So that's all it is.
+ Any time you take things, you bring them back.
+ Any other questions? Okay, So now that we've learned how to ask for memory, we should learn how to give it back.
+ If we don't give it back, we might run out.
+ If you install someone else's piece of software and they fail to properly manage memory, after a while, your system will get drained out and may crash.
+ There's just not enough memory left for for doing our jobs, for running our code.
+ So it's very important to properly manage it.
+ There are.
+ Other languages which have automated garbage collection, meaning you don't have to worry about memory management when the object or structure goes out of scope, it is automatically recycled for you.
+ We don't have this luxury.
+ We have to manage it here and see ourselves.
+ And.
+ That's actually a very common bug to have.
+ So you want to make sure that.
+ You are not calling in your subroutines from libraries which may allocate memory and not return it.
+ You're not allocating any memory yourself and not returning it.
+ And.
+ There are a few ways to get in trouble.
+ Quickly go over some of them.
+ So this is where we are right now.
+ We have looked at three different functions for requesting memory.
+ One function specifically dedicated to returning the allocating space, and then the reallocation can be used to also free up memory as we saw, if you reduce the size or set the size to zero.
+ The general idea is that any memory you allocate, any time you have a call to allocate memory, there should be some sort of call to release that memory back into the system or you'll have a memory leak.
+ It's possible that this happens because you simply forgot to delegate.
+ Maybe your system has multiple return paths, even multiple return statements and early exit.
+ Early return bypasses the the allocation phase of your code.
+ You don't want to reassign pointers without calling three first.
+ It's possible that some complex structures utilized have components which need to be freed separately.
+ Like you have created some custom data structure which itself allocates memory, and that becomes a part of a larger structure and so on.
+ And again, maybe you are working with an existing library which fails to properly.
+ Properly delegate memory.
+ So we already saw that we can use kind of it's convenient array like notation for managing memory.
+ So if I allocate memory using Malik, I can then use that pointer as an array to get access to those individual blocks of memory.
+ And we treat it as a unit.
+ We cannot release memory from just a single cell within an allocated array.
+ We would have to delegate and shrink that structure to cover only gaps, not just try to arbitrarily release parts of a structure.
+ Let's look at some memory errors which may happen if you inappropriately allocate or free memory or try to utilize memory, which is not yours.
+ Specifically, we'll look at cases where we have usage of garbage values in memory.
+ Memory is not initialized.
+ You are trying to use memory which is not allocated to you, trying to use more than what was allocated or misusing duplicated memory.
+ So here is an example where you are using an initialized.
+ Values.
+ I have a function which takes an address, sticks a pointer as an argument.
+ I create a local variable within my function and I fail to initialize it.
+ I just create this variable j and I set set its value whatever garbage value it has to that external address.
+ If someone outside of my function tries to now after calling this function, utilize that variable, get the value at that address.
+ They're working with junk values and that's of course, problematic.
+ The questions about that.
+ We talked about checking if memory was successfully allocated, checking for no pointer.
+ Basically, if you start trying to perform operations on that memory block, but it's not there, it's not allocated, you'll get in trouble.
+ You may have a complex data structure such as a linked list where an element of one node points to the next node.
+ If you don't correctly check for whatever there exist such a successful future node, you may get in trouble with this null pointer.
+ Read or write.
+ So again, any time you're trying to utilize a pointer, it's a good idea to first check to see if it's not not.
+ Using memory you haven't allocated here.
+ I have essentially a situation where you're going outside of bounds of your array.
+ I may have a long string.
+ I don't know.
+ 15, 16 characters.
+ I.
+ Request a memory allocation for ten bytes.
+ I cop you over ten of them into that allocation.
+ But then I try to write to location 11 subindex 11 that is outside of the bounds of my array.
+ And so.
+ I'll get into trouble if I try later on accessing that location.
+ So that makes sense.
+ You can only use memory allocated to you.
+ Specifically with hip management, the problems can be one.
+ Trying to use the free function on memory, which is not dynamically allocated.
+ So you have a static allocation with just integer declaration.
+ Trying to free that address is not the appropriate way to go about it.
+ Then I'm dealing with dynamic allocations here.
+ I have my like function on four integers and I'm trying to call my free function on subindex plus one.
+ Right? So I'm not starting with the whole structure.
+ I'm trying to look at the middle of my array and d allocate one of the elements that's not okay.
+ Alternatively, if I successfully delegate memory and then try to do the same again, freeing the memory I already freed, it's not mine to free someone else's using it right now.
+ So that's also a problem.
+ Any questions about that? Yes.
+ You're messing around with memory that you shouldn't be having.
+ Say you are in green and green said it was.
+ Mess with memory.
+ It's already been abused.
+ Can you? Like mess up some other program or something going on if you that might be using that memory at that time.
+ Theoretically, hopefully the operating system separates the processes and manages memory well enough, but it's not.
+ Yeah, that's one way to hack systems is to try to write directly to a memory like issue, which is reserved for another process or program.
+ Yeah.
+ You can try breaking things if you find it enjoyable.
+ See what happens.
+ Okay.
+ Let's take a look at an example.
+ Looking at some of the things we learned here.
+ So I'm trying to create a function for duplicating a string.
+ Takes a string as an input within it.
+ Allocating memory for if you remember our string length function plus one.
+ Just remember why we need plus one for strings.
+ Yes, that's right.
+ Then I check.
+ I just have a simple if.
+ P p is the pointer.
+ So if P is basically checking if true, null is considered zero, considered false.
+ So that's equivalent to asking if people pointer is equal to null shorthand notation.
+ If p is true, then I can do the string copying function as copy $0.
+02 and a return value of P, the string which is now allocated to that pointer p.
+ Array of characters in the main function.
+ I want to make copies of this argument.
+ My string duplication function gets argument of three, gets copied into the string copy pointer.
+ I print out 1 to 3 from the string copy and then I do the following.
+ I clean up the memory deal, I get memory.
+ So I'm freeing my string copy and I'm also setting string copy to NULL.
+ I want to make sure you don't accidentally use it.
+ If you check it and it's not normal, maybe you'll have temptation to do something with it.
+ Whereas if I clean it up and it delete all pointers to it, the chances of it are reduced.
+ So that's it's kind of an example of it.
+ Any any questions about memory allocations? All right.
+ So we had.
+ Now you know how to allocate memory.
+ If you have any individual questions, please stop by.
+ Always have a great day.
+ 

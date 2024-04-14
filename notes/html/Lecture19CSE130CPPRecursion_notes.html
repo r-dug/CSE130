@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture Notes: Recursion in C and C++</title>
+    <style>
+
+        body {
+            font-family: sans-serif;
+        }
+        h1 { 
+            background-color: blanchedalmond;
+        }
+        h2 { 
+            background-color: lightblue;
+        }
+        h3 { 
+            background-color: lightgreen;
+        }
+        code {
+            font-family: monospace;
+            font-weight: 600;
+            color: blue;
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Lecture Notes: Recursion in C and C++</h1>
+
+<h2>Overview</h2>
+<p>In this lecture, we explored the concept of recursion in programming, focusing on creating recursive algorithms and functions in C and C++. Recursion involves breaking down problems into smaller instances of the same problem until reaching a base case where a solution can be determined. We discussed how some problems are naturally recursive, while others can be creatively formulated into a recursive paradigm.</p>
+
+<h3>Key Points:</h3>
+<ul>
+  <li>Recursion involves breaking down problems into smaller instances until reaching a base case.</li>
+  <li>Base cases stop the recursion and provide solutions.</li>
+  <li>Recursive functions call copies of themselves to solve problems.</li>
+  <li>Recursive calls can be direct (function calls itself) or indirect (function calls another function, which calls the original function).</li>
+</ul>
+
+<h2>Factorial Function Example</h2>
+<ul>
+  <li><strong>Definition</strong>: <code>factorial(n) = n * factorial(n-1)</code> for <code>n > 0</code>, and <code>factorial(0) = 1</code>.</li>
+  <li>The function <code>fact_for</code> was used as an example to illustrate the recursive calculation of factorial.</li>
+  <li>Recursive calls were shown step by step with the example of calculating <code>factorial(4)</code> yielding a result of 24.</li>
+  <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int fact(int n) {
+    if (n == 0) {
+        return 1;
+    } else {
+        return n * fact(n - 1);
+    }
+}
+
+int main() {
+    cout &lt;&lt; fact_for(4) &lt;&lt; endl;
+    return 0;
+}</code></pre>
+</ul>
+
+<h2>Largest Element in a List Example</h2>
+<ul>
+  <li><strong>Approach</strong>: Determine the largest element in a list using recursion.</li>
+  <li>Recursive function <code>largest</code> was introduced to find the largest element in a list given a specific range of indices.</li>
+  <li>The function recursively compares elements to find the largest one.</li>
+  <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int largest(int arr[], int start, int end) {
+    if (start == end) {
+        return arr[start];
+    } else {
+        if (arr[start] &gt; arr[end]) {
+            return arr[start];
+        } else {
+            return largest(arr, start + 1, end);
+        }
+    }
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    cout &lt;&lt; largest(arr, 0, 9) &lt;&lt; endl;
+    return 0;
+}</code></pre>
+</ul>
+
+<h2>Fibonacci Sequence Example</h2>
+<ul>
+  <li><strong>Definition of Fibonacci</strong>: <code>fibonacci(n) = fibonacci(n-1) + fibonacci(n-2)</code> with base cases for elements 1 and 2.</li>
+  <li>Recursive function <code>fib</code> showcased the calculation of Fibonacci numbers utilizing recursive calls to previous elements in the sequence.</li>
+  <pre><code>#include &lt; iostream &gt;
+using namespace std;
+
+int fib(int n){
+    if (n == 1)
+    {
+        return 1;
+    }
+    else if (n == 2)
+    {
+        return 1;
+    }
+    else if (n > 1){
+        return fib(n-1) + fib(n-2)
+    }
+}
+
+int main() {
+    cout &lt;&lt; fib(10) &lt;&lt; endl;
+    return 0;
+}</code></pre>
+</ul>
+
+<h2>Tower of Hanoi</h2>
+<ul>
+  <li>Presented as a problem where discs need to be moved between different pegs following specific rules.</li>
+  <li>A recursive solution was discussed, but it was noted that for a large number of discs, the computational complexity increases exponentially.</li>
+</ul>
+
+<h2>Decimal to Binary Conversion Example</h2>
+<ul>
+  <li>Approach of converting a decimal number to binary utilizing recursion was demonstrated.</li>
+  <li>The recursive function <code>binary</code> divided the number by the base (2 for binary) and printed remainders to represent the binary equivalent.</li>
+</ul>
+
+<h2>Binary Search Algorithm</h2>
+<ul>
+  <li>Searching through an ordered list will take FAR less time when done this way. A recursive implementation is pretty typical, though it can also be done iteratively.</li>
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int binarySearch(int arr[], int start, int end, int key) {
+    if (start > end) {
+        cout &lt;&lt; "value not found in array" &lt;&lt; endl;
+        return -1;
+    } else {
+        int mid = (start + end) / 2;
+        if (arr[mid] == key) {
+            return mid;
+        } else if (arr[mid] &gt; key) {
+            return binarySearch(arr, start, mid - 1, key);
+        } else {
+            return binarySearch(arr, mid + 1, end, key);
+        }
+    }
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int key;
+    int arr_length = sizeof(arr);
+    cout &lt;&lt; "enter a value to search for: ";
+    cin &gt;&gt; key;
+    cout &lt;&lt; binarySearch(arr, 0, arr_length, key) &lt;&lt; endl;
+    return 0;
+}
+
+</code></pre>
+</ul>
+
+<h3>Recursion vs Iteration</h3>
+<h4>Pros:</h4>
+
+<h4>Cons:</h4>
+<ul>
+  <li>Recursion is not always the most efficient method due to the trade-off between time and memory resources.</li>
+  <li>Larger recursive depths can make it challenging for humans to understand and debug the code effectively.</li>
+</ul>
+<h4>Pros: </h4>
+<ul>
+    <li>Some problems lend themselves well to recursion, making it easier to think about implementing them in code.</li>
+</ul>
+
+<h2>Conclusion</h2>
+<p>Recursion is a powerful tool in programming, allowing for elegant solutions to certain types of problems. Understanding the base case, general case, and recursive calls are essential for implementing recursive functions effectively. While recursion can simplify solving some problems, careful consideration of resource usage and problem complexity is crucial for efficient implementation.</p>
+
+<hr>
+<p>For further reading on recursion, you can refer to the following resources:</p>
+<ul>
+  <li><a href="https://www.geeksforgeeks.org/recursion/">Recursion</a></li>
+</ul>
+
+</body>
+</html>

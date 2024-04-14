@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture Notes on Inheritance in C++</title>
+    <style>
+
+        body {
+            font-family: sans-serif;
+        }
+        h1 { 
+            background-color: blanchedalmond;
+        }
+        h2 { 
+            background-color: lightblue;
+        }
+        h3 { 
+            background-color: lightgreen;
+        }
+        code {
+            font-family: monospace;
+            font-weight: 600;
+            color: blue;
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+
+<h2><strong>Lecture Notes on Inheritance in C++:</strong></h2>
+
+<p>Inheritance in C++ allows for the creation of customized reusable code by deriving new classes from existing ones. It enables the creation of more specialized classes with additional features while retaining the properties of the base class. There are two main types of inheritance: single inheritance (deriving from one base class) and multiple inheritance (deriving from multiple base classes).</p>
+
+<h3>Creating Inheritance Hierarchy:</h3>
+<ul>
+    <li>Inheritance involves passing attributes from existing classes into new ones, starting from a base class to more derived classes.</li>
+    <ul>    <li>"is-a" relationship</li>
+            <li>EX: "every 'employee' is-a 'person'"</li>
+    </ul>
+    <li>Syntax for creating an inherited class: 
+<pre><code>class DerivedClass : accessSpecifier BaseClass // accessSpecifier is public, protected or private
+{
+    member list
+};
+</code></li></pre>
+    <li>Access specifiers (<code>public</code>, <code>protected</code>, <code>private</code>) determine the visibility of the base class members in the derived class.</li>
+    <li><strong>Single inheritance: </strong> derived class has a single base class</li>
+    <li><strong>Multiple inheritance: </strong> derived class has multiple base classes</li>
+</ul>
+
+<h4>Example - single inheritance:</h4>
+<pre><code>class Shape {
+public:
+    // Base class members
+};
+
+class Circle : public Shape {
+public:
+    // Custom members for Circle
+};
+</code></pre>
+
+<h3>Inheritance Visualization:</h3>
+<ul>
+  <li>Inheritance can be visualized as a tree- building on preexisting functionality, where each derived class (leaf/branch) gains additional capabilities from the base classes(parent stem/branch).</li>
+  <li>Inheritance enables the creation of specialized classes without rewriting existing functionality.</li>
+</ul>
+
+<h3>Overriding Functions:</h3>
+<ul>
+  <li>In derived classes, functions can be overridden to provide specific implementations.</li>
+  <li>Redefining a function in a derived class with the same signature as the base class function results in overriding behavior.</li>
+  <li>Use of the scope resolution operator (<code>::</code>) to specify which class's function is being called.</li>
+</ul>
+<h4>Example of function overriding:</h4>
+<pre><code>class Mammal {
+    public:
+        string name;
+        void makeSound() {
+            cout &lt;&lt; name &lt;&lt; "Ooga booga!" &lt;&lt; endl;
+        };
+    };
+    
+class Dog : public Mammal {
+    public:
+        void makeSound() {
+            std::cout &lt;&lt; "Woof" &lt;&lt; std::endl;
+        }
+};</code></pre>
+
+<h3>Virtual Functions and Abstract Classes:</h3>
+<ul>
+  <li>Virtual functions in C++ allow for dynamic function binding based on object type.</li>
+  <li>Use of the <code>virtual</code> keyword indicates that the function can be overridden in derived classes.</li>
+  <li>Abstract classes are classes that sre too vague to actually be instantiated but still have properties.</li>
+  <li>Pure virtual functions are declared with <code>virtual</code> and set to <code>0</code>, forcing derived classes to implement the function.</li>
+</ul>
+
+<h4>Example of Abstract Class:</h4>
+<pre><code>class Mammal {
+public:
+    string name;
+    virtual void makeSound() = 0; // Pure virtual function
+};
+
+class Dog : public Mammal {
+public:
+    void makeSound() {
+        cout &lt;&lt; "Woof" &lt;&lt; endl;
+    }
+};
+</code></pre>
+
+<h3>Inheritance Chain and Constructors:</h3>
+<ul>
+  <li>Constructors in derived classes should call the corresponding base class constructors explicitly to ensure proper initialization.</li>
+  <li>Constructor and destructor chaining occurs in the opposite order while creating and destroying objects in an inheritance hierarchy.</li>
+</ul>
+
+<h4>Example of incorrectly implemented access:</h4>
+<pre><code>class Figure {
+protected:
+    int x, y;
+};
+
+class Circle : public Figure {
+public:
+    int radius;
+};
+
+int main() {
+    Circle a; // create circle object 'a'
+    a.x = 0; // illegal. cannot access protected member from main
+    a.y = 0; // illegal. cannot access protected member from main
+    a.radius = 10; //legal - can access public member 
+}
+</code></pre>
+<h4>Example of correctly implemented access:</h4>
+<pre><code>class Figure {
+protected:
+    int x_, y_;
+};
+
+class Circle : public Figure {
+    private:
+        int radius_;
+    public:
+        Circle(int x, int y, int radius)
+};
+//constructor for Circle
+Circle::Circle(int x, int y, int radius) {
+    x_ = x; // this assignment can be done because of the protected access level in 'Figure' objects. an alternative would be to create accessor functions were the access level private...
+    y_ = y;
+    radius_ = radius;
+}
+int main() {
+    Circle a(0,0,10); // create circle object 'a'
+}
+</code></pre>
+<h3>Preparation for the Exams:</h3>
+<ul>
+  <li>Understanding the concepts of inheritance, overriding functions, virtual functions, and abstract classes will be essential for both the C and C++ exams.</li>
+  <li>Practice different scenarios involving inheritance to solidify your understanding.</li>
+</ul>
+
+<h3>Further Reading:</h3>
+<ul>
+  <li><a href="https://www.geeksforgeeks.org/inheritance-in-c/">C++ Inheritance - GeeksforGeeks</a></li>
+  <li><a href="https://www.tutorialspoint.com/cplusplus/cpp_virtual_functions.htm">C++ Virtual Functions - Tutorialspoint</a></li>
+  <li><a href="https://www.programiz.com/cpp-programming/abstract-class">C++ Abstract Classes - Programiz</a></li>
+</ul>
+
+</body>
+</html>

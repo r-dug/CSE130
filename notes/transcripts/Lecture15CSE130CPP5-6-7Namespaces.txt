@@ -1,0 +1,311 @@
+Lecture15CSE130CPP5-6-7Namespaces
+All right, let's get started.
+ Do you have any questions before we begin today's lecture? Okay, So today we actually have a diversity of topics from multiple chapters.
+ Each one kind of interesting, but maybe not important enough to dedicate a whole lecture to.
+ So we'll just have a quick overview and I'll tell you which topics are more important than others.
+ So first idea we're looking at is this idea of inline functions.
+ If you have a very, very short function like a one liner, it's actually more efficient to just place the code for a function instead of a function called function call requires additional effort, additional work to figure out what function to call.
+ So there is this option, and that option is available both implicitly and explicitly.
+ So if you make a one liner function and define it as part of your class, now you have an implicit in line function.
+ If you are doing it outside of a class and you proceeded with the keyword in line, you have an explicit in line function.
+ Uh, in this example, we're just looking for a function which returns returns a data item.
+ So a very straightforward function does one thing and one thing only.
+ Uh, basically, in both cases, what happens compiler will replace the function call with with that text directly.
+ Not the most important concept for us to know.
+ The efficiency savings are very minimal for that.
+ But if you have a see this keyword in line, you will at least know what what that represents.
+ And our interesting topic is this pointer.
+ This pointer, which is provided for you to be able to reference the calling object itself.
+ It's a self-referential pointer.
+ In some cases you may need to make a call to private or maybe even public members of a class, and you can reference that pointer called this pointer to get access to it.
+ So maybe it will make sense to see an actual example for what we're saying and trying to do here.
+ Let's say I have a class, it has a private variable, A it has a public function for setting value of a.
+ We'll look at how that function is defined in a second.
+ Within the main function, I create an object of that class and I also have a local variable also called a just so happens to be.
+ And then I call the set a function with an argument of a.
+ What happens within that function? Is it going to be confused because you are hiding the private variable with the local variable? Well, it's possible, but what I can do is refer to the object itself and say set.
+ This.
+ Pointer to the object itself variable using pointer annotation to the value of a, which is an argument to the method.
+ From that point on, if I print out the value of AA, again referring to the.
+ A which is visible.
+ In the local scope.
+ So if I need to get access to a private variable, A within the object and A is also the name of.
+ The parameter to that function.
+ I can avoid any ambiguity by saying AM referring to the private variable which is part of the object.
+ This pointer points to.
+ Any questions about that? So there is a pointer.
+ It points to the thing itself if you ever need to get access to.
+ The object itself.
+ You now have a handle to get that access.
+ Chapter six.
+ If you understood idea of dynamic memory allocation, all we're doing here is replacing the words key words we're using for.
+ For doing memory requests and freeing memory.
+ So before we had to say, okay, I need a function to allocate certain amount of size and that I'm freeing that memory.
+ Now I'm saying I need a new block of memory of specific type.
+ Again, you can specify data type, you can specify a data structure size, and then you can use delete instead of free.
+ But everything else stays the same.
+ Chapter seven is about namespaces.
+ We already used namespace standard.
+ I told you will spend a little more time trying to learn more about namespaces.
+ Essentially, we are trying to create a local scope where we can declare variables so we don't come into conflict with the work of others.
+ The syntax for creating a namespace is reserved keyword namespace meaningful identifier name for it.
+ And then within it you have different entities members of that namespace which if you invoke the name of a namespace, become essentially a local scope at that time.
+ So here is an example.
+ I'm creating a namespace called My namespace and it contains just two integers and B.
+ If I'm not providing any additional instructions, you can get access to it and be by explicitly saying what namespace they belong to.
+ My namespace Scope Resolution Operator A gets you A Likewise for B.
+ We saw it first, then we talked about see in and see out.
+ Now you see it with specific variables you can create and customize.
+ So here is an example.
+ I'm creating a number of namespaces.
+ Two of them.
+ First and second, they both contain a variable with the same name.
+ One is an integer, one is a double different values and then within mean function, I can avoid any ambiguity by just saying or I'm referring to a variable from the first namespace, or I'm referring to the variable from a second namespace.
+ So if you remember our conversations about logos, scope, global scope, this kind of helps with dealing with some of those some of those problems of name reuse.
+ Think of this as not first and second, but maybe you have two programmers and a team.
+ They both work in parallel and so you have Bob's namespace and Mary's namespace and you can refer to the variable names without fear that the poorly chosen same name for different concepts.
+ So here, as we expect the output from this program, if we output the volumes of first quarter and second quarter is the integer and then the double.
+ Any questions about that? We saw the key word using.
+ We can use it in multiple ways here.
+ We're using it as a declaration.
+ What does that mean? So I have again, to namespaces first and second.
+ This time I have X and Y variables in each.
+ First first set is a set of integers.
+ Second is a set of doubles different values within main function.
+ I can use the keyword using to say from this point on I'm using x which belongs to first namespace and y which belongs to second.
+ Then I see out X and y.
+ That's the mapping which takes place.
+ So X is now first x five and Y is now Y from the second.
+ Which is 2.
+7183.
+ I still have access to the other variables.
+ I just have to explicitly provide the namespace before the scope resolution operator.
+ But here I'm just saying, would it mean I'm telling the compiler from now on I'll be using the X from the first namespace.
+ So that's the declaration for the using keyword.
+ We can also use it in the context of a directive.
+ Same set up to name spaces first and second text and vice.
+ Here.
+ I'm saying using namespace first.
+ I'm not saying I'm using a specific variable from a specific namespace.
+ I'm saying I'm going to be using that namespace going forward.
+ So now X and Y belong to first and I still have access to X and y from second.
+ They just have to explicitly say this is an exception.
+ I'm not using what I said I'm using.
+ Any questions about that? Yes.
+ Whatever you use using like that.
+ Is that just for.
+ I guess in that scope or is it.
+ Where? Yeah, it's local to that scope.
+ Yeah.
+ And maybe it's going to follow up on your question.
+ We can use that using in specific artificial scopes we're creating.
+ So if I have this set up again namespace first and second, I can then say I'm artificially creating this block of code just place in curly brackets.
+ And I'm saying in that first block of code I'll default to using first namespace and in the second one I will use the second namespace.
+ Does that make sense? Few other things.
+ You can create another name for a name space, like an alias for it.
+ So if you want a more.
+ Friendly name for your program.
+ You can rename an existing namespace to something you find more appropriate.
+ And if you are not completely confused, there is also unnamed namespace and namespace which shall not be named Garner, referring to the global scope.
+ To create one.
+ You just omit the name and then you can refer to the.
+ Variables created in the A name and named namespace.
+ By just having the scope resolution operator, which is not following any name.
+ We saw it as an example of getting access to our global variables which were hidden by local instances.
+ This is more for you knowing that those things exist.
+ You probably won't need to utilize most of those ideas that that much.
+ If you create multiple namespaces with the same name essentially just saying you extending.
+ The same namespace.
+ Just have separate parts to it.
+ It's the same as creating one larger entity with all the variables allocated in it.
+ So if I have namespace X and then I want to do more work with namespace X, I can just do it independently.
+ I don't have to write to the same namespace, same instance of it.
+ All this started when we first studied standard namespace.
+ That's where most libraries standard libraries reside.
+ That's why we're usually saying let's be using standard namespace, especially if we're trying to get access to streams.
+ Hopefully now namespaces make a little more sense and the reason for their existence.
+ Next topic is operator overloading.
+ If you notice, we are trying to create code which is more reusable, more customizable, easier to read, more seamless to operate.
+ And this is kind of part of the same goal.
+ If you are creating custom objects, it would be cool if standard operators worked with them seamlessly.
+ What if I can add days in a calendar, for example, like, I don't know, Tuesday plus an hour, days like Thursday or something? It's possible.
+ In fact, we're seeing examples of that when it comes to standard operators already.
+ If you think about it, additional operator seamlessly supports adding two integers to floats, an integer to offload kind of supports all sorts of overloaded behaviors for different data types.
+ We can do it for even more complex and custom objects.
+ So if we have complex numbers, for example, I create a class called Complex.
+ It has some instance objects.
+ It'd be cool if I can overload addition operator to add complex numbers.
+ Same as I can.
+ I had regular numbers built in data types.
+ The way we do it is essentially we say it's kind of like a function.
+ We're creating a function which will take arguments of whatever data type we're interested in overloading function for.
+ It will essentially as its return type, produce the result of that function.
+ It has a somewhat unique.
+ Naming convention.
+ It has to be operator followed by a symbol.
+ You can overload.
+ And all the standard symbols are supported.
+ Technically, you can do whatever you want here.
+ You can overload addition operator to do subtraction.
+ It is not recommended to annoy future you and other people using your code, but it's possible because the operator overloads a symbol with whatever you put into the function definition here.
+ So you you are free to change behavior if it's something you think which will make sense.
+ Let's take a look at an example.
+ So I have a class.
+ I'm creating a class for strings.
+ Within it.
+ I have an array of characters.
+ I have a variable for keeping track of how large my string is.
+ I have a function which allows me to concatenate strings we see in functions like that before.
+ We don't have to worry about how it does that too much.
+ We just know it's successful at doing that.
+ And then I'm doing overload operation on addition.
+ Operator I'm going to support three different mixes of parameters.
+ String to string.
+ String to character.
+ String Character.
+ String to string object.
+ In all cases, the return is another string object.
+ So I have also my functions for getting access to those variables and within where function for concatenating those strings which belongs to the class C string.
+ I.
+ Add contents of a second function to the first function, which is the definition of addition in the context of strings.
+ So here's essentially what's happening there.
+ I call what is known as a copy constructor, essentially to initialize an entirely new object.
+ I can coordinate string to its data with this new object and return the resulting object.
+ What's the mapping there? So I have.
+ A few string objects, some creating through constructors.
+ First and last name objects with John and Johnson.
+ And then I create the third one with addition of the two.
+ What happens with that addition? I have two arguments.
+ String one and string two.
+ Within it, I'm creating a new string object adding to that object initiated with string one content String two and I'm returning this new string object new string as the result of this operator.
+ We essentially have two different ways of setting this up.
+ We can have a single argument function which an object calls.
+ The behavior of the object takes the second object as an argument, and that works.
+ If we are defining it within the class, we have access to the private, private data of a class.
+ And so we don't need to have a kind of external representation of that function, which is if you define it outside of a class, you have an operator overload with two objects taken as arguments.
+ Let's see example of a specific example in the context of a complex numbers class.
+ So complex numbers of two parts that have a real part, an imaginary part.
+ As you may know from your math class.
+ So here I'm implementing it as a member function of a class.
+ We have operator addition being overloaded.
+ We're returning another complex object and we are taking one argument, which is the second very complex object.
+ It takes a single argument because it's a behavior we're going to call on the object of that class.
+ So an example would be, I have an object a I want to add to it, object B, So essentially, this sequel, simple as V gets mapped onto a dot operator addition argument of B.
+ The actual definition for the addition is that I go through and I add a real part to the real part imaginary part, the imaginary part.
+ Notice I am directly accessing those variables of the class.
+ Because this is a member function.
+ I have direct access.
+ The other option is where I have two arguments and I'm defining it outside of the class.
+ So I have a public interface within the class for getting real and imaginary variables which are private to the class.
+ Two arguments are taken.
+ One complex object is returned.
+ Operator overload function does what it did in a previous example.
+ But now I have to rely on a public interface to get access to the real components of the two objects and the imaginary components of the two objects.
+ Same.
+ Same set up.
+ Any questions? This is really cold in here.
+ Any questions about this? There is one more.
+ Excuse me.
+ There is one more option we haven't seen before.
+ And that is, if you remember, we talked about private and public.
+ It was also protected.
+ And protected will show up again when we talk about inheritance.
+ But those are the levels of access.
+ And one thing we can do is declare something to be a friend of a class that gives it a lot more access privileges, friends of a class essentially get.
+ Public like access to all the nonpublic members of a class, private and protected and not friend function can be defined outside of a class.
+ A scope.
+ It is a unique directional relationship.
+ Just because something is a friend and has private access doesn't mean it works in the other direction.
+ So here we use a reserve keyword friend to indicate that this complex operator addition overload function is a friend of a class.
+ And then even though I'm providing definition outside, I have direct access to private members of the complex class.
+ Notice I'm not going through a public interface.
+ I'm going directly to a private variables for both imaginary and real parts.
+ So that makes it a little easier to get access using friend in addition to those private variables.
+ But of course, if you overuse it, you completely violating all all the good data, hiding all the good security measures we put in place.
+ So it's always a good idea to go through a public interface in a first place.
+ We know that we have always built in support for assignment operator for classes that is supported.
+ What happens when we call an assignment operator? We get an exact copy made.
+ This could be problematic if an object has its own memory, has some sort of a specific or something at which you want every object to have a unique one.
+ Not all copies pointing to the same location.
+ So you may want to overload operator assignment for your specific class where you create individual.
+ Individual memory allocations may be individual files, whatever properties would make sense for each object to have.
+ Even if you copying the general abstract look and feel of the object.
+ So again, with strings, we can.
+ Overload assignment operator.
+ So the string object points to.
+ Either the same amount, same data source, or a different memory allocation.
+ If I'm doing the copying, I can rely, for example, and referencing this pointer tool to refer to the string object itself and obtain its contents.
+ A useful thing you can do is overload your input and output stream operators to work with your data type.
+ So this extraction operator.
+ If I have a class for dealing with calendar dates, for example, how do I print out a date? It's not built in data type, so the compiler would not know.
+ But you can create this type of operator overload where you explain, okay, to print the date, you would maybe print out the month followed by a slash forward, followed by a day or a year and so on.
+ That's how we print dates.
+ So now.
+ This operator supports this custom data type you created and it becomes a seamless as doing see out.
+ Object of date type to accomplish that.
+ So just like we can overload out, we can overload season for eating dates.
+ Here we are creating a friend of a class.
+ Ice stream.
+ Operator Insertion takes in.
+ The stream.
+ I stream object and the date address of a date object and what we are doing within the function itself.
+ We are creating a character array for storing this string data.
+ We are trying to set it up to where if I have a function for setting, for setting a date in the right format, I can take that string allocated to the components of a data object and you can do all sorts of additional data checks, make it interactive with the user and so on.
+ But the general idea is that you can overload operators to to work with your custom classes, custom objects and makes makes the program a lot a lot friendlier.
+ Okay.
+ So I think this is what I had for the lecture.
+ That is one more part today which I want to bring up, and that's let's see if it actually goes a bonus points opportunity.
+ I know a lot of you took took the exam and, uh, maybe you hope you do a little better.
+ So this is an opportunity to get a few extra points.
+ It's not going to change an F and, and, but it will help change a B-plus internally or something like that.
+ So the idea is and this is strictly optional.
+ You can.
+ Educate me and the rest of your classmates about a language other than C C++.
+ Technically, this is not just introduction to C, C++, but of course introducing programing languages.
+ We obviously don't have time to learn many more.
+ I think what we learn is already very intense, especially for students who don't have prior experience.
+ But we can certainly enjoy a short overview presentations about different languages, and that will give you ideas about maybe what you want to study later or what tools are available for different industries.
+ And so that's the idea.
+ You have an option of doing a presentation which will get you another 4% and your exam one grade.
+ Essentially, it's a 15 minute PowerPoint presentation.
+ You get to choose the language.
+ I get to approve it.
+ If you are an on site students you present in class.
+ If you are an online student, you have the same option, but you record a presentation, share a video.
+ So if you are interested, here's what you can do.
+ You can pick a language.
+ There is a Wikipedia site with a lot of languages.
+ There is no shortage.
+ They keep making new ones.
+ Some are very exotic and not very well known, others more common language.
+ We want different students to pick different languages.
+ We don't want to hear about Java ten times.
+ So first come, first serve, and that once you pick a language.
+ Tell me what it is.
+ I'll approve it.
+ And then your presentation needs to be a simple introduction similar to the lecture I gave you on introducing the languages.
+ Why was it created in the first place? Whatever problems it's solving, whatever problems with the language.
+ Drawbacks.
+ Is it still being used as a growing popular and hopefully your work is well researched is based on some some references.
+ So if you are interested in this and I understand many of you are not interested because you did really well anyways and you don't have time for it, but if you want, you can come up now or later.
+ Email me the choice of a language you would like to work on.
+ So your name and the language.
+ And once you select the language.
+ Same for online students, same for onsite students.
+ Then the deliverables are I need your presentation emailed to me by the date indicated here and you need to be ready to start presenting as indicated in the syllabus on the 27th.
+ If you are an online student.
+ Same thing with your video presentation.
+ Instead of.
+ Instead of coming and presenting in person, you just provide a link to the recording of your presentation.
+ Any questions about this? Yes, like.
+ Yeah.
+ You have access to all of us that should show up.
+ Yeah.
+ No.
+ I don't know about you and our kids.
+ Anything I can address.
+ Okay.
+ If you don't have any global questions, let me know if you have private questions or just feel free to comment.
+ Sign up for language of your choice.
+ Right.
+ 

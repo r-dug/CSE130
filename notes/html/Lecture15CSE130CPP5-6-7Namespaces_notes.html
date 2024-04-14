@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture Notes</title>
+    <style>
+
+        body {
+            font-family: sans-serif;
+        }
+        h1 { 
+            background-color: blanchedalmond;
+        }
+        h2 { 
+            background-color: lightblue;
+        }
+        h3 { 
+            background-color: lightgreen;
+        }
+        code {
+            font-family: monospace;
+            font-weight: 600;
+            color: blue;
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lecture Notes: Namespaces, Operator Overloading, and Bonus Opportunity</h1>
+
+    <h2>Inline Functions:</h2>
+    <ul>
+        <li>Utilize for very short functions to improve efficiency, often even one liners.</li>
+        <li>Can be implicit when defined inside a class or explicit with the <code>inline</code> keyword outside a class.</li>
+        <pre>
+<strong>Explicit EX:</strong>
+<code>inline int add(int a, int b) {return a + b;}</code>
+
+<strong>Implicit EX:</strong>
+<code>int add(int a, int b) {return a + b;}</code>
+        </pre>
+        <li>Compiler replaces the function call with the code directly.</li>
+        <li>Limited efficiency savings, but useful for one-liner functions.</li>
+        <li>Can be inside or outside of class declarations.</li>
+    </ul>
+    
+<pre><strong>Example of class with inline functions inside and outside of class declaration:</strong>
+<code>
+class MyClass {
+    private:
+    int a;
+    int b;
+    public:
+        inline int add(int a, int b) {return a + b;}
+        int subtract(int a, int b) {return a - b;}
+}
+inline void MyClass::printSum()
+{
+    std::cout << a + b << std::endl;
+}
+</code>
+</pre>
+
+    <h2>This Pointer:</h2>
+    <ul>
+        <li>Referencing the calling object itself.</li>
+        <li>Allows access to private or public members of a class using the <code>this</code> pointer.</li>
+        <li>Resolves ambiguity when local and private variables have the same name.</li>
+    </ul>
+<pre><strong>Example:</strong>
+<code>#include &lt;iostream&gt;
+using namespace std;
+
+class MyClass {
+    private:
+        int a;
+    public:
+        void set_a(int a) 
+        {
+            this-&gt;a = a;
+        }
+        void print_a() {cout &lt;&lt;"a="&lt;&lt;a&lt;&lt;endl;}
+    };
+
+    int main(){
+        MyClass obj;
+        int a = 10;
+        obj.set_a(a);
+        obj.print_a();
+        obj.set_a(11);
+        obj.print_a();
+        return 0;
+    }
+</code>
+</pre>
+    <h2>Dynamic Memory Allocation:</h2>
+    <ul>
+        <li>Replace keywords for memory allocation (e.g., <code>new</code> and <code>delete</code> instead of <code>malloc</code> and <code>free</code>).</li>
+        <li>Specify data type and structure size for memory allocation.</li>
+    </ul>
+
+    <h2>Namespaces:</h2>
+    <ul>
+        <li>Create local scopes to avoid conflicts with variable names.</li>
+        <li>Syntax: <code>namespace NamespaceName { }</code>.</li>
+        <li>Use scope resolution operator <code>::</code> to access entities within a namespace.</li>
+        <li>Avoids naming clashes, enhances code readability, and enables organized code structuring.</li>
+    </ul>
+
+    <h3>Examples with Namespaces:</h3>
+    <ul>
+        <li>Creation of <code>MyNamespace</code> with integers <code>A</code> and <code>B</code>.</li>
+        <li>Usage of <code>using</code> keyword to specify the namespace for variables.</li>
+        <li>Creation of aliases for namespaces.</li>
+        <li>Handling naming conflicts and ensuring clarity in variable usage within namespaces.</li>
+    </ul>
+
+    <h2>Operator Overloading:</h2>
+    <ul>
+        <li>Basically, when we talk about operation overloading, we are referring to modifying what the standard operators do in the context of the class.</li>
+        <li>Enhances reusability and customization of code.</li>
+        <li>Enables operators to work seamlessly with custom objects.</li>
+        <li>Unique function naming convention: <code>operator<symbol></code>.</li>
+        <li>Use overloading for standard operators to work with custom classes, such as strings and complex numbers.</li>
+    </ul>
+
+    <h3>Examples with Operator Overloading:</h3>
+    <ul>
+        <li>Overloading addition operator for custom string and complex number classes.</li>
+        <li>Friend keyword for giving access to private members of a class.</li>
+        <li>Overloading assignment operator for custom data types.</li>
+        <ul><li>This is mentioned in the context of memory... </li>
+            <li>By default, the assignment operator is valid for objects of the same class type. However, if we use the assignment opperator for an object with pointers, it will have the same pointers... So we might want to overload the assignment operator for that datatype so we get new memory addresses.</li></ul>
+        <li>Overloading input/output stream operators for custom data types.</li>
+        <ul><li>The example that was used in the lecture was overloading the cout/cin functions to print/intake dates.</li></ul>
+    </ul>
+
+    <h2>Bonus Opportunity:</h2>
+    <ul>
+        <li>Presentation on a programming language other than C/C++.</li>
+        <li>Provides 4% bonus on the exam grade.</li>
+        <li>15-minute PowerPoint presentation or recorded video on the chosen language.</li>
+        <li>Focus on language origin, problems solved, drawbacks, and current usage.</li>
+        <li>Submit presentation by indicated date and present on the 27th (on-site or online).</li>
+        <li>Language choice approval required.</li>
+    </ul>
+
+
+    <h3>ASSIGNMENT: Bonus Opportunity | DUE: TBD *(Check with Professor for due date)*</h3>
+
+    <p><strong>THIS WILL BE ON THE EXAM:</strong> Operator overloading examples and the concept of namespaces.</p>
+
+    <p>For further reading on C++ namespaces, you can refer to the <a href="https://en.cppreference.com/w/cpp/language/namespace">C++ Namespaces documentation</a>.</p>
+</body>

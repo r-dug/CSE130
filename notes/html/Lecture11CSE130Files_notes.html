@@ -118,6 +118,7 @@ main()
     else{
         fprintf(pWrite, "Hello, my name is %s", name);
     }
+    fclose(pWrite);
 } 
         </code></pre>
     </ul>
@@ -132,14 +133,22 @@ main()
 main() 
 { 
     FILE *pRead; 
+    char name[10];
+    char hobby [15];
     pRead = fopen("sample.txt", "r"); 
     if (pRead == NULL){
-        printf("Oh no! Cannot write to file!")
+        printf("Oh no! Cannot write to file!");
     }
     else{
-        
+        printf("\nName\tHobby\n\n", name, hobby);
+        fscanf(pRead, "%s%s", name, hobby);
     }
-
+    while(!feof(pRead)){
+        printf("%s\t%s\n", name, hobby);
+        fscanf(pRead, "%s%s", name, hobby);
+    }
+    printf("%s\t%s\n", name, hobby);
+    fclose(pRead);
 } 
             </code></pre>
     </ul>
@@ -157,7 +166,7 @@ main()
 { 
     FILE *pRead; 
     pRead = fopen("sample.txt", "r"); 
-
+    fclose(pRead);
 } 
             </code></pre>
     </ul>

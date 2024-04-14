@@ -1,0 +1,112 @@
+<html>
+<head>
+  <title>Lecture Notes: Templates in C++</title>
+  <style>
+
+    body {
+        font-family: sans-serif;
+    }
+    h1 { 
+        background-color: blanchedalmond;
+    }
+    h2 { 
+        background-color: lightblue;
+    }
+    h3 { 
+        background-color: lightgreen;
+    }
+    code {
+        font-family: monospace;
+        font-weight: 600;
+        color: blue;
+        background-color: bisque;
+    }
+</style>
+</head>
+<body>
+
+<h1>Templates in C++</h1>
+<p>
+  In programming, templates allow for the creation of reusable code by abstracting away the data types from the functions or classes. This way, you can create a single template and generate custom functions or classes for specific data types. Templates are a powerful feature for creating generic code that works with multiple data types.
+</p>
+
+<h2>Function Templates</h2>
+<p>
+  <strong>Function templates</strong> take types as arguments instead of values like standard functions. You declare a template using the keyword "template" followed by the type placeholder, and then define the function using that type. For example, a template function to find the maximum of two values can be written once and used for multiple data types.
+</p>
+
+<h4>Example function template:</h4>
+<pre><code>template &lt;class TYPE&gt;
+TYPE getMax(TYPE x, TYPE y) {
+    return (x > y) ? x : y;
+}
+int main(){
+  int x = 10;
+  int y = 20;
+  cout &lt;&lt; getMax &lt;int&gt;(x,y) &lt;&lt; endl; // we 'generate' the function specific to the type we specify
+}
+</code></pre>
+  
+<h2>Class Templates</h2>
+<p>
+  Similarly, <strong>class templates</strong> can be used to create generic classes where the operations are supported on various data types. The syntax involves using the keyword "template" and specifying the class type placeholder. This allows you to define operations on the class without knowing the specific data type beforehand.
+</p>
+
+<h4>Example of class template:</h4>
+<pre><code>template &lt;class TypeParam&gt;
+class List {
+    public:
+      bool isEmpty() const;
+      bool isfull() const;
+      int getLen() const;
+      void insert(int index, TypeParam value);
+      void delete(TypeParam value);
+      void sort();
+      void print() const;
+      List(); // constructor
+    private:
+      int len;
+    TypeParam data[MAX_LEN];
+};
+</code></pre>
+<h4>you can also use the keyword 'typename':</h4>
+<pre> furthermore, you can have default types and default values
+<code>template &lt;typename TypeParam&gt;
+class List {
+    public:
+      bool isEmpty() const;
+      bool isfull() const;
+      int getLen() const;
+      void insert(int index, TypeParam value);
+      void delete(TypeParam value);
+      void sort();
+      void print() const;
+      List(); // constructor
+    private:
+      int len;
+    TypeParam data[MAX_LEN];
+};
+</code></pre>
+
+<h2>Specialization and Overloading</h2>
+<p>
+  In C++, you can also specialize templates for specific data types to write more efficient code. Additionally, you can overload template-based functions for different argument types. When calling a template function, the compiler will choose the most specialized version available.
+</p>
+
+<h2>Standard Template Library (STL)</h2>
+<p>
+  C++ provides the <strong>Standard Template Library (STL)</strong> which includes common data structures like lists, vectors, maps, and algorithms for working with them. The STL allows you to leverage pre-implemented templates for your programming needs, reducing development time and effort.
+</p>
+
+<h2>Pros and Cons</h2>
+<p>
+  The use of templates in C++ offers great benefits in terms of code reusability and efficiency. However, some compilers may not fully support templates, leading to potential errors or unnecessary code generation. It's essential to weigh the advantages and disadvantages of using templates based on the specific requirements of your project.
+</p>
+
+<p>
+  For more information on templates in C++, you can refer to the <a href="https://en.cppreference.com/w/cpp/language/templates">C++ Template documentation</a>.
+</p>
+
+</body>
+</html>
+</html>

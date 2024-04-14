@@ -1,0 +1,252 @@
+Lecture17CSE130CPP9Templates
+All right.
+ Any questions for me? Today's topic is templates.
+ Once again, we're interested in creating a reusable code.
+ And ideas of obstruction.
+ So here we are realizing that.
+ Four different functions for different classes.
+ The actual implementation may be very much the same.
+ The only difference is the type of data on which we work.
+ So maybe I have a function for figuring out a maximum of two values.
+ Aslongas greater then operator is supported.
+ I don't really care if I'm talking about integers, floats, doubles.
+ It's the same code.
+ All right.
+ You see, the only difference between those functions is the data types.
+ So can I abstract away? The data type from the functions have some sort of a placeholder type.
+ Generate a template function and from that be able to easily create custom functions as they need it for specific data types.
+ And that's the basic concept.
+ Same idea for classes.
+ If I have a data structure, class link list list works or anything like that, doesn't matter what specific data type I am storing in it, all the operations on it, adding additional elements, searching through the list, returning an element of the same implementation with the only difference being what is the data type I am working with? So that's the idea.
+ We can use one template, write it once, and then from there generate as many different functions as needed, essentially creating a whole set of functions to support all data types, including custom data types.
+ Then we talk about functions.
+ Function templates.
+ We take arguments to the function.
+ Take values for arguments.
+ In case of templates we are looking at.
+ Types as arguments.
+ So a standard function has fixed type and accepts argument values to produce results.
+ If we have function template, we take data type as an argument and from there generate multiple functions.
+ So here is a single template for that max function.
+ We'll see the actual code syntax in a second.
+ But from this one single template, I'm able to produce customized data type specific max functions.
+ The syntax is a reserved keyboard template.
+ In angular brackets we have class same keyboard as we use for creating classes, which may be a bit confusing.
+ We'll address it shortly.
+ We have a name for the type placeholder and then we provide the declaration for the actual function.
+ So template is a special keyboard class as double meaning.
+ Here we are referring not to the creation of new classes but to a place holder for a specific data type.
+ And so just like we had variables, parameters to functions here we have data types as parameters to templates.
+ So kind of multilevel arguments.
+ If we are talking about creating functional templates, the syntax would be template plus type in angular brackets.
+ And then we define a function like we did before using the type in place of variables.
+ So here we have template class type and max function takes two arguments of type, type X and Y, and after doing some some comparisons on X and Y, it returns type.
+ So if we substitute, for example, integer for type, then it all makes sense.
+ We have integers, x and y, I compare x2y and return first or second value depending in which one is greater.
+ If x is greater than Y that evaluates to true with it or an X provides y.
+ And that's an actual function which already has been generated from from the template.
+ From that point on we can call on that function with.
+ What specific value is actual arguments for that function? Then we are trying to create a function call for templated function.
+ We need to specify the type we would like to instantiate the function of.
+ If you just provide arguments, the type of arguments can be figured out and that can be used for.
+ Generating an appropriate function that is also an option for default type arguments, as we see shortly.
+ But here is an explicit way, and it's always good to be explicit about what you're trying to do.
+ We have a template.
+ Class type my time, my type four, get my function returning again, my type taking to my type arguments and B and then at that type.
+ And I'm trying to generate that function function call.
+ I use the syntax which is function name in angular break as I specify type and then give a standard list of parameters.
+ So if I have created integers, X and Y, I can call get my x function template generating int.
+ Based type function from it, and then angular brackets and then X and Y are the standard arguments.
+ First to that get max function.
+ This max function works for any data type which supports the comparison.
+ Operator That's the only part of code you have there.
+ So if you create custom data types, if they provide support for this operator, you can include them into the set of possible functions you can generate from the template.
+ Any questions about this so far? Let's see the same idea.
+ But now with classes.
+ So if we can create customized functions from a template, maybe we can create classes just as well.
+ The idea is pretty much the same.
+ I will say that I'm creating a template.
+ I'll use keyword class here you can see the dual meaning of it, right? It's a bit ambiguous.
+ One is class, type one is class.
+ Name of a class I'm creating.
+ So.
+ That that needs to be improved on.
+ But other than that same idea, I have a template of placeholders for data types as long as all the operations I perform are supported on those data types, I can instantiate specific classes.
+ So the syntax will be template, angular brackets, class type, and then class definition as before, relying in a class type as a placeholder for all the examples.
+ All the situations where I'm inserting an actual data type.
+ So let's have this.
+ Class.
+ Generalized list of some kind.
+ Right.
+ So I have a list.
+ It's a data structure.
+ A list has essentially an array of items.
+ Where I can store new elements in the list.
+ I have another very length for telling me how long my list is in terms of used elements.
+ And then there is a public interface which allows me to check if a list is empty.
+ What's the length of a list? Inserting element deleting element.
+ Notice the functions which deal with specific elements they have item type, which is the placeholder element from the temple template parameter inserted there.
+ So we can actually encode operations on that item without knowing what the data type is ahead of doing so.
+ So you haven't studied data structures before, but it should make sense as to what these different operations do.
+ Any questions about the slide? So from this template compiler can generate explicit classes will provide an actual class we would like to use for each generation.
+ And we'll basically have a substitution process where I will go through the list and substitute this template argument for the placeholder.
+ So let's say I have.
+ Created a drill list with an integer float and a string as an actual.
+ Type.
+ Now I have three lists.
+ Lists? One, two and three.
+ And I can insert elements into an appropriate list of appropriate type.
+ And that should work.
+ From that single templated class.
+ So I write it once and I can generate as as many specific.
+ Data structures for supporting.
+ All of built in and some custom data types as needed on the fly.
+ Of course, the convenience is that for most common data structures, this has already been done.
+ We'll see the standard library package shortly, which contains all all the common data structures.
+ So when you work on your project, you need something to handle a specific data type.
+ You can just find an appropriate template and quickly generate a custom class for your needs.
+ In this example, we go through and go, okay, we need to list for storing integers.
+ What I do is I replace item type within.
+ Compiler does it for you at compile time and that will generate a draw list class for working with integers.
+ So here's an example of a member function for a templated class.
+ We're defining it here.
+ We're saying, okay, we have item type as the placeholder for this template.
+ Insert function belongs to the generalist class.
+ We use the scope resolution operator as before to indicate which which insert function we are working on.
+ For what class insert takes.
+ A single item doesn't return anything.
+ All we do is we assign the current active element in the array value of that item and we increase the length of our list by one.
+ To keep track of what, we just insert it after the substitution takes place, we just go through and replace item type with a specific data type.
+ In this case float.
+ Notice the code doesn't need to be modified in any way.
+ It's the same assignment operators support supported for floats.
+ We're still operating on a same integer length, so nothing really changes in terms of code.
+ We only say now.
+ Please also support this other data type.
+ The questions about that.
+ Yeah.
+ Template I that to for each function that you would do for.
+ You may omit it if you specify it previously when you declaring the class as a templated class.
+ In fact, a lot of things where I explicitly show that included can be omitted, such as the angular brackets type at the time you instantiate templated function or call it, but it's just a good idea not to rely on its ability to calculate specific types.
+ Then we pass parameters to a function.
+ It takes effect at runtime.
+ Then we are passing parameters to a class template.
+ This happens at compile time and that's where this substitution will take place.
+ Now, support for templates is not universally great between different compilers.
+ One issue sometimes observed is that it doesn't work really well when you split it across multiple files, like we talked about the header file and an implementation file.
+ So maybe it's easier to to include everything in a single file in case you get some error messages otherwise.
+ I also said that use of a keyboard class is kind of confusing.
+ It could mean class, as in we're trying to declare a new class versus place holder.
+ So there is an alternative called type name, and it seems to be a little more descriptive and less confusing.
+ So maybe let's use that instead.
+ We can just say where we said class before in the context of templates, we can use type name.
+ And of course, some of your functions or classes are not so primitive as to only contain one specific data type.
+ You can have as many as you need.
+ All you do is you create multiple placeholders for different types.
+ So I have type name one, type, name two and so on.
+ And those could be different.
+ And you can still have full richness of implementing those as functions or classes.
+ How do you actually write a templated function, this generic function? Well, actually, surprisingly, it's better to write a specific function where you understand the data type.
+ You can debug it, you can test it.
+ Once you have it working, you can work backwards, substitute placeholder in place of actual data type values, and then use that to generate additional specific functions.
+ We did see use of default arguments for function parameters.
+ We can also do default type arguments.
+ So same exact idea, but here we are providing default type, not default value, setting that specific variable equal to type unless you explicitly provide a different.
+ Different data type is an argument at a time and you instantiating your function from a template at the time of function call.
+ This is what it defaults to.
+ And if you have the fourth argument now, you can omit providing specific type, then you are creating this.
+ This new class.
+ Now something to note here.
+ So I'm saying you can only do this for classes, not for function templates.
+ It's just not supported.
+ And the logic being, if you provide an actual argument for function, we can always see what the data type for that argument is and it will always override your otherwise default arguments.
+ It just doesn't make sense for functions, but it is supported for classes.
+ You can also mix and match types within a template.
+ It doesn't have to be just types.
+ It could be actual non parameter type actual arguments.
+ So in this example, creating a glass stack and I have a template which has a place holder for type and there is also integer capacity included, and that is part of a size for the array of elements of type T.
+ Then you can see I'm creating this data structure.
+ I'm saying.
+ I wanted to support integers and the capacity is 18.
+ So those could be mixed together.
+ We're talking about inheritance in a previous lecture.
+ You can combine the two concepts you can inherit from templated classes.
+ Templated classes could be derived from a non templated class.
+ And so as I mentioned.
+ The power of templates is mostly derived from having large libraries available for use.
+ Standard template library has been part of the language definition since early nineties.
+ You can look up details for what exactly the structures are provided in this class.
+ We don't explicitly cover most of them.
+ In your Data structures class, you'll study all those different structure types.
+ But the idea is to know that they exist.
+ And if you need to work with something so complex, you don't have to write it from scratch.
+ You take a you take a specific data structure and customize it to your data type.
+ So things like loose sets, maps, vectors.
+ That is also quite a few algorithms supported for searching.
+ Searching.
+ So on.
+ Any questions about that? There's of any prior experience with such libraries.
+ Analysts heard of such data structures before.
+ So I'll give one simple example.
+ We're not going to go into any depth, but just to give you a feel for it.
+ So that is a vector support data structure which allows you to.
+ Who had elements to the vector pop elements of Chekov attempt to insert additional elements, has constant time random access.
+ Meaning you can get to a specific element in a fixed number of steps, not becoming more complex as the size of a structure increases.
+ So here is.
+ Our instantiation of a vector class for integers.
+ We create.
+ What we call V, and now we can insert elements into this vector V.
+ We can access a specific subindex within the vector.
+ We can check the size of this vector.
+ And.
+ Obviously there is more to it, but here is a very simple template for a vector class.
+ We have.
+ The array for.
+ Keeping track of the actual data.
+ We have length and size.
+ We keep track of that is one more additional concept I want to mention, and that's specialization.
+ Sometimes you realize for a particular.
+ Data type, you can write more efficient code.
+ So if you have a template such as Vector, but it's only for storing booleans.
+ Zero or one limited size data, maybe we can do more efficient code here by creating our array of unsigned integers.
+ Saving a bit of memory.
+ And so it will work as before for other data types.
+ But for that specific specialized data type, it would be a little more efficient.
+ We talked about overloading functions before.
+ We can overload template based functions as well.
+ So here is main function being overloaded to support ever two or three arguments.
+ In this case, the parameters of type C.
+ Class two will be determined later.
+ The only thing we need is that COSTI supports less than operation.
+ So same name of function, different number of arguments.
+ In both cases were returning to us the value from our function and depending on what data type we sent in.
+ Basically, we have a function now for figuring out min of integers, muna floats, or anything else less than supports as a comparison operator.
+ If you remember how overloading works, this is really not that different.
+ We're just now using this type placeholder.
+ Questions about that.
+ So now we have a lot of.
+ A lot of different types of functions.
+ We need to figure out which one actually gets called.
+ If you make a list of all the possibilities.
+ And there is a specialized version for your data type.
+ That's the one you want to use that's most efficient for that purpose.
+ Whatever is left is not specialized.
+ Normal overload rules apply talked about overloaded functions.
+ If you have a function and a matching template available, pick an actual instantiated function already more efficient.
+ If nothing remains available at this point, there is some sort of ambiguity.
+ You have to be more specific.
+ So we know what function to utilize.
+ So the use of templates seems.
+ Pretty obvious in terms of its benefit.
+ You can quickly take somebody else's code fully debugged, ready to be used, saving you diamond debugging development efforts.
+ You know, it's probably pretty efficient.
+ Standard algorithms, Standard data structures.
+ The arguments against using templates is that it's maybe a little less supported than other concepts.
+ Some compilers don't provide very good support, don't provide meaningful error messages, something we'll see in the upcoming lecture.
+ And there is a possibility that you'll end up generating a lot of extra code if you instantiate functions and classes, which you don't really need from that single template.
+ So that's concept of templates.
+ If you have any general questions about them.
+ Let me know.
+ If not, I'm happy to answer any personal questions you might have about this or labs or anything else.
+ Thank you.
+ 

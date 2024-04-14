@@ -1,0 +1,428 @@
+Lecture14CSE130CPP5OOP
+All right, let's get started.
+ So today we're going to cover object oriented programing.
+ Before we begin, any questions? About anything.
+ Right.
+ So, so far, then we've programed.
+ Different assignments.
+ We had a step by step set of instructions, like a recipe for for accomplishing the work.
+ We wanted an algorithm step by step algorithm, which took care of different conditions and.
+ That is not the only way to solve problems.
+ Object oriented programing is an idea that you can create.
+ Like a simulation of the environment of a problem populated with different objects representing different parts of that environment.
+ And then if you properly set up states and behaviors of those objects, their interaction will be a more efficient way of solving some of the problems you might encounter.
+ So think of anything in your environment as potentially digitized about virtual objects.
+ You have a computer, you have a car, you have a friend business loan.
+ Any of those things can be described in terms of their data, properties and then behaviors.
+ Think of a primitive object, something like a geometric object.
+ We can have a class of all circles.
+ And we can from that general class.
+ Well circles instantiate specific circle objects.
+ Each object would be described with its unique set of properties.
+ Maybe not unique, but with its set of properties.
+ For example, it has a specific radius and then behaviors, a different functions associated with that object with that class, such as ability to print itself or render itself.
+ A class as a data structure is similar to what we saw with structures.
+ If you remember, we had structures were combined different members of a structure of different data types.
+ The main difference is that now we can integrate functions into the data structure, giving us behaviors, not just storing data, but also making it possible for objects to perform useful work.
+ So the syntax for creating a class we have reserved Schuyler class meaningful identifier that in curly brackets we have all our functions and variables which are class members.
+ That is a semicolon after the closing bracket.
+ You.
+ So we can.
+ Integrate variables are built in variable types of customized data types in the class, and we provide functions as behaviors at the level of class declaration.
+ All you do is you provide allocations for necessary memory.
+ So you say I'm going to have as a member of this class an integer and maybe this function with this prototype and then actual objects of that class of A wants.
+ We shall initialize those variables to specific values and we will be able to execute those functions once they are defined on those objects.
+ Then we are just defining a class.
+ We are creating an abstraction data structure.
+ We're not actually actively allocating memory.
+ We're just explaining to the compiler about one of those simulated entities.
+ We would like to have access to.
+ There are different levels of access you can have to those objects and functions depending on who you are.
+ Are you a user of that? Are you the creator? You are making is and the levels of access public meaning complete access by everyone.
+ Private meaning access for privileged, but not for others and protected.
+ Which is going to.
+ Mixed model where some have access, but not everyone.
+ And the goal is to protect information from being changed without our desire to have that information changed.
+ And also for information, Heidi, if you remember when we talked about functions, we wanted actual function, implementation details, internal variables, local variables to be hidden and all interactions to take place through the public interface.
+ You had the function prototype, and that's all you had access to.
+ And that was enough.
+ If later on function definition was upgraded, then impact your code.
+ Same idea here.
+ We would like to be able to use classes created by others.
+ All we need to know is the public interface to the class and what happens internally is not something we need to have access to.
+ So we'll specify members of a class A zero, a public or private, sometimes protected.
+ The default is the highest level of privacy, which is private.
+ So if you don't say otherwise, everything is private.
+ But of course you need to be able to have access to the members of a class to do useful work.
+ So you'll have to create a public interface for setting variables, for accessing functions.
+ And typically you will have functions for setting variables.
+ So if it is a private variable, I'll probably have a public function which allows me to modify contents of that variable.
+ It's part of a public interface.
+ Let's start looking at some examples.
+ Here.
+ I have a class for fractional numbers.
+ It has private members.
+ Two integers.
+ Numerator and denominator and the.
+ I provide a function for outputting for printing.
+ This actual fraction.
+ We'll see details of all the components of this, how to define those.
+ Behavior is local to the class, how to actually set it up either as a single file or multiple file class.
+ But you get the general idea.
+ We have a public section with behavior such as storing data in a fraction and private components, which are the values themselves.
+ If I create this class, someone who gets to include that file can now create fractions, just as any other native data type you see in the main function.
+ We're creating two fractions if our one of our two.
+ Then we actually.
+ Create those variables.
+ That's where a memory gets allocated and.
+ It stops being just an abstraction and becomes.
+ A usable part of our.
+ Object oriented program.
+ So here is a more code oriented example.
+ I'm creating a close circle.
+ So you see, I'm using the word class.
+ I'm capitalizing circle by convention.
+ I can have it as lowercase, but with capitalized classes.
+ Class names by convention.
+ Here.
+ I have most of my.
+ Class as public.
+ So I have radius, which is a double, and then within it I have a few things we haven't covered called constructors for setting up our plus objects.
+ And finally, I have a function for getting area.
+ And those those functions are very similar to how we wrote functions which are not members of a class.
+ Here is another example, and this one is more involved, an ongoing example I'll be using throughout most of the lecture today.
+ We're creating a clock simple object.
+ We're going to create a clock type object.
+ So whatever components US private components will just have variables for storing hours, minutes and seconds.
+ The rest of it will be public interface for ever changing time, setting time, getting time, comparing to clocks and so on.
+ Any questions about this slide here? Yes.
+ So in your credit, you just have your raw data and then you just tell us the things that you're deriving.
+ But just so users can screw it up.
+ So public would be anything you want user of your class to have access to.
+ So if it's a clock, what things do people do with clocks? I want to check time.
+ I want to change time, but I shouldn't be able to like mess with internal silver clock.
+ Once I declare this class, I can now instantiate objects of that type.
+ BLOCK type.
+ Is a day that I from this point on so I can create my clock, your clock as many different clocks as needed.
+ And what happens will allocate memory and necessary memory to store.
+ In this case, three private variables of the clock, hours, minutes and seconds.
+ A lot of what we're covering today is very similar to what we've seen in other parts of the course.
+ For example, accessing members of a structure, accessing members of a class is very similar.
+ So I can use that access or member access operator to get access to individual behaviors or variables associated with an object.
+ Now, depending on where we are creating this object, where we are creating this application, where it is declared, there are different levels of access, right? If it's created within the class itself, it has access to private members.
+ If it's outside that, it has to go through a public interface.
+ There's another example of creating a sample class.
+ In this example, I'm also creating a static variable, which is shared memory between objects, instances of that class and a public interface.
+ In this example, I'm creating three simple objects, all with length and width variables.
+ So let's see how we can work with our objects and continue with the clock type example I created to.
+ Instances to objects of a class clock.
+ Type my clock on your clock and I start using different functions associated with them.
+ For example, I can call set time behavior on my clock object with three parameters.
+ Essentially setting time to a specific.
+ Set of numbers.
+ I can outwit the clock through prison time.
+ I can set time to a set of other variables.
+ I can do comparisons.
+ I can allocate.
+ Information from 1:00 to another and so on.
+ What I cannot do is bypass the public interface.
+ If I am outside of class, if I'm a user of a class, client of a class.
+ What I cannot do is write directly to the private components of that.
+ Of that object.
+ So saying I just want to set our school to a specific value should not be permissible.
+ Any questions about that? Like you remember with structures, with customized data types.
+ Most operators are not supported on objects of.
+ Plus.
+ But assignment.
+ Setting one equal to another.
+ And that access operator member access operator are supported for.
+ Four glasses.
+ So I can just set one clock equal to another.
+ All it does is member by member copying operation of information from one clock to another.
+ Essentially the same as just copying individual components.
+ Questions about that.
+ In terms of scope, we're.
+ Able to create a world of medical static types.
+ Member of a class is local to the class.
+ And if you need to get access you are using.
+ EXAS member, operator and leader will see how to use scope resolution.
+ Operator to access specific variables.
+ So behaviors of different classes.
+ Of course, things we learned before about working with functions, passing parameters to functions, passing by value, passing by reference also apply to objects we can create.
+ Nothing new here.
+ So if you pass by value, you are creating a copy.
+ If you are passing by reference, you are sending an address.
+ If it's an address, data can be modified.
+ If it's a copy, they are working with a local copy in the function.
+ The changes will not be permanent outside of that function.
+ If you want to make a by reference, but keep it from being modified and you can always make it a constant.
+ And passed that by reference.
+ So how do we actually implement those interesting behaviors for our classes? Very similar to how would I definitions for functions? The only main difference is that we need to specify that this behavior of this function belongs to a specific class.
+ We use scope resolution operator for indicating that.
+ So the format for creating this function definition becomes.
+ And function prototype becomes a return type class name.
+ Scope resolution Operator.
+ Function name before.
+ So within my class.
+ Can we please close the door both doors if possible.
+ I appreciate it.
+ So within the class we are creating.
+ A prototype.
+ For this function print, which has the behavior of being able to print out fractions and then function definition is where we're going to provide actual code for how to print out the fractional.
+ And here.
+ We're specifying, okay, this is part of this class.
+ So let's see examples connected to our ongoing Clocktower.
+ For example, we use the set time function on some my clock, your clock objects.
+ Here's how that actually looks in terms of definition.
+ Just like a function we would do before function definition.
+ The only difference is you see there is this block type scope resolution operator preceding the name of a function.
+ Everything else is the same.
+ We have a list of arguments we take for integers for hours, minutes and seconds.
+ We check to see if we are.
+ Going above standard 24 hour hours or 60 minutes or 60 seconds, and if not, would just set those private variables equal to the arguments of whatever is passed into this function for setting time.
+ Any questions about that? Yes.
+ Where this program with this function, that this function should go with it, like at the end or still somewhere? It's a great question.
+ I'll talk about it later.
+ But basically so you have the class kind of abstraction and then you provide definitions.
+ Very common to have.
+ What we always refer to as the header file that h file where you give the public interface.
+ You talk about all the functions and variables as part of a class and then you have a dot zip file where you implement, uh, those promised interface behaviors.
+ So typically this would be part of my clogged CBP file.
+ And the actual slide where I told you this is private, this is public would be part of that age file.
+ But you can combine it into a single file like we did before We had function prototype, and then later, at some point you commit to providing a function definition.
+ No.
+ Any other questions? So we created a set time function and now I can take a blank object my clock, and set down to a specific time.
+ Likewise, Again, at this point, you know how to write function definitions, hopefully.
+ So the only difference is we're saying this behavior belongs to this class of type.
+ Everything else is the same here I'm doing get time.
+ So I send in three addresses and write two of them values of private variables of the clock.
+ For printing time.
+ I just output three individual private members separated by columns.
+ So it looks like time.
+ Notice I indicate that some of those functions don't make any changes.
+ You can do that.
+ You can set.
+ Set that as a constant.
+ So let's go through all the components of a clock type.
+ So we have a complete example.
+ Here we are incrementing ours.
+ All I'm doing is.
+ Increasing by one.
+ If overflowing from the standard 24 hour time, then I reset it.
+ Midnight.
+ Same idea with minutes.
+ I can.
+ Reduce my incremental hours behavior within the incremental minutes function of them over.
+ 59.
+ I can reset minutes and bump up hours.
+ Same exact idea with seconds.
+ Again, think we know how clerks work.
+ We know how functions are defined.
+ So we're just making it part of our collective class.
+ Any questions on this one? Yeah.
+ So when you.
+ The clear object in the.
+ Prototype function.
+ You don't have to put the clock or anything like that in the in the body of the function.
+ And you reference its members.
+ I don't know if I said that correctly.
+ I'm trying to pass it.
+ Are you asking students that are functions were just creating variables saying, you know, my clock does that.
+ We just put second.
+ Since we're referencing that object I.
+ From the first time.
+ I'm saying this all screwed up, just like I'm trying to do to get there.
+ So we are including this Clark type in the definition that we are writing out.
+ Then someone is a user of a class.
+ All they have is.
+ Clock, type my clock and now they can say my clock dot increment seconds.
+ Does that.
+ Okay.
+ So here's one for equal time.
+ Basically checking to see if two clocks show the same time.
+ Returns a boolean.
+ Yes or no getting as an argument.
+ Second clock in there.
+ And internally all I'm doing is comparing.
+ Member by member hours, minutes and seconds.
+ So if I have those two two clocks here, I can see if they're showing the same time.
+ Looks like they have different minutes and seconds.
+ So would get a.
+ False out of that one.
+ Then I have a actual call to the equal time function.
+ I have object my clock on it.
+ I call the function behavior equal time and your clock is the argument to that.
+ Do that function.
+ Now, in this case, there are private members being accessed.
+ Is it a problem that I have an argument which is object with private members and I need to get access to its private members.
+ In this case, we are bypassing it because we are.
+ In a privileged position of having access to those private members, as that is the function which belongs to equal time to the collective class.
+ So whoever is trying to use our class, so you create a class, you make the header file accessible.
+ Whoever.
+ Imports that and starts using it is considered a client of your class.
+ And then if we create variables from that class, we have objects of that class.
+ And there are also instance variables, terminology.
+ As every object has its own memory dedicated to storing instances of that data.
+ So what's the general protocol for setting up a public interface? You have some private variables in your class.
+ You want to create functions for either reading only data, access their functions, they get information to you, and then you have also functions able of writing data, mutate or functions.
+ They would allow you to change contents of variables, maybe a reset time.
+ So those are the two standard functions you would likely provide as part of your class interface.
+ The order in which you indicate public, private, protected doesn't matter.
+ We know we default to private for classes, but in what order we specify things is irrelevant.
+ You can have this set up with public file followed by protected.
+ By private.
+ You can have private followed by public.
+ Or you can rely on a default option until you specify otherwise.
+ It's private, and then everything you specify as explicitly public will be public.
+ Okay.
+ So in one of the early examples we saw with example on Circles, we saw something called constructors water constructors.
+ They are a type of function which allow you to initialize your object, so you don't want to start with a completely initialized object.
+ You want to give it some default values or maybe specific values.
+ And that's what constructors do.
+ They are called automatically.
+ Then you create an object, then match the type A number of parameters you specify and that initializes your object.
+ You can have two types of constructors.
+ Constructor with arguments and constructor without arguments.
+ If you don't specify.
+ Parameters.
+ You have a default constructor, it doesn't care about anything, it just sets it to the same set of initial conditions.
+ And it's not limited to setting variables to specific values.
+ Anything you object needs to function can be part of a constructor.
+ You are connecting to the internet, you are opening a file.
+ Any of those things can be also made a part of a constructor.
+ Constructor is a kind of like functions, but they have unique properties, so one is they don't have a return type.
+ Another one.
+ The name has to perfectly match the name of a class itself.
+ You can have a lot of different constructors customized by number and type of arguments.
+ So you don't explicitly call them.
+ They just.
+ Get executed by the compiler.
+ Then you are trying to create a new object.
+ So in case of our clock type here, you can see I added to.
+ Constructors.
+ Club type with no arguments.
+ My default constructor and type were three integers, which would.
+ Construct new clocks of specific time, provide it as arguments.
+ How does constructor look? Again? Very, very similar to every other function we define so far.
+ I have.
+ No return type.
+ That's new and different.
+ But then I have my class name.
+ Scope resolution operator and the name of a constructor, which is the same as the name of a class.
+ After that, it's the same.
+ It kind of looks like set time function, doesn't it? Any questions about that? You just.
+ They are right there.
+ You referring to the private variable that you declared and we.
+ Clock type question? Yep.
+ No.
+ So this is a function which is a member of a class, so it has direct access to those variables.
+ I don't have it.
+ Memory for storing all those variables.
+ Yeah.
+ So that's the constructor with arguments.
+ Here is my default constructor.
+ So nothing is specified.
+ I'll just create a new clock kind of set at midnight.
+ And if you remember, we have already wrote the set down function, so I can actually create a clock type constructor with arguments just by calling that set time behavior.
+ I use some code here.
+ To invoke a constructor.
+ All you do is you are creating a new object of that class type.
+ So then I call clock.
+ Type your clock with no arguments.
+ I call the default constructor with arguments.
+ I would instantiate a clock type with specific.
+ Values.
+ So you have to make sure at least one of your constructor matches the number of parameters, the type of parameters you are providing at the time you are instantiating a new object.
+ It will do its best to match.
+ If it needs to do some typecasting, it will do that.
+ But if it's ambiguous and nothing matches, it will give you an error.
+ Not super important, but if you remember, we had this idea of default values for arguments.
+ We can use it here as well.
+ So you can provide as much specific data as you want and the rest will be defaulted for the clock constructor.
+ What makes this useful is similar to what made structures useful.
+ We can combine it with our data types.
+ Data structures, for example, we can create arrays of objects of a specific class.
+ So maybe I need to create arrival times for employees of the factory.
+ I can create an array of clock types.
+ Size being the number of employees for each one.
+ I have enough memory allocated to store specific time for that employee number.
+ And I can use Subindex to get to a specific employee and set time for them to a specific value.
+ If there is no constructor, C++ automatically gives you a default constructor which will not initialize.
+ Data.
+ If there is a constructor with arguments, it will not also provide you with a default.
+ Structure.
+ There is also this idea of destructor.
+ It's a matching concept.
+ You have set up what needs to be set up for your object.
+ You initialized your object, you allocate it Memory Open Files did all this awesome work.
+ At some point you.
+ Adorn using objects you want to clean up.
+ So this is a complimentary concept which will go and clean up and delete and close things as needed.
+ A lot like a constructor.
+ Takes no arguments because it doesn't need any.
+ Just cleans up everything.
+ And the name is still the name of a class, but it's preceded by a squiggly line, the tilde.
+ That's how you know it's the structure.
+ It is also not something you call.
+ So it's not a typical function.
+ Basically, once your object goes out of scope, it is no longer going to be used.
+ This is automatically invoked.
+ And you only need one.
+ You don't need many.
+ You don't even specify arguments.
+ You'll have a bunch of possible construction processes, but only one clean up routine.
+ So to.
+ Going to explicitly emphasize the benefits of design.
+ We're now starting to engage and you want to create abstraction, abstract away as much detail as possible.
+ Make those objects and classes highly reusable.
+ There is a good chance our people will need to at some point use a clock.
+ So if you do it right, if you debug it, if you write it while others can use it.
+ So we want to make sure it's accessible.
+ There is data hiding, so implementation details are not important, just the ability to read the interface.
+ In most cases, classes will be a preferred option if there is no behavior.
+ If all variables are public, you can still use structures.
+ That's the essential difference.
+ Structures defaulted to public classes default to private.
+ So if those conditions are met, you can still use a struct.
+ Maybe somehow simpler, but you don't have to.
+ You can fully switch to the using classes.
+ That's the preferred method.
+ In fact, there is a lot of debate about the best way to teach computer science, to teach programing in the two big schools.
+ Object oriented first, or what we did with the kind of step by step approach first, Then it's not obvious what makes you a better program or better thinker about this.
+ So we had a we had a question about placement of all those components.
+ Where do you put them? Where do they go in the file? So we already had experience, including header files, including libraries.
+ We need the interface.
+ The.
+ Abstraction of a class would go into the interface her file that each file and then you have an implementation file where you commit to implementing all those components.
+ That would be a C++ file In your header file, you want to explicitly state what are some preconditions and forced conditions for executing behaviors for running those functions on on an object.
+ And with clock type, they're kind of trivial, but you can see that with a more complex class object, there are preconditions which are much more meaningful and likewise for force conditions.
+ But here's still.
+ Ongoing clock type example the header file for it where I provide the public interface and I describe what this specific function is supposed to do, what the post conditions are meaningful, what the preconditions are, and so on.
+ So someone reading this documentation should be able to utilize this class.
+ So I don't know.
+ We have function print time, function for printing time.
+ First condition is that the time is printed in this format.
+ Obviously not super surprising or exciting, but you get the general idea.
+ And same for all of them.
+ You can see how.
+ We describe what they do or what happens after they're successfully executed.
+ So that's the file where I'm going to describe my class.
+ And then I create a C++ file with the same same class name, and I include my header file in there, probably giving it fully qualified path to the file.
+ So you remember for the default libraries, we would C++ admitted that each extension for custom generated classes like the one you would generate here we included explicitly.
+ So here is essentially the headers for those files there's going to have.
+ My clerk type implementation file.
+ Includes IO stream.
+ That's the standard library.
+ So in angular brackets and know that H and then I include clock type as a string with usually unless it's in the same directory.
+ The directory fully qualified path to get to the clock type that h.
+ The user of a program of a client of a class just have to include has to include that type, that age file, and they get access to all the functionality you just created.
+ So you are not forced to use multiple files for your labs.
+ You can still use single file where you just place those components one after another.
+ Sometimes it's a little easier to to figure out what's going on, but eventually you'll write complex code with across multiple files.
+ All right.
+ So that was a lot.
+ Any any questions about.
+ Object oriented programing so far.
+ If you have any individual questions, please stop by.
+ I'll help you out.
+ 

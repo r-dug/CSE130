@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture Notes</title>
+    <style>
+
+        body {
+            font-family: sans-serif;
+        }
+        h1 { 
+            background-color: blanchedalmond;
+        }
+        h2 { 
+            background-color: lightblue;
+        }
+        h3 { 
+            background-color: lightgreen;
+        }
+        code {
+            font-family: monospace;
+            font-weight: 600;
+            color: blue;
+            background-color: bisque;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Lecture Notes: CSE 130 C/C++ - Data and Functions</h1>
+
+    <h2>Boolean Data Type</h2>
+    <p>In C++, the <strong>Boolean data type</strong> (bool) holds true (1) or false (0) as its value. True and false are reserved keywords. This data type is used for conditional checking in programs.</p>
+    <pre><code>
+bool status = false;
+if (status) {
+    // First statement executed
+} else {
+    // Else condition executed
+}
+</code></pre>
+
+    <h2>Function Overloading</h2>
+    <p><strong>Function overloading</strong> 
+        allows multiple functions with the same name but different parameters or parameter types. 
+        This enables the same function name to have different implementations based on the arguments provided.</p>
+    <pre><code>
+// Overloaded function for swapping values of different data types
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+void swap(float *a, float *b) {
+    float temp = *a;
+    *a = *b;
+    *b = temp;
+}
+void swap(double *a, double *b) {
+    double temp = *a;
+    *a = *b;
+    *b = temp;
+}
+void swap(char *a, char *b) {
+    char temp = *a;
+    *a = *b;
+    *b = temp;
+}
+int main(void){
+    int a = 10;
+    int b = 20;
+    float c = 10.1, d = 11.2;
+    char x = 'x', y = 'y';
+    swap(&a, &b);
+    swap(&c, &d);
+    swap(&x, &y);
+    cout &lt;&lt; a &lt;&lt; " " &lt;&lt; b &lt;&lt; endl;
+    cout &lt;&lt; c &lt;&lt; " " &lt;&lt; d &lt;&lt; endl;
+    cout &lt;&lt; x &lt;&lt; " " &lt;&lt; y &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+
+    <h2>Default Arguments</h2>
+    <p><strong>Default arguments</strong> allow parameters with default values. These parameters can be overridden by providing specific values during function calls.</p>
+    <pre><code>
+// Function with default arguments for computing volume of a box
+int boxVolume(int length = 1, int width = 1, int height = 1) {
+    return length * width * height;
+}
+boxVolume(); // Uses default values
+boxVolume(10, 5, 10); // Explicitly provided values
+boxVolume(10, 10); //  ambiguously provided values
+</code></pre>
+
+    <h2>Scope Resolution Operator and Static Variables</h2>
+    <p>The <strong>scope resolution operator (::)</strong> allows specifying the scope of a variable or object. <strong>Static variables</strong> retain their value between function calls, providing continuity and persistence (described as functions with memory in the lecture).</p>
+    <pre><code>
+// Scope resolution operator example
+int count = 0;
+int main() {
+    int count = 0;
+    ::count = 5; // Accessing global variable
+    count = 2; // Accessing local variable 
+}
+
+// Static variable example
+int counter() {
+    static int x = 0;
+    x++;
+    return x;
+}
+</code></pre>
+
+    <h2>Exam Information</h2>
+    <p><strong>THIS WILL BE ON THE EXAM:</strong> Topics covered include Boolean data type, function overloading, default arguments, scope resolution operator, and static variables.</p>
+
+    <h3>Assignments:</h3>
+    <ul>
+        <li><strong>Student ppt</strong> | <strong>DUE:</strong> Monday, 4/15</li>
+        <li><strong>Student ppt</strong> | <strong>DUE:</strong> Wednesday, 4/17</li>
+        <li><strong>Student ppt</strong> | <strong>DUE:</strong> Tuesday, 4/22</li>
+    </ul>
+
+    <footer>For further reading and documentation, refer to <a href="https://www.cplusplus.com/doc/">cplusplus.com</a></footer>
+</body>
+
+</html>

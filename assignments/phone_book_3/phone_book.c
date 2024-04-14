@@ -10,13 +10,20 @@ A user should be able to use a few functions:
 1) add an entry
 2) delete an entry
 3) show the phonebook
+4) sort the phonebook
+5) search the phonebook
+6) randomly select someone to call
+7) clear the phonebook
+8) exit the program
 
 Phonebook entries stored in an array of structs.
+the array should be written to a file for persistence
 
 Phonebook entry struct elements:
 - first name
 - last name
 - phone number
+
 
 On this assignment... 
 Let's not get carried away. 
@@ -24,7 +31,7 @@ Let's just stick to the task assigned to us.
 
 Author: Richard Douglas
 Start date: 02/18/2024
-Last edit: 02/18/2024
+Last edit: 03/22/2024
 
 */
 
@@ -36,13 +43,55 @@ Last edit: 02/18/2024
 #include <signal.h>
 #include <time.h>
 // custom struct for phonebook entries
+#pragma pack(push, 1)
 struct PhonebookEntry{
     int id;
     char first_name[15];
     char last_name[15];
     char phone_number[11]; 
-} PhonebookEntry;
+} __attribute__((packed)) PhonebookEntry;
+#pragma pack(pop)
 struct PhonebookEntry *phonebook = NULL;
+
+void writeDataToFile(char * filename, struct PhonebookEntry **phonebook, int *size) {
+    FILE *file = fopen(filename, "wb"); // Open the file in binary mode for writing
+    if (file == NULL) {
+        perror("Failed to open file");
+        exit(1);
+    }
+
+    fwrite(*phonebook, sizeof(PhonebookEntry), *size, file); // Write the array of structures to the file
+
+    fclose(file); // Close the file
+}
+
+struct PhonebookEntry* readDataFromFile(char * filename, struct PhonebookEntry **phonebook, int *size) {
+    FILE *file = fopen(filename, "rb"); // Open the file in binary mode for reading
+    if (file == NULL) {
+        perror("Failed to open file");
+        exit(1);
+    }
+
+    // determine file size
+    fseek(file, 0, SEEK_END);
+    long fileSize = ftell(file);
+    rewind(file);
+
+    *size = fileSize / sizeof(PhonebookEntry);
+
+    *phonebook = (struct PhonebookEntry *) malloc(*size * sizeof(struct PhonebookEntry));
+
+    if(phonebook == NULL){
+        fclose(file);
+        perror("Failed to allocate memory");
+        exit(1);
+    }
+
+    fread(*phonebook, sizeof(PhonebookEntry), *size, file); // Read the array of structures from the file
+
+    fclose(file); // Close the file
+}
+
 void resizePhonebook(struct PhonebookEntry **phonebook, int *capacity, int newcapacity){
     *capacity = newcapacity;
     *phonebook = (struct PhonebookEntry *)realloc(*phonebook, *capacity * sizeof(struct PhonebookEntry));
@@ -78,10 +127,40 @@ void resetEntryByIndex(struct PhonebookEntry **phonebook, int *index, int *size)
     }
 }
 int sortByFirstName(const void *a, const void *b){
-    return strcmp(((struct PhonebookEntry *)a)->first_name, ((struct PhonebookEntry *)b)->first_name);
+    const char *str1 = ((struct PhonebookEntry *)a)->first_name;
+    const char *str2 = ((struct PhonebookEntry *)b)->first_name;
+
+    char lower_str1[strlen(str1)];
+    char lower_str2[strlen(str2)];
+    for (int i = 0; str1[i]!= '\0'; i++) {
+        lower_str1[i] = tolower(str1[i]);
+    }
+    lower_str1[strlen(str1)] = '\0';
+
+    for (int i = 0; str2[i] != '\0'; i++) {
+        lower_str2[i] = tolower(str2[i]);
+    }
+    lower_str2[strlen(str2)] = '\0';
+
+    return strcmp(lower_str1, lower_str2);
 }
 int sortByLastName(const void *a, const void *b){
-    return strcmp(((struct PhonebookEntry *)a)->last_name, ((struct PhonebookEntry *)b)->last_name);
+    const char *str1 = ((struct PhonebookEntry *)a)->last_name;
+    const char *str2 = ((struct PhonebookEntry *)b)->last_name;
+
+    char lower_str1[strlen(str1)];
+    char lower_str2[strlen(str2)];
+    for (int i = 0; str1[i]!= '\0'; i++) {
+        lower_str1[i] = tolower(str1[i]);
+    }
+    lower_str1[strlen(str1)] = '\0';
+
+    for (int i = 0; str2[i] != '\0'; i++) {
+        lower_str2[i] = tolower(str2[i]);
+    }
+    lower_str2[strlen(str2)] = '\0';
+
+    return strcmp(lower_str1, lower_str2);
 }
 void searchPhonebook(struct PhonebookEntry **phonebook, int *size, char search_term[]){
     int i = 0;
@@ -161,6 +240,19 @@ int main(){
     // an integer value marking the current number of entries in the phonebook and index to be assigned a value next
     int size = 0;
 
+    // filename cariabel. empty string for user to enter a value.
+    char filename[1024];
+    printf("Enter filename to read and write to: ");
+    fgets(filename, sizeof(filename), stdin);
+    if (strcmp(filename, "\n") == 0) {
+        printf("No input provided, using default file location...\n");
+        // Handle the case where the user doesn't provide input
+        strcpy(filename, "phonebook.txt");
+    }
+
+    
+    phonebook = readDataFromFile(filename, &phonebook, &size);
+
     // initial size allocated for phonebook
     int capacity = 10;
 
@@ -239,6 +331,7 @@ int main(){
                 }
                 
                 addEntry(&phonebook, &size, &capacity, add_first_name, add_last_name, add_phone_number);
+                writeDataToFile(filename, &phonebook, &size);
                 printf("press ENTER to return to main menu\n");
                 getchar();
                 while(getchar() != '\n');
@@ -261,6 +354,7 @@ int main(){
                 }else {
                     resetEntryByIndex(&phonebook, &deletion_idx, &size);
                 }
+                writeDataToFile(filename, &phonebook, &size);
                 printf("press ENTER to return to main menu\n");
                 getchar();
                 while(getchar() != '\n');
@@ -291,6 +385,7 @@ int main(){
                 for (int i = 0; i < size; i++) {
                     phonebook[i].id = i;
                 }
+                writeDataToFile(filename, &phonebook, &size);
                 printf("press ENTER to return to main menu\n");
                 getchar();
                 while(getchar() != '\n');
@@ -317,6 +412,7 @@ int main(){
 
             case 7:
                 size = 0;
+                writeDataToFile(filename, &phonebook, &size);
                 system("clear");
                 printf("PHONEBOOK EMPTIED\n\n");
                 printf("press ENTER to return to main menu\n");
