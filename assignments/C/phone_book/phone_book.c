@@ -137,6 +137,81 @@ int main(){
     }
     while(1){
         printf("Welcome to your phonebook!\n\
+        proceed to menu(y/n)?\n");
+        scanf("%s", &proceed);
+        if(proceed == 'y'){
+            system("clear");
+            printf("Choose a menu option by entering the corresponding integer value\n\
+            1) add an entry\n\
+            2) delete an entry\n\
+            3) show the phonebook\n\
+            4) EXIT \n\n");
+            
+            result = scanf("%d", &selection);
+            if(result == 1 && selection >= 1 && selection <=4){
+                result = 0;
+                switch(selection){
+                    case 1:
+                        system("clear");
+                        printf("Ok! You've elected to add a phone book entry. Wonderful!\n");
+                        while(result != 1){
+                            printf("\tFirst name: ");
+                            result = scanf("%s", add_first_name);
+                            if (result != 1){
+                                printf("Invalid entry");
+                            }
+                        }
+                        result = 0;
+                        while(result != 1){
+                            printf("\tLast name: ");
+                            result = scanf("%s", add_last_name);
+                            if (result != 1){
+                                printf("Invalid entry");
+                                getchar();
+                            }
+                        }
+                        result = 0;
+                        while(result != 1){
+                            printf("\t10 digit Phone number: ");
+                            result = scanf("%ld", &add_phone_number);
+                            int count = countDigits(add_phone_number);
+                            if (count != 9 || add_phone_number < 0){
+                                result = 0;
+                                getchar();
+                            }
+                            if (result != 1){
+                                printf("Invalid entry\n");
+                            }
+                        }
+
+                        addEntry(&phonebook, &size, &capacity, add_first_name, add_last_name, &add_phone_number);
+                        system("clear");
+                        break;
+                    case 2:
+                        system("clear");
+                        printPhonebook(&phonebook, &size);
+                        printf("\n\nSelect an entry to delete by index: ");
+                        scanf("%d", &deletion_idx);
+                        resetEntryByIndex(&phonebook, &deletion_idx, &size);
+                        system("clear");
+                        break;
+                    case 3:
+                        system("clear");
+                        printPhonebook(&phonebook, &size);
+                        
+                        printf("Enter 'X' to exit\n");
+                        while(getchar() != 'X');
+                        system("clear");
+                        break;
+                    case 4:
+                        exit(0);
+                }
+            }else{
+                system("clear");
+                printf("Invalid entry... try again...\n");
+            }
+        }else if (proceed == 'n'){
+            exit(0);
         enter any character to proceed...");
         getchar();
         while(getchar() != '\n');
